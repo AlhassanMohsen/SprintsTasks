@@ -1,0 +1,17 @@
+# depslib dependency file v1.0
+1640905960 source:d:\learning\process\c_training\paymentsystemapplication\main.c
+	<stdio.h>
+	<stdlib.h>
+	"compiler.h"
+	"PaymentSystem.h"
+
+1640770280 d:\learning\process\c_training\paymentsystemapplication\compiler.h
+
+1640905248 d:\learning\process\c_training\paymentsystemapplication\paymentsystem.h
+
+1640905898 source:d:\learning\process\c_training\paymentsystemapplication\paymentsystem.c
+	<stdio.h>
+	"compiler.h"
+	"PaymentSystem.h"
+	<string.h>
+

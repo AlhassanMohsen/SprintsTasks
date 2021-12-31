@@ -1,0 +1,23 @@
+# depslib dependency file v1.0
+1640916209 source:d:\learning\process\c_training\balancedparenthesesdetector\parenthesesdetector.c
+	<stdlib.h>
+	"Stack.h"
+
+1640916390 source:d:\learning\process\c_training\balancedparenthesesdetector\main.c
+	<stdio.h>
+	<stdlib.h>
+	"compiler.h"
+	"ParenthesesDetector.h"
+
+1640587493 d:\learning\process\c_training\balancedparenthesesdetector\compiler.h
+
+1640642707 d:\learning\process\c_training\balancedparenthesesdetector\stack.h
+	"compiler.h"
+
+1640643749 source:d:\learning\process\c_training\balancedparenthesesdetector\stack.c
+	<stdio.h>
+	"Stack.h"
+
+1640642682 d:\learning\process\c_training\balancedparenthesesdetector\parenthesesdetector.h
+	"compiler.h"
+

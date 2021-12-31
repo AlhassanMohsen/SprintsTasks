@@ -1,0 +1,24 @@
+# depslib dependency file v1.0
+1640923668 source:d:\learning\process\c_training\searchingtask\main.c
+	<stdio.h>
+	<stdlib.h>
+	"compiler.h"
+	"Sort.h"
+	"Search.h"
+
+1640650753 d:\learning\process\c_training\searchingtask\compiler.h
+
+1640909391 d:\learning\process\c_training\searchingtask\sort.h
+
+1640915367 d:\learning\process\c_training\searchingtask\search.h
+
+1640658487 source:d:\learning\process\c_training\searchingtask\search.c
+	<stdio.h>
+	"compiler.h"
+	"Sort.h"
+
+1640923555 source:d:\learning\process\c_training\searchingtask\sort.c
+	<stdio.h>
+	"compiler.h"
+	"Sort.h"
+
