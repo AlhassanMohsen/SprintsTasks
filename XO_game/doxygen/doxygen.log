@@ -1,0 +1,6 @@
+D:/Learning/Process/C_Training/XOGame/XO.c:7: warning: argument 'takes' of command @param is not found in the argument list of XO_PrintBoard(void)
+D:/Learning/Process/C_Training/XOGame/XO.c:14: warning: documented empty return type of XO_PrintBoard
+D:/Learning/Process/C_Training/XOGame/XO.c:77: warning: argument 'this' of command @param is not found in the argument list of XO_u8GameState(void)
+D:/Learning/Process/C_Training/XOGame/XO.c:61: warning: argument 'this' of command @param is not found in the argument list of XO_u8GetPlayerMove(void)
+D:/Learning/Process/C_Training/XOGame/XO.c:7: warning: argument 'takes' of command @param is not found in the argument list of XO_PrintBoard(void)
+D:/Learning/Process/C_Training/XOGame/XO.h:11: warning: documented empty return type of XO_PrintBoard

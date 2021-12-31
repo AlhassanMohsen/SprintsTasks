@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1640919246 source:d:\learning\process\c_training\xogame\main.c
+	<stdio.h>
+	"XO.h"
+
+1640917290 d:\learning\process\c_training\xogame\xo.h
+	<stdio.h>
+	"compiler.h"
+
+1640919040 d:\learning\process\c_training\xogame\compiler.h
+
+1640919290 source:d:\learning\process\c_training\xogame\xo.c
+	"XO.h"
+
