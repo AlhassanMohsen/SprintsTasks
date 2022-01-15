@@ -271,6 +271,22 @@ void __vector_11(void){
 	}
 }
 
+ErrorState_t TIM0_u8Deinit(void)
+{
+	ErrorState_t u8ErrorState = TIM0_OK;
+	if (gst_TIM0Config != NULL)
+	{
+		// Setting the control register of the timer to its reset value which stop the timer and deintialize it
+		TCCR0_REG = 0;
+		// making the TIM0 config pointing to NULL indicating that there no configuration active for this timer
+		gst_TIM0Config = NULL;
+	}else
+	{
+		u8ErrorState = TIM0_NOT_INITILIZED;
+	}
+	return u8ErrorState;
+}
+
 /**
  * @TODO : A function to configure PWM Duty Cycle
  */

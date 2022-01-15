@@ -1,313 +1,4 @@
-18:34:54 **** Incremental Build of configuration Debug for project DIO_TestApp ****
-make all 
-Building target: DIO_TestApp.elf
-Invoking: AVR C Linker
-avr-gcc -Wl,-Map,DIO_TestApp.map -mmcu=atmega32 -o "DIO_TestApp.elf"  ./MCAL/TIMER0/TIMER0.o  ./MCAL/DIO/DIO.o  ./MCAL/DELAY/DELAY.o  ./ECUAL/LED/LED.o  ./ECUAL/BTN/Button.o  ./APP/main.o   
-Finished building target: DIO_TestApp.elf
- 
-Invoking: AVR Create Extended Listing
-avr-objdump -h -S DIO_TestApp.elf  >"DIO_TestApp.lss"
-Finished building: DIO_TestApp.lss
- 
-Create Flash image (ihex format)
-avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex DIO_TestApp.elf  "DIO_TestApp.hex"
-Finished building: DIO_TestApp.hex
- 
-Create eeprom image (ihex format)
-avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex DIO_TestApp.elf  "DIO_TestApp.eep"
-Finished building: DIO_TestApp.eep
- 
-Invoking: Print Size
-avr-size --format=avr --mcu=atmega32 DIO_TestApp.elf
-AVR Memory Usage
-----------------
-Device: atmega32
-
-Program:    5582 bytes (17.0% Full)
-(.text + .data + .bootloader)
-
-Data:          8 bytes (0.4% Full)
-(.data + .bss + .noinit)
-
-
-Finished building: sizedummy
- 
-18:37:13 **** Incremental Build of configuration Debug for project DIO_TestApp ****
-make all 
-Building file: ../APP/main.c
-Invoking: AVR Compiler
-avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"APP/main.d" -MT"APP/main.o" -c -o "APP/main.o" "../APP/main.c"
-Finished building: ../APP/main.c
- 
-Building target: DIO_TestApp.elf
-Invoking: AVR C Linker
-avr-gcc -Wl,-Map,DIO_TestApp.map -mmcu=atmega32 -o "DIO_TestApp.elf"  ./MCAL/TIMER0/TIMER0.o  ./MCAL/DIO/DIO.o  ./MCAL/DELAY/DELAY.o  ./ECUAL/LED/LED.o  ./ECUAL/BTN/Button.o  ./APP/main.o   
-Finished building target: DIO_TestApp.elf
- 
-Invoking: AVR Create Extended Listing
-avr-objdump -h -S DIO_TestApp.elf  >"DIO_TestApp.lss"
-Finished building: DIO_TestApp.lss
- 
-Create Flash image (ihex format)
-avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex DIO_TestApp.elf  "DIO_TestApp.hex"
-Finished building: DIO_TestApp.hex
- 
-Create eeprom image (ihex format)
-avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex DIO_TestApp.elf  "DIO_TestApp.eep"
-Finished building: DIO_TestApp.eep
- 
-Invoking: Print Size
-avr-size --format=avr --mcu=atmega32 DIO_TestApp.elf
-AVR Memory Usage
-----------------
-Device: atmega32
-
-Program:    5590 bytes (17.1% Full)
-(.text + .data + .bootloader)
-
-Data:          8 bytes (0.4% Full)
-(.data + .bss + .noinit)
-
-
-Finished building: sizedummy
- 
-18:39:13 **** Incremental Build of configuration Debug for project DIO_TestApp ****
-make all 
-Building file: ../ECUAL/BTN/Button.c
-Invoking: AVR Compiler
-avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"ECUAL/BTN/Button.d" -MT"ECUAL/BTN/Button.o" -c -o "ECUAL/BTN/Button.o" "../ECUAL/BTN/Button.c"
-Finished building: ../ECUAL/BTN/Button.c
- 
-Building target: DIO_TestApp.elf
-Invoking: AVR C Linker
-avr-gcc -Wl,-Map,DIO_TestApp.map -mmcu=atmega32 -o "DIO_TestApp.elf"  ./MCAL/TIMER0/TIMER0.o  ./MCAL/DIO/DIO.o  ./MCAL/DELAY/DELAY.o  ./ECUAL/LED/LED.o  ./ECUAL/BTN/Button.o  ./APP/main.o   
-Finished building target: DIO_TestApp.elf
- 
-Invoking: AVR Create Extended Listing
-avr-objdump -h -S DIO_TestApp.elf  >"DIO_TestApp.lss"
-Finished building: DIO_TestApp.lss
- 
-Create Flash image (ihex format)
-avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex DIO_TestApp.elf  "DIO_TestApp.hex"
-Finished building: DIO_TestApp.hex
- 
-Create eeprom image (ihex format)
-avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex DIO_TestApp.elf  "DIO_TestApp.eep"
-Finished building: DIO_TestApp.eep
- 
-Invoking: Print Size
-avr-size --format=avr --mcu=atmega32 DIO_TestApp.elf
-AVR Memory Usage
-----------------
-Device: atmega32
-
-Program:    5590 bytes (17.1% Full)
-(.text + .data + .bootloader)
-
-Data:          8 bytes (0.4% Full)
-(.data + .bss + .noinit)
-
-
-Finished building: sizedummy
- 
-18:41:10 **** Incremental Build of configuration Debug for project DIO_TestApp ****
-make all 
-Building file: ../ECUAL/BTN/Button.c
-Invoking: AVR Compiler
-avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"ECUAL/BTN/Button.d" -MT"ECUAL/BTN/Button.o" -c -o "ECUAL/BTN/Button.o" "../ECUAL/BTN/Button.c"
-Finished building: ../ECUAL/BTN/Button.c
- 
-Building target: DIO_TestApp.elf
-Invoking: AVR C Linker
-avr-gcc -Wl,-Map,DIO_TestApp.map -mmcu=atmega32 -o "DIO_TestApp.elf"  ./MCAL/TIMER0/TIMER0.o  ./MCAL/DIO/DIO.o  ./MCAL/DELAY/DELAY.o  ./ECUAL/LED/LED.o  ./ECUAL/BTN/Button.o  ./APP/main.o   
-Finished building target: DIO_TestApp.elf
- 
-Invoking: AVR Create Extended Listing
-avr-objdump -h -S DIO_TestApp.elf  >"DIO_TestApp.lss"
-Finished building: DIO_TestApp.lss
- 
-Create Flash image (ihex format)
-avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex DIO_TestApp.elf  "DIO_TestApp.hex"
-Finished building: DIO_TestApp.hex
- 
-Create eeprom image (ihex format)
-avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex DIO_TestApp.elf  "DIO_TestApp.eep"
-Finished building: DIO_TestApp.eep
- 
-Invoking: Print Size
-avr-size --format=avr --mcu=atmega32 DIO_TestApp.elf
-AVR Memory Usage
-----------------
-Device: atmega32
-
-Program:    5582 bytes (17.0% Full)
-(.text + .data + .bootloader)
-
-Data:          8 bytes (0.4% Full)
-(.data + .bss + .noinit)
-
-
-Finished building: sizedummy
- 
-18:43:59 **** Incremental Build of configuration Debug for project DIO_TestApp ****
-make all 
-Building file: ../ECUAL/BTN/Button.c
-Invoking: AVR Compiler
-avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"ECUAL/BTN/Button.d" -MT"ECUAL/BTN/Button.o" -c -o "ECUAL/BTN/Button.o" "../ECUAL/BTN/Button.c"
-Finished building: ../ECUAL/BTN/Button.c
- 
-Building target: DIO_TestApp.elf
-Invoking: AVR C Linker
-avr-gcc -Wl,-Map,DIO_TestApp.map -mmcu=atmega32 -o "DIO_TestApp.elf"  ./MCAL/TIMER0/TIMER0.o  ./MCAL/DIO/DIO.o  ./MCAL/DELAY/DELAY.o  ./ECUAL/LED/LED.o  ./ECUAL/BTN/Button.o  ./APP/main.o   
-Finished building target: DIO_TestApp.elf
- 
-Invoking: AVR Create Extended Listing
-avr-objdump -h -S DIO_TestApp.elf  >"DIO_TestApp.lss"
-Finished building: DIO_TestApp.lss
- 
-Create Flash image (ihex format)
-avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex DIO_TestApp.elf  "DIO_TestApp.hex"
-Finished building: DIO_TestApp.hex
- 
-Create eeprom image (ihex format)
-avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex DIO_TestApp.elf  "DIO_TestApp.eep"
-Finished building: DIO_TestApp.eep
- 
-Invoking: Print Size
-avr-size --format=avr --mcu=atmega32 DIO_TestApp.elf
-AVR Memory Usage
-----------------
-Device: atmega32
-
-Program:    5590 bytes (17.1% Full)
-(.text + .data + .bootloader)
-
-Data:          8 bytes (0.4% Full)
-(.data + .bss + .noinit)
-
-
-Finished building: sizedummy
- 
-18:47:09 **** Incremental Build of configuration Debug for project DIO_TestApp ****
-make all 
-Building file: ../ECUAL/BTN/Button.c
-Invoking: AVR Compiler
-avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"ECUAL/BTN/Button.d" -MT"ECUAL/BTN/Button.o" -c -o "ECUAL/BTN/Button.o" "../ECUAL/BTN/Button.c"
-Finished building: ../ECUAL/BTN/Button.c
- 
-Building target: DIO_TestApp.elf
-Invoking: AVR C Linker
-avr-gcc -Wl,-Map,DIO_TestApp.map -mmcu=atmega32 -o "DIO_TestApp.elf"  ./MCAL/TIMER0/TIMER0.o  ./MCAL/DIO/DIO.o  ./MCAL/DELAY/DELAY.o  ./ECUAL/LED/LED.o  ./ECUAL/BTN/Button.o  ./APP/main.o   
-Finished building target: DIO_TestApp.elf
- 
-Invoking: AVR Create Extended Listing
-avr-objdump -h -S DIO_TestApp.elf  >"DIO_TestApp.lss"
-Finished building: DIO_TestApp.lss
- 
-Create Flash image (ihex format)
-avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex DIO_TestApp.elf  "DIO_TestApp.hex"
-Finished building: DIO_TestApp.hex
- 
-Create eeprom image (ihex format)
-avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex DIO_TestApp.elf  "DIO_TestApp.eep"
-Finished building: DIO_TestApp.eep
- 
-Invoking: Print Size
-avr-size --format=avr --mcu=atmega32 DIO_TestApp.elf
-AVR Memory Usage
-----------------
-Device: atmega32
-
-Program:    5590 bytes (17.1% Full)
-(.text + .data + .bootloader)
-
-Data:          8 bytes (0.4% Full)
-(.data + .bss + .noinit)
-
-
-Finished building: sizedummy
- 
-18:47:22 **** Incremental Build of configuration Debug for project DIO_TestApp ****
-make all 
-Building file: ../APP/main.c
-Invoking: AVR Compiler
-avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"APP/main.d" -MT"APP/main.o" -c -o "APP/main.o" "../APP/main.c"
-Finished building: ../APP/main.c
- 
-Building target: DIO_TestApp.elf
-Invoking: AVR C Linker
-avr-gcc -Wl,-Map,DIO_TestApp.map -mmcu=atmega32 -o "DIO_TestApp.elf"  ./MCAL/TIMER0/TIMER0.o  ./MCAL/DIO/DIO.o  ./MCAL/DELAY/DELAY.o  ./ECUAL/LED/LED.o  ./ECUAL/BTN/Button.o  ./APP/main.o   
-Finished building target: DIO_TestApp.elf
- 
-Invoking: AVR Create Extended Listing
-avr-objdump -h -S DIO_TestApp.elf  >"DIO_TestApp.lss"
-Finished building: DIO_TestApp.lss
- 
-Create Flash image (ihex format)
-avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex DIO_TestApp.elf  "DIO_TestApp.hex"
-Finished building: DIO_TestApp.hex
- 
-Create eeprom image (ihex format)
-avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex DIO_TestApp.elf  "DIO_TestApp.eep"
-Finished building: DIO_TestApp.eep
- 
-Invoking: Print Size
-avr-size --format=avr --mcu=atmega32 DIO_TestApp.elf
-AVR Memory Usage
-----------------
-Device: atmega32
-
-Program:    5582 bytes (17.0% Full)
-(.text + .data + .bootloader)
-
-Data:          8 bytes (0.4% Full)
-(.data + .bss + .noinit)
-
-
-Finished building: sizedummy
- 
-21:14:55 **** Incremental Build of configuration Debug for project DIO_TestApp ****
-make all 
-Building file: ../APP/main.c
-Invoking: AVR Compiler
-avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"APP/main.d" -MT"APP/main.o" -c -o "APP/main.o" "../APP/main.c"
-../APP/main.c:12:43: error: ../MCAL/DELAY/DELAY_interface.h: No such file or directory
-../APP/main.c:13:30: error: ../ECUAL/LED/LED.h: No such file or directory
-In file included from ../APP/main.c:14:
-../APP/../ECUAL/BTN/Button.h:10:42: error: ../../MCAL/DIO/DIO_interface.h: No such file or directory
-../APP/../ECUAL/BTN/Button.h:11:46: error: ../../MCAL/DELAY/DELAY_interface.h: No such file or directory
-../APP/main.c: In function 'main':
-../APP/main.c:21: error: 'LED_t' undeclared (first use in this function)
-../APP/main.c:21: error: (Each undeclared identifier is reported only once
-../APP/main.c:21: error: for each function it appears in.)
-../APP/main.c:21: error: expected ';' before 'st_TestLed'
-../APP/main.c:22: error: 'PORTC' undeclared (first use in this function)
-../APP/main.c:22: error: 'PIN4' undeclared (first use in this function)
-../APP/main.c:24: warning: implicit declaration of function 'LED_u8Init'
-../APP/main.c:24: error: 'st_TestLed' undeclared (first use in this function)
-../APP/main.c:31: warning: implicit declaration of function 'LED_u8Toggle'
-make: *** [APP/main.o] Error 1
-21:16:02 **** Incremental Build of configuration Debug for project DIO_TestApp ****
-make all 
-Building file: ../MCAL/DELAY/DELAY.c
-Invoking: AVR Compiler
-avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"MCAL/DELAY/DELAY.d" -MT"MCAL/DELAY/DELAY.o" -c -o "MCAL/DELAY/DELAY.o" "../MCAL/DELAY/DELAY.c"
-In file included from ../MCAL/DELAY/DELAY.c:9:
-../MCAL/DELAY/DELAY_interface.h:15:40: error: ../TIMER0/TIMER0_interface.h: No such file or directory
-../MCAL/DELAY/DELAY.c: In function 'DELAY_ms':
-../MCAL/DELAY/DELAY.c:20: error: 'TIM0_Config_t' undeclared (first use in this function)
-../MCAL/DELAY/DELAY.c:20: error: (Each undeclared identifier is reported only once
-../MCAL/DELAY/DELAY.c:20: error: for each function it appears in.)
-../MCAL/DELAY/DELAY.c:20: error: expected ';' before 'DelayConfig'
-../MCAL/DELAY/DELAY.c:24: warning: implicit declaration of function 'TIM0_u8Init'
-../MCAL/DELAY/DELAY.c:24: error: 'DelayConfig' undeclared (first use in this function)
-../MCAL/DELAY/DELAY.c:26: error: 'TIM0_OK' undeclared (first use in this function)
-../MCAL/DELAY/DELAY.c:29: warning: implicit declaration of function 'TIM0_u8SetCompareValue'
-../MCAL/DELAY/DELAY.c:36: warning: implicit declaration of function 'TIM0_u8EnableOCInterrupt'
-../MCAL/DELAY/DELAY.c:43: warning: implicit declaration of function 'TIM0_u8TimerStart'
-../MCAL/DELAY/DELAY.c:52: warning: implicit declaration of function 'TIM0_u8DisableOCInterrupt'
-make: *** [MCAL/DELAY/DELAY.o] Error 1
-21:16:41 **** Incremental Build of configuration Debug for project DIO_TestApp ****
+21:33:14 **** Incremental Build of configuration Debug for project TIMER0_T ****
 make all 
 Building file: ../MCAL/TIMER0/TIMER0.c
 Invoking: AVR Compiler
@@ -319,39 +10,12 @@ Invoking: AVR Compiler
 avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"MCAL/DELAY/DELAY.d" -MT"MCAL/DELAY/DELAY.o" -c -o "MCAL/DELAY/DELAY.o" "../MCAL/DELAY/DELAY.c"
 Finished building: ../MCAL/DELAY/DELAY.c
  
-Building file: ../ECUAL/LED/LED.c
-Invoking: AVR Compiler
-avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"ECUAL/LED/LED.d" -MT"ECUAL/LED/LED.o" -c -o "ECUAL/LED/LED.o" "../ECUAL/LED/LED.c"
-In file included from ../ECUAL/LED/LED.c:8:
-../ECUAL/LED/LED.h:15:42: error: ../../MCAL/DIO/DIO_interface.h: No such file or directory
-../ECUAL/LED/LED.c: In function 'LED_u8Init':
-../ECUAL/LED/LED.c:14: warning: implicit declaration of function 'DIO_u8SetPinDirection'
-../ECUAL/LED/LED.c:14: error: 'DIO_OUTPUT' undeclared (first use in this function)
-../ECUAL/LED/LED.c:14: error: (Each undeclared identifier is reported only once
-../ECUAL/LED/LED.c:14: error: for each function it appears in.)
-../ECUAL/LED/LED.c: In function 'LED_u8On':
-../ECUAL/LED/LED.c:21: warning: implicit declaration of function 'DIO_u8SetPinData'
-../ECUAL/LED/LED.c:21: error: 'DIO_HIGH' undeclared (first use in this function)
-../ECUAL/LED/LED.c: In function 'LED_u8Off':
-../ECUAL/LED/LED.c:28: error: 'DIO_LOW' undeclared (first use in this function)
-../ECUAL/LED/LED.c: In function 'LED_u8Toggle':
-../ECUAL/LED/LED.c:35: warning: implicit declaration of function 'DIO_u8TogglePinData'
-make: *** [ECUAL/LED/LED.o] Error 1
-21:17:00 **** Incremental Build of configuration Debug for project DIO_TestApp ****
-make all 
-Building file: ../MCAL/DIO/DIO.c
-Invoking: AVR Compiler
-avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"MCAL/DIO/DIO.d" -MT"MCAL/DIO/DIO.o" -c -o "MCAL/DIO/DIO.o" "../MCAL/DIO/DIO.c"
-Finished building: ../MCAL/DIO/DIO.c
- 
-Building file: ../ECUAL/LED/LED.c
-Invoking: AVR Compiler
-avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"ECUAL/LED/LED.d" -MT"ECUAL/LED/LED.o" -c -o "ECUAL/LED/LED.o" "../ECUAL/LED/LED.c"
-Finished building: ../ECUAL/LED/LED.c
- 
 Building file: ../ECUAL/BTN/Button.c
 Invoking: AVR Compiler
 avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"ECUAL/BTN/Button.d" -MT"ECUAL/BTN/Button.o" -c -o "ECUAL/BTN/Button.o" "../ECUAL/BTN/Button.c"
+../ECUAL/BTN/Button.c: In function 'BTN_u8IsPressed':
+../ECUAL/BTN/Button.c:21: warning: unused variable 'u8DebounceDetectorLow'
+../ECUAL/BTN/Button.c:21: warning: unused variable 'u8DebounceDetectorHigh'
 Finished building: ../ECUAL/BTN/Button.c
  
 Building file: ../APP/main.c
@@ -359,30 +23,30 @@ Invoking: AVR Compiler
 avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"APP/main.d" -MT"APP/main.o" -c -o "APP/main.o" "../APP/main.c"
 Finished building: ../APP/main.c
  
-Building target: DIO_TestApp.elf
+Building target: TIMER0_T.elf
 Invoking: AVR C Linker
-avr-gcc -Wl,-Map,DIO_TestApp.map -mmcu=atmega32 -o "DIO_TestApp.elf"  ./MCAL/TIMER0/TIMER0.o  ./MCAL/DIO/DIO.o  ./MCAL/DELAY/DELAY.o  ./ECUAL/LED/LED.o  ./ECUAL/BTN/Button.o  ./APP/main.o   
-Finished building target: DIO_TestApp.elf
+avr-gcc -Wl,-Map,TIMER0_T.map -mmcu=atmega32 -o "TIMER0_T.elf"  ./MCAL/TIMER0/TIMER0.o  ./MCAL/DIO/DIO.o  ./MCAL/DELAY/DELAY.o  ./ECUAL/LED/LED.o  ./ECUAL/BTN/Button.o  ./APP/main.o   
+Finished building target: TIMER0_T.elf
  
 Invoking: AVR Create Extended Listing
-avr-objdump -h -S DIO_TestApp.elf  >"DIO_TestApp.lss"
-Finished building: DIO_TestApp.lss
+avr-objdump -h -S TIMER0_T.elf  >"TIMER0_T.lss"
+Finished building: TIMER0_T.lss
  
 Create Flash image (ihex format)
-avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex DIO_TestApp.elf  "DIO_TestApp.hex"
-Finished building: DIO_TestApp.hex
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex TIMER0_T.elf  "TIMER0_T.hex"
+Finished building: TIMER0_T.hex
  
 Create eeprom image (ihex format)
-avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex DIO_TestApp.elf  "DIO_TestApp.eep"
-Finished building: DIO_TestApp.eep
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex TIMER0_T.elf  "TIMER0_T.eep"
+Finished building: TIMER0_T.eep
  
 Invoking: Print Size
-avr-size --format=avr --mcu=atmega32 DIO_TestApp.elf
+avr-size --format=avr --mcu=atmega32 TIMER0_T.elf
 AVR Memory Usage
 ----------------
 Device: atmega32
 
-Program:    5582 bytes (17.0% Full)
+Program:    5634 bytes (17.2% Full)
 (.text + .data + .bootloader)
 
 Data:          8 bytes (0.4% Full)

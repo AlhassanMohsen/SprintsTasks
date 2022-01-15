@@ -153,6 +153,18 @@ ErrorState_t TIM0_u8TimerStart(void);
  */
 ErrorState_t TIM0_u8TimerStop(void);
 
+/**
+ * @fn
+ * @brief This function is used to deinitialize timer0
+ * @return a number from 1 - 255 represent the error state of the function and can be
+ *  1 : TIM0_OK
+ *  254: TIM0_NOT_INITILIZED
+ */
+ErrorState_t TIM0_u8Deinit(void);
+
+/**
+ * @TODO : A function to configure PWM Duty Cycle
+ */
 ErrorState_t TIM0_u8SetPWMDutyCycle(uint8_t u8DutyCycle);
 
 

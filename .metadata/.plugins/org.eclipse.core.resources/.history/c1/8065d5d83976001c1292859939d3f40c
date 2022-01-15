@@ -162,9 +162,7 @@ ErrorState_t TIM0_u8TimerStop(void);
  */
 ErrorState_t TIM0_u8Deinit(void);
 
-/**
- * @TODO : A function to configure PWM Duty Cycle
- */
+
 ErrorState_t TIM0_u8SetPWMDutyCycle(uint8_t u8DutyCycle);
 
 

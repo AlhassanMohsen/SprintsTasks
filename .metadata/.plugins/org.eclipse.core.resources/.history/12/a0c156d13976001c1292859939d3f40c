@@ -284,7 +284,6 @@ ErrorState_t TIM0_u8Deinit(void)
 	{
 		u8ErrorState = TIM0_NOT_INITILIZED;
 	}
-	return u8ErrorState;
 }
 
 /**

@@ -3,16 +3,14 @@
 {\ttfamily \#include \char`\"{}../../\+L\+I\+B/\+Typedef.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}../../\+L\+I\+B/\+B\+I\+T\+\_\+\+Math.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}../../\+L\+I\+B/atmega32.\+h\char`\"{}}\newline
-Include dependency graph for T\+I\+M\+E\+R0\+\_\+interface.\+h\+:
-\nopagebreak
+Include dependency graph for T\+I\+M\+E\+R0\+\_\+interface.\+h\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{_t_i_m_e_r0__interface_8h__incl}
 \end{center}
 \end{figure}
-This graph shows which files directly or indirectly include this file\+:
-\nopagebreak
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -81,6 +79,8 @@ enum \textbf{ Clk\+Source\+\_\+t} \{ \newline
 \begin{DoxyCompactList}\small\item\em This function is used to start the timer counting process with previously initialized configurations. \end{DoxyCompactList}\item 
 \textbf{ Error\+State\+\_\+t} \textbf{ T\+I\+M0\+\_\+u8\+Timer\+Stop} (void)
 \begin{DoxyCompactList}\small\item\em This function is used to start the timer counting process with previously initialized configurations. \end{DoxyCompactList}\item 
+\textbf{ Error\+State\+\_\+t} \textbf{ T\+I\+M0\+\_\+u8\+Deinit} (void)
+\item 
 \textbf{ Error\+State\+\_\+t} \textbf{ T\+I\+M0\+\_\+u8\+Set\+P\+W\+M\+Duty\+Cycle} (\textbf{ uint8\+\_\+t} u8\+Duty\+Cycle)
 \end{DoxyCompactItemize}
 
@@ -189,6 +189,12 @@ T\+I\+M0\+\_\+\+P\+C\+P\+W\+M\+\_\+\+I\+N\+V\+E\+R\+T\+I\+NG&Phase Correct inver
 
 
 \subsection{Function Documentation}
+\mbox{\label{_t_i_m_e_r0__interface_8h_a1ba739d6089f105b887bcf9be449ef5d}} 
+\index{T\+I\+M\+E\+R0\+\_\+interface.\+h@{T\+I\+M\+E\+R0\+\_\+interface.\+h}!T\+I\+M0\+\_\+u8\+Deinit@{T\+I\+M0\+\_\+u8\+Deinit}}
+\index{T\+I\+M0\+\_\+u8\+Deinit@{T\+I\+M0\+\_\+u8\+Deinit}!T\+I\+M\+E\+R0\+\_\+interface.\+h@{T\+I\+M\+E\+R0\+\_\+interface.\+h}}
+\subsubsection{T\+I\+M0\+\_\+u8\+Deinit()}
+{\footnotesize\ttfamily \textbf{ Error\+State\+\_\+t} T\+I\+M0\+\_\+u8\+Deinit (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
 \mbox{\label{_t_i_m_e_r0__interface_8h_a565f3f7d2e3f84ebe03be74f9ed2930c}} 
 \index{T\+I\+M\+E\+R0\+\_\+interface.\+h@{T\+I\+M\+E\+R0\+\_\+interface.\+h}!T\+I\+M0\+\_\+u8\+Disable\+O\+C\+Interrupt@{T\+I\+M0\+\_\+u8\+Disable\+O\+C\+Interrupt}}
 \index{T\+I\+M0\+\_\+u8\+Disable\+O\+C\+Interrupt@{T\+I\+M0\+\_\+u8\+Disable\+O\+C\+Interrupt}!T\+I\+M\+E\+R0\+\_\+interface.\+h@{T\+I\+M\+E\+R0\+\_\+interface.\+h}}
@@ -297,7 +303,7 @@ return a number from 1 -\/ 255 represent the error state of the system and can b
 \subsubsection{T\+I\+M0\+\_\+u8\+Set\+P\+W\+M\+Duty\+Cycle()}
 {\footnotesize\ttfamily \textbf{ Error\+State\+\_\+t} T\+I\+M0\+\_\+u8\+Set\+P\+W\+M\+Duty\+Cycle (\begin{DoxyParamCaption}\item[{\textbf{ uint8\+\_\+t}}]{u8\+Duty\+Cycle }\end{DoxyParamCaption})}
 
-\mbox{\label{_t_i_m_e_r0__interface_8h_ab588fb0557b32e1d9b4c1c075a413c37}} 
+\+: A function to configure P\+WM Duty Cycle \mbox{\label{_t_i_m_e_r0__interface_8h_ab588fb0557b32e1d9b4c1c075a413c37}} 
 \index{T\+I\+M\+E\+R0\+\_\+interface.\+h@{T\+I\+M\+E\+R0\+\_\+interface.\+h}!T\+I\+M0\+\_\+u8\+Set\+Start@{T\+I\+M0\+\_\+u8\+Set\+Start}}
 \index{T\+I\+M0\+\_\+u8\+Set\+Start@{T\+I\+M0\+\_\+u8\+Set\+Start}!T\+I\+M\+E\+R0\+\_\+interface.\+h@{T\+I\+M\+E\+R0\+\_\+interface.\+h}}
 \subsubsection{T\+I\+M0\+\_\+u8\+Set\+Start()}
