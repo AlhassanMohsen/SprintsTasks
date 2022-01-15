@@ -1,5 +1,20 @@
-18:47:22 **** Incremental Build of configuration Debug for project DIO_TestApp ****
+21:17:00 **** Incremental Build of configuration Debug for project DIO_TestApp ****
 make all 
+Building file: ../MCAL/DIO/DIO.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"MCAL/DIO/DIO.d" -MT"MCAL/DIO/DIO.o" -c -o "MCAL/DIO/DIO.o" "../MCAL/DIO/DIO.c"
+Finished building: ../MCAL/DIO/DIO.c
+ 
+Building file: ../ECUAL/LED/LED.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"ECUAL/LED/LED.d" -MT"ECUAL/LED/LED.o" -c -o "ECUAL/LED/LED.o" "../ECUAL/LED/LED.c"
+Finished building: ../ECUAL/LED/LED.c
+ 
+Building file: ../ECUAL/BTN/Button.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"ECUAL/BTN/Button.d" -MT"ECUAL/BTN/Button.o" -c -o "ECUAL/BTN/Button.o" "../ECUAL/BTN/Button.c"
+Finished building: ../ECUAL/BTN/Button.c
+ 
 Building file: ../APP/main.c
 Invoking: AVR Compiler
 avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"APP/main.d" -MT"APP/main.o" -c -o "APP/main.o" "../APP/main.c"
@@ -38,5 +53,5 @@ Data:          8 bytes (0.4% Full)
 Finished building: sizedummy
  
 
-18:47:23 Build Finished (took 1s.451ms)
+21:17:02 Build Finished (took 1s.760ms)
 

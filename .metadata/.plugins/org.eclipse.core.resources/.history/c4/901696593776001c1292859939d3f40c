@@ -19,7 +19,7 @@ int main()
 {
 	uint8_t  u8KeyPressed;
 	LED_t st_TestLed = {PORTB,PIN4};
-	BTN_t st_TestBTN = {PORTC,PIN4};
+	BTN_t st_TestBTN = {PORTB,PIN2};
 	BTN_u8Init(st_TestBTN);
 	LED_u8Init(st_TestLed);
 
