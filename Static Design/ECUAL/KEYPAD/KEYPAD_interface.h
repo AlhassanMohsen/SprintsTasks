@@ -15,7 +15,11 @@
 
 #define KEYPAD_NO_PRESSED_KEY  0xFF
 
+
+//a function that initialize the keypad pins and get it ready to be used
 uint8_t KEYPAD_u8Init(void);
+
+// a function that get the pressed key on the keypad
 uint8_t KEYPAD_u8GetPressedKey(uint8_t* KeyPressed);
 
 #endif /* ECUAL_KEYPAD_KEYPAD_INTERFACE_H_ */
