@@ -33,6 +33,7 @@ int main()
 		{
 			u8PreviousKey = PRESSED;
 			LED_u8Toggle(st_TestLed);
+
 		}else if (u8KeyPressed == NOT_PRESSED){
 			u8PreviousKey = NOT_PRESSED;
 		}else {

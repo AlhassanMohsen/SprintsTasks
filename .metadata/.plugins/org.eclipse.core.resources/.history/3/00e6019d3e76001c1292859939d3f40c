@@ -29,12 +29,7 @@ uint8_t BTN_u8IsPressed ( BTN_t button , uint8_t * pressed )
 			if (u8BTNState == DIO_HIGH)
 			{
 				*pressed = u8BTNState;
-			}else
-			{
-				*pressed = DIO_LOW;
 			}
-		}else{
-			*pressed = u8BTNState;
 		}
 		//
 	}else{

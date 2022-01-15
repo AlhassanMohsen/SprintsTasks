@@ -13,14 +13,11 @@
 #include "../ECUAL/LED/LED.h"
 #include "../ECUAL/BTN/Button.h"
 
-#define PRESSED 	1
-#define NOT_PRESSED 0
-
+#define PRESSED 1
 
 int main()
 {
 	uint8_t  u8KeyPressed;
-	uint8_t u8PreviousKey=NOT_PRESSED;
 	LED_t st_TestLed = {PORTB,PIN4};
 	BTN_t st_TestBTN = {PORTB,PIN2};
 	BTN_u8Init(st_TestBTN);
@@ -29,13 +26,15 @@ int main()
 	while (1)
 	{
 		BTN_u8IsPressed(st_TestBTN,&u8KeyPressed);
-		if (u8KeyPressed == PRESSED && u8PreviousKey == NOT_PRESSED)
+		if (u8KeyPressed == PRESSED)
 		{
-			u8PreviousKey = PRESSED;
-			LED_u8Toggle(st_TestLed);
-		}else if (u8KeyPressed == NOT_PRESSED){
-			u8PreviousKey = NOT_PRESSED;
-		}else {
+			Delay_ms(10);
+			BTN_u8IsPressed(st_TestBTN,&u8KeyPressed);
+			if (u8KeyPressed == PRESSED)
+			{
+				LED_u8Toggle(st_TestLed);
+			}
+		}else{
 			//NOP
 		}
 	}

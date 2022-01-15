@@ -31,12 +31,15 @@ int main()
 		BTN_u8IsPressed(st_TestBTN,&u8KeyPressed);
 		if (u8KeyPressed == PRESSED && u8PreviousKey == NOT_PRESSED)
 		{
-			u8PreviousKey = PRESSED;
-			LED_u8Toggle(st_TestLed);
-		}else if (u8KeyPressed == NOT_PRESSED){
+			DELAY_ms(100);
+			BTN_u8IsPressed(st_TestBTN,&u8KeyPressed);
+			if (u8KeyPressed == PRESSED && u8PreviousKey == NOT_PRESSED)
+			{
+				u8PreviousKey = PRESSED;
+				LED_u8Toggle(st_TestLed);
+			}
+		}else{
 			u8PreviousKey = NOT_PRESSED;
-		}else {
-			//NOP
 		}
 	}
 
