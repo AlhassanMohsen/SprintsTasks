@@ -1,0 +1,79 @@
+/*
+ * TIMER0_interface.h
+ *
+ *  Created on: Jan 15, 2022
+ *      Author: vip
+ */
+
+#ifndef MCAL_TIMER0_TIMER0_INTERFACE_H_
+#define MCAL_TIMER0_TIMER0_INTERFACE_H_
+
+#include "../../LIB/Typedef.h"
+#include "../../LIB/BIT_Math.h"
+#include "../../LIB/atmega32.h"
+
+/**
+ * Defines the Possible Error States of the Timer0 Driver
+ *
+ */
+typedef enum{
+	TIM0_OK = 1,            //!< No error happened
+	TIM0_NULL_INPUT=252,    //!< Input a null pointer to the function
+	TIM0_WRONG_MODE,        //!< Entered a mode that timer0 doesn't support review TIM0_Mode_t enum for the supported modes
+	TIM0_NOT_INITILIZED,    //!< The function require to intialize the timer first
+	TIM0_UNDEFINED_CLK_STATE//!<
+}ErrorState_t;
+
+/**
+ * @enum
+ * Defines the possibles modes of TIMER0
+ */
+typedef enum{
+	TIM0_NORMAL,             //!< Normal Mode
+	TIM0_CTC,                //!< Clear Timer on Compare Mode
+	TIM0_FPWM_NON_INVERTING, //!< Fast Non inverting PWM
+	TIM0_FPWM_INVERTING,     //!< Fast  inverting PWM
+	TIM0_PCPWM_NON_INVERTING,//!< Phase Correct Non inverting PWM
+	TIM0_PCPWM_INVERTING,    //!< Phase Correct inverting PWM
+}TIM0_Mode_t;
+
+/**
+ * @enum
+ * Defines the Possible CLk Sources of TIMER0
+ */
+typedef enum{
+	NO_CLK,        //!< No clock source meaning that the timer is inactive
+	NO_PRESCALAR,  //!< System Clock with no pre-scalar    applied
+	PRESCALAR_8,   //!< System Clock with  pre-scalar 8    applied
+	PRESCALAR_64,  //!< System Clock with  pre-scalar 64   applied
+	PRESCALAR_256, //!< System Clock with  pre-scalar 256  applied
+	PRESCALAR_1024,//!< System Clock with  pre-scalar 1024 applied
+	EXT_FALLING,   //!< External Falling Edge Trigger on T0 Pin
+	EXT_RISING     //!< External Rising Edge Trigger on T0 Pin
+}ClkSource_t;
+
+/**
+ * @struct
+ * Structure contains the configuration of Timer0
+ *
+ */
+typedef struct{
+	TIM0_Mode_t mode;
+	uint8_t clkSource;
+}TIM0_Config_t;
+
+
+ErrorState_t TIM0_u8Init(TIM0_Config_t * pst_TIMConfig);
+ErrorState_t TIM0_u8SetStart(uint8_t u8StartingPoint);
+ErrorState_t TIM0_u8GetCounts(uint8_t* pu8_ReturnedCounts);
+ErrorState_t TIM0_u8SetCompareValue(uint8_t u8SetCompareValue);
+ErrorState_t TIM0_u8EnableOVFInterrupt(void (*vCallBackFun)(void));
+ErrorState_t TIM0_u8EnableOCInterrupt (void (*vCallBackFun)(void));
+ErrorState_t TIM0_u8SetPWMDutyCycle(uint8_t u8DutyCycle);
+ErrorState_t TIM0_u8TimerStart(void);
+ErrorState_t TIM0_u8TimerStop(void);
+
+
+
+
+#endif /* MCAL_TIMER0_TIMER0_INTERFACE_H_ */

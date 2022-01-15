@@ -1,0 +1,42 @@
+18:47:22 **** Incremental Build of configuration Debug for project DIO_TestApp ****
+make all 
+Building file: ../APP/main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"APP/main.d" -MT"APP/main.o" -c -o "APP/main.o" "../APP/main.c"
+Finished building: ../APP/main.c
+ 
+Building target: DIO_TestApp.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,DIO_TestApp.map -mmcu=atmega32 -o "DIO_TestApp.elf"  ./MCAL/TIMER0/TIMER0.o  ./MCAL/DIO/DIO.o  ./MCAL/DELAY/DELAY.o  ./ECUAL/LED/LED.o  ./ECUAL/BTN/Button.o  ./APP/main.o   
+Finished building target: DIO_TestApp.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S DIO_TestApp.elf  >"DIO_TestApp.lss"
+Finished building: DIO_TestApp.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex DIO_TestApp.elf  "DIO_TestApp.hex"
+Finished building: DIO_TestApp.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex DIO_TestApp.elf  "DIO_TestApp.eep"
+Finished building: DIO_TestApp.eep
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 DIO_TestApp.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    5582 bytes (17.0% Full)
+(.text + .data + .bootloader)
+
+Data:          8 bytes (0.4% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+
+18:47:23 Build Finished (took 1s.451ms)
+

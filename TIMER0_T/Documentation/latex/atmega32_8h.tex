@@ -1,0 +1,696 @@
+\section{L\+I\+B/atmega32.h File Reference}
+\label{atmega32_8h}\index{L\+I\+B/atmega32.\+h@{L\+I\+B/atmega32.\+h}}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{atmega32_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \textbf{ S\+R\+E\+G\+\_\+\+R\+EG}~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x5\+F)))
+\item 
+\#define \textbf{ S\+P\+H\+\_\+\+R\+EG}~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x5\+E)))
+\item 
+\#define \textbf{ S\+P\+L\+\_\+\+R\+EG}~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x5\+D)))
+\item 
+\#define \textbf{ O\+C\+R0\+\_\+\+R\+EG}~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x5\+C)))
+\item 
+\#define \textbf{ G\+I\+C\+R\+\_\+\+R\+EG}~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x5\+B)))
+\item 
+\#define \textbf{ G\+I\+F\+R\+\_\+\+R\+EG}~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x5\+A)))
+\item 
+\#define \textbf{ T\+I\+M\+S\+K\+\_\+\+R\+EG}~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x59)))
+\item 
+\#define \textbf{ T\+I\+F\+R\+\_\+\+R\+EG}~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x58)))
+\item 
+\#define \textbf{ S\+P\+M\+C\+R\+\_\+\+R\+EG}~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x57)))
+\item 
+\#define \textbf{ T\+W\+C\+R\+\_\+\+R\+EG}~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x56)))
+\item 
+\#define \textbf{ M\+C\+U\+C\+R\+\_\+\+R\+EG}~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x55)))
+\item 
+\#define \textbf{ M\+C\+U\+C\+S\+R\+\_\+\+R\+EG}~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x54)))
+\item 
+\#define \textbf{ T\+C\+C\+R0\+\_\+\+R\+EG}~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x53)))
+\item 
+\#define \textbf{ T\+C\+N\+T0\+\_\+\+R\+EG}~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x52)))
+\item 
+\#define \textbf{ S\+F\+I\+O\+R\+\_\+\+R\+EG}~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x50)))
+\item 
+\#define \textbf{ T\+C\+C\+R1\+A\+\_\+\+R\+EG}~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x4\+F)))
+\item 
+\#define \textbf{ T\+C\+C\+R1\+B\+\_\+\+R\+EG}~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x4\+E)))
+\item 
+\#define \textbf{ T\+C\+N\+T1\+H\+\_\+\+R\+EG}~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x4\+D)))
+\item 
+\#define \textbf{ T\+C\+N\+T1\+L\+\_\+\+R\+EG}~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x4\+C)))
+\item 
+\#define \textbf{ T\+C\+N\+T1\+\_\+\+R\+EG}~($\ast$((volatile \textbf{ uint16\+\_\+t}$\ast$) (0x4\+C)))
+\item 
+\#define \textbf{ O\+C\+R1\+A\+H\+\_\+\+R\+EG}~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x4\+B)))
+\item 
+\#define \textbf{ O\+C\+R1\+A\+L\+\_\+\+R\+EG}~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x4\+A)))
+\item 
+\#define \textbf{ O\+C\+R1\+A\+\_\+\+R\+EG}~($\ast$((volatile \textbf{ uint16\+\_\+t}$\ast$) (0x4\+A)))
+\item 
+\#define \textbf{ O\+C\+R1\+B\+H\+\_\+\+R\+EG}~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x49)))
+\item 
+\#define \textbf{ O\+C\+R1\+B\+L\+\_\+\+R\+EG}~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x48)))
+\item 
+\#define \textbf{ O\+C\+R1\+B\+\_\+\+R\+EG}~($\ast$((volatile \textbf{ uint16\+\_\+t}$\ast$) (0x48)))
+\item 
+\#define \textbf{ I\+C\+R1\+H\+\_\+\+R\+EG}~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x47)))
+\item 
+\#define \textbf{ I\+C\+R1\+L\+\_\+\+R\+EG}~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x46)))
+\item 
+\#define \textbf{ T\+C\+C\+R2\+\_\+\+R\+EG}~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x45)))
+\item 
+\#define \textbf{ T\+C\+N\+T2\+\_\+\+R\+EG}~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x44)))
+\item 
+\#define \textbf{ O\+C\+R2\+\_\+\+R\+EG}~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x43)))
+\item 
+\#define \textbf{ A\+S\+S\+R\+\_\+\+R\+EG}~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x42)))
+\item 
+\#define \textbf{ W\+D\+T\+C\+R\+\_\+\+R\+EG}~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x41)))
+\item 
+\#define \textbf{ U\+B\+R\+R\+H\+\_\+\+R\+EG}~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x40)))
+\item 
+\#define \textbf{ U\+C\+S\+R\+C\+\_\+\+R\+EG}~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x40)))
+\item 
+\#define \textbf{ E\+E\+A\+R\+H\+\_\+\+R\+EG}~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x3\+F)))
+\item 
+\#define \textbf{ E\+E\+A\+R\+L\+\_\+\+R\+EG}~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x3\+E)))
+\item 
+\#define \textbf{ E\+E\+D\+R\+\_\+\+R\+EG}~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x3\+D)))
+\item 
+\#define \textbf{ E\+E\+C\+R\+\_\+\+R\+EG}~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x3\+C)))
+\item 
+\#define \textbf{ P\+O\+R\+T\+A\+\_\+\+R\+EG}~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x3\+B)))
+\item 
+\#define \textbf{ D\+D\+R\+A\+\_\+\+R\+EG}~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x3\+A)))
+\item 
+\#define \textbf{ P\+I\+N\+A\+\_\+\+R\+EG}~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x39)))
+\item 
+\#define \textbf{ P\+O\+R\+T\+B\+\_\+\+R\+EG}~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x38)))
+\item 
+\#define \textbf{ D\+D\+R\+B\+\_\+\+R\+EG}~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x37)))
+\item 
+\#define \textbf{ P\+I\+N\+B\+\_\+\+R\+EG}~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x36)))
+\item 
+\#define \textbf{ P\+O\+R\+T\+C\+\_\+\+R\+EG}~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x35)))
+\item 
+\#define \textbf{ D\+D\+R\+C\+\_\+\+R\+EG}~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x34)))
+\item 
+\#define \textbf{ P\+I\+N\+C\+\_\+\+R\+EG}~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x33)))
+\item 
+\#define \textbf{ P\+O\+R\+T\+D\+\_\+\+R\+EG}~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x32)))
+\item 
+\#define \textbf{ D\+D\+R\+D\+\_\+\+R\+EG}~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x31)))
+\item 
+\#define \textbf{ P\+I\+N\+D\+\_\+\+R\+EG}~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x30)))
+\item 
+\#define \textbf{ S\+P\+D\+R\+\_\+\+R\+EG}~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x2\+F)))
+\item 
+\#define \textbf{ S\+P\+S\+R\+\_\+\+R\+EG}~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x2\+E)))
+\item 
+\#define \textbf{ S\+P\+C\+R\+\_\+\+R\+EG}~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x2\+D)))
+\item 
+\#define \textbf{ U\+D\+R\+\_\+\+R\+EG}~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x2\+C)))
+\item 
+\#define \textbf{ U\+C\+S\+R\+A\+\_\+\+R\+EG}~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x2\+B)))
+\item 
+\#define \textbf{ U\+C\+S\+R\+B\+\_\+\+R\+EG}~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x2\+A)))
+\item 
+\#define \textbf{ U\+B\+R\+R\+L\+\_\+\+R\+EG}~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x29)))
+\item 
+\#define \textbf{ A\+C\+S\+R\+\_\+\+R\+EG}~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x28)))
+\item 
+\#define \textbf{ A\+D\+M\+U\+X\+\_\+\+R\+EG}~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x27)))
+\item 
+\#define \textbf{ A\+D\+C\+S\+R\+A\+\_\+\+R\+EG}~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x26)))
+\item 
+\#define \textbf{ A\+D\+C\+H\+\_\+\+R\+EG}~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x25)))
+\item 
+\#define \textbf{ A\+D\+C\+L\+\_\+\+R\+EG}~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x24)))
+\item 
+\#define \textbf{ T\+W\+D\+R\+\_\+\+R\+EG}~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x23)))
+\item 
+\#define \textbf{ T\+W\+A\+R\+\_\+\+R\+EG}~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x22)))
+\item 
+\#define \textbf{ T\+W\+S\+R\+\_\+\+R\+EG}~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x21)))
+\item 
+\#define \textbf{ T\+W\+B\+R\+\_\+\+R\+EG}~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x20)))
+\item 
+\#define \textbf{ P\+U\+D\+\_\+\+B\+IT}~2
+\item 
+\#define \textbf{ C\+S00\+\_\+\+B\+IT}~0
+\item 
+\#define \textbf{ C\+S01\+\_\+\+B\+IT}~1
+\item 
+\#define \textbf{ C\+S02\+\_\+\+B\+IT}~2
+\item 
+\#define \textbf{ W\+G\+M01\+\_\+\+B\+IT}~3
+\item 
+\#define \textbf{ C\+O\+M00\+\_\+\+B\+IT}~4
+\item 
+\#define \textbf{ C\+O\+M01\+\_\+\+B\+IT}~5
+\item 
+\#define \textbf{ W\+G\+M00\+\_\+\+B\+IT}~6
+\item 
+\#define \textbf{ F\+O\+C0\+\_\+\+B\+IT}~7
+\item 
+\#define \textbf{ I\+\_\+\+B\+IT}~7
+\item 
+\#define \textbf{ T\+O\+I\+E0\+\_\+\+B\+IT}~0
+\item 
+\#define \textbf{ O\+C\+I\+E0\+\_\+\+B\+IT}~1
+\item 
+\#define \textbf{ T\+O\+I\+E1\+\_\+\+B\+IT}~2
+\item 
+\#define \textbf{ O\+C\+I\+E1\+B\+\_\+\+B\+IT}~3
+\item 
+\#define \textbf{ O\+C\+I\+E1\+A\+\_\+\+B\+IT}~4
+\item 
+\#define \textbf{ T\+I\+C\+I\+E1\+\_\+\+B\+IT}~5
+\item 
+\#define \textbf{ T\+O\+I\+E2\+\_\+\+B\+IT}~6
+\item 
+\#define \textbf{ O\+C\+I\+E2\+\_\+\+B\+IT}~7
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\label{atmega32_8h_a06ee4dc38eb5afca3c47057fa18d2900}} 
+\index{atmega32.\+h@{atmega32.\+h}!A\+C\+S\+R\+\_\+\+R\+EG@{A\+C\+S\+R\+\_\+\+R\+EG}}
+\index{A\+C\+S\+R\+\_\+\+R\+EG@{A\+C\+S\+R\+\_\+\+R\+EG}!atmega32.\+h@{atmega32.\+h}}
+\subsubsection{A\+C\+S\+R\+\_\+\+R\+EG}
+{\footnotesize\ttfamily \#define A\+C\+S\+R\+\_\+\+R\+EG~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x28)))}
+
+\mbox{\label{atmega32_8h_aac5454fff761234931101ac2a6f2deb5}} 
+\index{atmega32.\+h@{atmega32.\+h}!A\+D\+C\+H\+\_\+\+R\+EG@{A\+D\+C\+H\+\_\+\+R\+EG}}
+\index{A\+D\+C\+H\+\_\+\+R\+EG@{A\+D\+C\+H\+\_\+\+R\+EG}!atmega32.\+h@{atmega32.\+h}}
+\subsubsection{A\+D\+C\+H\+\_\+\+R\+EG}
+{\footnotesize\ttfamily \#define A\+D\+C\+H\+\_\+\+R\+EG~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x25)))}
+
+\mbox{\label{atmega32_8h_af155ed42fb9b206cbd7974cba25b950f}} 
+\index{atmega32.\+h@{atmega32.\+h}!A\+D\+C\+L\+\_\+\+R\+EG@{A\+D\+C\+L\+\_\+\+R\+EG}}
+\index{A\+D\+C\+L\+\_\+\+R\+EG@{A\+D\+C\+L\+\_\+\+R\+EG}!atmega32.\+h@{atmega32.\+h}}
+\subsubsection{A\+D\+C\+L\+\_\+\+R\+EG}
+{\footnotesize\ttfamily \#define A\+D\+C\+L\+\_\+\+R\+EG~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x24)))}
+
+\mbox{\label{atmega32_8h_afdb7609f5525747de1157fc2a4e1cfb7}} 
+\index{atmega32.\+h@{atmega32.\+h}!A\+D\+C\+S\+R\+A\+\_\+\+R\+EG@{A\+D\+C\+S\+R\+A\+\_\+\+R\+EG}}
+\index{A\+D\+C\+S\+R\+A\+\_\+\+R\+EG@{A\+D\+C\+S\+R\+A\+\_\+\+R\+EG}!atmega32.\+h@{atmega32.\+h}}
+\subsubsection{A\+D\+C\+S\+R\+A\+\_\+\+R\+EG}
+{\footnotesize\ttfamily \#define A\+D\+C\+S\+R\+A\+\_\+\+R\+EG~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x26)))}
+
+\mbox{\label{atmega32_8h_a241d04bc95a5e342585371ebddf355b6}} 
+\index{atmega32.\+h@{atmega32.\+h}!A\+D\+M\+U\+X\+\_\+\+R\+EG@{A\+D\+M\+U\+X\+\_\+\+R\+EG}}
+\index{A\+D\+M\+U\+X\+\_\+\+R\+EG@{A\+D\+M\+U\+X\+\_\+\+R\+EG}!atmega32.\+h@{atmega32.\+h}}
+\subsubsection{A\+D\+M\+U\+X\+\_\+\+R\+EG}
+{\footnotesize\ttfamily \#define A\+D\+M\+U\+X\+\_\+\+R\+EG~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x27)))}
+
+\mbox{\label{atmega32_8h_a649f37a33fad98618c95a1de9a7b9ce0}} 
+\index{atmega32.\+h@{atmega32.\+h}!A\+S\+S\+R\+\_\+\+R\+EG@{A\+S\+S\+R\+\_\+\+R\+EG}}
+\index{A\+S\+S\+R\+\_\+\+R\+EG@{A\+S\+S\+R\+\_\+\+R\+EG}!atmega32.\+h@{atmega32.\+h}}
+\subsubsection{A\+S\+S\+R\+\_\+\+R\+EG}
+{\footnotesize\ttfamily \#define A\+S\+S\+R\+\_\+\+R\+EG~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x42)))}
+
+\mbox{\label{atmega32_8h_a7af0cbb63564402a6e6f3ad1a4f57461}} 
+\index{atmega32.\+h@{atmega32.\+h}!C\+O\+M00\+\_\+\+B\+IT@{C\+O\+M00\+\_\+\+B\+IT}}
+\index{C\+O\+M00\+\_\+\+B\+IT@{C\+O\+M00\+\_\+\+B\+IT}!atmega32.\+h@{atmega32.\+h}}
+\subsubsection{C\+O\+M00\+\_\+\+B\+IT}
+{\footnotesize\ttfamily \#define C\+O\+M00\+\_\+\+B\+IT~4}
+
+\mbox{\label{atmega32_8h_ab003bc5a952e33c6c60df590666f3332}} 
+\index{atmega32.\+h@{atmega32.\+h}!C\+O\+M01\+\_\+\+B\+IT@{C\+O\+M01\+\_\+\+B\+IT}}
+\index{C\+O\+M01\+\_\+\+B\+IT@{C\+O\+M01\+\_\+\+B\+IT}!atmega32.\+h@{atmega32.\+h}}
+\subsubsection{C\+O\+M01\+\_\+\+B\+IT}
+{\footnotesize\ttfamily \#define C\+O\+M01\+\_\+\+B\+IT~5}
+
+\mbox{\label{atmega32_8h_a3020cbb17a30b66e56602baf108127d9}} 
+\index{atmega32.\+h@{atmega32.\+h}!C\+S00\+\_\+\+B\+IT@{C\+S00\+\_\+\+B\+IT}}
+\index{C\+S00\+\_\+\+B\+IT@{C\+S00\+\_\+\+B\+IT}!atmega32.\+h@{atmega32.\+h}}
+\subsubsection{C\+S00\+\_\+\+B\+IT}
+{\footnotesize\ttfamily \#define C\+S00\+\_\+\+B\+IT~0}
+
+\mbox{\label{atmega32_8h_ad2c7782d91bf597ed3703dcd9f8ea960}} 
+\index{atmega32.\+h@{atmega32.\+h}!C\+S01\+\_\+\+B\+IT@{C\+S01\+\_\+\+B\+IT}}
+\index{C\+S01\+\_\+\+B\+IT@{C\+S01\+\_\+\+B\+IT}!atmega32.\+h@{atmega32.\+h}}
+\subsubsection{C\+S01\+\_\+\+B\+IT}
+{\footnotesize\ttfamily \#define C\+S01\+\_\+\+B\+IT~1}
+
+\mbox{\label{atmega32_8h_a9e945c22664e545d939005d9755f31a4}} 
+\index{atmega32.\+h@{atmega32.\+h}!C\+S02\+\_\+\+B\+IT@{C\+S02\+\_\+\+B\+IT}}
+\index{C\+S02\+\_\+\+B\+IT@{C\+S02\+\_\+\+B\+IT}!atmega32.\+h@{atmega32.\+h}}
+\subsubsection{C\+S02\+\_\+\+B\+IT}
+{\footnotesize\ttfamily \#define C\+S02\+\_\+\+B\+IT~2}
+
+\mbox{\label{atmega32_8h_a5aa735bd0a11e4a9913f17d2bb961c9e}} 
+\index{atmega32.\+h@{atmega32.\+h}!D\+D\+R\+A\+\_\+\+R\+EG@{D\+D\+R\+A\+\_\+\+R\+EG}}
+\index{D\+D\+R\+A\+\_\+\+R\+EG@{D\+D\+R\+A\+\_\+\+R\+EG}!atmega32.\+h@{atmega32.\+h}}
+\subsubsection{D\+D\+R\+A\+\_\+\+R\+EG}
+{\footnotesize\ttfamily \#define D\+D\+R\+A\+\_\+\+R\+EG~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x3\+A)))}
+
+\mbox{\label{atmega32_8h_a5c193c58d46a9685f4d3b93f5679a311}} 
+\index{atmega32.\+h@{atmega32.\+h}!D\+D\+R\+B\+\_\+\+R\+EG@{D\+D\+R\+B\+\_\+\+R\+EG}}
+\index{D\+D\+R\+B\+\_\+\+R\+EG@{D\+D\+R\+B\+\_\+\+R\+EG}!atmega32.\+h@{atmega32.\+h}}
+\subsubsection{D\+D\+R\+B\+\_\+\+R\+EG}
+{\footnotesize\ttfamily \#define D\+D\+R\+B\+\_\+\+R\+EG~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x37)))}
+
+\mbox{\label{atmega32_8h_abec078a3708628171d7b46b6e61c606b}} 
+\index{atmega32.\+h@{atmega32.\+h}!D\+D\+R\+C\+\_\+\+R\+EG@{D\+D\+R\+C\+\_\+\+R\+EG}}
+\index{D\+D\+R\+C\+\_\+\+R\+EG@{D\+D\+R\+C\+\_\+\+R\+EG}!atmega32.\+h@{atmega32.\+h}}
+\subsubsection{D\+D\+R\+C\+\_\+\+R\+EG}
+{\footnotesize\ttfamily \#define D\+D\+R\+C\+\_\+\+R\+EG~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x34)))}
+
+\mbox{\label{atmega32_8h_a5da647ae541fa71c2fdc27fd0688f2d1}} 
+\index{atmega32.\+h@{atmega32.\+h}!D\+D\+R\+D\+\_\+\+R\+EG@{D\+D\+R\+D\+\_\+\+R\+EG}}
+\index{D\+D\+R\+D\+\_\+\+R\+EG@{D\+D\+R\+D\+\_\+\+R\+EG}!atmega32.\+h@{atmega32.\+h}}
+\subsubsection{D\+D\+R\+D\+\_\+\+R\+EG}
+{\footnotesize\ttfamily \#define D\+D\+R\+D\+\_\+\+R\+EG~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x31)))}
+
+\mbox{\label{atmega32_8h_a9dc210a80e549097d41fd43f15a9b252}} 
+\index{atmega32.\+h@{atmega32.\+h}!E\+E\+A\+R\+H\+\_\+\+R\+EG@{E\+E\+A\+R\+H\+\_\+\+R\+EG}}
+\index{E\+E\+A\+R\+H\+\_\+\+R\+EG@{E\+E\+A\+R\+H\+\_\+\+R\+EG}!atmega32.\+h@{atmega32.\+h}}
+\subsubsection{E\+E\+A\+R\+H\+\_\+\+R\+EG}
+{\footnotesize\ttfamily \#define E\+E\+A\+R\+H\+\_\+\+R\+EG~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x3\+F)))}
+
+\mbox{\label{atmega32_8h_a0dd7cf3d5d790b0438496631e25a881a}} 
+\index{atmega32.\+h@{atmega32.\+h}!E\+E\+A\+R\+L\+\_\+\+R\+EG@{E\+E\+A\+R\+L\+\_\+\+R\+EG}}
+\index{E\+E\+A\+R\+L\+\_\+\+R\+EG@{E\+E\+A\+R\+L\+\_\+\+R\+EG}!atmega32.\+h@{atmega32.\+h}}
+\subsubsection{E\+E\+A\+R\+L\+\_\+\+R\+EG}
+{\footnotesize\ttfamily \#define E\+E\+A\+R\+L\+\_\+\+R\+EG~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x3\+E)))}
+
+\mbox{\label{atmega32_8h_a0a1e034283333528d399133455ae7bc2}} 
+\index{atmega32.\+h@{atmega32.\+h}!E\+E\+C\+R\+\_\+\+R\+EG@{E\+E\+C\+R\+\_\+\+R\+EG}}
+\index{E\+E\+C\+R\+\_\+\+R\+EG@{E\+E\+C\+R\+\_\+\+R\+EG}!atmega32.\+h@{atmega32.\+h}}
+\subsubsection{E\+E\+C\+R\+\_\+\+R\+EG}
+{\footnotesize\ttfamily \#define E\+E\+C\+R\+\_\+\+R\+EG~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x3\+C)))}
+
+\mbox{\label{atmega32_8h_af656e75f4e08ff38343aea13122dec67}} 
+\index{atmega32.\+h@{atmega32.\+h}!E\+E\+D\+R\+\_\+\+R\+EG@{E\+E\+D\+R\+\_\+\+R\+EG}}
+\index{E\+E\+D\+R\+\_\+\+R\+EG@{E\+E\+D\+R\+\_\+\+R\+EG}!atmega32.\+h@{atmega32.\+h}}
+\subsubsection{E\+E\+D\+R\+\_\+\+R\+EG}
+{\footnotesize\ttfamily \#define E\+E\+D\+R\+\_\+\+R\+EG~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x3\+D)))}
+
+\mbox{\label{atmega32_8h_ae06bd534f277a397e4251097ad23ad0f}} 
+\index{atmega32.\+h@{atmega32.\+h}!F\+O\+C0\+\_\+\+B\+IT@{F\+O\+C0\+\_\+\+B\+IT}}
+\index{F\+O\+C0\+\_\+\+B\+IT@{F\+O\+C0\+\_\+\+B\+IT}!atmega32.\+h@{atmega32.\+h}}
+\subsubsection{F\+O\+C0\+\_\+\+B\+IT}
+{\footnotesize\ttfamily \#define F\+O\+C0\+\_\+\+B\+IT~7}
+
+\mbox{\label{atmega32_8h_a30f9b7acd1ad9849773a11de37df39ed}} 
+\index{atmega32.\+h@{atmega32.\+h}!G\+I\+C\+R\+\_\+\+R\+EG@{G\+I\+C\+R\+\_\+\+R\+EG}}
+\index{G\+I\+C\+R\+\_\+\+R\+EG@{G\+I\+C\+R\+\_\+\+R\+EG}!atmega32.\+h@{atmega32.\+h}}
+\subsubsection{G\+I\+C\+R\+\_\+\+R\+EG}
+{\footnotesize\ttfamily \#define G\+I\+C\+R\+\_\+\+R\+EG~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x5\+B)))}
+
+\mbox{\label{atmega32_8h_a158894a7af4bd8bd50fb122edc05116d}} 
+\index{atmega32.\+h@{atmega32.\+h}!G\+I\+F\+R\+\_\+\+R\+EG@{G\+I\+F\+R\+\_\+\+R\+EG}}
+\index{G\+I\+F\+R\+\_\+\+R\+EG@{G\+I\+F\+R\+\_\+\+R\+EG}!atmega32.\+h@{atmega32.\+h}}
+\subsubsection{G\+I\+F\+R\+\_\+\+R\+EG}
+{\footnotesize\ttfamily \#define G\+I\+F\+R\+\_\+\+R\+EG~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x5\+A)))}
+
+\mbox{\label{atmega32_8h_aee2152981b17e0fd7752a41c038f42ad}} 
+\index{atmega32.\+h@{atmega32.\+h}!I\+\_\+\+B\+IT@{I\+\_\+\+B\+IT}}
+\index{I\+\_\+\+B\+IT@{I\+\_\+\+B\+IT}!atmega32.\+h@{atmega32.\+h}}
+\subsubsection{I\+\_\+\+B\+IT}
+{\footnotesize\ttfamily \#define I\+\_\+\+B\+IT~7}
+
+\mbox{\label{atmega32_8h_a2b9fe96b2f6522e58b76d6a6d294fddf}} 
+\index{atmega32.\+h@{atmega32.\+h}!I\+C\+R1\+H\+\_\+\+R\+EG@{I\+C\+R1\+H\+\_\+\+R\+EG}}
+\index{I\+C\+R1\+H\+\_\+\+R\+EG@{I\+C\+R1\+H\+\_\+\+R\+EG}!atmega32.\+h@{atmega32.\+h}}
+\subsubsection{I\+C\+R1\+H\+\_\+\+R\+EG}
+{\footnotesize\ttfamily \#define I\+C\+R1\+H\+\_\+\+R\+EG~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x47)))}
+
+\mbox{\label{atmega32_8h_a09b9284f6ea2fb23e30dd20d68330fdd}} 
+\index{atmega32.\+h@{atmega32.\+h}!I\+C\+R1\+L\+\_\+\+R\+EG@{I\+C\+R1\+L\+\_\+\+R\+EG}}
+\index{I\+C\+R1\+L\+\_\+\+R\+EG@{I\+C\+R1\+L\+\_\+\+R\+EG}!atmega32.\+h@{atmega32.\+h}}
+\subsubsection{I\+C\+R1\+L\+\_\+\+R\+EG}
+{\footnotesize\ttfamily \#define I\+C\+R1\+L\+\_\+\+R\+EG~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x46)))}
+
+\mbox{\label{atmega32_8h_a36c15092fd772b581ad7cfa47838a846}} 
+\index{atmega32.\+h@{atmega32.\+h}!M\+C\+U\+C\+R\+\_\+\+R\+EG@{M\+C\+U\+C\+R\+\_\+\+R\+EG}}
+\index{M\+C\+U\+C\+R\+\_\+\+R\+EG@{M\+C\+U\+C\+R\+\_\+\+R\+EG}!atmega32.\+h@{atmega32.\+h}}
+\subsubsection{M\+C\+U\+C\+R\+\_\+\+R\+EG}
+{\footnotesize\ttfamily \#define M\+C\+U\+C\+R\+\_\+\+R\+EG~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x55)))}
+
+\mbox{\label{atmega32_8h_a08d6e7a26b061cdf2533b933f97d48f5}} 
+\index{atmega32.\+h@{atmega32.\+h}!M\+C\+U\+C\+S\+R\+\_\+\+R\+EG@{M\+C\+U\+C\+S\+R\+\_\+\+R\+EG}}
+\index{M\+C\+U\+C\+S\+R\+\_\+\+R\+EG@{M\+C\+U\+C\+S\+R\+\_\+\+R\+EG}!atmega32.\+h@{atmega32.\+h}}
+\subsubsection{M\+C\+U\+C\+S\+R\+\_\+\+R\+EG}
+{\footnotesize\ttfamily \#define M\+C\+U\+C\+S\+R\+\_\+\+R\+EG~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x54)))}
+
+\mbox{\label{atmega32_8h_a624e53335c45b87658ea768378e307af}} 
+\index{atmega32.\+h@{atmega32.\+h}!O\+C\+I\+E0\+\_\+\+B\+IT@{O\+C\+I\+E0\+\_\+\+B\+IT}}
+\index{O\+C\+I\+E0\+\_\+\+B\+IT@{O\+C\+I\+E0\+\_\+\+B\+IT}!atmega32.\+h@{atmega32.\+h}}
+\subsubsection{O\+C\+I\+E0\+\_\+\+B\+IT}
+{\footnotesize\ttfamily \#define O\+C\+I\+E0\+\_\+\+B\+IT~1}
+
+\mbox{\label{atmega32_8h_a165e0dc86b6a6cb12bf7b92f40561c52}} 
+\index{atmega32.\+h@{atmega32.\+h}!O\+C\+I\+E1\+A\+\_\+\+B\+IT@{O\+C\+I\+E1\+A\+\_\+\+B\+IT}}
+\index{O\+C\+I\+E1\+A\+\_\+\+B\+IT@{O\+C\+I\+E1\+A\+\_\+\+B\+IT}!atmega32.\+h@{atmega32.\+h}}
+\subsubsection{O\+C\+I\+E1\+A\+\_\+\+B\+IT}
+{\footnotesize\ttfamily \#define O\+C\+I\+E1\+A\+\_\+\+B\+IT~4}
+
+\mbox{\label{atmega32_8h_a2681ab63a97b1ce545a27ad011ae0288}} 
+\index{atmega32.\+h@{atmega32.\+h}!O\+C\+I\+E1\+B\+\_\+\+B\+IT@{O\+C\+I\+E1\+B\+\_\+\+B\+IT}}
+\index{O\+C\+I\+E1\+B\+\_\+\+B\+IT@{O\+C\+I\+E1\+B\+\_\+\+B\+IT}!atmega32.\+h@{atmega32.\+h}}
+\subsubsection{O\+C\+I\+E1\+B\+\_\+\+B\+IT}
+{\footnotesize\ttfamily \#define O\+C\+I\+E1\+B\+\_\+\+B\+IT~3}
+
+\mbox{\label{atmega32_8h_ae2ce083ee67bd45abc0c7c7fa267a764}} 
+\index{atmega32.\+h@{atmega32.\+h}!O\+C\+I\+E2\+\_\+\+B\+IT@{O\+C\+I\+E2\+\_\+\+B\+IT}}
+\index{O\+C\+I\+E2\+\_\+\+B\+IT@{O\+C\+I\+E2\+\_\+\+B\+IT}!atmega32.\+h@{atmega32.\+h}}
+\subsubsection{O\+C\+I\+E2\+\_\+\+B\+IT}
+{\footnotesize\ttfamily \#define O\+C\+I\+E2\+\_\+\+B\+IT~7}
+
+\mbox{\label{atmega32_8h_ab9480ebd5fbeb445ed5478c0201c989d}} 
+\index{atmega32.\+h@{atmega32.\+h}!O\+C\+R0\+\_\+\+R\+EG@{O\+C\+R0\+\_\+\+R\+EG}}
+\index{O\+C\+R0\+\_\+\+R\+EG@{O\+C\+R0\+\_\+\+R\+EG}!atmega32.\+h@{atmega32.\+h}}
+\subsubsection{O\+C\+R0\+\_\+\+R\+EG}
+{\footnotesize\ttfamily \#define O\+C\+R0\+\_\+\+R\+EG~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x5\+C)))}
+
+\mbox{\label{atmega32_8h_a95906e8368fb4872dd75b64f19dc8f72}} 
+\index{atmega32.\+h@{atmega32.\+h}!O\+C\+R1\+A\+\_\+\+R\+EG@{O\+C\+R1\+A\+\_\+\+R\+EG}}
+\index{O\+C\+R1\+A\+\_\+\+R\+EG@{O\+C\+R1\+A\+\_\+\+R\+EG}!atmega32.\+h@{atmega32.\+h}}
+\subsubsection{O\+C\+R1\+A\+\_\+\+R\+EG}
+{\footnotesize\ttfamily \#define O\+C\+R1\+A\+\_\+\+R\+EG~($\ast$((volatile \textbf{ uint16\+\_\+t}$\ast$) (0x4\+A)))}
+
+\mbox{\label{atmega32_8h_a503427849358a0f43e33bfb67f2d239c}} 
+\index{atmega32.\+h@{atmega32.\+h}!O\+C\+R1\+A\+H\+\_\+\+R\+EG@{O\+C\+R1\+A\+H\+\_\+\+R\+EG}}
+\index{O\+C\+R1\+A\+H\+\_\+\+R\+EG@{O\+C\+R1\+A\+H\+\_\+\+R\+EG}!atmega32.\+h@{atmega32.\+h}}
+\subsubsection{O\+C\+R1\+A\+H\+\_\+\+R\+EG}
+{\footnotesize\ttfamily \#define O\+C\+R1\+A\+H\+\_\+\+R\+EG~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x4\+B)))}
+
+\mbox{\label{atmega32_8h_a0cd1ec8a5e7d16110f58db0d8472d6d2}} 
+\index{atmega32.\+h@{atmega32.\+h}!O\+C\+R1\+A\+L\+\_\+\+R\+EG@{O\+C\+R1\+A\+L\+\_\+\+R\+EG}}
+\index{O\+C\+R1\+A\+L\+\_\+\+R\+EG@{O\+C\+R1\+A\+L\+\_\+\+R\+EG}!atmega32.\+h@{atmega32.\+h}}
+\subsubsection{O\+C\+R1\+A\+L\+\_\+\+R\+EG}
+{\footnotesize\ttfamily \#define O\+C\+R1\+A\+L\+\_\+\+R\+EG~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x4\+A)))}
+
+\mbox{\label{atmega32_8h_a70b2de31115c5137076a208bd89911e9}} 
+\index{atmega32.\+h@{atmega32.\+h}!O\+C\+R1\+B\+\_\+\+R\+EG@{O\+C\+R1\+B\+\_\+\+R\+EG}}
+\index{O\+C\+R1\+B\+\_\+\+R\+EG@{O\+C\+R1\+B\+\_\+\+R\+EG}!atmega32.\+h@{atmega32.\+h}}
+\subsubsection{O\+C\+R1\+B\+\_\+\+R\+EG}
+{\footnotesize\ttfamily \#define O\+C\+R1\+B\+\_\+\+R\+EG~($\ast$((volatile \textbf{ uint16\+\_\+t}$\ast$) (0x48)))}
+
+\mbox{\label{atmega32_8h_a26fc00945b28fe48e5e9b6177c394a91}} 
+\index{atmega32.\+h@{atmega32.\+h}!O\+C\+R1\+B\+H\+\_\+\+R\+EG@{O\+C\+R1\+B\+H\+\_\+\+R\+EG}}
+\index{O\+C\+R1\+B\+H\+\_\+\+R\+EG@{O\+C\+R1\+B\+H\+\_\+\+R\+EG}!atmega32.\+h@{atmega32.\+h}}
+\subsubsection{O\+C\+R1\+B\+H\+\_\+\+R\+EG}
+{\footnotesize\ttfamily \#define O\+C\+R1\+B\+H\+\_\+\+R\+EG~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x49)))}
+
+\mbox{\label{atmega32_8h_a35468d00d3ed708a1caf26721234724c}} 
+\index{atmega32.\+h@{atmega32.\+h}!O\+C\+R1\+B\+L\+\_\+\+R\+EG@{O\+C\+R1\+B\+L\+\_\+\+R\+EG}}
+\index{O\+C\+R1\+B\+L\+\_\+\+R\+EG@{O\+C\+R1\+B\+L\+\_\+\+R\+EG}!atmega32.\+h@{atmega32.\+h}}
+\subsubsection{O\+C\+R1\+B\+L\+\_\+\+R\+EG}
+{\footnotesize\ttfamily \#define O\+C\+R1\+B\+L\+\_\+\+R\+EG~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x48)))}
+
+\mbox{\label{atmega32_8h_a98a15df2d38c0a3137dada5bfd889495}} 
+\index{atmega32.\+h@{atmega32.\+h}!O\+C\+R2\+\_\+\+R\+EG@{O\+C\+R2\+\_\+\+R\+EG}}
+\index{O\+C\+R2\+\_\+\+R\+EG@{O\+C\+R2\+\_\+\+R\+EG}!atmega32.\+h@{atmega32.\+h}}
+\subsubsection{O\+C\+R2\+\_\+\+R\+EG}
+{\footnotesize\ttfamily \#define O\+C\+R2\+\_\+\+R\+EG~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x43)))}
+
+\mbox{\label{atmega32_8h_a02265ca1ac8680e3ba192b19a934028c}} 
+\index{atmega32.\+h@{atmega32.\+h}!P\+I\+N\+A\+\_\+\+R\+EG@{P\+I\+N\+A\+\_\+\+R\+EG}}
+\index{P\+I\+N\+A\+\_\+\+R\+EG@{P\+I\+N\+A\+\_\+\+R\+EG}!atmega32.\+h@{atmega32.\+h}}
+\subsubsection{P\+I\+N\+A\+\_\+\+R\+EG}
+{\footnotesize\ttfamily \#define P\+I\+N\+A\+\_\+\+R\+EG~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x39)))}
+
+\mbox{\label{atmega32_8h_a8e2b147a01a34b55673cec5129353ea1}} 
+\index{atmega32.\+h@{atmega32.\+h}!P\+I\+N\+B\+\_\+\+R\+EG@{P\+I\+N\+B\+\_\+\+R\+EG}}
+\index{P\+I\+N\+B\+\_\+\+R\+EG@{P\+I\+N\+B\+\_\+\+R\+EG}!atmega32.\+h@{atmega32.\+h}}
+\subsubsection{P\+I\+N\+B\+\_\+\+R\+EG}
+{\footnotesize\ttfamily \#define P\+I\+N\+B\+\_\+\+R\+EG~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x36)))}
+
+\mbox{\label{atmega32_8h_a65fa336a15aea221d03ec9adc9182d8f}} 
+\index{atmega32.\+h@{atmega32.\+h}!P\+I\+N\+C\+\_\+\+R\+EG@{P\+I\+N\+C\+\_\+\+R\+EG}}
+\index{P\+I\+N\+C\+\_\+\+R\+EG@{P\+I\+N\+C\+\_\+\+R\+EG}!atmega32.\+h@{atmega32.\+h}}
+\subsubsection{P\+I\+N\+C\+\_\+\+R\+EG}
+{\footnotesize\ttfamily \#define P\+I\+N\+C\+\_\+\+R\+EG~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x33)))}
+
+\mbox{\label{atmega32_8h_a17249d88a555be1df96c5870cedfa125}} 
+\index{atmega32.\+h@{atmega32.\+h}!P\+I\+N\+D\+\_\+\+R\+EG@{P\+I\+N\+D\+\_\+\+R\+EG}}
+\index{P\+I\+N\+D\+\_\+\+R\+EG@{P\+I\+N\+D\+\_\+\+R\+EG}!atmega32.\+h@{atmega32.\+h}}
+\subsubsection{P\+I\+N\+D\+\_\+\+R\+EG}
+{\footnotesize\ttfamily \#define P\+I\+N\+D\+\_\+\+R\+EG~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x30)))}
+
+\mbox{\label{atmega32_8h_a69ffd3269800ea27cd17343c9ecf6da1}} 
+\index{atmega32.\+h@{atmega32.\+h}!P\+O\+R\+T\+A\+\_\+\+R\+EG@{P\+O\+R\+T\+A\+\_\+\+R\+EG}}
+\index{P\+O\+R\+T\+A\+\_\+\+R\+EG@{P\+O\+R\+T\+A\+\_\+\+R\+EG}!atmega32.\+h@{atmega32.\+h}}
+\subsubsection{P\+O\+R\+T\+A\+\_\+\+R\+EG}
+{\footnotesize\ttfamily \#define P\+O\+R\+T\+A\+\_\+\+R\+EG~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x3\+B)))}
+
+\mbox{\label{atmega32_8h_a133515fb63100cc97991f92e854520e2}} 
+\index{atmega32.\+h@{atmega32.\+h}!P\+O\+R\+T\+B\+\_\+\+R\+EG@{P\+O\+R\+T\+B\+\_\+\+R\+EG}}
+\index{P\+O\+R\+T\+B\+\_\+\+R\+EG@{P\+O\+R\+T\+B\+\_\+\+R\+EG}!atmega32.\+h@{atmega32.\+h}}
+\subsubsection{P\+O\+R\+T\+B\+\_\+\+R\+EG}
+{\footnotesize\ttfamily \#define P\+O\+R\+T\+B\+\_\+\+R\+EG~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x38)))}
+
+\mbox{\label{atmega32_8h_a5238df12de457890ede71577d037aa28}} 
+\index{atmega32.\+h@{atmega32.\+h}!P\+O\+R\+T\+C\+\_\+\+R\+EG@{P\+O\+R\+T\+C\+\_\+\+R\+EG}}
+\index{P\+O\+R\+T\+C\+\_\+\+R\+EG@{P\+O\+R\+T\+C\+\_\+\+R\+EG}!atmega32.\+h@{atmega32.\+h}}
+\subsubsection{P\+O\+R\+T\+C\+\_\+\+R\+EG}
+{\footnotesize\ttfamily \#define P\+O\+R\+T\+C\+\_\+\+R\+EG~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x35)))}
+
+\mbox{\label{atmega32_8h_a36c27fa5dbbc6a8a24201a4608bbda97}} 
+\index{atmega32.\+h@{atmega32.\+h}!P\+O\+R\+T\+D\+\_\+\+R\+EG@{P\+O\+R\+T\+D\+\_\+\+R\+EG}}
+\index{P\+O\+R\+T\+D\+\_\+\+R\+EG@{P\+O\+R\+T\+D\+\_\+\+R\+EG}!atmega32.\+h@{atmega32.\+h}}
+\subsubsection{P\+O\+R\+T\+D\+\_\+\+R\+EG}
+{\footnotesize\ttfamily \#define P\+O\+R\+T\+D\+\_\+\+R\+EG~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x32)))}
+
+\mbox{\label{atmega32_8h_a743ced1ba74f3457e8aa462cdbe6a2d1}} 
+\index{atmega32.\+h@{atmega32.\+h}!P\+U\+D\+\_\+\+B\+IT@{P\+U\+D\+\_\+\+B\+IT}}
+\index{P\+U\+D\+\_\+\+B\+IT@{P\+U\+D\+\_\+\+B\+IT}!atmega32.\+h@{atmega32.\+h}}
+\subsubsection{P\+U\+D\+\_\+\+B\+IT}
+{\footnotesize\ttfamily \#define P\+U\+D\+\_\+\+B\+IT~2}
+
+\mbox{\label{atmega32_8h_afa196fb7a75e3399ab05f3f475e74500}} 
+\index{atmega32.\+h@{atmega32.\+h}!S\+F\+I\+O\+R\+\_\+\+R\+EG@{S\+F\+I\+O\+R\+\_\+\+R\+EG}}
+\index{S\+F\+I\+O\+R\+\_\+\+R\+EG@{S\+F\+I\+O\+R\+\_\+\+R\+EG}!atmega32.\+h@{atmega32.\+h}}
+\subsubsection{S\+F\+I\+O\+R\+\_\+\+R\+EG}
+{\footnotesize\ttfamily \#define S\+F\+I\+O\+R\+\_\+\+R\+EG~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x50)))}
+
+\mbox{\label{atmega32_8h_a45db79ee1d43bc6e2e107368549d8f4e}} 
+\index{atmega32.\+h@{atmega32.\+h}!S\+P\+C\+R\+\_\+\+R\+EG@{S\+P\+C\+R\+\_\+\+R\+EG}}
+\index{S\+P\+C\+R\+\_\+\+R\+EG@{S\+P\+C\+R\+\_\+\+R\+EG}!atmega32.\+h@{atmega32.\+h}}
+\subsubsection{S\+P\+C\+R\+\_\+\+R\+EG}
+{\footnotesize\ttfamily \#define S\+P\+C\+R\+\_\+\+R\+EG~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x2\+D)))}
+
+\mbox{\label{atmega32_8h_a254b6294d8aea38d2d59c5b08b546d95}} 
+\index{atmega32.\+h@{atmega32.\+h}!S\+P\+D\+R\+\_\+\+R\+EG@{S\+P\+D\+R\+\_\+\+R\+EG}}
+\index{S\+P\+D\+R\+\_\+\+R\+EG@{S\+P\+D\+R\+\_\+\+R\+EG}!atmega32.\+h@{atmega32.\+h}}
+\subsubsection{S\+P\+D\+R\+\_\+\+R\+EG}
+{\footnotesize\ttfamily \#define S\+P\+D\+R\+\_\+\+R\+EG~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x2\+F)))}
+
+\mbox{\label{atmega32_8h_a2a20ffb9fead9beceb5dadb59bc0922a}} 
+\index{atmega32.\+h@{atmega32.\+h}!S\+P\+H\+\_\+\+R\+EG@{S\+P\+H\+\_\+\+R\+EG}}
+\index{S\+P\+H\+\_\+\+R\+EG@{S\+P\+H\+\_\+\+R\+EG}!atmega32.\+h@{atmega32.\+h}}
+\subsubsection{S\+P\+H\+\_\+\+R\+EG}
+{\footnotesize\ttfamily \#define S\+P\+H\+\_\+\+R\+EG~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x5\+E)))}
+
+\mbox{\label{atmega32_8h_ae2095754f0f458101e7999487e31c391}} 
+\index{atmega32.\+h@{atmega32.\+h}!S\+P\+L\+\_\+\+R\+EG@{S\+P\+L\+\_\+\+R\+EG}}
+\index{S\+P\+L\+\_\+\+R\+EG@{S\+P\+L\+\_\+\+R\+EG}!atmega32.\+h@{atmega32.\+h}}
+\subsubsection{S\+P\+L\+\_\+\+R\+EG}
+{\footnotesize\ttfamily \#define S\+P\+L\+\_\+\+R\+EG~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x5\+D)))}
+
+\mbox{\label{atmega32_8h_a072555cef79eab5649599b1521b78bb1}} 
+\index{atmega32.\+h@{atmega32.\+h}!S\+P\+M\+C\+R\+\_\+\+R\+EG@{S\+P\+M\+C\+R\+\_\+\+R\+EG}}
+\index{S\+P\+M\+C\+R\+\_\+\+R\+EG@{S\+P\+M\+C\+R\+\_\+\+R\+EG}!atmega32.\+h@{atmega32.\+h}}
+\subsubsection{S\+P\+M\+C\+R\+\_\+\+R\+EG}
+{\footnotesize\ttfamily \#define S\+P\+M\+C\+R\+\_\+\+R\+EG~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x57)))}
+
+\mbox{\label{atmega32_8h_a44db3667ce8d5b35d7ce42443e2e4ccb}} 
+\index{atmega32.\+h@{atmega32.\+h}!S\+P\+S\+R\+\_\+\+R\+EG@{S\+P\+S\+R\+\_\+\+R\+EG}}
+\index{S\+P\+S\+R\+\_\+\+R\+EG@{S\+P\+S\+R\+\_\+\+R\+EG}!atmega32.\+h@{atmega32.\+h}}
+\subsubsection{S\+P\+S\+R\+\_\+\+R\+EG}
+{\footnotesize\ttfamily \#define S\+P\+S\+R\+\_\+\+R\+EG~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x2\+E)))}
+
+\mbox{\label{atmega32_8h_a1fcfd265dc7914a004addce6e43939b6}} 
+\index{atmega32.\+h@{atmega32.\+h}!S\+R\+E\+G\+\_\+\+R\+EG@{S\+R\+E\+G\+\_\+\+R\+EG}}
+\index{S\+R\+E\+G\+\_\+\+R\+EG@{S\+R\+E\+G\+\_\+\+R\+EG}!atmega32.\+h@{atmega32.\+h}}
+\subsubsection{S\+R\+E\+G\+\_\+\+R\+EG}
+{\footnotesize\ttfamily \#define S\+R\+E\+G\+\_\+\+R\+EG~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x5\+F)))}
+
+\mbox{\label{atmega32_8h_a40900dfae9fdbc8992043459f53531b2}} 
+\index{atmega32.\+h@{atmega32.\+h}!T\+C\+C\+R0\+\_\+\+R\+EG@{T\+C\+C\+R0\+\_\+\+R\+EG}}
+\index{T\+C\+C\+R0\+\_\+\+R\+EG@{T\+C\+C\+R0\+\_\+\+R\+EG}!atmega32.\+h@{atmega32.\+h}}
+\subsubsection{T\+C\+C\+R0\+\_\+\+R\+EG}
+{\footnotesize\ttfamily \#define T\+C\+C\+R0\+\_\+\+R\+EG~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x53)))}
+
+\mbox{\label{atmega32_8h_a046608bc261e8dfc518d2beccb72ef78}} 
+\index{atmega32.\+h@{atmega32.\+h}!T\+C\+C\+R1\+A\+\_\+\+R\+EG@{T\+C\+C\+R1\+A\+\_\+\+R\+EG}}
+\index{T\+C\+C\+R1\+A\+\_\+\+R\+EG@{T\+C\+C\+R1\+A\+\_\+\+R\+EG}!atmega32.\+h@{atmega32.\+h}}
+\subsubsection{T\+C\+C\+R1\+A\+\_\+\+R\+EG}
+{\footnotesize\ttfamily \#define T\+C\+C\+R1\+A\+\_\+\+R\+EG~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x4\+F)))}
+
+\mbox{\label{atmega32_8h_a596eba18300022db366becc5251ded3d}} 
+\index{atmega32.\+h@{atmega32.\+h}!T\+C\+C\+R1\+B\+\_\+\+R\+EG@{T\+C\+C\+R1\+B\+\_\+\+R\+EG}}
+\index{T\+C\+C\+R1\+B\+\_\+\+R\+EG@{T\+C\+C\+R1\+B\+\_\+\+R\+EG}!atmega32.\+h@{atmega32.\+h}}
+\subsubsection{T\+C\+C\+R1\+B\+\_\+\+R\+EG}
+{\footnotesize\ttfamily \#define T\+C\+C\+R1\+B\+\_\+\+R\+EG~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x4\+E)))}
+
+\mbox{\label{atmega32_8h_afed6a3cb1b1c86dbcd7c5af7e032f1eb}} 
+\index{atmega32.\+h@{atmega32.\+h}!T\+C\+C\+R2\+\_\+\+R\+EG@{T\+C\+C\+R2\+\_\+\+R\+EG}}
+\index{T\+C\+C\+R2\+\_\+\+R\+EG@{T\+C\+C\+R2\+\_\+\+R\+EG}!atmega32.\+h@{atmega32.\+h}}
+\subsubsection{T\+C\+C\+R2\+\_\+\+R\+EG}
+{\footnotesize\ttfamily \#define T\+C\+C\+R2\+\_\+\+R\+EG~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x45)))}
+
+\mbox{\label{atmega32_8h_a8d36e0dcd57b0bdd5b5156ad21d3c97f}} 
+\index{atmega32.\+h@{atmega32.\+h}!T\+C\+N\+T0\+\_\+\+R\+EG@{T\+C\+N\+T0\+\_\+\+R\+EG}}
+\index{T\+C\+N\+T0\+\_\+\+R\+EG@{T\+C\+N\+T0\+\_\+\+R\+EG}!atmega32.\+h@{atmega32.\+h}}
+\subsubsection{T\+C\+N\+T0\+\_\+\+R\+EG}
+{\footnotesize\ttfamily \#define T\+C\+N\+T0\+\_\+\+R\+EG~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x52)))}
+
+\mbox{\label{atmega32_8h_a7f0bbfca2bf40a96bf50cb60978e8176}} 
+\index{atmega32.\+h@{atmega32.\+h}!T\+C\+N\+T1\+\_\+\+R\+EG@{T\+C\+N\+T1\+\_\+\+R\+EG}}
+\index{T\+C\+N\+T1\+\_\+\+R\+EG@{T\+C\+N\+T1\+\_\+\+R\+EG}!atmega32.\+h@{atmega32.\+h}}
+\subsubsection{T\+C\+N\+T1\+\_\+\+R\+EG}
+{\footnotesize\ttfamily \#define T\+C\+N\+T1\+\_\+\+R\+EG~($\ast$((volatile \textbf{ uint16\+\_\+t}$\ast$) (0x4\+C)))}
+
+\mbox{\label{atmega32_8h_ad96d355acb9829b10a87fd9372c4418a}} 
+\index{atmega32.\+h@{atmega32.\+h}!T\+C\+N\+T1\+H\+\_\+\+R\+EG@{T\+C\+N\+T1\+H\+\_\+\+R\+EG}}
+\index{T\+C\+N\+T1\+H\+\_\+\+R\+EG@{T\+C\+N\+T1\+H\+\_\+\+R\+EG}!atmega32.\+h@{atmega32.\+h}}
+\subsubsection{T\+C\+N\+T1\+H\+\_\+\+R\+EG}
+{\footnotesize\ttfamily \#define T\+C\+N\+T1\+H\+\_\+\+R\+EG~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x4\+D)))}
+
+\mbox{\label{atmega32_8h_a2575e8635d133a17937582868e30247e}} 
+\index{atmega32.\+h@{atmega32.\+h}!T\+C\+N\+T1\+L\+\_\+\+R\+EG@{T\+C\+N\+T1\+L\+\_\+\+R\+EG}}
+\index{T\+C\+N\+T1\+L\+\_\+\+R\+EG@{T\+C\+N\+T1\+L\+\_\+\+R\+EG}!atmega32.\+h@{atmega32.\+h}}
+\subsubsection{T\+C\+N\+T1\+L\+\_\+\+R\+EG}
+{\footnotesize\ttfamily \#define T\+C\+N\+T1\+L\+\_\+\+R\+EG~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x4\+C)))}
+
+\mbox{\label{atmega32_8h_a7b755fb31041b91111de417e627bff58}} 
+\index{atmega32.\+h@{atmega32.\+h}!T\+C\+N\+T2\+\_\+\+R\+EG@{T\+C\+N\+T2\+\_\+\+R\+EG}}
+\index{T\+C\+N\+T2\+\_\+\+R\+EG@{T\+C\+N\+T2\+\_\+\+R\+EG}!atmega32.\+h@{atmega32.\+h}}
+\subsubsection{T\+C\+N\+T2\+\_\+\+R\+EG}
+{\footnotesize\ttfamily \#define T\+C\+N\+T2\+\_\+\+R\+EG~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x44)))}
+
+\mbox{\label{atmega32_8h_ac03bb25548e78fd79872c2eb233c7ccd}} 
+\index{atmega32.\+h@{atmega32.\+h}!T\+I\+C\+I\+E1\+\_\+\+B\+IT@{T\+I\+C\+I\+E1\+\_\+\+B\+IT}}
+\index{T\+I\+C\+I\+E1\+\_\+\+B\+IT@{T\+I\+C\+I\+E1\+\_\+\+B\+IT}!atmega32.\+h@{atmega32.\+h}}
+\subsubsection{T\+I\+C\+I\+E1\+\_\+\+B\+IT}
+{\footnotesize\ttfamily \#define T\+I\+C\+I\+E1\+\_\+\+B\+IT~5}
+
+\mbox{\label{atmega32_8h_a35240e4bec4fe2ccc6ea1f76266e87d9}} 
+\index{atmega32.\+h@{atmega32.\+h}!T\+I\+F\+R\+\_\+\+R\+EG@{T\+I\+F\+R\+\_\+\+R\+EG}}
+\index{T\+I\+F\+R\+\_\+\+R\+EG@{T\+I\+F\+R\+\_\+\+R\+EG}!atmega32.\+h@{atmega32.\+h}}
+\subsubsection{T\+I\+F\+R\+\_\+\+R\+EG}
+{\footnotesize\ttfamily \#define T\+I\+F\+R\+\_\+\+R\+EG~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x58)))}
+
+\mbox{\label{atmega32_8h_adda03ffdb5c4c07b8f4127cc303fc846}} 
+\index{atmega32.\+h@{atmega32.\+h}!T\+I\+M\+S\+K\+\_\+\+R\+EG@{T\+I\+M\+S\+K\+\_\+\+R\+EG}}
+\index{T\+I\+M\+S\+K\+\_\+\+R\+EG@{T\+I\+M\+S\+K\+\_\+\+R\+EG}!atmega32.\+h@{atmega32.\+h}}
+\subsubsection{T\+I\+M\+S\+K\+\_\+\+R\+EG}
+{\footnotesize\ttfamily \#define T\+I\+M\+S\+K\+\_\+\+R\+EG~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x59)))}
+
+\mbox{\label{atmega32_8h_ab353d17be2aaa2e7fbb6c36b0a73b174}} 
+\index{atmega32.\+h@{atmega32.\+h}!T\+O\+I\+E0\+\_\+\+B\+IT@{T\+O\+I\+E0\+\_\+\+B\+IT}}
+\index{T\+O\+I\+E0\+\_\+\+B\+IT@{T\+O\+I\+E0\+\_\+\+B\+IT}!atmega32.\+h@{atmega32.\+h}}
+\subsubsection{T\+O\+I\+E0\+\_\+\+B\+IT}
+{\footnotesize\ttfamily \#define T\+O\+I\+E0\+\_\+\+B\+IT~0}
+
+\mbox{\label{atmega32_8h_a4a5e5840c6a343bca4b5f2d5eb9c1021}} 
+\index{atmega32.\+h@{atmega32.\+h}!T\+O\+I\+E1\+\_\+\+B\+IT@{T\+O\+I\+E1\+\_\+\+B\+IT}}
+\index{T\+O\+I\+E1\+\_\+\+B\+IT@{T\+O\+I\+E1\+\_\+\+B\+IT}!atmega32.\+h@{atmega32.\+h}}
+\subsubsection{T\+O\+I\+E1\+\_\+\+B\+IT}
+{\footnotesize\ttfamily \#define T\+O\+I\+E1\+\_\+\+B\+IT~2}
+
+\mbox{\label{atmega32_8h_acbc229bb72e03881f5f709a0f4330026}} 
+\index{atmega32.\+h@{atmega32.\+h}!T\+O\+I\+E2\+\_\+\+B\+IT@{T\+O\+I\+E2\+\_\+\+B\+IT}}
+\index{T\+O\+I\+E2\+\_\+\+B\+IT@{T\+O\+I\+E2\+\_\+\+B\+IT}!atmega32.\+h@{atmega32.\+h}}
+\subsubsection{T\+O\+I\+E2\+\_\+\+B\+IT}
+{\footnotesize\ttfamily \#define T\+O\+I\+E2\+\_\+\+B\+IT~6}
+
+\mbox{\label{atmega32_8h_a045b4afeb96455037356a23954d41e3d}} 
+\index{atmega32.\+h@{atmega32.\+h}!T\+W\+A\+R\+\_\+\+R\+EG@{T\+W\+A\+R\+\_\+\+R\+EG}}
+\index{T\+W\+A\+R\+\_\+\+R\+EG@{T\+W\+A\+R\+\_\+\+R\+EG}!atmega32.\+h@{atmega32.\+h}}
+\subsubsection{T\+W\+A\+R\+\_\+\+R\+EG}
+{\footnotesize\ttfamily \#define T\+W\+A\+R\+\_\+\+R\+EG~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x22)))}
+
+\mbox{\label{atmega32_8h_af9614905e3d345b3ca4da5064dead724}} 
+\index{atmega32.\+h@{atmega32.\+h}!T\+W\+B\+R\+\_\+\+R\+EG@{T\+W\+B\+R\+\_\+\+R\+EG}}
+\index{T\+W\+B\+R\+\_\+\+R\+EG@{T\+W\+B\+R\+\_\+\+R\+EG}!atmega32.\+h@{atmega32.\+h}}
+\subsubsection{T\+W\+B\+R\+\_\+\+R\+EG}
+{\footnotesize\ttfamily \#define T\+W\+B\+R\+\_\+\+R\+EG~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x20)))}
+
+\mbox{\label{atmega32_8h_ad46f03505ca663fd513cf4a8e755716d}} 
+\index{atmega32.\+h@{atmega32.\+h}!T\+W\+C\+R\+\_\+\+R\+EG@{T\+W\+C\+R\+\_\+\+R\+EG}}
+\index{T\+W\+C\+R\+\_\+\+R\+EG@{T\+W\+C\+R\+\_\+\+R\+EG}!atmega32.\+h@{atmega32.\+h}}
+\subsubsection{T\+W\+C\+R\+\_\+\+R\+EG}
+{\footnotesize\ttfamily \#define T\+W\+C\+R\+\_\+\+R\+EG~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x56)))}
+
+\mbox{\label{atmega32_8h_afdbcba80b6d40461da3fe9de40e6225e}} 
+\index{atmega32.\+h@{atmega32.\+h}!T\+W\+D\+R\+\_\+\+R\+EG@{T\+W\+D\+R\+\_\+\+R\+EG}}
+\index{T\+W\+D\+R\+\_\+\+R\+EG@{T\+W\+D\+R\+\_\+\+R\+EG}!atmega32.\+h@{atmega32.\+h}}
+\subsubsection{T\+W\+D\+R\+\_\+\+R\+EG}
+{\footnotesize\ttfamily \#define T\+W\+D\+R\+\_\+\+R\+EG~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x23)))}
+
+\mbox{\label{atmega32_8h_a1c91a0848b9cdea97fb63cdbd12b98e3}} 
+\index{atmega32.\+h@{atmega32.\+h}!T\+W\+S\+R\+\_\+\+R\+EG@{T\+W\+S\+R\+\_\+\+R\+EG}}
+\index{T\+W\+S\+R\+\_\+\+R\+EG@{T\+W\+S\+R\+\_\+\+R\+EG}!atmega32.\+h@{atmega32.\+h}}
+\subsubsection{T\+W\+S\+R\+\_\+\+R\+EG}
+{\footnotesize\ttfamily \#define T\+W\+S\+R\+\_\+\+R\+EG~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x21)))}
+
+\mbox{\label{atmega32_8h_a0bb076119f1b4b9c36a77ab9f51b1261}} 
+\index{atmega32.\+h@{atmega32.\+h}!U\+B\+R\+R\+H\+\_\+\+R\+EG@{U\+B\+R\+R\+H\+\_\+\+R\+EG}}
+\index{U\+B\+R\+R\+H\+\_\+\+R\+EG@{U\+B\+R\+R\+H\+\_\+\+R\+EG}!atmega32.\+h@{atmega32.\+h}}
+\subsubsection{U\+B\+R\+R\+H\+\_\+\+R\+EG}
+{\footnotesize\ttfamily \#define U\+B\+R\+R\+H\+\_\+\+R\+EG~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x40)))}
+
+\mbox{\label{atmega32_8h_aec54947cb3cde19a9a68ff7f2e253cf9}} 
+\index{atmega32.\+h@{atmega32.\+h}!U\+B\+R\+R\+L\+\_\+\+R\+EG@{U\+B\+R\+R\+L\+\_\+\+R\+EG}}
+\index{U\+B\+R\+R\+L\+\_\+\+R\+EG@{U\+B\+R\+R\+L\+\_\+\+R\+EG}!atmega32.\+h@{atmega32.\+h}}
+\subsubsection{U\+B\+R\+R\+L\+\_\+\+R\+EG}
+{\footnotesize\ttfamily \#define U\+B\+R\+R\+L\+\_\+\+R\+EG~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x29)))}
+
+\mbox{\label{atmega32_8h_a93133bbdb258fbd0b8a781ee19701f5e}} 
+\index{atmega32.\+h@{atmega32.\+h}!U\+C\+S\+R\+A\+\_\+\+R\+EG@{U\+C\+S\+R\+A\+\_\+\+R\+EG}}
+\index{U\+C\+S\+R\+A\+\_\+\+R\+EG@{U\+C\+S\+R\+A\+\_\+\+R\+EG}!atmega32.\+h@{atmega32.\+h}}
+\subsubsection{U\+C\+S\+R\+A\+\_\+\+R\+EG}
+{\footnotesize\ttfamily \#define U\+C\+S\+R\+A\+\_\+\+R\+EG~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x2\+B)))}
+
+\mbox{\label{atmega32_8h_ada68d811f14f0bd1d9393b732dff0008}} 
+\index{atmega32.\+h@{atmega32.\+h}!U\+C\+S\+R\+B\+\_\+\+R\+EG@{U\+C\+S\+R\+B\+\_\+\+R\+EG}}
+\index{U\+C\+S\+R\+B\+\_\+\+R\+EG@{U\+C\+S\+R\+B\+\_\+\+R\+EG}!atmega32.\+h@{atmega32.\+h}}
+\subsubsection{U\+C\+S\+R\+B\+\_\+\+R\+EG}
+{\footnotesize\ttfamily \#define U\+C\+S\+R\+B\+\_\+\+R\+EG~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x2\+A)))}
+
+\mbox{\label{atmega32_8h_a5d416e100de89b3cf7f89d5e3f183a6f}} 
+\index{atmega32.\+h@{atmega32.\+h}!U\+C\+S\+R\+C\+\_\+\+R\+EG@{U\+C\+S\+R\+C\+\_\+\+R\+EG}}
+\index{U\+C\+S\+R\+C\+\_\+\+R\+EG@{U\+C\+S\+R\+C\+\_\+\+R\+EG}!atmega32.\+h@{atmega32.\+h}}
+\subsubsection{U\+C\+S\+R\+C\+\_\+\+R\+EG}
+{\footnotesize\ttfamily \#define U\+C\+S\+R\+C\+\_\+\+R\+EG~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x40)))}
+
+\mbox{\label{atmega32_8h_ac4cdf0337e0169a0aada9a349ce3fc9f}} 
+\index{atmega32.\+h@{atmega32.\+h}!U\+D\+R\+\_\+\+R\+EG@{U\+D\+R\+\_\+\+R\+EG}}
+\index{U\+D\+R\+\_\+\+R\+EG@{U\+D\+R\+\_\+\+R\+EG}!atmega32.\+h@{atmega32.\+h}}
+\subsubsection{U\+D\+R\+\_\+\+R\+EG}
+{\footnotesize\ttfamily \#define U\+D\+R\+\_\+\+R\+EG~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x2\+C)))}
+
+\mbox{\label{atmega32_8h_a08c56a1e7d3412c64c30444ecbc1deb9}} 
+\index{atmega32.\+h@{atmega32.\+h}!W\+D\+T\+C\+R\+\_\+\+R\+EG@{W\+D\+T\+C\+R\+\_\+\+R\+EG}}
+\index{W\+D\+T\+C\+R\+\_\+\+R\+EG@{W\+D\+T\+C\+R\+\_\+\+R\+EG}!atmega32.\+h@{atmega32.\+h}}
+\subsubsection{W\+D\+T\+C\+R\+\_\+\+R\+EG}
+{\footnotesize\ttfamily \#define W\+D\+T\+C\+R\+\_\+\+R\+EG~($\ast$((volatile \textbf{ uint8\+\_\+t}$\ast$) (0x41)))}
+
+\mbox{\label{atmega32_8h_ad6aa1c0ac1ac4840c7160973e53116cd}} 
+\index{atmega32.\+h@{atmega32.\+h}!W\+G\+M00\+\_\+\+B\+IT@{W\+G\+M00\+\_\+\+B\+IT}}
+\index{W\+G\+M00\+\_\+\+B\+IT@{W\+G\+M00\+\_\+\+B\+IT}!atmega32.\+h@{atmega32.\+h}}
+\subsubsection{W\+G\+M00\+\_\+\+B\+IT}
+{\footnotesize\ttfamily \#define W\+G\+M00\+\_\+\+B\+IT~6}
+
+\mbox{\label{atmega32_8h_a01c158cee953eaa30c1d34726dcc831d}} 
+\index{atmega32.\+h@{atmega32.\+h}!W\+G\+M01\+\_\+\+B\+IT@{W\+G\+M01\+\_\+\+B\+IT}}
+\index{W\+G\+M01\+\_\+\+B\+IT@{W\+G\+M01\+\_\+\+B\+IT}!atmega32.\+h@{atmega32.\+h}}
+\subsubsection{W\+G\+M01\+\_\+\+B\+IT}
+{\footnotesize\ttfamily \#define W\+G\+M01\+\_\+\+B\+IT~3}
+

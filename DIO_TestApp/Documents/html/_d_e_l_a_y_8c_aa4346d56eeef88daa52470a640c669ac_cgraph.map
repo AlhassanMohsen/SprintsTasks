@@ -1,0 +1,8 @@
+<map id="DELAY_ms" name="DELAY_ms">
+<area shape="rect" id="node2" href="$_t_i_m_e_r0_8c.html#a7411543d6d0d589f6b5fa318bcf59d88" title="this function is used to initialize timer0 " alt="" coords="190,5,278,32"/>
+<area shape="rect" id="node3" href="$_t_i_m_e_r0_8c.html#a689d58acea491f346ef7ea249f7c98e0" title="this function is used to set a value to compare the number of counts with " alt="" coords="146,56,322,83"/>
+<area shape="rect" id="node4" href="$_t_i_m_e_r0_8c.html#a80bbcb7217a1f9389e1f73d39b3b04d3" title="this function is used to enable and configure the Compare match interrupt of timer 0 ..." alt="" coords="145,107,323,133"/>
+<area shape="rect" id="node5" href="$_d_e_l_a_y_8c.html#aeb0ca1fe1f79a5ee88cfdaa9199ce200" title="this function is used to write the logic wanted to be performed in the ISR of the timer ..." alt="" coords="149,157,319,184"/>
+<area shape="rect" id="node6" href="$_t_i_m_e_r0_8c.html#af55bbe4c18d1c81a9ac0e9d0c1829e86" title="This function is used to start the timer counting process with previously initialized configurations..." alt="" coords="169,208,299,235"/>
+<area shape="rect" id="node7" href="$_t_i_m_e_r0_8c.html#adcc6c6b1e59465691486666922f25880" title="TIM0_u8DisableOCInterrupt" alt="" coords="144,259,324,285"/>
+</map>

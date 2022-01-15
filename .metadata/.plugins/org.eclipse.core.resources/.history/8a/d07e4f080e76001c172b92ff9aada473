@@ -1,0 +1,25 @@
+/*
+ * main.c
+ *
+ *  Created on: Jan 15, 2022
+ *      Author: vip
+ */
+
+#include "../LIB/Typedef.h"
+#include "../LIB/BIT_Math.h"
+#include "../ECUAL/LED/LED.h"
+#include "../MCAL/DELAY/DELAY_interface.h"
+
+
+
+int main(void)
+{
+	LED_t st_TestLed = {PORTB,PIN4};
+	LED_u8Init(st_TestLed);
+	while (1)
+	{
+
+	}
+
+	return 0 ;
+}

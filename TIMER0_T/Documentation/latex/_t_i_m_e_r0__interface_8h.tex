@@ -1,0 +1,343 @@
+\section{M\+C\+A\+L/\+T\+I\+M\+E\+R0/\+T\+I\+M\+E\+R0\+\_\+interface.h File Reference}
+\label{_t_i_m_e_r0__interface_8h}\index{M\+C\+A\+L/\+T\+I\+M\+E\+R0/\+T\+I\+M\+E\+R0\+\_\+interface.\+h@{M\+C\+A\+L/\+T\+I\+M\+E\+R0/\+T\+I\+M\+E\+R0\+\_\+interface.\+h}}
+{\ttfamily \#include \char`\"{}../../\+L\+I\+B/\+Typedef.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../../\+L\+I\+B/\+B\+I\+T\+\_\+\+Math.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../../\+L\+I\+B/atmega32.\+h\char`\"{}}\newline
+Include dependency graph for T\+I\+M\+E\+R0\+\_\+interface.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_t_i_m_e_r0__interface_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=207pt]{_t_i_m_e_r0__interface_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \textbf{ T\+I\+M0\+\_\+\+Config\+\_\+t}
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \textbf{ Error\+State\+\_\+t} \{ \newline
+\textbf{ T\+I\+M0\+\_\+\+OK} = 1, 
+\textbf{ T\+I\+M0\+\_\+\+N\+U\+L\+L\+\_\+\+I\+N\+P\+UT} =252, 
+\textbf{ T\+I\+M0\+\_\+\+W\+R\+O\+N\+G\+\_\+\+M\+O\+DE}, 
+\textbf{ T\+I\+M0\+\_\+\+N\+O\+T\+\_\+\+I\+N\+I\+T\+I\+L\+I\+Z\+ED}, 
+\newline
+\textbf{ T\+I\+M0\+\_\+\+U\+N\+D\+E\+F\+I\+N\+E\+D\+\_\+\+C\+L\+K\+\_\+\+S\+T\+A\+TE}
+ \}
+\item 
+enum \textbf{ T\+I\+M0\+\_\+\+Mode\+\_\+t} \{ \newline
+\textbf{ T\+I\+M0\+\_\+\+N\+O\+R\+M\+AL}, 
+\textbf{ T\+I\+M0\+\_\+\+C\+TC}, 
+\textbf{ T\+I\+M0\+\_\+\+F\+P\+W\+M\+\_\+\+N\+O\+N\+\_\+\+I\+N\+V\+E\+R\+T\+I\+NG}, 
+\textbf{ T\+I\+M0\+\_\+\+F\+P\+W\+M\+\_\+\+I\+N\+V\+E\+R\+T\+I\+NG}, 
+\newline
+\textbf{ T\+I\+M0\+\_\+\+P\+C\+P\+W\+M\+\_\+\+N\+O\+N\+\_\+\+I\+N\+V\+E\+R\+T\+I\+NG}, 
+\textbf{ T\+I\+M0\+\_\+\+P\+C\+P\+W\+M\+\_\+\+I\+N\+V\+E\+R\+T\+I\+NG}
+ \}
+\item 
+enum \textbf{ Clk\+Source\+\_\+t} \{ \newline
+\textbf{ N\+O\+\_\+\+C\+LK}, 
+\textbf{ N\+O\+\_\+\+P\+R\+E\+S\+C\+A\+L\+AR}, 
+\textbf{ P\+R\+E\+S\+C\+A\+L\+A\+R\+\_\+8}, 
+\textbf{ P\+R\+E\+S\+C\+A\+L\+A\+R\+\_\+64}, 
+\newline
+\textbf{ P\+R\+E\+S\+C\+A\+L\+A\+R\+\_\+256}, 
+\textbf{ P\+R\+E\+S\+C\+A\+L\+A\+R\+\_\+1024}, 
+\textbf{ E\+X\+T\+\_\+\+F\+A\+L\+L\+I\+NG}, 
+\textbf{ E\+X\+T\+\_\+\+R\+I\+S\+I\+NG}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Error\+State\+\_\+t} \textbf{ T\+I\+M0\+\_\+u8\+Init} (\textbf{ T\+I\+M0\+\_\+\+Config\+\_\+t} $\ast$pst\+\_\+\+T\+I\+M\+Config)
+\begin{DoxyCompactList}\small\item\em this function is used to initialize timer0 \end{DoxyCompactList}\item 
+\textbf{ Error\+State\+\_\+t} \textbf{ T\+I\+M0\+\_\+u8\+Set\+Start} (\textbf{ uint8\+\_\+t} u8\+Starting\+Point)
+\begin{DoxyCompactList}\small\item\em this function is used to change the beginning of the counting which is initialized to T\+I\+M\+E\+R0\+\_\+\+I\+N\+I\+T\+I\+A\+L\+\_\+\+S\+T\+A\+RT in the configuration file \end{DoxyCompactList}\item 
+\textbf{ Error\+State\+\_\+t} \textbf{ T\+I\+M0\+\_\+u8\+Get\+Counts} (\textbf{ uint8\+\_\+t} $\ast$pu8\+\_\+\+Returned\+Counts)
+\begin{DoxyCompactList}\small\item\em this function is used to read the number of counts in the counter/timer right now \end{DoxyCompactList}\item 
+\textbf{ Error\+State\+\_\+t} \textbf{ T\+I\+M0\+\_\+u8\+Set\+Compare\+Value} (\textbf{ uint8\+\_\+t} u8\+Set\+Compare\+Value)
+\begin{DoxyCompactList}\small\item\em this function is used to set a value to compare the number of counts with \end{DoxyCompactList}\item 
+\textbf{ Error\+State\+\_\+t} \textbf{ T\+I\+M0\+\_\+u8\+Enable\+O\+V\+F\+Interrupt} (void($\ast$v\+Call\+Back\+Fun)(void))
+\begin{DoxyCompactList}\small\item\em this function is used to enable and configure the over flow interrupt of timer 0 \end{DoxyCompactList}\item 
+\textbf{ Error\+State\+\_\+t} \textbf{ T\+I\+M0\+\_\+u8\+Enable\+O\+C\+Interrupt} (void($\ast$v\+Call\+Back\+Fun)(void))
+\begin{DoxyCompactList}\small\item\em this function is used to enable and configure the Compare match interrupt of timer 0 \end{DoxyCompactList}\item 
+\textbf{ Error\+State\+\_\+t} \textbf{ T\+I\+M0\+\_\+u8\+Disable\+O\+V\+F\+Interrupt} (void)
+\item 
+\textbf{ Error\+State\+\_\+t} \textbf{ T\+I\+M0\+\_\+u8\+Disable\+O\+C\+Interrupt} (void)
+\item 
+\textbf{ Error\+State\+\_\+t} \textbf{ T\+I\+M0\+\_\+u8\+Timer\+Start} (void)
+\begin{DoxyCompactList}\small\item\em This function is used to start the timer counting process with previously initialized configurations. \end{DoxyCompactList}\item 
+\textbf{ Error\+State\+\_\+t} \textbf{ T\+I\+M0\+\_\+u8\+Timer\+Stop} (void)
+\begin{DoxyCompactList}\small\item\em This function is used to start the timer counting process with previously initialized configurations. \end{DoxyCompactList}\item 
+\textbf{ Error\+State\+\_\+t} \textbf{ T\+I\+M0\+\_\+u8\+Set\+P\+W\+M\+Duty\+Cycle} (\textbf{ uint8\+\_\+t} u8\+Duty\+Cycle)
+\end{DoxyCompactItemize}
+
+
+\subsection{Enumeration Type Documentation}
+\mbox{\label{_t_i_m_e_r0__interface_8h_ab9c5e315444772abc479b22b3556fe44}} 
+\index{T\+I\+M\+E\+R0\+\_\+interface.\+h@{T\+I\+M\+E\+R0\+\_\+interface.\+h}!Clk\+Source\+\_\+t@{Clk\+Source\+\_\+t}}
+\index{Clk\+Source\+\_\+t@{Clk\+Source\+\_\+t}!T\+I\+M\+E\+R0\+\_\+interface.\+h@{T\+I\+M\+E\+R0\+\_\+interface.\+h}}
+\subsubsection{Clk\+Source\+\_\+t}
+{\footnotesize\ttfamily enum \textbf{ Clk\+Source\+\_\+t}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{N\+O\+\_\+\+C\+LK@{N\+O\+\_\+\+C\+LK}!T\+I\+M\+E\+R0\+\_\+interface.\+h@{T\+I\+M\+E\+R0\+\_\+interface.\+h}}\index{T\+I\+M\+E\+R0\+\_\+interface.\+h@{T\+I\+M\+E\+R0\+\_\+interface.\+h}!N\+O\+\_\+\+C\+LK@{N\+O\+\_\+\+C\+LK}}}\mbox{\label{_t_i_m_e_r0__interface_8h_ab9c5e315444772abc479b22b3556fe44af9c96806f49a9cff6b8f25a59bade4ad}} 
+N\+O\+\_\+\+C\+LK&No clock source meaning that the timer is inactive. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{N\+O\+\_\+\+P\+R\+E\+S\+C\+A\+L\+AR@{N\+O\+\_\+\+P\+R\+E\+S\+C\+A\+L\+AR}!T\+I\+M\+E\+R0\+\_\+interface.\+h@{T\+I\+M\+E\+R0\+\_\+interface.\+h}}\index{T\+I\+M\+E\+R0\+\_\+interface.\+h@{T\+I\+M\+E\+R0\+\_\+interface.\+h}!N\+O\+\_\+\+P\+R\+E\+S\+C\+A\+L\+AR@{N\+O\+\_\+\+P\+R\+E\+S\+C\+A\+L\+AR}}}\mbox{\label{_t_i_m_e_r0__interface_8h_ab9c5e315444772abc479b22b3556fe44ab16b0241c599046a2950eb6d2ae2e45b}} 
+N\+O\+\_\+\+P\+R\+E\+S\+C\+A\+L\+AR&System Clock with no pre-\/scalar applied. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{P\+R\+E\+S\+C\+A\+L\+A\+R\+\_\+8@{P\+R\+E\+S\+C\+A\+L\+A\+R\+\_\+8}!T\+I\+M\+E\+R0\+\_\+interface.\+h@{T\+I\+M\+E\+R0\+\_\+interface.\+h}}\index{T\+I\+M\+E\+R0\+\_\+interface.\+h@{T\+I\+M\+E\+R0\+\_\+interface.\+h}!P\+R\+E\+S\+C\+A\+L\+A\+R\+\_\+8@{P\+R\+E\+S\+C\+A\+L\+A\+R\+\_\+8}}}\mbox{\label{_t_i_m_e_r0__interface_8h_ab9c5e315444772abc479b22b3556fe44af4c98a9ece6e04f96fb78421d5dc900d}} 
+P\+R\+E\+S\+C\+A\+L\+A\+R\+\_\+8&System Clock with pre-\/scalar 8 applied. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{P\+R\+E\+S\+C\+A\+L\+A\+R\+\_\+64@{P\+R\+E\+S\+C\+A\+L\+A\+R\+\_\+64}!T\+I\+M\+E\+R0\+\_\+interface.\+h@{T\+I\+M\+E\+R0\+\_\+interface.\+h}}\index{T\+I\+M\+E\+R0\+\_\+interface.\+h@{T\+I\+M\+E\+R0\+\_\+interface.\+h}!P\+R\+E\+S\+C\+A\+L\+A\+R\+\_\+64@{P\+R\+E\+S\+C\+A\+L\+A\+R\+\_\+64}}}\mbox{\label{_t_i_m_e_r0__interface_8h_ab9c5e315444772abc479b22b3556fe44a2fef84be9bb8f23f7305f7b2e3444a64}} 
+P\+R\+E\+S\+C\+A\+L\+A\+R\+\_\+64&System Clock with pre-\/scalar 64 applied. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{P\+R\+E\+S\+C\+A\+L\+A\+R\+\_\+256@{P\+R\+E\+S\+C\+A\+L\+A\+R\+\_\+256}!T\+I\+M\+E\+R0\+\_\+interface.\+h@{T\+I\+M\+E\+R0\+\_\+interface.\+h}}\index{T\+I\+M\+E\+R0\+\_\+interface.\+h@{T\+I\+M\+E\+R0\+\_\+interface.\+h}!P\+R\+E\+S\+C\+A\+L\+A\+R\+\_\+256@{P\+R\+E\+S\+C\+A\+L\+A\+R\+\_\+256}}}\mbox{\label{_t_i_m_e_r0__interface_8h_ab9c5e315444772abc479b22b3556fe44a5bef61e0a1a4f3b7bed7ead2c27e0b10}} 
+P\+R\+E\+S\+C\+A\+L\+A\+R\+\_\+256&System Clock with pre-\/scalar 256 applied. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{P\+R\+E\+S\+C\+A\+L\+A\+R\+\_\+1024@{P\+R\+E\+S\+C\+A\+L\+A\+R\+\_\+1024}!T\+I\+M\+E\+R0\+\_\+interface.\+h@{T\+I\+M\+E\+R0\+\_\+interface.\+h}}\index{T\+I\+M\+E\+R0\+\_\+interface.\+h@{T\+I\+M\+E\+R0\+\_\+interface.\+h}!P\+R\+E\+S\+C\+A\+L\+A\+R\+\_\+1024@{P\+R\+E\+S\+C\+A\+L\+A\+R\+\_\+1024}}}\mbox{\label{_t_i_m_e_r0__interface_8h_ab9c5e315444772abc479b22b3556fe44a325bbe1a030dfd1fe6be1b04af63d1f5}} 
+P\+R\+E\+S\+C\+A\+L\+A\+R\+\_\+1024&System Clock with pre-\/scalar 1024 applied. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{E\+X\+T\+\_\+\+F\+A\+L\+L\+I\+NG@{E\+X\+T\+\_\+\+F\+A\+L\+L\+I\+NG}!T\+I\+M\+E\+R0\+\_\+interface.\+h@{T\+I\+M\+E\+R0\+\_\+interface.\+h}}\index{T\+I\+M\+E\+R0\+\_\+interface.\+h@{T\+I\+M\+E\+R0\+\_\+interface.\+h}!E\+X\+T\+\_\+\+F\+A\+L\+L\+I\+NG@{E\+X\+T\+\_\+\+F\+A\+L\+L\+I\+NG}}}\mbox{\label{_t_i_m_e_r0__interface_8h_ab9c5e315444772abc479b22b3556fe44a191fa015ed802e6160a1ad53a3343362}} 
+E\+X\+T\+\_\+\+F\+A\+L\+L\+I\+NG&External Falling Edge Trigger on T0 Pin. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{E\+X\+T\+\_\+\+R\+I\+S\+I\+NG@{E\+X\+T\+\_\+\+R\+I\+S\+I\+NG}!T\+I\+M\+E\+R0\+\_\+interface.\+h@{T\+I\+M\+E\+R0\+\_\+interface.\+h}}\index{T\+I\+M\+E\+R0\+\_\+interface.\+h@{T\+I\+M\+E\+R0\+\_\+interface.\+h}!E\+X\+T\+\_\+\+R\+I\+S\+I\+NG@{E\+X\+T\+\_\+\+R\+I\+S\+I\+NG}}}\mbox{\label{_t_i_m_e_r0__interface_8h_ab9c5e315444772abc479b22b3556fe44a321061314b8984cc1768164674f2a972}} 
+E\+X\+T\+\_\+\+R\+I\+S\+I\+NG&External Rising Edge Trigger on T0 Pin. \\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\label{_t_i_m_e_r0__interface_8h_a74f58890b599c641e4382ff49c4a3e81}} 
+\index{T\+I\+M\+E\+R0\+\_\+interface.\+h@{T\+I\+M\+E\+R0\+\_\+interface.\+h}!Error\+State\+\_\+t@{Error\+State\+\_\+t}}
+\index{Error\+State\+\_\+t@{Error\+State\+\_\+t}!T\+I\+M\+E\+R0\+\_\+interface.\+h@{T\+I\+M\+E\+R0\+\_\+interface.\+h}}
+\subsubsection{Error\+State\+\_\+t}
+{\footnotesize\ttfamily enum \textbf{ Error\+State\+\_\+t}}
+
+Defines the Possible Error States of the Timer0 Driver \begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+I\+M0\+\_\+\+OK@{T\+I\+M0\+\_\+\+OK}!T\+I\+M\+E\+R0\+\_\+interface.\+h@{T\+I\+M\+E\+R0\+\_\+interface.\+h}}\index{T\+I\+M\+E\+R0\+\_\+interface.\+h@{T\+I\+M\+E\+R0\+\_\+interface.\+h}!T\+I\+M0\+\_\+\+OK@{T\+I\+M0\+\_\+\+OK}}}\mbox{\label{_t_i_m_e_r0__interface_8h_a74f58890b599c641e4382ff49c4a3e81aac9f56f37a326e091733f06ab989e423}} 
+T\+I\+M0\+\_\+\+OK&No error happened. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+I\+M0\+\_\+\+N\+U\+L\+L\+\_\+\+I\+N\+P\+UT@{T\+I\+M0\+\_\+\+N\+U\+L\+L\+\_\+\+I\+N\+P\+UT}!T\+I\+M\+E\+R0\+\_\+interface.\+h@{T\+I\+M\+E\+R0\+\_\+interface.\+h}}\index{T\+I\+M\+E\+R0\+\_\+interface.\+h@{T\+I\+M\+E\+R0\+\_\+interface.\+h}!T\+I\+M0\+\_\+\+N\+U\+L\+L\+\_\+\+I\+N\+P\+UT@{T\+I\+M0\+\_\+\+N\+U\+L\+L\+\_\+\+I\+N\+P\+UT}}}\mbox{\label{_t_i_m_e_r0__interface_8h_a74f58890b599c641e4382ff49c4a3e81a3ce2824ec8371b70e08d76a088cea192}} 
+T\+I\+M0\+\_\+\+N\+U\+L\+L\+\_\+\+I\+N\+P\+UT&Input a null pointer to the function. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+I\+M0\+\_\+\+W\+R\+O\+N\+G\+\_\+\+M\+O\+DE@{T\+I\+M0\+\_\+\+W\+R\+O\+N\+G\+\_\+\+M\+O\+DE}!T\+I\+M\+E\+R0\+\_\+interface.\+h@{T\+I\+M\+E\+R0\+\_\+interface.\+h}}\index{T\+I\+M\+E\+R0\+\_\+interface.\+h@{T\+I\+M\+E\+R0\+\_\+interface.\+h}!T\+I\+M0\+\_\+\+W\+R\+O\+N\+G\+\_\+\+M\+O\+DE@{T\+I\+M0\+\_\+\+W\+R\+O\+N\+G\+\_\+\+M\+O\+DE}}}\mbox{\label{_t_i_m_e_r0__interface_8h_a74f58890b599c641e4382ff49c4a3e81a67c8b11b71fa28abc7a55bdac8fd61a8}} 
+T\+I\+M0\+\_\+\+W\+R\+O\+N\+G\+\_\+\+M\+O\+DE&Entered a mode that timer0 doesn\textquotesingle{}t support review T\+I\+M0\+\_\+\+Mode\+\_\+t enum for the supported modes. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+I\+M0\+\_\+\+N\+O\+T\+\_\+\+I\+N\+I\+T\+I\+L\+I\+Z\+ED@{T\+I\+M0\+\_\+\+N\+O\+T\+\_\+\+I\+N\+I\+T\+I\+L\+I\+Z\+ED}!T\+I\+M\+E\+R0\+\_\+interface.\+h@{T\+I\+M\+E\+R0\+\_\+interface.\+h}}\index{T\+I\+M\+E\+R0\+\_\+interface.\+h@{T\+I\+M\+E\+R0\+\_\+interface.\+h}!T\+I\+M0\+\_\+\+N\+O\+T\+\_\+\+I\+N\+I\+T\+I\+L\+I\+Z\+ED@{T\+I\+M0\+\_\+\+N\+O\+T\+\_\+\+I\+N\+I\+T\+I\+L\+I\+Z\+ED}}}\mbox{\label{_t_i_m_e_r0__interface_8h_a74f58890b599c641e4382ff49c4a3e81ac915eb687f5b63c8b7de7a7e2c334e48}} 
+T\+I\+M0\+\_\+\+N\+O\+T\+\_\+\+I\+N\+I\+T\+I\+L\+I\+Z\+ED&The function require to intialize the timer first. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+I\+M0\+\_\+\+U\+N\+D\+E\+F\+I\+N\+E\+D\+\_\+\+C\+L\+K\+\_\+\+S\+T\+A\+TE@{T\+I\+M0\+\_\+\+U\+N\+D\+E\+F\+I\+N\+E\+D\+\_\+\+C\+L\+K\+\_\+\+S\+T\+A\+TE}!T\+I\+M\+E\+R0\+\_\+interface.\+h@{T\+I\+M\+E\+R0\+\_\+interface.\+h}}\index{T\+I\+M\+E\+R0\+\_\+interface.\+h@{T\+I\+M\+E\+R0\+\_\+interface.\+h}!T\+I\+M0\+\_\+\+U\+N\+D\+E\+F\+I\+N\+E\+D\+\_\+\+C\+L\+K\+\_\+\+S\+T\+A\+TE@{T\+I\+M0\+\_\+\+U\+N\+D\+E\+F\+I\+N\+E\+D\+\_\+\+C\+L\+K\+\_\+\+S\+T\+A\+TE}}}\mbox{\label{_t_i_m_e_r0__interface_8h_a74f58890b599c641e4382ff49c4a3e81a4c6507686009b3c0a1eb103ad2982333}} 
+T\+I\+M0\+\_\+\+U\+N\+D\+E\+F\+I\+N\+E\+D\+\_\+\+C\+L\+K\+\_\+\+S\+T\+A\+TE&Entered a clock mode that timer0 doesn\textquotesingle{}t support review Clk\+Source\+\_\+t enum for the supported modes. \\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\label{_t_i_m_e_r0__interface_8h_a6746d7ff1ce7e1f528b1f19a96221e30}} 
+\index{T\+I\+M\+E\+R0\+\_\+interface.\+h@{T\+I\+M\+E\+R0\+\_\+interface.\+h}!T\+I\+M0\+\_\+\+Mode\+\_\+t@{T\+I\+M0\+\_\+\+Mode\+\_\+t}}
+\index{T\+I\+M0\+\_\+\+Mode\+\_\+t@{T\+I\+M0\+\_\+\+Mode\+\_\+t}!T\+I\+M\+E\+R0\+\_\+interface.\+h@{T\+I\+M\+E\+R0\+\_\+interface.\+h}}
+\subsubsection{T\+I\+M0\+\_\+\+Mode\+\_\+t}
+{\footnotesize\ttfamily enum \textbf{ T\+I\+M0\+\_\+\+Mode\+\_\+t}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+I\+M0\+\_\+\+N\+O\+R\+M\+AL@{T\+I\+M0\+\_\+\+N\+O\+R\+M\+AL}!T\+I\+M\+E\+R0\+\_\+interface.\+h@{T\+I\+M\+E\+R0\+\_\+interface.\+h}}\index{T\+I\+M\+E\+R0\+\_\+interface.\+h@{T\+I\+M\+E\+R0\+\_\+interface.\+h}!T\+I\+M0\+\_\+\+N\+O\+R\+M\+AL@{T\+I\+M0\+\_\+\+N\+O\+R\+M\+AL}}}\mbox{\label{_t_i_m_e_r0__interface_8h_a6746d7ff1ce7e1f528b1f19a96221e30aea70db299805409214eb6c65d9a9dd6e}} 
+T\+I\+M0\+\_\+\+N\+O\+R\+M\+AL&Normal Mode. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+I\+M0\+\_\+\+C\+TC@{T\+I\+M0\+\_\+\+C\+TC}!T\+I\+M\+E\+R0\+\_\+interface.\+h@{T\+I\+M\+E\+R0\+\_\+interface.\+h}}\index{T\+I\+M\+E\+R0\+\_\+interface.\+h@{T\+I\+M\+E\+R0\+\_\+interface.\+h}!T\+I\+M0\+\_\+\+C\+TC@{T\+I\+M0\+\_\+\+C\+TC}}}\mbox{\label{_t_i_m_e_r0__interface_8h_a6746d7ff1ce7e1f528b1f19a96221e30afd28e8dc499850e57653702557160f6d}} 
+T\+I\+M0\+\_\+\+C\+TC&Clear Timer on Compare Mode. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+I\+M0\+\_\+\+F\+P\+W\+M\+\_\+\+N\+O\+N\+\_\+\+I\+N\+V\+E\+R\+T\+I\+NG@{T\+I\+M0\+\_\+\+F\+P\+W\+M\+\_\+\+N\+O\+N\+\_\+\+I\+N\+V\+E\+R\+T\+I\+NG}!T\+I\+M\+E\+R0\+\_\+interface.\+h@{T\+I\+M\+E\+R0\+\_\+interface.\+h}}\index{T\+I\+M\+E\+R0\+\_\+interface.\+h@{T\+I\+M\+E\+R0\+\_\+interface.\+h}!T\+I\+M0\+\_\+\+F\+P\+W\+M\+\_\+\+N\+O\+N\+\_\+\+I\+N\+V\+E\+R\+T\+I\+NG@{T\+I\+M0\+\_\+\+F\+P\+W\+M\+\_\+\+N\+O\+N\+\_\+\+I\+N\+V\+E\+R\+T\+I\+NG}}}\mbox{\label{_t_i_m_e_r0__interface_8h_a6746d7ff1ce7e1f528b1f19a96221e30a4e51aa03ae75be1d91140bf610e7bcd6}} 
+T\+I\+M0\+\_\+\+F\+P\+W\+M\+\_\+\+N\+O\+N\+\_\+\+I\+N\+V\+E\+R\+T\+I\+NG&Fast Non inverting P\+WM. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+I\+M0\+\_\+\+F\+P\+W\+M\+\_\+\+I\+N\+V\+E\+R\+T\+I\+NG@{T\+I\+M0\+\_\+\+F\+P\+W\+M\+\_\+\+I\+N\+V\+E\+R\+T\+I\+NG}!T\+I\+M\+E\+R0\+\_\+interface.\+h@{T\+I\+M\+E\+R0\+\_\+interface.\+h}}\index{T\+I\+M\+E\+R0\+\_\+interface.\+h@{T\+I\+M\+E\+R0\+\_\+interface.\+h}!T\+I\+M0\+\_\+\+F\+P\+W\+M\+\_\+\+I\+N\+V\+E\+R\+T\+I\+NG@{T\+I\+M0\+\_\+\+F\+P\+W\+M\+\_\+\+I\+N\+V\+E\+R\+T\+I\+NG}}}\mbox{\label{_t_i_m_e_r0__interface_8h_a6746d7ff1ce7e1f528b1f19a96221e30a0fab84a1ab552d189978c0161032cdc6}} 
+T\+I\+M0\+\_\+\+F\+P\+W\+M\+\_\+\+I\+N\+V\+E\+R\+T\+I\+NG&Fast inverting P\+WM. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+I\+M0\+\_\+\+P\+C\+P\+W\+M\+\_\+\+N\+O\+N\+\_\+\+I\+N\+V\+E\+R\+T\+I\+NG@{T\+I\+M0\+\_\+\+P\+C\+P\+W\+M\+\_\+\+N\+O\+N\+\_\+\+I\+N\+V\+E\+R\+T\+I\+NG}!T\+I\+M\+E\+R0\+\_\+interface.\+h@{T\+I\+M\+E\+R0\+\_\+interface.\+h}}\index{T\+I\+M\+E\+R0\+\_\+interface.\+h@{T\+I\+M\+E\+R0\+\_\+interface.\+h}!T\+I\+M0\+\_\+\+P\+C\+P\+W\+M\+\_\+\+N\+O\+N\+\_\+\+I\+N\+V\+E\+R\+T\+I\+NG@{T\+I\+M0\+\_\+\+P\+C\+P\+W\+M\+\_\+\+N\+O\+N\+\_\+\+I\+N\+V\+E\+R\+T\+I\+NG}}}\mbox{\label{_t_i_m_e_r0__interface_8h_a6746d7ff1ce7e1f528b1f19a96221e30aab8dab219e4999dab75df26969272506}} 
+T\+I\+M0\+\_\+\+P\+C\+P\+W\+M\+\_\+\+N\+O\+N\+\_\+\+I\+N\+V\+E\+R\+T\+I\+NG&Phase Correct Non inverting P\+WM. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+I\+M0\+\_\+\+P\+C\+P\+W\+M\+\_\+\+I\+N\+V\+E\+R\+T\+I\+NG@{T\+I\+M0\+\_\+\+P\+C\+P\+W\+M\+\_\+\+I\+N\+V\+E\+R\+T\+I\+NG}!T\+I\+M\+E\+R0\+\_\+interface.\+h@{T\+I\+M\+E\+R0\+\_\+interface.\+h}}\index{T\+I\+M\+E\+R0\+\_\+interface.\+h@{T\+I\+M\+E\+R0\+\_\+interface.\+h}!T\+I\+M0\+\_\+\+P\+C\+P\+W\+M\+\_\+\+I\+N\+V\+E\+R\+T\+I\+NG@{T\+I\+M0\+\_\+\+P\+C\+P\+W\+M\+\_\+\+I\+N\+V\+E\+R\+T\+I\+NG}}}\mbox{\label{_t_i_m_e_r0__interface_8h_a6746d7ff1ce7e1f528b1f19a96221e30ad21ea38fd97818dd9ccc779406a923a1}} 
+T\+I\+M0\+\_\+\+P\+C\+P\+W\+M\+\_\+\+I\+N\+V\+E\+R\+T\+I\+NG&Phase Correct inverting P\+WM. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\subsection{Function Documentation}
+\mbox{\label{_t_i_m_e_r0__interface_8h_a565f3f7d2e3f84ebe03be74f9ed2930c}} 
+\index{T\+I\+M\+E\+R0\+\_\+interface.\+h@{T\+I\+M\+E\+R0\+\_\+interface.\+h}!T\+I\+M0\+\_\+u8\+Disable\+O\+C\+Interrupt@{T\+I\+M0\+\_\+u8\+Disable\+O\+C\+Interrupt}}
+\index{T\+I\+M0\+\_\+u8\+Disable\+O\+C\+Interrupt@{T\+I\+M0\+\_\+u8\+Disable\+O\+C\+Interrupt}!T\+I\+M\+E\+R0\+\_\+interface.\+h@{T\+I\+M\+E\+R0\+\_\+interface.\+h}}
+\subsubsection{T\+I\+M0\+\_\+u8\+Disable\+O\+C\+Interrupt()}
+{\footnotesize\ttfamily \textbf{ Error\+State\+\_\+t} T\+I\+M0\+\_\+u8\+Disable\+O\+C\+Interrupt (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\label{_t_i_m_e_r0__interface_8h_ae9e78be817ed1d8c04893aa9a627dcd7}} 
+\index{T\+I\+M\+E\+R0\+\_\+interface.\+h@{T\+I\+M\+E\+R0\+\_\+interface.\+h}!T\+I\+M0\+\_\+u8\+Disable\+O\+V\+F\+Interrupt@{T\+I\+M0\+\_\+u8\+Disable\+O\+V\+F\+Interrupt}}
+\index{T\+I\+M0\+\_\+u8\+Disable\+O\+V\+F\+Interrupt@{T\+I\+M0\+\_\+u8\+Disable\+O\+V\+F\+Interrupt}!T\+I\+M\+E\+R0\+\_\+interface.\+h@{T\+I\+M\+E\+R0\+\_\+interface.\+h}}
+\subsubsection{T\+I\+M0\+\_\+u8\+Disable\+O\+V\+F\+Interrupt()}
+{\footnotesize\ttfamily \textbf{ Error\+State\+\_\+t} T\+I\+M0\+\_\+u8\+Disable\+O\+V\+F\+Interrupt (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\label{_t_i_m_e_r0__interface_8h_a80bbcb7217a1f9389e1f73d39b3b04d3}} 
+\index{T\+I\+M\+E\+R0\+\_\+interface.\+h@{T\+I\+M\+E\+R0\+\_\+interface.\+h}!T\+I\+M0\+\_\+u8\+Enable\+O\+C\+Interrupt@{T\+I\+M0\+\_\+u8\+Enable\+O\+C\+Interrupt}}
+\index{T\+I\+M0\+\_\+u8\+Enable\+O\+C\+Interrupt@{T\+I\+M0\+\_\+u8\+Enable\+O\+C\+Interrupt}!T\+I\+M\+E\+R0\+\_\+interface.\+h@{T\+I\+M\+E\+R0\+\_\+interface.\+h}}
+\subsubsection{T\+I\+M0\+\_\+u8\+Enable\+O\+C\+Interrupt()}
+{\footnotesize\ttfamily \textbf{ Error\+State\+\_\+t} T\+I\+M0\+\_\+u8\+Enable\+O\+C\+Interrupt (\begin{DoxyParamCaption}\item[{void($\ast$)(void)}]{v\+Call\+Back\+Fun }\end{DoxyParamCaption})}
+
+
+
+this function is used to enable and configure the Compare match interrupt of timer 0 
+
+
+\begin{DoxyParams}{Parameters}
+{\em v\+Call\+Back\+Fun} & \+: a pointer to function that contain the logic wanted to be performed on the interrupt I\+SR \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+return a number from 1 -\/ 255 represent the error state of the system and can be 1 \+: T\+I\+M0\+\_\+\+OK 252\+: T\+I\+M0\+\_\+\+N\+U\+L\+L\+\_\+\+I\+N\+P\+UT 
+\end{DoxyReturn}
+\mbox{\label{_t_i_m_e_r0__interface_8h_a1d94b9fccfdcbb336ed7f975cc947730}} 
+\index{T\+I\+M\+E\+R0\+\_\+interface.\+h@{T\+I\+M\+E\+R0\+\_\+interface.\+h}!T\+I\+M0\+\_\+u8\+Enable\+O\+V\+F\+Interrupt@{T\+I\+M0\+\_\+u8\+Enable\+O\+V\+F\+Interrupt}}
+\index{T\+I\+M0\+\_\+u8\+Enable\+O\+V\+F\+Interrupt@{T\+I\+M0\+\_\+u8\+Enable\+O\+V\+F\+Interrupt}!T\+I\+M\+E\+R0\+\_\+interface.\+h@{T\+I\+M\+E\+R0\+\_\+interface.\+h}}
+\subsubsection{T\+I\+M0\+\_\+u8\+Enable\+O\+V\+F\+Interrupt()}
+{\footnotesize\ttfamily \textbf{ Error\+State\+\_\+t} T\+I\+M0\+\_\+u8\+Enable\+O\+V\+F\+Interrupt (\begin{DoxyParamCaption}\item[{void($\ast$)(void)}]{v\+Call\+Back\+Fun }\end{DoxyParamCaption})}
+
+
+
+this function is used to enable and configure the over flow interrupt of timer 0 
+
+
+\begin{DoxyParams}{Parameters}
+{\em v\+Call\+Back\+Fun} & \+: a pointer to function that contain the logic wanted to be performed on the interrupt I\+SR \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+return a number from 1 -\/ 255 represent the error state of the system and can be 1 \+: T\+I\+M0\+\_\+\+OK 252\+: T\+I\+M0\+\_\+\+N\+U\+L\+L\+\_\+\+I\+N\+P\+UT 
+\end{DoxyReturn}
+\mbox{\label{_t_i_m_e_r0__interface_8h_affaf298d5dadbb9ea2c5b0782b49b30c}} 
+\index{T\+I\+M\+E\+R0\+\_\+interface.\+h@{T\+I\+M\+E\+R0\+\_\+interface.\+h}!T\+I\+M0\+\_\+u8\+Get\+Counts@{T\+I\+M0\+\_\+u8\+Get\+Counts}}
+\index{T\+I\+M0\+\_\+u8\+Get\+Counts@{T\+I\+M0\+\_\+u8\+Get\+Counts}!T\+I\+M\+E\+R0\+\_\+interface.\+h@{T\+I\+M\+E\+R0\+\_\+interface.\+h}}
+\subsubsection{T\+I\+M0\+\_\+u8\+Get\+Counts()}
+{\footnotesize\ttfamily \textbf{ Error\+State\+\_\+t} T\+I\+M0\+\_\+u8\+Get\+Counts (\begin{DoxyParamCaption}\item[{\textbf{ uint8\+\_\+t} $\ast$}]{pu8\+\_\+\+Returned\+Counts }\end{DoxyParamCaption})}
+
+
+
+this function is used to read the number of counts in the counter/timer right now 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pu8\+\_\+\+Returned\+Counts} & \+: a pointer to a uint8\+\_\+t number that will hold the number of counts \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+return a number from 1 -\/ 255 represent the error state of the system and can be 1 \+: T\+I\+M0\+\_\+\+OK 252\+: T\+I\+M0\+\_\+\+N\+U\+L\+L\+\_\+\+I\+N\+P\+UT 
+\end{DoxyReturn}
+\mbox{\label{_t_i_m_e_r0__interface_8h_a7411543d6d0d589f6b5fa318bcf59d88}} 
+\index{T\+I\+M\+E\+R0\+\_\+interface.\+h@{T\+I\+M\+E\+R0\+\_\+interface.\+h}!T\+I\+M0\+\_\+u8\+Init@{T\+I\+M0\+\_\+u8\+Init}}
+\index{T\+I\+M0\+\_\+u8\+Init@{T\+I\+M0\+\_\+u8\+Init}!T\+I\+M\+E\+R0\+\_\+interface.\+h@{T\+I\+M\+E\+R0\+\_\+interface.\+h}}
+\subsubsection{T\+I\+M0\+\_\+u8\+Init()}
+{\footnotesize\ttfamily \textbf{ Error\+State\+\_\+t} T\+I\+M0\+\_\+u8\+Init (\begin{DoxyParamCaption}\item[{\textbf{ T\+I\+M0\+\_\+\+Config\+\_\+t} $\ast$}]{pst\+\_\+\+T\+I\+M\+Config }\end{DoxyParamCaption})}
+
+
+
+this function is used to initialize timer0 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pst\+\_\+\+T\+I\+M\+Config} & \+: a pointer to a structure contain the configuration information need to initialize the timer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+return a number from 1 -\/ 255 represent the error state of the system and can be 1 \+: T\+I\+M0\+\_\+\+OK 253\+: T\+I\+M0\+\_\+\+W\+R\+O\+N\+G\+\_\+\+M\+O\+DE 252\+: T\+I\+M0\+\_\+\+N\+U\+L\+L\+\_\+\+I\+N\+P\+UT 
+\end{DoxyReturn}
+\mbox{\label{_t_i_m_e_r0__interface_8h_a689d58acea491f346ef7ea249f7c98e0}} 
+\index{T\+I\+M\+E\+R0\+\_\+interface.\+h@{T\+I\+M\+E\+R0\+\_\+interface.\+h}!T\+I\+M0\+\_\+u8\+Set\+Compare\+Value@{T\+I\+M0\+\_\+u8\+Set\+Compare\+Value}}
+\index{T\+I\+M0\+\_\+u8\+Set\+Compare\+Value@{T\+I\+M0\+\_\+u8\+Set\+Compare\+Value}!T\+I\+M\+E\+R0\+\_\+interface.\+h@{T\+I\+M\+E\+R0\+\_\+interface.\+h}}
+\subsubsection{T\+I\+M0\+\_\+u8\+Set\+Compare\+Value()}
+{\footnotesize\ttfamily \textbf{ Error\+State\+\_\+t} T\+I\+M0\+\_\+u8\+Set\+Compare\+Value (\begin{DoxyParamCaption}\item[{\textbf{ uint8\+\_\+t}}]{u8\+Set\+Compare\+Value }\end{DoxyParamCaption})}
+
+
+
+this function is used to set a value to compare the number of counts with 
+
+
+\begin{DoxyParams}{Parameters}
+{\em u8\+Set\+Compare\+Value} & \+: a number between 0 -\/ 255 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+return a number from 1 -\/ 255 represent the error state of the system and can be 1 \+: T\+I\+M0\+\_\+\+OK 254\+: T\+I\+M0\+\_\+\+N\+O\+T\+\_\+\+I\+N\+I\+T\+I\+L\+I\+Z\+ED 
+\end{DoxyReturn}
+\mbox{\label{_t_i_m_e_r0__interface_8h_a7c40b4a0e508474d5068471682567f39}} 
+\index{T\+I\+M\+E\+R0\+\_\+interface.\+h@{T\+I\+M\+E\+R0\+\_\+interface.\+h}!T\+I\+M0\+\_\+u8\+Set\+P\+W\+M\+Duty\+Cycle@{T\+I\+M0\+\_\+u8\+Set\+P\+W\+M\+Duty\+Cycle}}
+\index{T\+I\+M0\+\_\+u8\+Set\+P\+W\+M\+Duty\+Cycle@{T\+I\+M0\+\_\+u8\+Set\+P\+W\+M\+Duty\+Cycle}!T\+I\+M\+E\+R0\+\_\+interface.\+h@{T\+I\+M\+E\+R0\+\_\+interface.\+h}}
+\subsubsection{T\+I\+M0\+\_\+u8\+Set\+P\+W\+M\+Duty\+Cycle()}
+{\footnotesize\ttfamily \textbf{ Error\+State\+\_\+t} T\+I\+M0\+\_\+u8\+Set\+P\+W\+M\+Duty\+Cycle (\begin{DoxyParamCaption}\item[{\textbf{ uint8\+\_\+t}}]{u8\+Duty\+Cycle }\end{DoxyParamCaption})}
+
+\mbox{\label{_t_i_m_e_r0__interface_8h_ab588fb0557b32e1d9b4c1c075a413c37}} 
+\index{T\+I\+M\+E\+R0\+\_\+interface.\+h@{T\+I\+M\+E\+R0\+\_\+interface.\+h}!T\+I\+M0\+\_\+u8\+Set\+Start@{T\+I\+M0\+\_\+u8\+Set\+Start}}
+\index{T\+I\+M0\+\_\+u8\+Set\+Start@{T\+I\+M0\+\_\+u8\+Set\+Start}!T\+I\+M\+E\+R0\+\_\+interface.\+h@{T\+I\+M\+E\+R0\+\_\+interface.\+h}}
+\subsubsection{T\+I\+M0\+\_\+u8\+Set\+Start()}
+{\footnotesize\ttfamily \textbf{ Error\+State\+\_\+t} T\+I\+M0\+\_\+u8\+Set\+Start (\begin{DoxyParamCaption}\item[{\textbf{ uint8\+\_\+t}}]{u8\+Starting\+Point }\end{DoxyParamCaption})}
+
+
+
+this function is used to change the beginning of the counting which is initialized to T\+I\+M\+E\+R0\+\_\+\+I\+N\+I\+T\+I\+A\+L\+\_\+\+S\+T\+A\+RT in the configuration file 
+
+
+\begin{DoxyParams}{Parameters}
+{\em u8\+Starting\+Point} & \+: a number between 0 -\/ 255 represent the number you want to start counting from \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+return a number from 1 -\/ 255 represent the error state of the system and can be 1 \+: T\+I\+M0\+\_\+\+OK 
+\end{DoxyReturn}
+\mbox{\label{_t_i_m_e_r0__interface_8h_af55bbe4c18d1c81a9ac0e9d0c1829e86}} 
+\index{T\+I\+M\+E\+R0\+\_\+interface.\+h@{T\+I\+M\+E\+R0\+\_\+interface.\+h}!T\+I\+M0\+\_\+u8\+Timer\+Start@{T\+I\+M0\+\_\+u8\+Timer\+Start}}
+\index{T\+I\+M0\+\_\+u8\+Timer\+Start@{T\+I\+M0\+\_\+u8\+Timer\+Start}!T\+I\+M\+E\+R0\+\_\+interface.\+h@{T\+I\+M\+E\+R0\+\_\+interface.\+h}}
+\subsubsection{T\+I\+M0\+\_\+u8\+Timer\+Start()}
+{\footnotesize\ttfamily \textbf{ Error\+State\+\_\+t} T\+I\+M0\+\_\+u8\+Timer\+Start (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+This function is used to start the timer counting process with previously initialized configurations. 
+
+\begin{DoxyReturn}{Returns}
+return a number from 1 -\/ 255 represent the error state of the system and can be 1 \+: T\+I\+M0\+\_\+\+OK 254\+: T\+I\+M0\+\_\+\+N\+O\+T\+\_\+\+I\+N\+I\+T\+I\+L\+I\+Z\+ED 255\+: T\+I\+M0\+\_\+\+U\+N\+D\+E\+F\+I\+N\+E\+D\+\_\+\+C\+L\+K\+\_\+\+S\+T\+A\+TE 
+\end{DoxyReturn}
+\mbox{\label{_t_i_m_e_r0__interface_8h_a879b492bece4a913fb4a0d0b0e96dcd1}} 
+\index{T\+I\+M\+E\+R0\+\_\+interface.\+h@{T\+I\+M\+E\+R0\+\_\+interface.\+h}!T\+I\+M0\+\_\+u8\+Timer\+Stop@{T\+I\+M0\+\_\+u8\+Timer\+Stop}}
+\index{T\+I\+M0\+\_\+u8\+Timer\+Stop@{T\+I\+M0\+\_\+u8\+Timer\+Stop}!T\+I\+M\+E\+R0\+\_\+interface.\+h@{T\+I\+M\+E\+R0\+\_\+interface.\+h}}
+\subsubsection{T\+I\+M0\+\_\+u8\+Timer\+Stop()}
+{\footnotesize\ttfamily \textbf{ Error\+State\+\_\+t} T\+I\+M0\+\_\+u8\+Timer\+Stop (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+This function is used to start the timer counting process with previously initialized configurations. 
+
+\begin{DoxyReturn}{Returns}
+return a number from 1 -\/ 255 represent the error state of the system and can be 1 \+: T\+I\+M0\+\_\+\+OK 254\+: T\+I\+M0\+\_\+\+N\+O\+T\+\_\+\+I\+N\+I\+T\+I\+L\+I\+Z\+ED 
+\end{DoxyReturn}

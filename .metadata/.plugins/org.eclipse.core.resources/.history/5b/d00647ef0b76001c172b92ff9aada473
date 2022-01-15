@@ -1,0 +1,13 @@
+/*
+ * DELAY_cfg.h
+ *
+ *  Created on: Jan 15, 2022
+ *      Author: vip
+ */
+
+#ifndef MCAL_DELAY_DELAY_CFG_H_
+#define MCAL_DELAY_DELAY_CFG_H_
+
+#define DELAY_F_CPU		8000000
+
+#endif /* MCAL_DELAY_DELAY_CFG_H_ */

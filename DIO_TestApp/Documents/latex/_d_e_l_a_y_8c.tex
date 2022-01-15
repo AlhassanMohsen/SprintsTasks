@@ -1,0 +1,89 @@
+\hypertarget{_d_e_l_a_y_8c}{}\section{M\+C\+A\+L/\+D\+E\+L\+A\+Y/\+D\+E\+L\+AY.c File Reference}
+\label{_d_e_l_a_y_8c}\index{M\+C\+A\+L/\+D\+E\+L\+A\+Y/\+D\+E\+L\+A\+Y.\+c@{M\+C\+A\+L/\+D\+E\+L\+A\+Y/\+D\+E\+L\+A\+Y.\+c}}
+{\ttfamily \#include \char`\"{}D\+E\+L\+A\+Y\+\_\+interface.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}D\+E\+L\+A\+Y\+\_\+cfg.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}D\+E\+L\+A\+Y\+\_\+prv.\+h\char`\"{}}\newline
+Include dependency graph for D\+E\+L\+A\+Y.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_d_e_l_a_y_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_d_e_l_a_y__interface_8h_acaa203ee36efe1b36e4eb0431f5dc819}{Delay\+Error\+State\+\_\+t} \hyperlink{_d_e_l_a_y_8c_aa4346d56eeef88daa52470a640c669ac}{D\+E\+L\+A\+Y\+\_\+ms} (\hyperlink{_typedef_8h_a273cf69d639a59973b6019625df33e30}{uint16\+\_\+t} u8\+Ms\+Delay)
+\begin{DoxyCompactList}\small\item\em This function used to make a delay using pooling mechanism. \end{DoxyCompactList}\item 
+void \hyperlink{_d_e_l_a_y_8c_aeb0ca1fe1f79a5ee88cfdaa9199ce200}{D\+E\+L\+A\+Y\+\_\+v\+Ms\+Call\+Back\+Fun} (void)
+\begin{DoxyCompactList}\small\item\em this function is used to write the logic wanted to be performed in the I\+SR of the timer \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static volatile \hyperlink{_typedef_8h_a273cf69d639a59973b6019625df33e30}{uint16\+\_\+t} \hyperlink{_d_e_l_a_y_8c_aca77dc08f4a172dd9cac26221d384826}{ms\+Delay\+Counter}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{_d_e_l_a_y_8c_aa4346d56eeef88daa52470a640c669ac}\label{_d_e_l_a_y_8c_aa4346d56eeef88daa52470a640c669ac}} 
+\index{D\+E\+L\+A\+Y.\+c@{D\+E\+L\+A\+Y.\+c}!D\+E\+L\+A\+Y\+\_\+ms@{D\+E\+L\+A\+Y\+\_\+ms}}
+\index{D\+E\+L\+A\+Y\+\_\+ms@{D\+E\+L\+A\+Y\+\_\+ms}!D\+E\+L\+A\+Y.\+c@{D\+E\+L\+A\+Y.\+c}}
+\subsubsection{\texorpdfstring{D\+E\+L\+A\+Y\+\_\+ms()}{DELAY\_ms()}}
+{\footnotesize\ttfamily \hyperlink{_d_e_l_a_y__interface_8h_acaa203ee36efe1b36e4eb0431f5dc819}{Delay\+Error\+State\+\_\+t} D\+E\+L\+A\+Y\+\_\+ms (\begin{DoxyParamCaption}\item[{\hyperlink{_typedef_8h_a273cf69d639a59973b6019625df33e30}{uint16\+\_\+t}}]{u8\+Ms\+Delay }\end{DoxyParamCaption})}
+
+
+
+This function used to make a delay using pooling mechanism. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em u8\+Ms\+Delay} & \+: the time of the delay desired in milliseconds can be 0 -\/ 65535 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+return a number from 0 -\/ 255 represent the error states of the function. Possible returns are 1 \+: D\+E\+L\+A\+Y\+\_\+\+OK 255\+: D\+E\+L\+A\+Y\+\_\+\+T\+M\+E\+R\+\_\+\+R\+E\+T\+U\+R\+N\+\_\+\+E\+R\+R\+OR 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=319pt]{_d_e_l_a_y_8c_aa4346d56eeef88daa52470a640c669ac_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_d_e_l_a_y_8c_aa4346d56eeef88daa52470a640c669ac_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_d_e_l_a_y_8c_aeb0ca1fe1f79a5ee88cfdaa9199ce200}\label{_d_e_l_a_y_8c_aeb0ca1fe1f79a5ee88cfdaa9199ce200}} 
+\index{D\+E\+L\+A\+Y.\+c@{D\+E\+L\+A\+Y.\+c}!D\+E\+L\+A\+Y\+\_\+v\+Ms\+Call\+Back\+Fun@{D\+E\+L\+A\+Y\+\_\+v\+Ms\+Call\+Back\+Fun}}
+\index{D\+E\+L\+A\+Y\+\_\+v\+Ms\+Call\+Back\+Fun@{D\+E\+L\+A\+Y\+\_\+v\+Ms\+Call\+Back\+Fun}!D\+E\+L\+A\+Y.\+c@{D\+E\+L\+A\+Y.\+c}}
+\subsubsection{\texorpdfstring{D\+E\+L\+A\+Y\+\_\+v\+Ms\+Call\+Back\+Fun()}{DELAY\_vMsCallBackFun()}}
+{\footnotesize\ttfamily void D\+E\+L\+A\+Y\+\_\+v\+Ms\+Call\+Back\+Fun (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+this function is used to write the logic wanted to be performed in the I\+SR of the timer 
+
+Check The cpu clock and the prescalar used for timer0 to decide the compare counts suitable to generate an interrupt every 1 ms Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_d_e_l_a_y_8c_aeb0ca1fe1f79a5ee88cfdaa9199ce200_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{_d_e_l_a_y_8c_aca77dc08f4a172dd9cac26221d384826}\label{_d_e_l_a_y_8c_aca77dc08f4a172dd9cac26221d384826}} 
+\index{D\+E\+L\+A\+Y.\+c@{D\+E\+L\+A\+Y.\+c}!ms\+Delay\+Counter@{ms\+Delay\+Counter}}
+\index{ms\+Delay\+Counter@{ms\+Delay\+Counter}!D\+E\+L\+A\+Y.\+c@{D\+E\+L\+A\+Y.\+c}}
+\subsubsection{\texorpdfstring{ms\+Delay\+Counter}{msDelayCounter}}
+{\footnotesize\ttfamily volatile \hyperlink{_typedef_8h_a273cf69d639a59973b6019625df33e30}{uint16\+\_\+t} ms\+Delay\+Counter\hspace{0.3cm}{\ttfamily [static]}}
+

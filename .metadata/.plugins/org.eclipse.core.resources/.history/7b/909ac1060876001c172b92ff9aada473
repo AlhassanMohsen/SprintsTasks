@@ -1,0 +1,18 @@
+/*
+ * DELAY.c
+ *
+ *  Created on: Jan 15, 2022
+ *      Author: vip
+ */
+
+
+#include "DELAY_interface.h"
+
+
+DelayErrorState_t DELAY_ms(uint8_t u8MsDelay)
+{
+	uint8_t u8ErrorState = DELAY_OK;
+
+
+	return u8ErrorState;
+}

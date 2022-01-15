@@ -1,0 +1,193 @@
+\hypertarget{_d_i_o_8c}{}\section{M\+C\+A\+L/\+D\+I\+O/\+D\+IO.c File Reference}
+\label{_d_i_o_8c}\index{M\+C\+A\+L/\+D\+I\+O/\+D\+I\+O.\+c@{M\+C\+A\+L/\+D\+I\+O/\+D\+I\+O.\+c}}
+{\ttfamily \#include \char`\"{}D\+I\+O\+\_\+interface.\+h\char`\"{}}\newline
+Include dependency graph for D\+I\+O.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_d_i_o_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_d_i_o__interface_8h_a833fa7b7b4b716cada3a3b01248af306}{D\+I\+O\+\_\+\+Error\+State\+\_\+t} \hyperlink{_d_i_o_8c_ad16a829fb6b44a4a9a3ab4d57401a4fc}{D\+I\+O\+\_\+u8\+Set\+Pin\+Direction} (\hyperlink{_d_i_o__interface_8h_a45420cdbc9f59706bc3d6918db1afed6}{D\+I\+O\+Port\+\_\+t} u8\+\_\+\+Port\+Name, \hyperlink{_d_i_o__interface_8h_ac69f6dc4b59f755ea0b7381ba40bad32}{D\+I\+O\+Pin\+\_\+t} u8\+\_\+\+Pin\+Num, \hyperlink{_d_i_o__interface_8h_acfa4e9ecb790ebf0fd6cb11f987dddeb}{D\+I\+O\+Dir\+\_\+t} u8\+\_\+\+Pin\+Dir)
+\begin{DoxyCompactList}\small\item\em this function used to choose the pin direction \end{DoxyCompactList}\item 
+\hyperlink{_d_i_o__interface_8h_a833fa7b7b4b716cada3a3b01248af306}{D\+I\+O\+\_\+\+Error\+State\+\_\+t} \hyperlink{_d_i_o_8c_a5d5a58f8379f5708eb64eae7d5b059ca}{D\+I\+O\+\_\+u8\+Set\+Pin\+Data} (\hyperlink{_d_i_o__interface_8h_a45420cdbc9f59706bc3d6918db1afed6}{D\+I\+O\+Port\+\_\+t} u8\+\_\+\+Port\+Name, \hyperlink{_d_i_o__interface_8h_ac69f6dc4b59f755ea0b7381ba40bad32}{D\+I\+O\+Pin\+\_\+t} u8\+\_\+\+Pin\+Num, \hyperlink{_typedef_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\+\_\+t} u8\+\_\+\+Pin\+Value)
+\item 
+\hyperlink{_d_i_o__interface_8h_a833fa7b7b4b716cada3a3b01248af306}{D\+I\+O\+\_\+\+Error\+State\+\_\+t} \hyperlink{_d_i_o_8c_a413e1409f9a9885a44440376f775b818}{D\+I\+O\+\_\+u8\+Get\+Pin\+Data} (\hyperlink{_d_i_o__interface_8h_a45420cdbc9f59706bc3d6918db1afed6}{D\+I\+O\+Port\+\_\+t} u8\+\_\+\+Port\+Name, \hyperlink{_d_i_o__interface_8h_ac69f6dc4b59f755ea0b7381ba40bad32}{D\+I\+O\+Pin\+\_\+t} u8\+\_\+\+Pin\+Num, \hyperlink{_typedef_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\+\_\+t} $\ast$pu8\+\_\+\+Return\+Var)
+\begin{DoxyCompactList}\small\item\em This function is used to get the state of the pin when it is configured as input. \end{DoxyCompactList}\item 
+\hyperlink{_d_i_o__interface_8h_a833fa7b7b4b716cada3a3b01248af306}{D\+I\+O\+\_\+\+Error\+State\+\_\+t} \hyperlink{_d_i_o_8c_a19142acb7bbde8f2144a48be4bc38a3f}{D\+I\+O\+\_\+u8\+Set\+Port\+Direction} (\hyperlink{_d_i_o__interface_8h_a45420cdbc9f59706bc3d6918db1afed6}{D\+I\+O\+Port\+\_\+t} u8\+\_\+\+Port\+Name, \hyperlink{_d_i_o__interface_8h_acfa4e9ecb790ebf0fd6cb11f987dddeb}{D\+I\+O\+Dir\+\_\+t} u8\+\_\+\+Dir)
+\begin{DoxyCompactList}\small\item\em this function is used to set the direction for a complete D\+IO Port \end{DoxyCompactList}\item 
+\hyperlink{_d_i_o__interface_8h_a833fa7b7b4b716cada3a3b01248af306}{D\+I\+O\+\_\+\+Error\+State\+\_\+t} \hyperlink{_d_i_o_8c_acc8e5d2fe7e4b8027985d622a11db575}{D\+I\+O\+\_\+u8\+Set\+Port\+Data} (\hyperlink{_d_i_o__interface_8h_a45420cdbc9f59706bc3d6918db1afed6}{D\+I\+O\+Port\+\_\+t} u8\+\_\+\+Port\+Name, \hyperlink{_typedef_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\+\_\+t} u8\+\_\+\+Value)
+\begin{DoxyCompactList}\small\item\em this function is used to output a value on D\+IO Port \end{DoxyCompactList}\item 
+\hyperlink{_d_i_o__interface_8h_a833fa7b7b4b716cada3a3b01248af306}{D\+I\+O\+\_\+\+Error\+State\+\_\+t} \hyperlink{_d_i_o_8c_a92558ac6d84544c7554f6ddbfb81f35f}{D\+I\+O\+\_\+u8\+Get\+Port\+Data} (\hyperlink{_d_i_o__interface_8h_a45420cdbc9f59706bc3d6918db1afed6}{D\+I\+O\+Port\+\_\+t} u8\+\_\+\+Port\+Name, \hyperlink{_typedef_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\+\_\+t} $\ast$pu8\+\_\+\+Return\+Var)
+\begin{DoxyCompactList}\small\item\em this function is used to get the value presented on an input D\+IO Port \end{DoxyCompactList}\item 
+\hyperlink{_d_i_o__interface_8h_a833fa7b7b4b716cada3a3b01248af306}{D\+I\+O\+\_\+\+Error\+State\+\_\+t} \hyperlink{_d_i_o_8c_a8caffe2a4db322f3e6de4c4b55b9a842}{D\+I\+O\+\_\+u8\+Toggle\+Pin\+Data} (\hyperlink{_d_i_o__interface_8h_a45420cdbc9f59706bc3d6918db1afed6}{D\+I\+O\+Port\+\_\+t} u8\+\_\+\+Port\+Name, \hyperlink{_d_i_o__interface_8h_ac69f6dc4b59f755ea0b7381ba40bad32}{D\+I\+O\+Pin\+\_\+t} u8\+\_\+\+Pin\+Num)
+\begin{DoxyCompactList}\small\item\em This function is used to toggle the output of an output pin. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{_d_i_o_8c_a413e1409f9a9885a44440376f775b818}\label{_d_i_o_8c_a413e1409f9a9885a44440376f775b818}} 
+\index{D\+I\+O.\+c@{D\+I\+O.\+c}!D\+I\+O\+\_\+u8\+Get\+Pin\+Data@{D\+I\+O\+\_\+u8\+Get\+Pin\+Data}}
+\index{D\+I\+O\+\_\+u8\+Get\+Pin\+Data@{D\+I\+O\+\_\+u8\+Get\+Pin\+Data}!D\+I\+O.\+c@{D\+I\+O.\+c}}
+\subsubsection{\texorpdfstring{D\+I\+O\+\_\+u8\+Get\+Pin\+Data()}{DIO\_u8GetPinData()}}
+{\footnotesize\ttfamily \hyperlink{_t_i_m_e_r0__interface_8h_a74f58890b599c641e4382ff49c4a3e81}{Error\+State\+\_\+t} D\+I\+O\+\_\+u8\+Get\+Pin\+Data (\begin{DoxyParamCaption}\item[{\hyperlink{_d_i_o__interface_8h_a45420cdbc9f59706bc3d6918db1afed6}{D\+I\+O\+Port\+\_\+t}}]{u8\+\_\+\+Port\+Name,  }\item[{\hyperlink{_d_i_o__interface_8h_ac69f6dc4b59f755ea0b7381ba40bad32}{D\+I\+O\+Pin\+\_\+t}}]{u8\+\_\+\+Pin\+Num,  }\item[{\hyperlink{_typedef_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\+\_\+t} $\ast$}]{pu8\+\_\+\+Return\+Var }\end{DoxyParamCaption})}
+
+
+
+This function is used to get the state of the pin when it is configured as input. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em u8\+\_\+\+Port\+Name} & \+: The port where the pin exist can be one of the following P\+O\+R\+TA P\+O\+R\+TB P\+O\+R\+TC P\+O\+R\+TD \\
+\hline
+{\em u8\+\_\+\+Pin\+Num} & \+: The number of the pin P\+I\+N0 P\+I\+N1 P\+I\+N2 P\+I\+N3 P\+I\+N4 P\+I\+N5 P\+I\+N6 P\+I\+N7 \\
+\hline
+{\em pu8\+\_\+\+Return\+Var} & this is a pointer to a unsigned integer to hold the pin state \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+returns a number from 0 -\/ 255 represent the Error State 255 \+: Wrong P\+IN Number 254 \+: Wrong P\+O\+RT Number 252 \+: The input pointer is not pointing to a valid memory place 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_d_i_o_8c_a413e1409f9a9885a44440376f775b818_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_d_i_o_8c_a92558ac6d84544c7554f6ddbfb81f35f}\label{_d_i_o_8c_a92558ac6d84544c7554f6ddbfb81f35f}} 
+\index{D\+I\+O.\+c@{D\+I\+O.\+c}!D\+I\+O\+\_\+u8\+Get\+Port\+Data@{D\+I\+O\+\_\+u8\+Get\+Port\+Data}}
+\index{D\+I\+O\+\_\+u8\+Get\+Port\+Data@{D\+I\+O\+\_\+u8\+Get\+Port\+Data}!D\+I\+O.\+c@{D\+I\+O.\+c}}
+\subsubsection{\texorpdfstring{D\+I\+O\+\_\+u8\+Get\+Port\+Data()}{DIO\_u8GetPortData()}}
+{\footnotesize\ttfamily \hyperlink{_t_i_m_e_r0__interface_8h_a74f58890b599c641e4382ff49c4a3e81}{Error\+State\+\_\+t} D\+I\+O\+\_\+u8\+Get\+Port\+Data (\begin{DoxyParamCaption}\item[{\hyperlink{_d_i_o__interface_8h_a45420cdbc9f59706bc3d6918db1afed6}{D\+I\+O\+Port\+\_\+t}}]{u8\+\_\+\+Port\+Name,  }\item[{\hyperlink{_typedef_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\+\_\+t} $\ast$}]{pu8\+\_\+\+Return\+Var }\end{DoxyParamCaption})}
+
+
+
+this function is used to get the value presented on an input D\+IO Port 
+
+
+\begin{DoxyParams}{Parameters}
+{\em u8\+\_\+\+Port\+Name} & \+: The port where the pin exist can be one of the following P\+O\+R\+TA P\+O\+R\+TB P\+O\+R\+TC P\+O\+R\+TD \\
+\hline
+{\em pu8\+\_\+\+Return\+Var} & this is a pointer to a uint8\+\_\+t to hold the data on the port \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+return a number between 0 -\/ 255 represent the Error State 254 \+: W\+R\+O\+NG Port 252 \+: The input pointer is not pointing to a valid memory place 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_d_i_o_8c_a5d5a58f8379f5708eb64eae7d5b059ca}\label{_d_i_o_8c_a5d5a58f8379f5708eb64eae7d5b059ca}} 
+\index{D\+I\+O.\+c@{D\+I\+O.\+c}!D\+I\+O\+\_\+u8\+Set\+Pin\+Data@{D\+I\+O\+\_\+u8\+Set\+Pin\+Data}}
+\index{D\+I\+O\+\_\+u8\+Set\+Pin\+Data@{D\+I\+O\+\_\+u8\+Set\+Pin\+Data}!D\+I\+O.\+c@{D\+I\+O.\+c}}
+\subsubsection{\texorpdfstring{D\+I\+O\+\_\+u8\+Set\+Pin\+Data()}{DIO\_u8SetPinData()}}
+{\footnotesize\ttfamily \hyperlink{_d_i_o__interface_8h_a833fa7b7b4b716cada3a3b01248af306}{D\+I\+O\+\_\+\+Error\+State\+\_\+t} D\+I\+O\+\_\+u8\+Set\+Pin\+Data (\begin{DoxyParamCaption}\item[{\hyperlink{_d_i_o__interface_8h_a45420cdbc9f59706bc3d6918db1afed6}{D\+I\+O\+Port\+\_\+t}}]{u8\+\_\+\+Port\+Name,  }\item[{\hyperlink{_d_i_o__interface_8h_ac69f6dc4b59f755ea0b7381ba40bad32}{D\+I\+O\+Pin\+\_\+t}}]{u8\+\_\+\+Pin\+Num,  }\item[{\hyperlink{_typedef_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\+\_\+t}}]{u8\+\_\+\+Pin\+Value }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=278pt]{_d_i_o_8c_a5d5a58f8379f5708eb64eae7d5b059ca_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_d_i_o_8c_ad16a829fb6b44a4a9a3ab4d57401a4fc}\label{_d_i_o_8c_ad16a829fb6b44a4a9a3ab4d57401a4fc}} 
+\index{D\+I\+O.\+c@{D\+I\+O.\+c}!D\+I\+O\+\_\+u8\+Set\+Pin\+Direction@{D\+I\+O\+\_\+u8\+Set\+Pin\+Direction}}
+\index{D\+I\+O\+\_\+u8\+Set\+Pin\+Direction@{D\+I\+O\+\_\+u8\+Set\+Pin\+Direction}!D\+I\+O.\+c@{D\+I\+O.\+c}}
+\subsubsection{\texorpdfstring{D\+I\+O\+\_\+u8\+Set\+Pin\+Direction()}{DIO\_u8SetPinDirection()}}
+{\footnotesize\ttfamily \hyperlink{_t_i_m_e_r0__interface_8h_a74f58890b599c641e4382ff49c4a3e81}{Error\+State\+\_\+t} D\+I\+O\+\_\+u8\+Set\+Pin\+Direction (\begin{DoxyParamCaption}\item[{\hyperlink{_d_i_o__interface_8h_a45420cdbc9f59706bc3d6918db1afed6}{D\+I\+O\+Port\+\_\+t}}]{u8\+\_\+\+Port\+Name,  }\item[{\hyperlink{_d_i_o__interface_8h_ac69f6dc4b59f755ea0b7381ba40bad32}{D\+I\+O\+Pin\+\_\+t}}]{u8\+\_\+\+Pin\+Num,  }\item[{\hyperlink{_d_i_o__interface_8h_acfa4e9ecb790ebf0fd6cb11f987dddeb}{D\+I\+O\+Dir\+\_\+t}}]{u8\+\_\+\+Pin\+Dir }\end{DoxyParamCaption})}
+
+
+
+this function used to choose the pin direction 
+
+
+\begin{DoxyParams}{Parameters}
+{\em u8\+\_\+\+Port\+Name} & \+: The port where the pin exist can be one of the following P\+O\+R\+TA P\+O\+R\+TB P\+O\+R\+TC P\+O\+R\+TD \\
+\hline
+{\em u8\+\_\+\+Pin\+Num} & \+: The number of the pin P\+I\+N0 P\+I\+N1 P\+I\+N2 P\+I\+N3 P\+I\+N4 P\+I\+N5 P\+I\+N6 P\+I\+N7 \\
+\hline
+{\em u8\+\_\+\+Pin\+Dir} & \+: the Direction you want the pin to be on D\+I\+O\+\_\+\+I\+N\+P\+UT D\+I\+O\+\_\+\+I\+N\+P\+U\+T\+\_\+\+P\+U\+L\+L\+UP D\+I\+O\+\_\+\+O\+U\+T\+P\+UT \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The return is an uint8\+\_\+t number represent the error state of the function and can be 255 \+: Wrong P\+IN Number 254 \+: Wrong P\+O\+RT Number 253\+: Wrong Direction 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_d_i_o_8c_ad16a829fb6b44a4a9a3ab4d57401a4fc_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_d_i_o_8c_acc8e5d2fe7e4b8027985d622a11db575}\label{_d_i_o_8c_acc8e5d2fe7e4b8027985d622a11db575}} 
+\index{D\+I\+O.\+c@{D\+I\+O.\+c}!D\+I\+O\+\_\+u8\+Set\+Port\+Data@{D\+I\+O\+\_\+u8\+Set\+Port\+Data}}
+\index{D\+I\+O\+\_\+u8\+Set\+Port\+Data@{D\+I\+O\+\_\+u8\+Set\+Port\+Data}!D\+I\+O.\+c@{D\+I\+O.\+c}}
+\subsubsection{\texorpdfstring{D\+I\+O\+\_\+u8\+Set\+Port\+Data()}{DIO\_u8SetPortData()}}
+{\footnotesize\ttfamily \hyperlink{_t_i_m_e_r0__interface_8h_a74f58890b599c641e4382ff49c4a3e81}{Error\+State\+\_\+t} D\+I\+O\+\_\+u8\+Set\+Port\+Data (\begin{DoxyParamCaption}\item[{\hyperlink{_d_i_o__interface_8h_a45420cdbc9f59706bc3d6918db1afed6}{D\+I\+O\+Port\+\_\+t}}]{u8\+\_\+\+Port\+Name,  }\item[{\hyperlink{_typedef_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\+\_\+t}}]{u8\+\_\+\+Value }\end{DoxyParamCaption})}
+
+
+
+this function is used to output a value on D\+IO Port 
+
+
+\begin{DoxyParams}{Parameters}
+{\em u8\+\_\+\+Port\+Name} & \+: The port where the pin exist can be one of the following P\+O\+R\+TA P\+O\+R\+TB P\+O\+R\+TC P\+O\+R\+TD \\
+\hline
+{\em u8\+\_\+\+Value} & a number between from 0 -\/ 255 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+return a number between 0 -\/ 255 represent the Error State 254 \+: W\+R\+O\+NG Port 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_d_i_o_8c_a19142acb7bbde8f2144a48be4bc38a3f}\label{_d_i_o_8c_a19142acb7bbde8f2144a48be4bc38a3f}} 
+\index{D\+I\+O.\+c@{D\+I\+O.\+c}!D\+I\+O\+\_\+u8\+Set\+Port\+Direction@{D\+I\+O\+\_\+u8\+Set\+Port\+Direction}}
+\index{D\+I\+O\+\_\+u8\+Set\+Port\+Direction@{D\+I\+O\+\_\+u8\+Set\+Port\+Direction}!D\+I\+O.\+c@{D\+I\+O.\+c}}
+\subsubsection{\texorpdfstring{D\+I\+O\+\_\+u8\+Set\+Port\+Direction()}{DIO\_u8SetPortDirection()}}
+{\footnotesize\ttfamily \hyperlink{_t_i_m_e_r0__interface_8h_a74f58890b599c641e4382ff49c4a3e81}{Error\+State\+\_\+t} D\+I\+O\+\_\+u8\+Set\+Port\+Direction (\begin{DoxyParamCaption}\item[{\hyperlink{_d_i_o__interface_8h_a45420cdbc9f59706bc3d6918db1afed6}{D\+I\+O\+Port\+\_\+t}}]{u8\+\_\+\+Port\+Name,  }\item[{\hyperlink{_d_i_o__interface_8h_acfa4e9ecb790ebf0fd6cb11f987dddeb}{D\+I\+O\+Dir\+\_\+t}}]{u8\+\_\+\+Dir }\end{DoxyParamCaption})}
+
+
+
+this function is used to set the direction for a complete D\+IO Port 
+
+
+\begin{DoxyParams}{Parameters}
+{\em u8\+\_\+\+Port\+Name} & \+: The port where the pin exist can be one of the following P\+O\+R\+TA P\+O\+R\+TB P\+O\+R\+TC P\+O\+R\+TD \\
+\hline
+{\em u8\+\_\+\+Dir} & \+: the Direction you want the pin to be on D\+I\+O\+\_\+\+I\+N\+P\+UT D\+I\+O\+\_\+\+I\+N\+P\+U\+T\+\_\+\+P\+U\+L\+L\+UP D\+I\+O\+\_\+\+O\+U\+T\+P\+UT \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+return a number between 0 -\/ 255 represent the Error State 254 \+: Wrong P\+O\+RT Number 253\+: Wrong Direction 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_d_i_o_8c_a8caffe2a4db322f3e6de4c4b55b9a842}\label{_d_i_o_8c_a8caffe2a4db322f3e6de4c4b55b9a842}} 
+\index{D\+I\+O.\+c@{D\+I\+O.\+c}!D\+I\+O\+\_\+u8\+Toggle\+Pin\+Data@{D\+I\+O\+\_\+u8\+Toggle\+Pin\+Data}}
+\index{D\+I\+O\+\_\+u8\+Toggle\+Pin\+Data@{D\+I\+O\+\_\+u8\+Toggle\+Pin\+Data}!D\+I\+O.\+c@{D\+I\+O.\+c}}
+\subsubsection{\texorpdfstring{D\+I\+O\+\_\+u8\+Toggle\+Pin\+Data()}{DIO\_u8TogglePinData()}}
+{\footnotesize\ttfamily \hyperlink{_t_i_m_e_r0__interface_8h_a74f58890b599c641e4382ff49c4a3e81}{Error\+State\+\_\+t} D\+I\+O\+\_\+u8\+Toggle\+Pin\+Data (\begin{DoxyParamCaption}\item[{\hyperlink{_d_i_o__interface_8h_a45420cdbc9f59706bc3d6918db1afed6}{D\+I\+O\+Port\+\_\+t}}]{u8\+\_\+\+Port\+Name,  }\item[{\hyperlink{_d_i_o__interface_8h_ac69f6dc4b59f755ea0b7381ba40bad32}{D\+I\+O\+Pin\+\_\+t}}]{u8\+\_\+\+Pin\+Num }\end{DoxyParamCaption})}
+
+
+
+This function is used to toggle the output of an output pin. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em u8\+\_\+\+Port\+Name} & \+: The port where the pin exist can be one of the following P\+O\+R\+TA P\+O\+R\+TB P\+O\+R\+TC P\+O\+R\+TD \\
+\hline
+{\em u8\+\_\+\+Pin\+Num} & \+: The number of the pin P\+I\+N0 P\+I\+N1 P\+I\+N2 P\+I\+N3 P\+I\+N4 P\+I\+N5 P\+I\+N6 P\+I\+N7 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+returns a number from 0 -\/ 255 represent the Error State 255 \+: Wrong P\+IN Number 254 \+: Wrong P\+O\+RT Number 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_d_i_o_8c_a8caffe2a4db322f3e6de4c4b55b9a842_icgraph}
+\end{center}
+\end{figure}

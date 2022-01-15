@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;TIMER0_T/MCAL/DELAY/DELAY_inteface.h&apos; to &apos;DELAY_interface.h&apos;" description="Rename resource &apos;DELAY_inteface.h&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="MCAL/DELAY/DELAY_inteface.h" name="DELAY_interface.h" stamp="1642253548872" updateReferences="true"/>
+</session>

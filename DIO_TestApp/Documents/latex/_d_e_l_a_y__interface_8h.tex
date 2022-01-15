@@ -1,0 +1,90 @@
+\hypertarget{_d_e_l_a_y__interface_8h}{}\section{M\+C\+A\+L/\+D\+E\+L\+A\+Y/\+D\+E\+L\+A\+Y\+\_\+interface.h File Reference}
+\label{_d_e_l_a_y__interface_8h}\index{M\+C\+A\+L/\+D\+E\+L\+A\+Y/\+D\+E\+L\+A\+Y\+\_\+interface.\+h@{M\+C\+A\+L/\+D\+E\+L\+A\+Y/\+D\+E\+L\+A\+Y\+\_\+interface.\+h}}
+{\ttfamily \#include \char`\"{}../../\+L\+I\+B/\+Typedef.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../../\+L\+I\+B/\+B\+I\+T\+\_\+\+Math.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../../\+L\+I\+B/atmega32.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../\+T\+I\+M\+E\+R0/\+T\+I\+M\+E\+R0\+\_\+interface.\+h\char`\"{}}\newline
+Include dependency graph for D\+E\+L\+A\+Y\+\_\+interface.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_d_e_l_a_y__interface_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_d_e_l_a_y__interface_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{_d_e_l_a_y__interface_8h_acaa203ee36efe1b36e4eb0431f5dc819}{Delay\+Error\+State\+\_\+t} \{ \hyperlink{_d_e_l_a_y__interface_8h_acaa203ee36efe1b36e4eb0431f5dc819a390d6c8254a3c71c139a9eb0b2799420}{D\+E\+L\+A\+Y\+\_\+\+OK} =1, 
+\hyperlink{_d_e_l_a_y__interface_8h_acaa203ee36efe1b36e4eb0431f5dc819abedbbc29c1e9766ea03038ee86a3afb3}{D\+E\+L\+A\+Y\+\_\+\+T\+M\+E\+R\+\_\+\+R\+E\+T\+U\+R\+N\+\_\+\+E\+R\+R\+OR} = 255
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_d_e_l_a_y__interface_8h_acaa203ee36efe1b36e4eb0431f5dc819}{Delay\+Error\+State\+\_\+t} \hyperlink{_d_e_l_a_y__interface_8h_aa4346d56eeef88daa52470a640c669ac}{D\+E\+L\+A\+Y\+\_\+ms} (\hyperlink{_typedef_8h_a273cf69d639a59973b6019625df33e30}{uint16\+\_\+t} u8\+Ms\+Delay)
+\begin{DoxyCompactList}\small\item\em This function used to make a delay using pooling mechanism. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{_d_e_l_a_y__interface_8h_acaa203ee36efe1b36e4eb0431f5dc819}\label{_d_e_l_a_y__interface_8h_acaa203ee36efe1b36e4eb0431f5dc819}} 
+\index{D\+E\+L\+A\+Y\+\_\+interface.\+h@{D\+E\+L\+A\+Y\+\_\+interface.\+h}!Delay\+Error\+State\+\_\+t@{Delay\+Error\+State\+\_\+t}}
+\index{Delay\+Error\+State\+\_\+t@{Delay\+Error\+State\+\_\+t}!D\+E\+L\+A\+Y\+\_\+interface.\+h@{D\+E\+L\+A\+Y\+\_\+interface.\+h}}
+\subsubsection{\texorpdfstring{Delay\+Error\+State\+\_\+t}{DelayErrorState\_t}}
+{\footnotesize\ttfamily enum \hyperlink{_d_e_l_a_y__interface_8h_acaa203ee36efe1b36e4eb0431f5dc819}{Delay\+Error\+State\+\_\+t}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{D\+E\+L\+A\+Y\+\_\+\+OK@{D\+E\+L\+A\+Y\+\_\+\+OK}!D\+E\+L\+A\+Y\+\_\+interface.\+h@{D\+E\+L\+A\+Y\+\_\+interface.\+h}}\index{D\+E\+L\+A\+Y\+\_\+interface.\+h@{D\+E\+L\+A\+Y\+\_\+interface.\+h}!D\+E\+L\+A\+Y\+\_\+\+OK@{D\+E\+L\+A\+Y\+\_\+\+OK}}}\mbox{\Hypertarget{_d_e_l_a_y__interface_8h_acaa203ee36efe1b36e4eb0431f5dc819a390d6c8254a3c71c139a9eb0b2799420}\label{_d_e_l_a_y__interface_8h_acaa203ee36efe1b36e4eb0431f5dc819a390d6c8254a3c71c139a9eb0b2799420}} 
+D\+E\+L\+A\+Y\+\_\+\+OK&No Error Occurred. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{D\+E\+L\+A\+Y\+\_\+\+T\+M\+E\+R\+\_\+\+R\+E\+T\+U\+R\+N\+\_\+\+E\+R\+R\+OR@{D\+E\+L\+A\+Y\+\_\+\+T\+M\+E\+R\+\_\+\+R\+E\+T\+U\+R\+N\+\_\+\+E\+R\+R\+OR}!D\+E\+L\+A\+Y\+\_\+interface.\+h@{D\+E\+L\+A\+Y\+\_\+interface.\+h}}\index{D\+E\+L\+A\+Y\+\_\+interface.\+h@{D\+E\+L\+A\+Y\+\_\+interface.\+h}!D\+E\+L\+A\+Y\+\_\+\+T\+M\+E\+R\+\_\+\+R\+E\+T\+U\+R\+N\+\_\+\+E\+R\+R\+OR@{D\+E\+L\+A\+Y\+\_\+\+T\+M\+E\+R\+\_\+\+R\+E\+T\+U\+R\+N\+\_\+\+E\+R\+R\+OR}}}\mbox{\Hypertarget{_d_e_l_a_y__interface_8h_acaa203ee36efe1b36e4eb0431f5dc819abedbbc29c1e9766ea03038ee86a3afb3}\label{_d_e_l_a_y__interface_8h_acaa203ee36efe1b36e4eb0431f5dc819abedbbc29c1e9766ea03038ee86a3afb3}} 
+D\+E\+L\+A\+Y\+\_\+\+T\+M\+E\+R\+\_\+\+R\+E\+T\+U\+R\+N\+\_\+\+E\+R\+R\+OR&There is an error happened during calling timer function test you timer. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{_d_e_l_a_y__interface_8h_aa4346d56eeef88daa52470a640c669ac}\label{_d_e_l_a_y__interface_8h_aa4346d56eeef88daa52470a640c669ac}} 
+\index{D\+E\+L\+A\+Y\+\_\+interface.\+h@{D\+E\+L\+A\+Y\+\_\+interface.\+h}!D\+E\+L\+A\+Y\+\_\+ms@{D\+E\+L\+A\+Y\+\_\+ms}}
+\index{D\+E\+L\+A\+Y\+\_\+ms@{D\+E\+L\+A\+Y\+\_\+ms}!D\+E\+L\+A\+Y\+\_\+interface.\+h@{D\+E\+L\+A\+Y\+\_\+interface.\+h}}
+\subsubsection{\texorpdfstring{D\+E\+L\+A\+Y\+\_\+ms()}{DELAY\_ms()}}
+{\footnotesize\ttfamily \hyperlink{_d_e_l_a_y__interface_8h_acaa203ee36efe1b36e4eb0431f5dc819}{Delay\+Error\+State\+\_\+t} D\+E\+L\+A\+Y\+\_\+ms (\begin{DoxyParamCaption}\item[{\hyperlink{_typedef_8h_a273cf69d639a59973b6019625df33e30}{uint16\+\_\+t}}]{u8\+Ms\+Delay }\end{DoxyParamCaption})}
+
+
+
+This function used to make a delay using pooling mechanism. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em u8\+Ms\+Delay} & \+: the time of the delay desired in milliseconds can be 0 -\/ 65535 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+return a number from 0 -\/ 255 represent the error states of the function. Possible returns are 1 \+: D\+E\+L\+A\+Y\+\_\+\+OK 255\+: D\+E\+L\+A\+Y\+\_\+\+T\+M\+E\+R\+\_\+\+R\+E\+T\+U\+R\+N\+\_\+\+E\+R\+R\+OR 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=319pt]{_d_e_l_a_y__interface_8h_aa4346d56eeef88daa52470a640c669ac_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_d_e_l_a_y__interface_8h_aa4346d56eeef88daa52470a640c669ac_icgraph}
+\end{center}
+\end{figure}

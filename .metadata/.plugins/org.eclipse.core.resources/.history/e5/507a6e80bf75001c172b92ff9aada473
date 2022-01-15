@@ -1,0 +1,47 @@
+/*
+ * TIMER0_interface.h
+ *
+ *  Created on: Jan 15, 2022
+ *      Author: vip
+ */
+
+#ifndef MCAL_TIMER0_TIMER0_INTERFACE_H_
+#define MCAL_TIMER0_TIMER0_INTERFACE_H_
+
+/**
+ * @enum
+ * Defines the Possible Error States of the Timer0 Driver
+ */
+typedef enum{
+
+}ErrorState_t;
+typedef enum{
+	TIM0_NORMAL,
+	TIM0_CTC,
+	TIM0_FPWM_NON_INVERTING,
+	TIM0_FPWM_INVERTING,
+	TIM0_PCPWM_INVERTING,
+	TIM0_PCPWM_NON_INVERTING,
+
+}TIM0_Mode_t;
+
+/**
+ * @struct
+ * Structure contains the configuration of Timer0
+ */
+typedef struct{
+
+}TIM0_Config;
+
+ErrorState_t TIM0_u8Init(TIM0_Config * pst_TIMConfig);
+ErrorState_t TIM0_u8SetStart(uint8_t u8StartingPoint);
+ErrorState_t TIM0_u8SetCompareValue(uint8_t u8SetCompareValue);
+ErrorState_t TIM0_u8SetCallBackFun(void (*vCallBackFun)(void));
+ErrorState_t TIM0_u8SetPWMDutyCycle(uint8_t u8DutyCycle);
+ErrorState_t TIM0_u8TimerStart(void);
+ErrorState_t TIM0_u8TimerStop(void);
+
+
+
+
+#endif /* MCAL_TIMER0_TIMER0_INTERFACE_H_ */

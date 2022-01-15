@@ -1,0 +1,16 @@
+<map id="main" name="main">
+<area shape="rect" id="node2" href="$_button_8c.html#a2d4186347abf3078a68557bfe8852680" title="BTN_u8Init" alt="" coords="125,31,210,57"/>
+<area shape="rect" id="node4" href="$_l_e_d_8c.html#a5ffbd3f57e696c662ae3ae52b119e867" title="LED_u8Init" alt="" coords="125,81,210,108"/>
+<area shape="rect" id="node5" href="$_button_8c.html#aff4b1ece637b0de90d1dba5b1fecff13" title="BTN_u8IsPressed" alt="" coords="104,132,231,159"/>
+<area shape="rect" id="node14" href="$_l_e_d_8c.html#adf2c2bb559cff9df9c91f3a1c0a16595" title="LED_u8Toggle" alt="" coords="114,183,221,209"/>
+<area shape="rect" id="node3" href="$_d_i_o_8c.html#ad16a829fb6b44a4a9a3ab4d57401a4fc" title="this function used to choose the pin direction " alt="" coords="279,31,433,57"/>
+<area shape="rect" id="node6" href="$_d_i_o_8c.html#a413e1409f9a9885a44440376f775b818" title="This function is used to get the state of the pin when it is configured as input. ..." alt="" coords="290,81,422,108"/>
+<area shape="rect" id="node7" href="$_d_e_l_a_y_8c.html#aa4346d56eeef88daa52470a640c669ac" title="This function used to make a delay using pooling mechanism. " alt="" coords="311,132,401,159"/>
+<area shape="rect" id="node8" href="$_t_i_m_e_r0_8c.html#a7411543d6d0d589f6b5fa318bcf59d88" title="this function is used to initialize timer0 " alt="" coords="527,5,615,32"/>
+<area shape="rect" id="node9" href="$_t_i_m_e_r0_8c.html#a689d58acea491f346ef7ea249f7c98e0" title="this function is used to set a value to compare the number of counts with " alt="" coords="483,56,659,83"/>
+<area shape="rect" id="node10" href="$_t_i_m_e_r0_8c.html#a80bbcb7217a1f9389e1f73d39b3b04d3" title="this function is used to enable and configure the Compare match interrupt of timer 0 ..." alt="" coords="483,107,660,133"/>
+<area shape="rect" id="node11" href="$_d_e_l_a_y_8c.html#aeb0ca1fe1f79a5ee88cfdaa9199ce200" title="this function is used to write the logic wanted to be performed in the ISR of the timer ..." alt="" coords="487,157,656,184"/>
+<area shape="rect" id="node12" href="$_t_i_m_e_r0_8c.html#af55bbe4c18d1c81a9ac0e9d0c1829e86" title="This function is used to start the timer counting process with previously initialized configurations..." alt="" coords="506,208,637,235"/>
+<area shape="rect" id="node13" href="$_t_i_m_e_r0_8c.html#adcc6c6b1e59465691486666922f25880" title="TIM0_u8DisableOCInterrupt" alt="" coords="481,259,661,285"/>
+<area shape="rect" id="node15" href="$_d_i_o_8c.html#a8caffe2a4db322f3e6de4c4b55b9a842" title="This function is used to toggle the output of an output pin. " alt="" coords="281,183,431,209"/>
+</map>

@@ -1,0 +1,223 @@
+\section{M\+C\+A\+L/\+T\+I\+M\+E\+R0/\+T\+I\+M\+E\+R0.c File Reference}
+\label{_t_i_m_e_r0_8c}\index{M\+C\+A\+L/\+T\+I\+M\+E\+R0/\+T\+I\+M\+E\+R0.\+c@{M\+C\+A\+L/\+T\+I\+M\+E\+R0/\+T\+I\+M\+E\+R0.\+c}}
+{\ttfamily \#include \char`\"{}T\+I\+M\+E\+R0\+\_\+interface.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}T\+I\+M\+E\+R0\+\_\+cfg.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}T\+I\+M\+E\+R0\+\_\+prv.\+h\char`\"{}}\newline
+Include dependency graph for T\+I\+M\+E\+R0.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_t_i_m_e_r0_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Error\+State\+\_\+t} \textbf{ T\+I\+M0\+\_\+u8\+Init} (\textbf{ T\+I\+M0\+\_\+\+Config\+\_\+t} $\ast$pst\+\_\+\+T\+I\+M\+Config)
+\begin{DoxyCompactList}\small\item\em this function is used to initialize timer0 \end{DoxyCompactList}\item 
+\textbf{ Error\+State\+\_\+t} \textbf{ T\+I\+M0\+\_\+u8\+Set\+Start} (\textbf{ uint8\+\_\+t} u8\+Starting\+Point)
+\begin{DoxyCompactList}\small\item\em this function is used to change the beginning of the counting which is initialized to T\+I\+M\+E\+R0\+\_\+\+I\+N\+I\+T\+I\+A\+L\+\_\+\+S\+T\+A\+RT in the configuration file \end{DoxyCompactList}\item 
+\textbf{ Error\+State\+\_\+t} \textbf{ T\+I\+M0\+\_\+u8\+Get\+Counts} (\textbf{ uint8\+\_\+t} $\ast$pu8\+\_\+\+Returned\+Counts)
+\begin{DoxyCompactList}\small\item\em this function is used to read the number of counts in the counter/timer right now \end{DoxyCompactList}\item 
+\textbf{ Error\+State\+\_\+t} \textbf{ T\+I\+M0\+\_\+u8\+Set\+Compare\+Value} (\textbf{ uint8\+\_\+t} u8\+Set\+Compare\+Value)
+\begin{DoxyCompactList}\small\item\em this function is used to set a value to compare the number of counts with \end{DoxyCompactList}\item 
+\textbf{ Error\+State\+\_\+t} \textbf{ T\+I\+M0\+\_\+u8\+Enable\+O\+V\+F\+Interrupt} (void($\ast$v\+Call\+Back\+Fun)(void))
+\begin{DoxyCompactList}\small\item\em this function is used to enable and configure the over flow interrupt of timer 0 \end{DoxyCompactList}\item 
+\textbf{ Error\+State\+\_\+t} \textbf{ T\+I\+M0\+\_\+u8\+Enable\+O\+C\+Interrupt} (void($\ast$v\+Call\+Back\+Fun)(void))
+\begin{DoxyCompactList}\small\item\em this function is used to enable and configure the Compare match interrupt of timer 0 \end{DoxyCompactList}\item 
+\textbf{ Error\+State\+\_\+t} \textbf{ T\+I\+M0\+\_\+u8\+Timer\+Start} (void)
+\begin{DoxyCompactList}\small\item\em This function is used to start the timer counting process with previously initialized configurations. \end{DoxyCompactList}\item 
+\textbf{ Error\+State\+\_\+t} \textbf{ T\+I\+M0\+\_\+u8\+Timer\+Stop} (void)
+\begin{DoxyCompactList}\small\item\em This function is used to start the timer counting process with previously initialized configurations. \end{DoxyCompactList}\item 
+\textbf{ Error\+State\+\_\+t} \textbf{ T\+I\+M0\+\_\+u8\+Disable\+O\+V\+F\+Interrupt} ()
+\item 
+\textbf{ Error\+State\+\_\+t} \textbf{ T\+I\+M0\+\_\+u8\+Disable\+O\+C\+Interrupt} ()
+\item 
+void \textbf{ \+\_\+\+\_\+vector\+\_\+10} (void)
+\item 
+void \textbf{ \+\_\+\+\_\+vector\+\_\+11} (void)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+void($\ast$ \textbf{ gv\+\_\+\+O\+V\+F\+Call\+Back\+Fun} )(void) =\textbf{ N\+U\+LL}
+\item 
+void($\ast$ \textbf{ gv\+\_\+\+O\+C0\+Call\+Back\+Fun} )(void) =\textbf{ N\+U\+LL}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\label{_t_i_m_e_r0_8c_a74a0792c79b400c05d89ba6fccc8cd44}} 
+\index{T\+I\+M\+E\+R0.\+c@{T\+I\+M\+E\+R0.\+c}!\+\_\+\+\_\+vector\+\_\+10@{\+\_\+\+\_\+vector\+\_\+10}}
+\index{\+\_\+\+\_\+vector\+\_\+10@{\+\_\+\+\_\+vector\+\_\+10}!T\+I\+M\+E\+R0.\+c@{T\+I\+M\+E\+R0.\+c}}
+\subsubsection{\+\_\+\+\_\+vector\+\_\+10()}
+{\footnotesize\ttfamily void \+\_\+\+\_\+vector\+\_\+10 (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\label{_t_i_m_e_r0_8c_a881af0c7816a27eed664bd5adc301992}} 
+\index{T\+I\+M\+E\+R0.\+c@{T\+I\+M\+E\+R0.\+c}!\+\_\+\+\_\+vector\+\_\+11@{\+\_\+\+\_\+vector\+\_\+11}}
+\index{\+\_\+\+\_\+vector\+\_\+11@{\+\_\+\+\_\+vector\+\_\+11}!T\+I\+M\+E\+R0.\+c@{T\+I\+M\+E\+R0.\+c}}
+\subsubsection{\+\_\+\+\_\+vector\+\_\+11()}
+{\footnotesize\ttfamily void \+\_\+\+\_\+vector\+\_\+11 (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\label{_t_i_m_e_r0_8c_adcc6c6b1e59465691486666922f25880}} 
+\index{T\+I\+M\+E\+R0.\+c@{T\+I\+M\+E\+R0.\+c}!T\+I\+M0\+\_\+u8\+Disable\+O\+C\+Interrupt@{T\+I\+M0\+\_\+u8\+Disable\+O\+C\+Interrupt}}
+\index{T\+I\+M0\+\_\+u8\+Disable\+O\+C\+Interrupt@{T\+I\+M0\+\_\+u8\+Disable\+O\+C\+Interrupt}!T\+I\+M\+E\+R0.\+c@{T\+I\+M\+E\+R0.\+c}}
+\subsubsection{T\+I\+M0\+\_\+u8\+Disable\+O\+C\+Interrupt()}
+{\footnotesize\ttfamily \textbf{ Error\+State\+\_\+t} T\+I\+M0\+\_\+u8\+Disable\+O\+C\+Interrupt (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\label{_t_i_m_e_r0_8c_a9f9bfc11592c6c1f4770263b79162ee3}} 
+\index{T\+I\+M\+E\+R0.\+c@{T\+I\+M\+E\+R0.\+c}!T\+I\+M0\+\_\+u8\+Disable\+O\+V\+F\+Interrupt@{T\+I\+M0\+\_\+u8\+Disable\+O\+V\+F\+Interrupt}}
+\index{T\+I\+M0\+\_\+u8\+Disable\+O\+V\+F\+Interrupt@{T\+I\+M0\+\_\+u8\+Disable\+O\+V\+F\+Interrupt}!T\+I\+M\+E\+R0.\+c@{T\+I\+M\+E\+R0.\+c}}
+\subsubsection{T\+I\+M0\+\_\+u8\+Disable\+O\+V\+F\+Interrupt()}
+{\footnotesize\ttfamily \textbf{ Error\+State\+\_\+t} T\+I\+M0\+\_\+u8\+Disable\+O\+V\+F\+Interrupt (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\label{_t_i_m_e_r0_8c_a80bbcb7217a1f9389e1f73d39b3b04d3}} 
+\index{T\+I\+M\+E\+R0.\+c@{T\+I\+M\+E\+R0.\+c}!T\+I\+M0\+\_\+u8\+Enable\+O\+C\+Interrupt@{T\+I\+M0\+\_\+u8\+Enable\+O\+C\+Interrupt}}
+\index{T\+I\+M0\+\_\+u8\+Enable\+O\+C\+Interrupt@{T\+I\+M0\+\_\+u8\+Enable\+O\+C\+Interrupt}!T\+I\+M\+E\+R0.\+c@{T\+I\+M\+E\+R0.\+c}}
+\subsubsection{T\+I\+M0\+\_\+u8\+Enable\+O\+C\+Interrupt()}
+{\footnotesize\ttfamily \textbf{ Error\+State\+\_\+t} T\+I\+M0\+\_\+u8\+Enable\+O\+C\+Interrupt (\begin{DoxyParamCaption}\item[{void($\ast$)(void)}]{v\+Call\+Back\+Fun }\end{DoxyParamCaption})}
+
+
+
+this function is used to enable and configure the Compare match interrupt of timer 0 
+
+
+\begin{DoxyParams}{Parameters}
+{\em v\+Call\+Back\+Fun} & \+: a pointer to function that contain the logic wanted to be performed on the interrupt I\+SR \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+return a number from 1 -\/ 255 represent the error state of the system and can be 1 \+: T\+I\+M0\+\_\+\+OK 252\+: T\+I\+M0\+\_\+\+N\+U\+L\+L\+\_\+\+I\+N\+P\+UT 
+\end{DoxyReturn}
+\mbox{\label{_t_i_m_e_r0_8c_a1d94b9fccfdcbb336ed7f975cc947730}} 
+\index{T\+I\+M\+E\+R0.\+c@{T\+I\+M\+E\+R0.\+c}!T\+I\+M0\+\_\+u8\+Enable\+O\+V\+F\+Interrupt@{T\+I\+M0\+\_\+u8\+Enable\+O\+V\+F\+Interrupt}}
+\index{T\+I\+M0\+\_\+u8\+Enable\+O\+V\+F\+Interrupt@{T\+I\+M0\+\_\+u8\+Enable\+O\+V\+F\+Interrupt}!T\+I\+M\+E\+R0.\+c@{T\+I\+M\+E\+R0.\+c}}
+\subsubsection{T\+I\+M0\+\_\+u8\+Enable\+O\+V\+F\+Interrupt()}
+{\footnotesize\ttfamily \textbf{ Error\+State\+\_\+t} T\+I\+M0\+\_\+u8\+Enable\+O\+V\+F\+Interrupt (\begin{DoxyParamCaption}\item[{void($\ast$)(void)}]{v\+Call\+Back\+Fun }\end{DoxyParamCaption})}
+
+
+
+this function is used to enable and configure the over flow interrupt of timer 0 
+
+
+\begin{DoxyParams}{Parameters}
+{\em v\+Call\+Back\+Fun} & \+: a pointer to function that contain the logic wanted to be performed on the interrupt I\+SR \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+return a number from 1 -\/ 255 represent the error state of the system and can be 1 \+: T\+I\+M0\+\_\+\+OK 252\+: T\+I\+M0\+\_\+\+N\+U\+L\+L\+\_\+\+I\+N\+P\+UT 
+\end{DoxyReturn}
+\mbox{\label{_t_i_m_e_r0_8c_affaf298d5dadbb9ea2c5b0782b49b30c}} 
+\index{T\+I\+M\+E\+R0.\+c@{T\+I\+M\+E\+R0.\+c}!T\+I\+M0\+\_\+u8\+Get\+Counts@{T\+I\+M0\+\_\+u8\+Get\+Counts}}
+\index{T\+I\+M0\+\_\+u8\+Get\+Counts@{T\+I\+M0\+\_\+u8\+Get\+Counts}!T\+I\+M\+E\+R0.\+c@{T\+I\+M\+E\+R0.\+c}}
+\subsubsection{T\+I\+M0\+\_\+u8\+Get\+Counts()}
+{\footnotesize\ttfamily \textbf{ Error\+State\+\_\+t} T\+I\+M0\+\_\+u8\+Get\+Counts (\begin{DoxyParamCaption}\item[{\textbf{ uint8\+\_\+t} $\ast$}]{pu8\+\_\+\+Returned\+Counts }\end{DoxyParamCaption})}
+
+
+
+this function is used to read the number of counts in the counter/timer right now 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pu8\+\_\+\+Returned\+Counts} & \+: a pointer to a uint8\+\_\+t number that will hold the number of counts \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+return a number from 1 -\/ 255 represent the error state of the system and can be 1 \+: T\+I\+M0\+\_\+\+OK 252\+: T\+I\+M0\+\_\+\+N\+U\+L\+L\+\_\+\+I\+N\+P\+UT 
+\end{DoxyReturn}
+\mbox{\label{_t_i_m_e_r0_8c_a7411543d6d0d589f6b5fa318bcf59d88}} 
+\index{T\+I\+M\+E\+R0.\+c@{T\+I\+M\+E\+R0.\+c}!T\+I\+M0\+\_\+u8\+Init@{T\+I\+M0\+\_\+u8\+Init}}
+\index{T\+I\+M0\+\_\+u8\+Init@{T\+I\+M0\+\_\+u8\+Init}!T\+I\+M\+E\+R0.\+c@{T\+I\+M\+E\+R0.\+c}}
+\subsubsection{T\+I\+M0\+\_\+u8\+Init()}
+{\footnotesize\ttfamily \textbf{ Error\+State\+\_\+t} T\+I\+M0\+\_\+u8\+Init (\begin{DoxyParamCaption}\item[{\textbf{ T\+I\+M0\+\_\+\+Config\+\_\+t} $\ast$}]{pst\+\_\+\+T\+I\+M\+Config }\end{DoxyParamCaption})}
+
+
+
+this function is used to initialize timer0 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pst\+\_\+\+T\+I\+M\+Config} & \+: a pointer to a structure contain the configuration information need to initialize the timer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+return a number from 1 -\/ 255 represent the error state of the system and can be 1 \+: T\+I\+M0\+\_\+\+OK 253\+: T\+I\+M0\+\_\+\+W\+R\+O\+N\+G\+\_\+\+M\+O\+DE 252\+: T\+I\+M0\+\_\+\+N\+U\+L\+L\+\_\+\+I\+N\+P\+UT 
+\end{DoxyReturn}
+\mbox{\label{_t_i_m_e_r0_8c_a689d58acea491f346ef7ea249f7c98e0}} 
+\index{T\+I\+M\+E\+R0.\+c@{T\+I\+M\+E\+R0.\+c}!T\+I\+M0\+\_\+u8\+Set\+Compare\+Value@{T\+I\+M0\+\_\+u8\+Set\+Compare\+Value}}
+\index{T\+I\+M0\+\_\+u8\+Set\+Compare\+Value@{T\+I\+M0\+\_\+u8\+Set\+Compare\+Value}!T\+I\+M\+E\+R0.\+c@{T\+I\+M\+E\+R0.\+c}}
+\subsubsection{T\+I\+M0\+\_\+u8\+Set\+Compare\+Value()}
+{\footnotesize\ttfamily \textbf{ Error\+State\+\_\+t} T\+I\+M0\+\_\+u8\+Set\+Compare\+Value (\begin{DoxyParamCaption}\item[{\textbf{ uint8\+\_\+t}}]{u8\+Set\+Compare\+Value }\end{DoxyParamCaption})}
+
+
+
+this function is used to set a value to compare the number of counts with 
+
+
+\begin{DoxyParams}{Parameters}
+{\em u8\+Set\+Compare\+Value} & \+: a number between 0 -\/ 255 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+return a number from 1 -\/ 255 represent the error state of the system and can be 1 \+: T\+I\+M0\+\_\+\+OK 254\+: T\+I\+M0\+\_\+\+N\+O\+T\+\_\+\+I\+N\+I\+T\+I\+L\+I\+Z\+ED 
+\end{DoxyReturn}
+\mbox{\label{_t_i_m_e_r0_8c_ab588fb0557b32e1d9b4c1c075a413c37}} 
+\index{T\+I\+M\+E\+R0.\+c@{T\+I\+M\+E\+R0.\+c}!T\+I\+M0\+\_\+u8\+Set\+Start@{T\+I\+M0\+\_\+u8\+Set\+Start}}
+\index{T\+I\+M0\+\_\+u8\+Set\+Start@{T\+I\+M0\+\_\+u8\+Set\+Start}!T\+I\+M\+E\+R0.\+c@{T\+I\+M\+E\+R0.\+c}}
+\subsubsection{T\+I\+M0\+\_\+u8\+Set\+Start()}
+{\footnotesize\ttfamily \textbf{ Error\+State\+\_\+t} T\+I\+M0\+\_\+u8\+Set\+Start (\begin{DoxyParamCaption}\item[{\textbf{ uint8\+\_\+t}}]{u8\+Starting\+Point }\end{DoxyParamCaption})}
+
+
+
+this function is used to change the beginning of the counting which is initialized to T\+I\+M\+E\+R0\+\_\+\+I\+N\+I\+T\+I\+A\+L\+\_\+\+S\+T\+A\+RT in the configuration file 
+
+
+\begin{DoxyParams}{Parameters}
+{\em u8\+Starting\+Point} & \+: a number between 0 -\/ 255 represent the number you want to start counting from \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+return a number from 1 -\/ 255 represent the error state of the system and can be 1 \+: T\+I\+M0\+\_\+\+OK 
+\end{DoxyReturn}
+\mbox{\label{_t_i_m_e_r0_8c_af55bbe4c18d1c81a9ac0e9d0c1829e86}} 
+\index{T\+I\+M\+E\+R0.\+c@{T\+I\+M\+E\+R0.\+c}!T\+I\+M0\+\_\+u8\+Timer\+Start@{T\+I\+M0\+\_\+u8\+Timer\+Start}}
+\index{T\+I\+M0\+\_\+u8\+Timer\+Start@{T\+I\+M0\+\_\+u8\+Timer\+Start}!T\+I\+M\+E\+R0.\+c@{T\+I\+M\+E\+R0.\+c}}
+\subsubsection{T\+I\+M0\+\_\+u8\+Timer\+Start()}
+{\footnotesize\ttfamily \textbf{ Error\+State\+\_\+t} T\+I\+M0\+\_\+u8\+Timer\+Start (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+This function is used to start the timer counting process with previously initialized configurations. 
+
+\begin{DoxyReturn}{Returns}
+return a number from 1 -\/ 255 represent the error state of the system and can be 1 \+: T\+I\+M0\+\_\+\+OK 254\+: T\+I\+M0\+\_\+\+N\+O\+T\+\_\+\+I\+N\+I\+T\+I\+L\+I\+Z\+ED 255\+: T\+I\+M0\+\_\+\+U\+N\+D\+E\+F\+I\+N\+E\+D\+\_\+\+C\+L\+K\+\_\+\+S\+T\+A\+TE 
+\end{DoxyReturn}
+\mbox{\label{_t_i_m_e_r0_8c_a879b492bece4a913fb4a0d0b0e96dcd1}} 
+\index{T\+I\+M\+E\+R0.\+c@{T\+I\+M\+E\+R0.\+c}!T\+I\+M0\+\_\+u8\+Timer\+Stop@{T\+I\+M0\+\_\+u8\+Timer\+Stop}}
+\index{T\+I\+M0\+\_\+u8\+Timer\+Stop@{T\+I\+M0\+\_\+u8\+Timer\+Stop}!T\+I\+M\+E\+R0.\+c@{T\+I\+M\+E\+R0.\+c}}
+\subsubsection{T\+I\+M0\+\_\+u8\+Timer\+Stop()}
+{\footnotesize\ttfamily \textbf{ Error\+State\+\_\+t} T\+I\+M0\+\_\+u8\+Timer\+Stop (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+This function is used to start the timer counting process with previously initialized configurations. 
+
+\begin{DoxyReturn}{Returns}
+return a number from 1 -\/ 255 represent the error state of the system and can be 1 \+: T\+I\+M0\+\_\+\+OK 254\+: T\+I\+M0\+\_\+\+N\+O\+T\+\_\+\+I\+N\+I\+T\+I\+L\+I\+Z\+ED 
+\end{DoxyReturn}
+
+
+\subsection{Variable Documentation}
+\mbox{\label{_t_i_m_e_r0_8c_a20da7068d50d86a94daa669ced6ac2d4}} 
+\index{T\+I\+M\+E\+R0.\+c@{T\+I\+M\+E\+R0.\+c}!gv\+\_\+\+O\+C0\+Call\+Back\+Fun@{gv\+\_\+\+O\+C0\+Call\+Back\+Fun}}
+\index{gv\+\_\+\+O\+C0\+Call\+Back\+Fun@{gv\+\_\+\+O\+C0\+Call\+Back\+Fun}!T\+I\+M\+E\+R0.\+c@{T\+I\+M\+E\+R0.\+c}}
+\subsubsection{gv\+\_\+\+O\+C0\+Call\+Back\+Fun}
+{\footnotesize\ttfamily void($\ast$ gv\+\_\+\+O\+C0\+Call\+Back\+Fun) (void) =\textbf{ N\+U\+LL}}
+
+\mbox{\label{_t_i_m_e_r0_8c_ac32d3a17adfe2aa7272756899c433654}} 
+\index{T\+I\+M\+E\+R0.\+c@{T\+I\+M\+E\+R0.\+c}!gv\+\_\+\+O\+V\+F\+Call\+Back\+Fun@{gv\+\_\+\+O\+V\+F\+Call\+Back\+Fun}}
+\index{gv\+\_\+\+O\+V\+F\+Call\+Back\+Fun@{gv\+\_\+\+O\+V\+F\+Call\+Back\+Fun}!T\+I\+M\+E\+R0.\+c@{T\+I\+M\+E\+R0.\+c}}
+\subsubsection{gv\+\_\+\+O\+V\+F\+Call\+Back\+Fun}
+{\footnotesize\ttfamily void($\ast$ gv\+\_\+\+O\+V\+F\+Call\+Back\+Fun) (void) =\textbf{ N\+U\+LL}}
+

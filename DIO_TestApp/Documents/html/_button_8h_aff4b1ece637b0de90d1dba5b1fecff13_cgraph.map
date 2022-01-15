@@ -1,0 +1,10 @@
+<map id="BTN_u8IsPressed" name="BTN_u8IsPressed">
+<area shape="rect" id="node2" href="$_d_i_o_8c.html#a413e1409f9a9885a44440376f775b818" title="This function is used to get the state of the pin when it is configured as input. ..." alt="" coords="180,81,312,108"/>
+<area shape="rect" id="node3" href="$_d_e_l_a_y_8c.html#aa4346d56eeef88daa52470a640c669ac" title="This function used to make a delay using pooling mechanism. " alt="" coords="201,132,291,159"/>
+<area shape="rect" id="node4" href="$_t_i_m_e_r0_8c.html#a7411543d6d0d589f6b5fa318bcf59d88" title="this function is used to initialize timer0 " alt="" coords="406,5,494,32"/>
+<area shape="rect" id="node5" href="$_t_i_m_e_r0_8c.html#a689d58acea491f346ef7ea249f7c98e0" title="this function is used to set a value to compare the number of counts with " alt="" coords="362,56,538,83"/>
+<area shape="rect" id="node6" href="$_t_i_m_e_r0_8c.html#a80bbcb7217a1f9389e1f73d39b3b04d3" title="this function is used to enable and configure the Compare match interrupt of timer 0 ..." alt="" coords="361,107,539,133"/>
+<area shape="rect" id="node7" href="$_d_e_l_a_y_8c.html#aeb0ca1fe1f79a5ee88cfdaa9199ce200" title="this function is used to write the logic wanted to be performed in the ISR of the timer ..." alt="" coords="365,157,535,184"/>
+<area shape="rect" id="node8" href="$_t_i_m_e_r0_8c.html#af55bbe4c18d1c81a9ac0e9d0c1829e86" title="This function is used to start the timer counting process with previously initialized configurations..." alt="" coords="385,208,515,235"/>
+<area shape="rect" id="node9" href="$_t_i_m_e_r0_8c.html#adcc6c6b1e59465691486666922f25880" title="TIM0_u8DisableOCInterrupt" alt="" coords="360,259,540,285"/>
+</map>
