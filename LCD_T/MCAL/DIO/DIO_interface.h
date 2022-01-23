@@ -64,4 +64,7 @@ uint8_t DIO_u8GetPortData(DIOPort_t u8_PortName, uint8_t* pu8_ReturnVar);
 // function to toggle pin state 
 uint8_t DIO_u8TogglePinData(DIOPort_t u8_PortName, DIOPin_t u8_PinNum);
 
+
+uint8_t DIO_u8Set4BitsValue(uint8_t u8_PortName,uint8_t u8PortVal);
+
 #endif /* MCAL_DIO_INTERFACE_H_ */

@@ -409,3 +409,30 @@ uint8_t DIO_u8TogglePinData(DIOPort_t u8_PortName, DIOPin_t u8_PinNum) {
 
 	return u8ErrorState;
 }
+
+
+uint8_t DIO_u8Set4BitsValue(uint8_t u8_PortName,uint8_t u8PortVal)
+{
+	uint8_t u8ErrorState= STD_TYPES_OK;
+	switch (u8_PortName) {
+	case PORTA:
+		PORTA_REG &= 0b10000111;
+		PORTA_REG |= (u8PortVal>>1);
+		break;
+	case PORTB:
+		PORTB_REG &= 0b10000111;
+		PORTB_REG |= (u8PortVal>>1);
+		break;
+	case PORTC:
+		PORTC_REG &= 0b10000111;
+		PORTC_REG |= (u8PortVal>>1);
+		break;
+	case PORTD:
+		PORTD_REG &= 0b10000111;
+		PORTD_REG |= (u8PortVal>>1);
+		break;
+	default:
+		u8ErrorState= STD_TYPES_NOK;
+	}
+	return u8ErrorState;
+}
