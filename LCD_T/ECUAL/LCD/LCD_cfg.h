@@ -2,7 +2,7 @@
  * LCD_cfg.h
  *
  * Created: 1/17/2022 1:00:23 PM
- *  Author: Khaled Ali
+ *  Author: Alhassan Mohsen
  */
 
 #ifndef LCD_CFG_H_

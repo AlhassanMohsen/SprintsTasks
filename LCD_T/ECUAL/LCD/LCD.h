@@ -2,7 +2,7 @@
  * LCD.h
  *
  * Created: 1/17/2022 12:19:20 AM
- *  Author: Khaled Ali
+ *  Author: Alhassan Mohsen
  */
 
 #ifndef LCD_H_
