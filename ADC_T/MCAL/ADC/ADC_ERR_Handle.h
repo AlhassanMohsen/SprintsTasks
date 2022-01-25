@@ -2,7 +2,7 @@
  * ADC_ERR_Handle.h
  *
  *  Created on: Jan 16, 2022
- *      Author: Abdelrhman Elsawy
+ *      Author: Binary Beasts
  */
 
 #ifndef MCAL_ADC_ADC_ERR_HANDLE_H_

@@ -2,7 +2,7 @@
  * ADC.c
  *
  *  Created on: Jan 16, 2022
- *      Author: Abdelrhman Elsawy
+ *      Author: Binary Beasts
  */
 
 #include "../../LIB/Typedef.h"
