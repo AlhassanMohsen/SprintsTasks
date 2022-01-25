@@ -1690,3 +1690,2567 @@ Data:         16 bytes (0.8% Full)
 
 Finished building: sizedummy
  
+02:16:39 **** Incremental Build of configuration Debug for project UART_T ****
+make all 
+Building file: ../MCAL/UART/UART.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"MCAL/UART/UART.d" -MT"MCAL/UART/UART.o" -c -o "MCAL/UART/UART.o" "../MCAL/UART/UART.c"
+../MCAL/UART/UART.c:117:44: warning: multi-character character constant
+../MCAL/UART/UART.c: In function 'UART_u8RecieveString':
+../MCAL/UART/UART.c:109: warning: unused variable 'u8ErrorState'
+../MCAL/UART/UART.c:119: warning: control reaches end of non-void function
+Finished building: ../MCAL/UART/UART.c
+ 
+Building file: ../main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"main.d" -MT"main.o" -c -o "main.o" "../main.c"
+Finished building: ../main.c
+ 
+Building target: UART_T.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,UART_T.map -mmcu=atmega32 -o "UART_T.elf"  ./MCAL/UART/UART.o  ./MCAL/DIO/DIO.o  ./MCAL/DELAY/TIMER0.o  ./MCAL/ADC/ADC.o  ./ECUAL/TEMP_SENSOR/TEMP.o  ./ECUAL/LED/LED.o  ./ECUAL/LCD/LCD.o  ./main.o   
+Finished building target: UART_T.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S UART_T.elf  >"UART_T.lss"
+Finished building: UART_T.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex UART_T.elf  "UART_T.hex"
+Finished building: UART_T.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex UART_T.elf  "UART_T.eep"
+Finished building: UART_T.eep
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 UART_T.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    7448 bytes (22.7% Full)
+(.text + .data + .bootloader)
+
+Data:         16 bytes (0.8% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+02:18:27 **** Incremental Build of configuration Debug for project UART_T ****
+make all 
+Building file: ../main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"main.d" -MT"main.o" -c -o "main.o" "../main.c"
+../main.c:27:43: warning: multi-character character constant
+../main.c: In function 'main':
+../main.c:29: warning: passing argument 1 of 'UART_u8SendByte' makes integer from pointer without a cast
+Finished building: ../main.c
+ 
+Building target: UART_T.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,UART_T.map -mmcu=atmega32 -o "UART_T.elf"  ./MCAL/UART/UART.o  ./MCAL/DIO/DIO.o  ./MCAL/DELAY/TIMER0.o  ./MCAL/ADC/ADC.o  ./ECUAL/TEMP_SENSOR/TEMP.o  ./ECUAL/LED/LED.o  ./ECUAL/LCD/LCD.o  ./main.o   
+Finished building target: UART_T.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S UART_T.elf  >"UART_T.lss"
+Finished building: UART_T.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex UART_T.elf  "UART_T.hex"
+Finished building: UART_T.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex UART_T.elf  "UART_T.eep"
+Finished building: UART_T.eep
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 UART_T.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    7448 bytes (22.7% Full)
+(.text + .data + .bootloader)
+
+Data:         16 bytes (0.8% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+02:18:50 **** Incremental Build of configuration Debug for project UART_T ****
+make all 
+Building file: ../main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"main.d" -MT"main.o" -c -o "main.o" "../main.c"
+../main.c:27:43: warning: multi-character character constant
+Finished building: ../main.c
+ 
+Building target: UART_T.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,UART_T.map -mmcu=atmega32 -o "UART_T.elf"  ./MCAL/UART/UART.o  ./MCAL/DIO/DIO.o  ./MCAL/DELAY/TIMER0.o  ./MCAL/ADC/ADC.o  ./ECUAL/TEMP_SENSOR/TEMP.o  ./ECUAL/LED/LED.o  ./ECUAL/LCD/LCD.o  ./main.o   
+Finished building target: UART_T.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S UART_T.elf  >"UART_T.lss"
+Finished building: UART_T.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex UART_T.elf  "UART_T.hex"
+Finished building: UART_T.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex UART_T.elf  "UART_T.eep"
+Finished building: UART_T.eep
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 UART_T.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    7448 bytes (22.7% Full)
+(.text + .data + .bootloader)
+
+Data:         16 bytes (0.8% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+02:19:03 **** Incremental Build of configuration Debug for project UART_T ****
+make all 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 UART_T.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    7448 bytes (22.7% Full)
+(.text + .data + .bootloader)
+
+Data:         16 bytes (0.8% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+02:20:58 **** Incremental Build of configuration Debug for project UART_T ****
+make all 
+Building file: ../MCAL/UART/UART.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"MCAL/UART/UART.d" -MT"MCAL/UART/UART.o" -c -o "MCAL/UART/UART.o" "../MCAL/UART/UART.c"
+../MCAL/UART/UART.c:11:27: error: ECUAL/LED/LED.h: No such file or directory
+../MCAL/UART/UART.c:12: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'LEDTest'
+../MCAL/UART/UART.c: In function 'UART_u8Init':
+../MCAL/UART/UART.c:90: warning: implicit declaration of function 'LED_u8Init'
+../MCAL/UART/UART.c:90: error: 'LEDTest' undeclared (first use in this function)
+../MCAL/UART/UART.c:90: error: (Each undeclared identifier is reported only once
+../MCAL/UART/UART.c:90: error: for each function it appears in.)
+../MCAL/UART/UART.c:120:44: warning: multi-character character constant
+../MCAL/UART/UART.c: In function 'UART_u8RecieveString':
+../MCAL/UART/UART.c:121: warning: implicit declaration of function 'LED_u8On'
+../MCAL/UART/UART.c:121: error: 'LEDTest' undeclared (first use in this function)
+../MCAL/UART/UART.c:112: warning: unused variable 'u8ErrorState'
+../MCAL/UART/UART.c:124: warning: control reaches end of non-void function
+make: *** [MCAL/UART/UART.o] Error 1
+02:21:15 **** Incremental Build of configuration Debug for project UART_T ****
+make all 
+Building file: ../MCAL/UART/UART.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"MCAL/UART/UART.d" -MT"MCAL/UART/UART.o" -c -o "MCAL/UART/UART.o" "../MCAL/UART/UART.c"
+../MCAL/UART/UART.c:11:30: error: ../ECUAL/LED/LED.h: No such file or directory
+../MCAL/UART/UART.c:12: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'LEDTest'
+../MCAL/UART/UART.c: In function 'UART_u8Init':
+../MCAL/UART/UART.c:90: warning: implicit declaration of function 'LED_u8Init'
+../MCAL/UART/UART.c:90: error: 'LEDTest' undeclared (first use in this function)
+../MCAL/UART/UART.c:90: error: (Each undeclared identifier is reported only once
+../MCAL/UART/UART.c:90: error: for each function it appears in.)
+../MCAL/UART/UART.c:120:44: warning: multi-character character constant
+../MCAL/UART/UART.c: In function 'UART_u8RecieveString':
+../MCAL/UART/UART.c:121: warning: implicit declaration of function 'LED_u8On'
+../MCAL/UART/UART.c:121: error: 'LEDTest' undeclared (first use in this function)
+../MCAL/UART/UART.c:112: warning: unused variable 'u8ErrorState'
+../MCAL/UART/UART.c:124: warning: control reaches end of non-void function
+make: *** [MCAL/UART/UART.o] Error 1
+02:21:20 **** Incremental Build of configuration Debug for project UART_T ****
+make all 
+Building file: ../MCAL/UART/UART.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"MCAL/UART/UART.d" -MT"MCAL/UART/UART.o" -c -o "MCAL/UART/UART.o" "../MCAL/UART/UART.c"
+../MCAL/UART/UART.c:120:44: warning: multi-character character constant
+../MCAL/UART/UART.c: In function 'UART_u8RecieveString':
+../MCAL/UART/UART.c:112: warning: unused variable 'u8ErrorState'
+../MCAL/UART/UART.c:124: warning: control reaches end of non-void function
+Finished building: ../MCAL/UART/UART.c
+ 
+Building file: ../main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"main.d" -MT"main.o" -c -o "main.o" "../main.c"
+../main.c:27:43: warning: multi-character character constant
+Finished building: ../main.c
+ 
+Building target: UART_T.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,UART_T.map -mmcu=atmega32 -o "UART_T.elf"  ./MCAL/UART/UART.o  ./MCAL/DIO/DIO.o  ./MCAL/DELAY/TIMER0.o  ./MCAL/ADC/ADC.o  ./ECUAL/TEMP_SENSOR/TEMP.o  ./ECUAL/LED/LED.o  ./ECUAL/LCD/LCD.o  ./main.o   
+Finished building target: UART_T.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S UART_T.elf  >"UART_T.lss"
+Finished building: UART_T.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex UART_T.elf  "UART_T.hex"
+Finished building: UART_T.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex UART_T.elf  "UART_T.eep"
+Finished building: UART_T.eep
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 UART_T.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    7432 bytes (22.7% Full)
+(.text + .data + .bootloader)
+
+Data:         16 bytes (0.8% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+02:21:52 **** Incremental Build of configuration Debug for project UART_T ****
+make all 
+Building file: ../MCAL/UART/UART.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"MCAL/UART/UART.d" -MT"MCAL/UART/UART.o" -c -o "MCAL/UART/UART.o" "../MCAL/UART/UART.c"
+../MCAL/UART/UART.c:120:44: warning: multi-character character constant
+../MCAL/UART/UART.c: In function 'UART_u8RecieveString':
+../MCAL/UART/UART.c:112: warning: unused variable 'u8ErrorState'
+../MCAL/UART/UART.c:124: warning: control reaches end of non-void function
+Finished building: ../MCAL/UART/UART.c
+ 
+Building target: UART_T.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,UART_T.map -mmcu=atmega32 -o "UART_T.elf"  ./MCAL/UART/UART.o  ./MCAL/DIO/DIO.o  ./MCAL/DELAY/TIMER0.o  ./MCAL/ADC/ADC.o  ./ECUAL/TEMP_SENSOR/TEMP.o  ./ECUAL/LED/LED.o  ./ECUAL/LCD/LCD.o  ./main.o   
+Finished building target: UART_T.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S UART_T.elf  >"UART_T.lss"
+Finished building: UART_T.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex UART_T.elf  "UART_T.hex"
+Finished building: UART_T.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex UART_T.elf  "UART_T.eep"
+Finished building: UART_T.eep
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 UART_T.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    7440 bytes (22.7% Full)
+(.text + .data + .bootloader)
+
+Data:         16 bytes (0.8% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+02:22:13 **** Incremental Build of configuration Debug for project UART_T ****
+make all 
+Building file: ../MCAL/UART/UART.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"MCAL/UART/UART.d" -MT"MCAL/UART/UART.o" -c -o "MCAL/UART/UART.o" "../MCAL/UART/UART.c"
+../MCAL/UART/UART.c: In function 'UART_u8RecieveString':
+../MCAL/UART/UART.c:112: warning: unused variable 'u8ErrorState'
+../MCAL/UART/UART.c:124: warning: control reaches end of non-void function
+Finished building: ../MCAL/UART/UART.c
+ 
+Building target: UART_T.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,UART_T.map -mmcu=atmega32 -o "UART_T.elf"  ./MCAL/UART/UART.o  ./MCAL/DIO/DIO.o  ./MCAL/DELAY/TIMER0.o  ./MCAL/ADC/ADC.o  ./ECUAL/TEMP_SENSOR/TEMP.o  ./ECUAL/LED/LED.o  ./ECUAL/LCD/LCD.o  ./main.o   
+Finished building target: UART_T.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S UART_T.elf  >"UART_T.lss"
+Finished building: UART_T.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex UART_T.elf  "UART_T.hex"
+Finished building: UART_T.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex UART_T.elf  "UART_T.eep"
+Finished building: UART_T.eep
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 UART_T.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    7466 bytes (22.8% Full)
+(.text + .data + .bootloader)
+
+Data:         16 bytes (0.8% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+02:23:20 **** Incremental Build of configuration Debug for project UART_T ****
+make all 
+Building file: ../MCAL/UART/UART.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"MCAL/UART/UART.d" -MT"MCAL/UART/UART.o" -c -o "MCAL/UART/UART.o" "../MCAL/UART/UART.c"
+../MCAL/UART/UART.c: In function 'UART_u8RecieveString':
+../MCAL/UART/UART.c:112: warning: unused variable 'u8ErrorState'
+../MCAL/UART/UART.c:124: warning: control reaches end of non-void function
+Finished building: ../MCAL/UART/UART.c
+ 
+Building target: UART_T.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,UART_T.map -mmcu=atmega32 -o "UART_T.elf"  ./MCAL/UART/UART.o  ./MCAL/DIO/DIO.o  ./MCAL/DELAY/TIMER0.o  ./MCAL/ADC/ADC.o  ./ECUAL/TEMP_SENSOR/TEMP.o  ./ECUAL/LED/LED.o  ./ECUAL/LCD/LCD.o  ./main.o   
+Finished building target: UART_T.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S UART_T.elf  >"UART_T.lss"
+Finished building: UART_T.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex UART_T.elf  "UART_T.hex"
+Finished building: UART_T.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex UART_T.elf  "UART_T.eep"
+Finished building: UART_T.eep
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 UART_T.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    7484 bytes (22.8% Full)
+(.text + .data + .bootloader)
+
+Data:         16 bytes (0.8% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+02:23:43 **** Incremental Build of configuration Debug for project UART_T ****
+make all 
+Building file: ../MCAL/UART/UART.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"MCAL/UART/UART.d" -MT"MCAL/UART/UART.o" -c -o "MCAL/UART/UART.o" "../MCAL/UART/UART.c"
+../MCAL/UART/UART.c: In function 'UART_u8RecieveString':
+../MCAL/UART/UART.c:112: warning: unused variable 'u8ErrorState'
+../MCAL/UART/UART.c:124: warning: control reaches end of non-void function
+Finished building: ../MCAL/UART/UART.c
+ 
+Building target: UART_T.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,UART_T.map -mmcu=atmega32 -o "UART_T.elf"  ./MCAL/UART/UART.o  ./MCAL/DIO/DIO.o  ./MCAL/DELAY/TIMER0.o  ./MCAL/ADC/ADC.o  ./ECUAL/TEMP_SENSOR/TEMP.o  ./ECUAL/LED/LED.o  ./ECUAL/LCD/LCD.o  ./main.o   
+Finished building target: UART_T.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S UART_T.elf  >"UART_T.lss"
+Finished building: UART_T.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex UART_T.elf  "UART_T.hex"
+Finished building: UART_T.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex UART_T.elf  "UART_T.eep"
+Finished building: UART_T.eep
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 UART_T.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    7466 bytes (22.8% Full)
+(.text + .data + .bootloader)
+
+Data:         16 bytes (0.8% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+02:25:36 **** Incremental Build of configuration Debug for project UART_T ****
+make all 
+Building file: ../MCAL/UART/UART.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"MCAL/UART/UART.d" -MT"MCAL/UART/UART.o" -c -o "MCAL/UART/UART.o" "../MCAL/UART/UART.c"
+../MCAL/UART/UART.c: In function 'UART_u8RecieveString':
+../MCAL/UART/UART.c:112: warning: unused variable 'u8ErrorState'
+../MCAL/UART/UART.c:124: warning: control reaches end of non-void function
+Finished building: ../MCAL/UART/UART.c
+ 
+Building target: UART_T.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,UART_T.map -mmcu=atmega32 -o "UART_T.elf"  ./MCAL/UART/UART.o  ./MCAL/DIO/DIO.o  ./MCAL/DELAY/TIMER0.o  ./MCAL/ADC/ADC.o  ./ECUAL/TEMP_SENSOR/TEMP.o  ./ECUAL/LED/LED.o  ./ECUAL/LCD/LCD.o  ./main.o   
+Finished building target: UART_T.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S UART_T.elf  >"UART_T.lss"
+Finished building: UART_T.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex UART_T.elf  "UART_T.hex"
+Finished building: UART_T.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex UART_T.elf  "UART_T.eep"
+Finished building: UART_T.eep
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 UART_T.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    7466 bytes (22.8% Full)
+(.text + .data + .bootloader)
+
+Data:         16 bytes (0.8% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+02:26:22 **** Incremental Build of configuration Debug for project UART_T ****
+make all 
+Building file: ../MCAL/UART/UART.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"MCAL/UART/UART.d" -MT"MCAL/UART/UART.o" -c -o "MCAL/UART/UART.o" "../MCAL/UART/UART.c"
+../MCAL/UART/UART.c: In function 'UART_u8RecieveString':
+../MCAL/UART/UART.c:112: warning: unused variable 'u8ErrorState'
+../MCAL/UART/UART.c:124: warning: control reaches end of non-void function
+Finished building: ../MCAL/UART/UART.c
+ 
+Building target: UART_T.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,UART_T.map -mmcu=atmega32 -o "UART_T.elf"  ./MCAL/UART/UART.o  ./MCAL/DIO/DIO.o  ./MCAL/DELAY/TIMER0.o  ./MCAL/ADC/ADC.o  ./ECUAL/TEMP_SENSOR/TEMP.o  ./ECUAL/LED/LED.o  ./ECUAL/LCD/LCD.o  ./main.o   
+Finished building target: UART_T.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S UART_T.elf  >"UART_T.lss"
+Finished building: UART_T.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex UART_T.elf  "UART_T.hex"
+Finished building: UART_T.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex UART_T.elf  "UART_T.eep"
+Finished building: UART_T.eep
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 UART_T.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    7484 bytes (22.8% Full)
+(.text + .data + .bootloader)
+
+Data:         16 bytes (0.8% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+02:27:22 **** Incremental Build of configuration Debug for project UART_T ****
+make all 
+Building file: ../MCAL/UART/UART.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"MCAL/UART/UART.d" -MT"MCAL/UART/UART.o" -c -o "MCAL/UART/UART.o" "../MCAL/UART/UART.c"
+../MCAL/UART/UART.c: In function 'UART_u8RecieveString':
+../MCAL/UART/UART.c:118: error: invalid type argument of 'unary *' (have 'int')
+../MCAL/UART/UART.c:112: warning: unused variable 'u8ErrorState'
+../MCAL/UART/UART.c:123: warning: control reaches end of non-void function
+make: *** [MCAL/UART/UART.o] Error 1
+02:27:28 **** Incremental Build of configuration Debug for project UART_T ****
+make all 
+Building file: ../MCAL/UART/UART.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"MCAL/UART/UART.d" -MT"MCAL/UART/UART.o" -c -o "MCAL/UART/UART.o" "../MCAL/UART/UART.c"
+../MCAL/UART/UART.c: In function 'UART_u8RecieveString':
+../MCAL/UART/UART.c:112: warning: unused variable 'u8ErrorState'
+../MCAL/UART/UART.c:123: warning: control reaches end of non-void function
+Finished building: ../MCAL/UART/UART.c
+ 
+Building target: UART_T.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,UART_T.map -mmcu=atmega32 -o "UART_T.elf"  ./MCAL/UART/UART.o  ./MCAL/DIO/DIO.o  ./MCAL/DELAY/TIMER0.o  ./MCAL/ADC/ADC.o  ./ECUAL/TEMP_SENSOR/TEMP.o  ./ECUAL/LED/LED.o  ./ECUAL/LCD/LCD.o  ./main.o   
+Finished building target: UART_T.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S UART_T.elf  >"UART_T.lss"
+Finished building: UART_T.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex UART_T.elf  "UART_T.hex"
+Finished building: UART_T.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex UART_T.elf  "UART_T.eep"
+Finished building: UART_T.eep
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 UART_T.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    7492 bytes (22.9% Full)
+(.text + .data + .bootloader)
+
+Data:         16 bytes (0.8% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+02:29:44 **** Incremental Build of configuration Debug for project UART_T ****
+make all 
+Building file: ../MCAL/UART/UART.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"MCAL/UART/UART.d" -MT"MCAL/UART/UART.o" -c -o "MCAL/UART/UART.o" "../MCAL/UART/UART.c"
+../MCAL/UART/UART.c: In function 'UART_u8RecieveString':
+../MCAL/UART/UART.c:112: warning: unused variable 'u8ErrorState'
+../MCAL/UART/UART.c:123: warning: control reaches end of non-void function
+Finished building: ../MCAL/UART/UART.c
+ 
+Building target: UART_T.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,UART_T.map -mmcu=atmega32 -o "UART_T.elf"  ./MCAL/UART/UART.o  ./MCAL/DIO/DIO.o  ./MCAL/DELAY/TIMER0.o  ./MCAL/ADC/ADC.o  ./ECUAL/TEMP_SENSOR/TEMP.o  ./ECUAL/LED/LED.o  ./ECUAL/LCD/LCD.o  ./main.o   
+Finished building target: UART_T.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S UART_T.elf  >"UART_T.lss"
+Finished building: UART_T.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex UART_T.elf  "UART_T.hex"
+Finished building: UART_T.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex UART_T.elf  "UART_T.eep"
+Finished building: UART_T.eep
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 UART_T.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    7474 bytes (22.8% Full)
+(.text + .data + .bootloader)
+
+Data:         16 bytes (0.8% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+02:30:05 **** Incremental Build of configuration Debug for project UART_T ****
+make all 
+Building file: ../MCAL/UART/UART.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"MCAL/UART/UART.d" -MT"MCAL/UART/UART.o" -c -o "MCAL/UART/UART.o" "../MCAL/UART/UART.c"
+../MCAL/UART/UART.c: In function 'UART_u8RecieveString':
+../MCAL/UART/UART.c:112: warning: unused variable 'u8ErrorState'
+../MCAL/UART/UART.c:123: warning: control reaches end of non-void function
+Finished building: ../MCAL/UART/UART.c
+ 
+Building target: UART_T.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,UART_T.map -mmcu=atmega32 -o "UART_T.elf"  ./MCAL/UART/UART.o  ./MCAL/DIO/DIO.o  ./MCAL/DELAY/TIMER0.o  ./MCAL/ADC/ADC.o  ./ECUAL/TEMP_SENSOR/TEMP.o  ./ECUAL/LED/LED.o  ./ECUAL/LCD/LCD.o  ./main.o   
+Finished building target: UART_T.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S UART_T.elf  >"UART_T.lss"
+Finished building: UART_T.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex UART_T.elf  "UART_T.hex"
+Finished building: UART_T.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex UART_T.elf  "UART_T.eep"
+Finished building: UART_T.eep
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 UART_T.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    7492 bytes (22.9% Full)
+(.text + .data + .bootloader)
+
+Data:         16 bytes (0.8% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+02:31:32 **** Incremental Build of configuration Debug for project UART_T ****
+make all 
+Building file: ../MCAL/UART/UART.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"MCAL/UART/UART.d" -MT"MCAL/UART/UART.o" -c -o "MCAL/UART/UART.o" "../MCAL/UART/UART.c"
+../MCAL/UART/UART.c: In function 'UART_u8RecieveString':
+../MCAL/UART/UART.c:112: warning: unused variable 'u8ErrorState'
+../MCAL/UART/UART.c:123: warning: control reaches end of non-void function
+Finished building: ../MCAL/UART/UART.c
+ 
+Building target: UART_T.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,UART_T.map -mmcu=atmega32 -o "UART_T.elf"  ./MCAL/UART/UART.o  ./MCAL/DIO/DIO.o  ./MCAL/DELAY/TIMER0.o  ./MCAL/ADC/ADC.o  ./ECUAL/TEMP_SENSOR/TEMP.o  ./ECUAL/LED/LED.o  ./ECUAL/LCD/LCD.o  ./main.o   
+Finished building target: UART_T.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S UART_T.elf  >"UART_T.lss"
+Finished building: UART_T.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex UART_T.elf  "UART_T.hex"
+Finished building: UART_T.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex UART_T.elf  "UART_T.eep"
+Finished building: UART_T.eep
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 UART_T.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    7474 bytes (22.8% Full)
+(.text + .data + .bootloader)
+
+Data:         16 bytes (0.8% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+02:31:48 **** Incremental Build of configuration Debug for project UART_T ****
+make all 
+Building file: ../MCAL/UART/UART.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"MCAL/UART/UART.d" -MT"MCAL/UART/UART.o" -c -o "MCAL/UART/UART.o" "../MCAL/UART/UART.c"
+../MCAL/UART/UART.c: In function 'UART_u8RecieveString':
+../MCAL/UART/UART.c:112: warning: unused variable 'u8ErrorState'
+../MCAL/UART/UART.c:123: warning: control reaches end of non-void function
+Finished building: ../MCAL/UART/UART.c
+ 
+Building target: UART_T.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,UART_T.map -mmcu=atmega32 -o "UART_T.elf"  ./MCAL/UART/UART.o  ./MCAL/DIO/DIO.o  ./MCAL/DELAY/TIMER0.o  ./MCAL/ADC/ADC.o  ./ECUAL/TEMP_SENSOR/TEMP.o  ./ECUAL/LED/LED.o  ./ECUAL/LCD/LCD.o  ./main.o   
+Finished building target: UART_T.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S UART_T.elf  >"UART_T.lss"
+Finished building: UART_T.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex UART_T.elf  "UART_T.hex"
+Finished building: UART_T.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex UART_T.elf  "UART_T.eep"
+Finished building: UART_T.eep
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 UART_T.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    7476 bytes (22.8% Full)
+(.text + .data + .bootloader)
+
+Data:         16 bytes (0.8% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+02:32:38 **** Incremental Build of configuration Debug for project UART_T ****
+make all 
+Building file: ../MCAL/UART/UART.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"MCAL/UART/UART.d" -MT"MCAL/UART/UART.o" -c -o "MCAL/UART/UART.o" "../MCAL/UART/UART.c"
+../MCAL/UART/UART.c: In function 'UART_u8RecieveString':
+../MCAL/UART/UART.c:112: warning: unused variable 'u8ErrorState'
+../MCAL/UART/UART.c:124: warning: control reaches end of non-void function
+Finished building: ../MCAL/UART/UART.c
+ 
+Building target: UART_T.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,UART_T.map -mmcu=atmega32 -o "UART_T.elf"  ./MCAL/UART/UART.o  ./MCAL/DIO/DIO.o  ./MCAL/DELAY/TIMER0.o  ./MCAL/ADC/ADC.o  ./ECUAL/TEMP_SENSOR/TEMP.o  ./ECUAL/LED/LED.o  ./ECUAL/LCD/LCD.o  ./main.o   
+Finished building target: UART_T.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S UART_T.elf  >"UART_T.lss"
+Finished building: UART_T.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex UART_T.elf  "UART_T.hex"
+Finished building: UART_T.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex UART_T.elf  "UART_T.eep"
+Finished building: UART_T.eep
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 UART_T.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    7476 bytes (22.8% Full)
+(.text + .data + .bootloader)
+
+Data:         16 bytes (0.8% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+02:33:04 **** Incremental Build of configuration Debug for project UART_T ****
+make all 
+Building file: ../MCAL/UART/UART.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"MCAL/UART/UART.d" -MT"MCAL/UART/UART.o" -c -o "MCAL/UART/UART.o" "../MCAL/UART/UART.c"
+../MCAL/UART/UART.c: In function 'UART_u8RecieveString':
+../MCAL/UART/UART.c:114: warning: unused variable 'u8ErrorState'
+../MCAL/UART/UART.c:125: warning: control reaches end of non-void function
+Finished building: ../MCAL/UART/UART.c
+ 
+Building target: UART_T.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,UART_T.map -mmcu=atmega32 -o "UART_T.elf"  ./MCAL/UART/UART.o  ./MCAL/DIO/DIO.o  ./MCAL/DELAY/TIMER0.o  ./MCAL/ADC/ADC.o  ./ECUAL/TEMP_SENSOR/TEMP.o  ./ECUAL/LED/LED.o  ./ECUAL/LCD/LCD.o  ./main.o   
+Finished building target: UART_T.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S UART_T.elf  >"UART_T.lss"
+Finished building: UART_T.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex UART_T.elf  "UART_T.hex"
+Finished building: UART_T.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex UART_T.elf  "UART_T.eep"
+Finished building: UART_T.eep
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 UART_T.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    7476 bytes (22.8% Full)
+(.text + .data + .bootloader)
+
+Data:         16 bytes (0.8% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+02:34:23 **** Incremental Build of configuration Debug for project UART_T ****
+make all 
+Building file: ../MCAL/UART/UART.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"MCAL/UART/UART.d" -MT"MCAL/UART/UART.o" -c -o "MCAL/UART/UART.o" "../MCAL/UART/UART.c"
+../MCAL/UART/UART.c: In function 'UART_u8RecieveString':
+../MCAL/UART/UART.c:112: warning: unused variable 'u8ErrorState'
+../MCAL/UART/UART.c:123: warning: control reaches end of non-void function
+Finished building: ../MCAL/UART/UART.c
+ 
+Building target: UART_T.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,UART_T.map -mmcu=atmega32 -o "UART_T.elf"  ./MCAL/UART/UART.o  ./MCAL/DIO/DIO.o  ./MCAL/DELAY/TIMER0.o  ./MCAL/ADC/ADC.o  ./ECUAL/TEMP_SENSOR/TEMP.o  ./ECUAL/LED/LED.o  ./ECUAL/LCD/LCD.o  ./main.o   
+Finished building target: UART_T.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S UART_T.elf  >"UART_T.lss"
+Finished building: UART_T.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex UART_T.elf  "UART_T.hex"
+Finished building: UART_T.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex UART_T.elf  "UART_T.eep"
+Finished building: UART_T.eep
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 UART_T.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    7476 bytes (22.8% Full)
+(.text + .data + .bootloader)
+
+Data:         16 bytes (0.8% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+02:34:43 **** Incremental Build of configuration Debug for project UART_T ****
+make all 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 UART_T.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    7476 bytes (22.8% Full)
+(.text + .data + .bootloader)
+
+Data:         16 bytes (0.8% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+02:36:53 **** Incremental Build of configuration Debug for project UART_T ****
+make all 
+Building file: ../MCAL/UART/UART.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"MCAL/UART/UART.d" -MT"MCAL/UART/UART.o" -c -o "MCAL/UART/UART.o" "../MCAL/UART/UART.c"
+../MCAL/UART/UART.c: In function 'UART_u8RecieveString':
+../MCAL/UART/UART.c:112: warning: unused variable 'u8ErrorState'
+../MCAL/UART/UART.c:123: warning: control reaches end of non-void function
+Finished building: ../MCAL/UART/UART.c
+ 
+Building file: ../main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"main.d" -MT"main.o" -c -o "main.o" "../main.c"
+../main.c:28:43: warning: multi-character character constant
+Finished building: ../main.c
+ 
+Building target: UART_T.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,UART_T.map -mmcu=atmega32 -o "UART_T.elf"  ./MCAL/UART/UART.o  ./MCAL/DIO/DIO.o  ./MCAL/DELAY/TIMER0.o  ./MCAL/ADC/ADC.o  ./ECUAL/TEMP_SENSOR/TEMP.o  ./ECUAL/LED/LED.o  ./ECUAL/LCD/LCD.o  ./main.o   
+Finished building target: UART_T.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S UART_T.elf  >"UART_T.lss"
+Finished building: UART_T.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex UART_T.elf  "UART_T.hex"
+Finished building: UART_T.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex UART_T.elf  "UART_T.eep"
+Finished building: UART_T.eep
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 UART_T.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    7486 bytes (22.8% Full)
+(.text + .data + .bootloader)
+
+Data:         18 bytes (0.9% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+02:37:28 **** Incremental Build of configuration Debug for project UART_T ****
+make all 
+Building file: ../main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"main.d" -MT"main.o" -c -o "main.o" "../main.c"
+Finished building: ../main.c
+ 
+Building target: UART_T.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,UART_T.map -mmcu=atmega32 -o "UART_T.elf"  ./MCAL/UART/UART.o  ./MCAL/DIO/DIO.o  ./MCAL/DELAY/TIMER0.o  ./MCAL/ADC/ADC.o  ./ECUAL/TEMP_SENSOR/TEMP.o  ./ECUAL/LED/LED.o  ./ECUAL/LCD/LCD.o  ./main.o   
+Finished building target: UART_T.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S UART_T.elf  >"UART_T.lss"
+Finished building: UART_T.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex UART_T.elf  "UART_T.hex"
+Finished building: UART_T.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex UART_T.elf  "UART_T.eep"
+Finished building: UART_T.eep
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 UART_T.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    7536 bytes (23.0% Full)
+(.text + .data + .bootloader)
+
+Data:         18 bytes (0.9% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+02:37:48 **** Incremental Build of configuration Debug for project UART_T ****
+make all 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 UART_T.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    7536 bytes (23.0% Full)
+(.text + .data + .bootloader)
+
+Data:         18 bytes (0.9% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+02:37:52 **** Incremental Build of configuration Debug for project UART_T ****
+make all 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 UART_T.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    7536 bytes (23.0% Full)
+(.text + .data + .bootloader)
+
+Data:         18 bytes (0.9% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+02:44:00 **** Incremental Build of configuration Debug for project UART_T ****
+make all 
+Building file: ../MCAL/UART/UART.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"MCAL/UART/UART.d" -MT"MCAL/UART/UART.o" -c -o "MCAL/UART/UART.o" "../MCAL/UART/UART.c"
+../MCAL/UART/UART.c: In function 'UART_u8RecieveString':
+../MCAL/UART/UART.c:113: warning: unused variable 'u16StrCounter'
+../MCAL/UART/UART.c:112: warning: unused variable 'u8ErrorState'
+../MCAL/UART/UART.c:126: warning: control reaches end of non-void function
+Finished building: ../MCAL/UART/UART.c
+ 
+Building target: UART_T.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,UART_T.map -mmcu=atmega32 -o "UART_T.elf"  ./MCAL/UART/UART.o  ./MCAL/DIO/DIO.o  ./MCAL/DELAY/TIMER0.o  ./MCAL/ADC/ADC.o  ./ECUAL/TEMP_SENSOR/TEMP.o  ./ECUAL/LED/LED.o  ./ECUAL/LCD/LCD.o  ./main.o   
+Finished building target: UART_T.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S UART_T.elf  >"UART_T.lss"
+Finished building: UART_T.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex UART_T.elf  "UART_T.hex"
+Finished building: UART_T.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex UART_T.elf  "UART_T.eep"
+Finished building: UART_T.eep
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 UART_T.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    7526 bytes (23.0% Full)
+(.text + .data + .bootloader)
+
+Data:         18 bytes (0.9% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+02:46:29 **** Incremental Build of configuration Debug for project UART_T ****
+make all 
+Building file: ../MCAL/UART/UART.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"MCAL/UART/UART.d" -MT"MCAL/UART/UART.o" -c -o "MCAL/UART/UART.o" "../MCAL/UART/UART.c"
+../MCAL/UART/UART.c: In function 'UART_u8RecieveString':
+../MCAL/UART/UART.c:112: warning: unused variable 'u8ErrorState'
+../MCAL/UART/UART.c:125: warning: control reaches end of non-void function
+Finished building: ../MCAL/UART/UART.c
+ 
+Building file: ../main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"main.d" -MT"main.o" -c -o "main.o" "../main.c"
+Finished building: ../main.c
+ 
+Building target: UART_T.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,UART_T.map -mmcu=atmega32 -o "UART_T.elf"  ./MCAL/UART/UART.o  ./MCAL/DIO/DIO.o  ./MCAL/DELAY/TIMER0.o  ./MCAL/ADC/ADC.o  ./ECUAL/TEMP_SENSOR/TEMP.o  ./ECUAL/LED/LED.o  ./ECUAL/LCD/LCD.o  ./main.o   
+Finished building target: UART_T.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S UART_T.elf  >"UART_T.lss"
+Finished building: UART_T.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex UART_T.elf  "UART_T.hex"
+Finished building: UART_T.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex UART_T.elf  "UART_T.eep"
+Finished building: UART_T.eep
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 UART_T.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    7506 bytes (22.9% Full)
+(.text + .data + .bootloader)
+
+Data:         18 bytes (0.9% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+02:47:26 **** Incremental Build of configuration Debug for project UART_T ****
+make all 
+Building file: ../MCAL/UART/UART.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"MCAL/UART/UART.d" -MT"MCAL/UART/UART.o" -c -o "MCAL/UART/UART.o" "../MCAL/UART/UART.c"
+../MCAL/UART/UART.c: In function 'UART_u8RecieveString':
+../MCAL/UART/UART.c:112: warning: unused variable 'u8ErrorState'
+../MCAL/UART/UART.c:124: warning: control reaches end of non-void function
+Finished building: ../MCAL/UART/UART.c
+ 
+Building file: ../main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"main.d" -MT"main.o" -c -o "main.o" "../main.c"
+Finished building: ../main.c
+ 
+Building target: UART_T.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,UART_T.map -mmcu=atmega32 -o "UART_T.elf"  ./MCAL/UART/UART.o  ./MCAL/DIO/DIO.o  ./MCAL/DELAY/TIMER0.o  ./MCAL/ADC/ADC.o  ./ECUAL/TEMP_SENSOR/TEMP.o  ./ECUAL/LED/LED.o  ./ECUAL/LCD/LCD.o  ./main.o   
+Finished building target: UART_T.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S UART_T.elf  >"UART_T.lss"
+Finished building: UART_T.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex UART_T.elf  "UART_T.hex"
+Finished building: UART_T.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex UART_T.elf  "UART_T.eep"
+Finished building: UART_T.eep
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 UART_T.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    7498 bytes (22.9% Full)
+(.text + .data + .bootloader)
+
+Data:         18 bytes (0.9% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+02:48:19 **** Incremental Build of configuration Debug for project UART_T ****
+make all 
+Building file: ../main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"main.d" -MT"main.o" -c -o "main.o" "../main.c"
+Finished building: ../main.c
+ 
+Building target: UART_T.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,UART_T.map -mmcu=atmega32 -o "UART_T.elf"  ./MCAL/UART/UART.o  ./MCAL/DIO/DIO.o  ./MCAL/DELAY/TIMER0.o  ./MCAL/ADC/ADC.o  ./ECUAL/TEMP_SENSOR/TEMP.o  ./ECUAL/LED/LED.o  ./ECUAL/LCD/LCD.o  ./main.o   
+Finished building target: UART_T.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S UART_T.elf  >"UART_T.lss"
+Finished building: UART_T.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex UART_T.elf  "UART_T.hex"
+Finished building: UART_T.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex UART_T.elf  "UART_T.eep"
+Finished building: UART_T.eep
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 UART_T.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    7532 bytes (23.0% Full)
+(.text + .data + .bootloader)
+
+Data:         18 bytes (0.9% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+02:49:18 **** Incremental Build of configuration Debug for project UART_T ****
+make all 
+Building file: ../main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"main.d" -MT"main.o" -c -o "main.o" "../main.c"
+Finished building: ../main.c
+ 
+Building target: UART_T.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,UART_T.map -mmcu=atmega32 -o "UART_T.elf"  ./MCAL/UART/UART.o  ./MCAL/DIO/DIO.o  ./MCAL/DELAY/TIMER0.o  ./MCAL/ADC/ADC.o  ./ECUAL/TEMP_SENSOR/TEMP.o  ./ECUAL/LED/LED.o  ./ECUAL/LCD/LCD.o  ./main.o   
+Finished building target: UART_T.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S UART_T.elf  >"UART_T.lss"
+Finished building: UART_T.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex UART_T.elf  "UART_T.hex"
+Finished building: UART_T.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex UART_T.elf  "UART_T.eep"
+Finished building: UART_T.eep
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 UART_T.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    7522 bytes (23.0% Full)
+(.text + .data + .bootloader)
+
+Data:         18 bytes (0.9% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+02:49:29 **** Incremental Build of configuration Debug for project UART_T ****
+make all 
+Building file: ../main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"main.d" -MT"main.o" -c -o "main.o" "../main.c"
+../main.c: In function 'main':
+../main.c:21: warning: unused variable 'u16StringCounter'
+Finished building: ../main.c
+ 
+Building target: UART_T.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,UART_T.map -mmcu=atmega32 -o "UART_T.elf"  ./MCAL/UART/UART.o  ./MCAL/DIO/DIO.o  ./MCAL/DELAY/TIMER0.o  ./MCAL/ADC/ADC.o  ./ECUAL/TEMP_SENSOR/TEMP.o  ./ECUAL/LED/LED.o  ./ECUAL/LCD/LCD.o  ./main.o   
+Finished building target: UART_T.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S UART_T.elf  >"UART_T.lss"
+Finished building: UART_T.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex UART_T.elf  "UART_T.hex"
+Finished building: UART_T.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex UART_T.elf  "UART_T.eep"
+Finished building: UART_T.eep
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 UART_T.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    7488 bytes (22.9% Full)
+(.text + .data + .bootloader)
+
+Data:         18 bytes (0.9% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+02:49:43 **** Incremental Build of configuration Debug for project UART_T ****
+make all 
+Building file: ../main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"main.d" -MT"main.o" -c -o "main.o" "../main.c"
+../main.c: In function 'main':
+../main.c:21: warning: unused variable 'u16StringCounter'
+Finished building: ../main.c
+ 
+Building target: UART_T.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,UART_T.map -mmcu=atmega32 -o "UART_T.elf"  ./MCAL/UART/UART.o  ./MCAL/DIO/DIO.o  ./MCAL/DELAY/TIMER0.o  ./MCAL/ADC/ADC.o  ./ECUAL/TEMP_SENSOR/TEMP.o  ./ECUAL/LED/LED.o  ./ECUAL/LCD/LCD.o  ./main.o   
+Finished building target: UART_T.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S UART_T.elf  >"UART_T.lss"
+Finished building: UART_T.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex UART_T.elf  "UART_T.hex"
+Finished building: UART_T.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex UART_T.elf  "UART_T.eep"
+Finished building: UART_T.eep
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 UART_T.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    7512 bytes (22.9% Full)
+(.text + .data + .bootloader)
+
+Data:         18 bytes (0.9% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+02:51:16 **** Incremental Build of configuration Debug for project UART_T ****
+make all 
+Building file: ../MCAL/UART/UART.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"MCAL/UART/UART.d" -MT"MCAL/UART/UART.o" -c -o "MCAL/UART/UART.o" "../MCAL/UART/UART.c"
+../MCAL/UART/UART.c: In function 'UART_u8RecieveString':
+../MCAL/UART/UART.c:112: warning: unused variable 'u8ErrorState'
+../MCAL/UART/UART.c:125: warning: control reaches end of non-void function
+Finished building: ../MCAL/UART/UART.c
+ 
+Building target: UART_T.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,UART_T.map -mmcu=atmega32 -o "UART_T.elf"  ./MCAL/UART/UART.o  ./MCAL/DIO/DIO.o  ./MCAL/DELAY/TIMER0.o  ./MCAL/ADC/ADC.o  ./ECUAL/TEMP_SENSOR/TEMP.o  ./ECUAL/LED/LED.o  ./ECUAL/LCD/LCD.o  ./main.o   
+Finished building target: UART_T.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S UART_T.elf  >"UART_T.lss"
+Finished building: UART_T.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex UART_T.elf  "UART_T.hex"
+Finished building: UART_T.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex UART_T.elf  "UART_T.eep"
+Finished building: UART_T.eep
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 UART_T.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    7528 bytes (23.0% Full)
+(.text + .data + .bootloader)
+
+Data:         18 bytes (0.9% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+02:53:07 **** Incremental Build of configuration Debug for project UART_T ****
+make all 
+Building file: ../MCAL/UART/UART.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"MCAL/UART/UART.d" -MT"MCAL/UART/UART.o" -c -o "MCAL/UART/UART.o" "../MCAL/UART/UART.c"
+../MCAL/UART/UART.c: In function 'UART_u8RecieveString':
+../MCAL/UART/UART.c:112: warning: unused variable 'u8ErrorState'
+../MCAL/UART/UART.c:125: warning: control reaches end of non-void function
+Finished building: ../MCAL/UART/UART.c
+ 
+Building file: ../main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"main.d" -MT"main.o" -c -o "main.o" "../main.c"
+../main.c: In function 'main':
+../main.c:21: warning: unused variable 'u16StringCounter'
+Finished building: ../main.c
+ 
+Building target: UART_T.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,UART_T.map -mmcu=atmega32 -o "UART_T.elf"  ./MCAL/UART/UART.o  ./MCAL/DIO/DIO.o  ./MCAL/DELAY/TIMER0.o  ./MCAL/ADC/ADC.o  ./ECUAL/TEMP_SENSOR/TEMP.o  ./ECUAL/LED/LED.o  ./ECUAL/LCD/LCD.o  ./main.o   
+Finished building target: UART_T.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S UART_T.elf  >"UART_T.lss"
+Finished building: UART_T.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex UART_T.elf  "UART_T.hex"
+Finished building: UART_T.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex UART_T.elf  "UART_T.eep"
+Finished building: UART_T.eep
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 UART_T.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    7528 bytes (23.0% Full)
+(.text + .data + .bootloader)
+
+Data:         18 bytes (0.9% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+02:56:06 **** Incremental Build of configuration Debug for project UART_T ****
+make all 
+Building file: ../MCAL/UART/UART.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"MCAL/UART/UART.d" -MT"MCAL/UART/UART.o" -c -o "MCAL/UART/UART.o" "../MCAL/UART/UART.c"
+../MCAL/UART/UART.c: In function 'UART_u8RecieveString':
+../MCAL/UART/UART.c:112: warning: unused variable 'u8ErrorState'
+../MCAL/UART/UART.c:125: warning: control reaches end of non-void function
+Finished building: ../MCAL/UART/UART.c
+ 
+Building file: ../main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"main.d" -MT"main.o" -c -o "main.o" "../main.c"
+Finished building: ../main.c
+ 
+Building target: UART_T.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,UART_T.map -mmcu=atmega32 -o "UART_T.elf"  ./MCAL/UART/UART.o  ./MCAL/DIO/DIO.o  ./MCAL/DELAY/TIMER0.o  ./MCAL/ADC/ADC.o  ./ECUAL/TEMP_SENSOR/TEMP.o  ./ECUAL/LED/LED.o  ./ECUAL/LCD/LCD.o  ./main.o   
+Finished building target: UART_T.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S UART_T.elf  >"UART_T.lss"
+Finished building: UART_T.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex UART_T.elf  "UART_T.hex"
+Finished building: UART_T.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex UART_T.elf  "UART_T.eep"
+Finished building: UART_T.eep
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 UART_T.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    7556 bytes (23.1% Full)
+(.text + .data + .bootloader)
+
+Data:         18 bytes (0.9% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+02:59:12 **** Incremental Build of configuration Debug for project UART_T ****
+make all 
+Building file: ../MCAL/UART/UART.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"MCAL/UART/UART.d" -MT"MCAL/UART/UART.o" -c -o "MCAL/UART/UART.o" "../MCAL/UART/UART.c"
+../MCAL/UART/UART.c: In function 'UART_u8RecieveString':
+../MCAL/UART/UART.c:112: warning: unused variable 'u8ErrorState'
+../MCAL/UART/UART.c:125: warning: control reaches end of non-void function
+Finished building: ../MCAL/UART/UART.c
+ 
+Building target: UART_T.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,UART_T.map -mmcu=atmega32 -o "UART_T.elf"  ./MCAL/UART/UART.o  ./MCAL/DIO/DIO.o  ./MCAL/DELAY/TIMER0.o  ./MCAL/ADC/ADC.o  ./ECUAL/TEMP_SENSOR/TEMP.o  ./ECUAL/LED/LED.o  ./ECUAL/LCD/LCD.o  ./main.o   
+Finished building target: UART_T.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S UART_T.elf  >"UART_T.lss"
+Finished building: UART_T.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex UART_T.elf  "UART_T.hex"
+Finished building: UART_T.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex UART_T.elf  "UART_T.eep"
+Finished building: UART_T.eep
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 UART_T.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    7568 bytes (23.1% Full)
+(.text + .data + .bootloader)
+
+Data:         18 bytes (0.9% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+02:59:47 **** Incremental Build of configuration Debug for project UART_T ****
+make all 
+Building file: ../MCAL/UART/UART.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"MCAL/UART/UART.d" -MT"MCAL/UART/UART.o" -c -o "MCAL/UART/UART.o" "../MCAL/UART/UART.c"
+../MCAL/UART/UART.c: In function 'UART_u8RecieveString':
+../MCAL/UART/UART.c:112: warning: unused variable 'u8ErrorState'
+../MCAL/UART/UART.c:125: warning: control reaches end of non-void function
+Finished building: ../MCAL/UART/UART.c
+ 
+Building target: UART_T.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,UART_T.map -mmcu=atmega32 -o "UART_T.elf"  ./MCAL/UART/UART.o  ./MCAL/DIO/DIO.o  ./MCAL/DELAY/TIMER0.o  ./MCAL/ADC/ADC.o  ./ECUAL/TEMP_SENSOR/TEMP.o  ./ECUAL/LED/LED.o  ./ECUAL/LCD/LCD.o  ./main.o   
+Finished building target: UART_T.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S UART_T.elf  >"UART_T.lss"
+Finished building: UART_T.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex UART_T.elf  "UART_T.hex"
+Finished building: UART_T.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex UART_T.elf  "UART_T.eep"
+Finished building: UART_T.eep
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 UART_T.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    7586 bytes (23.2% Full)
+(.text + .data + .bootloader)
+
+Data:         18 bytes (0.9% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+03:01:50 **** Incremental Build of configuration Debug for project UART_T ****
+make all 
+Building file: ../MCAL/UART/UART.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"MCAL/UART/UART.d" -MT"MCAL/UART/UART.o" -c -o "MCAL/UART/UART.o" "../MCAL/UART/UART.c"
+../MCAL/UART/UART.c: In function 'UART_u8RecieveString':
+../MCAL/UART/UART.c:112: warning: unused variable 'u8ErrorState'
+../MCAL/UART/UART.c:124: warning: control reaches end of non-void function
+Finished building: ../MCAL/UART/UART.c
+ 
+Building file: ../main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"main.d" -MT"main.o" -c -o "main.o" "../main.c"
+Finished building: ../main.c
+ 
+Building target: UART_T.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,UART_T.map -mmcu=atmega32 -o "UART_T.elf"  ./MCAL/UART/UART.o  ./MCAL/DIO/DIO.o  ./MCAL/DELAY/TIMER0.o  ./MCAL/ADC/ADC.o  ./ECUAL/TEMP_SENSOR/TEMP.o  ./ECUAL/LED/LED.o  ./ECUAL/LCD/LCD.o  ./main.o   
+Finished building target: UART_T.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S UART_T.elf  >"UART_T.lss"
+Finished building: UART_T.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex UART_T.elf  "UART_T.hex"
+Finished building: UART_T.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex UART_T.elf  "UART_T.eep"
+Finished building: UART_T.eep
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 UART_T.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    7586 bytes (23.2% Full)
+(.text + .data + .bootloader)
+
+Data:         18 bytes (0.9% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+03:02:15 **** Incremental Build of configuration Debug for project UART_T ****
+make all 
+Building file: ../main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"main.d" -MT"main.o" -c -o "main.o" "../main.c"
+Finished building: ../main.c
+ 
+Building target: UART_T.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,UART_T.map -mmcu=atmega32 -o "UART_T.elf"  ./MCAL/UART/UART.o  ./MCAL/DIO/DIO.o  ./MCAL/DELAY/TIMER0.o  ./MCAL/ADC/ADC.o  ./ECUAL/TEMP_SENSOR/TEMP.o  ./ECUAL/LED/LED.o  ./ECUAL/LCD/LCD.o  ./main.o   
+Finished building target: UART_T.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S UART_T.elf  >"UART_T.lss"
+Finished building: UART_T.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex UART_T.elf  "UART_T.hex"
+Finished building: UART_T.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex UART_T.elf  "UART_T.eep"
+Finished building: UART_T.eep
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 UART_T.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    7588 bytes (23.2% Full)
+(.text + .data + .bootloader)
+
+Data:         18 bytes (0.9% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+03:05:08 **** Incremental Build of configuration Debug for project UART_T ****
+make all 
+Building file: ../main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"main.d" -MT"main.o" -c -o "main.o" "../main.c"
+Finished building: ../main.c
+ 
+Building target: UART_T.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,UART_T.map -mmcu=atmega32 -o "UART_T.elf"  ./MCAL/UART/UART.o  ./MCAL/DIO/DIO.o  ./MCAL/DELAY/TIMER0.o  ./MCAL/ADC/ADC.o  ./ECUAL/TEMP_SENSOR/TEMP.o  ./ECUAL/LED/LED.o  ./ECUAL/LCD/LCD.o  ./main.o   
+Finished building target: UART_T.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S UART_T.elf  >"UART_T.lss"
+Finished building: UART_T.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex UART_T.elf  "UART_T.hex"
+Finished building: UART_T.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex UART_T.elf  "UART_T.eep"
+Finished building: UART_T.eep
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 UART_T.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    7592 bytes (23.2% Full)
+(.text + .data + .bootloader)
+
+Data:         18 bytes (0.9% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+03:06:33 **** Incremental Build of configuration Debug for project UART_T ****
+make all 
+Building file: ../MCAL/UART/UART.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"MCAL/UART/UART.d" -MT"MCAL/UART/UART.o" -c -o "MCAL/UART/UART.o" "../MCAL/UART/UART.c"
+../MCAL/UART/UART.c: In function 'UART_u8RecieveString':
+../MCAL/UART/UART.c:114: warning: unused variable 'Temp'
+../MCAL/UART/UART.c:112: warning: unused variable 'u8ErrorState'
+../MCAL/UART/UART.c:125: warning: control reaches end of non-void function
+Finished building: ../MCAL/UART/UART.c
+ 
+Building target: UART_T.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,UART_T.map -mmcu=atmega32 -o "UART_T.elf"  ./MCAL/UART/UART.o  ./MCAL/DIO/DIO.o  ./MCAL/DELAY/TIMER0.o  ./MCAL/ADC/ADC.o  ./ECUAL/TEMP_SENSOR/TEMP.o  ./ECUAL/LED/LED.o  ./ECUAL/LCD/LCD.o  ./main.o   
+Finished building target: UART_T.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S UART_T.elf  >"UART_T.lss"
+Finished building: UART_T.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex UART_T.elf  "UART_T.hex"
+Finished building: UART_T.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex UART_T.elf  "UART_T.eep"
+Finished building: UART_T.eep
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 UART_T.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    7562 bytes (23.1% Full)
+(.text + .data + .bootloader)
+
+Data:         18 bytes (0.9% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+03:07:32 **** Incremental Build of configuration Debug for project UART_T ****
+make all 
+Building file: ../main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"main.d" -MT"main.o" -c -o "main.o" "../main.c"
+Finished building: ../main.c
+ 
+Building target: UART_T.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,UART_T.map -mmcu=atmega32 -o "UART_T.elf"  ./MCAL/UART/UART.o  ./MCAL/DIO/DIO.o  ./MCAL/DELAY/TIMER0.o  ./MCAL/ADC/ADC.o  ./ECUAL/TEMP_SENSOR/TEMP.o  ./ECUAL/LED/LED.o  ./ECUAL/LCD/LCD.o  ./main.o   
+Finished building target: UART_T.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S UART_T.elf  >"UART_T.lss"
+Finished building: UART_T.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex UART_T.elf  "UART_T.hex"
+Finished building: UART_T.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex UART_T.elf  "UART_T.eep"
+Finished building: UART_T.eep
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 UART_T.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    7554 bytes (23.1% Full)
+(.text + .data + .bootloader)
+
+Data:         18 bytes (0.9% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+03:10:52 **** Incremental Build of configuration Debug for project UART_T ****
+make all 
+Building file: ../main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"main.d" -MT"main.o" -c -o "main.o" "../main.c"
+../main.c: In function 'main':
+../main.c:36: warning: passing argument 1 of 'UART_u8SendByte' makes integer from pointer without a cast
+Finished building: ../main.c
+ 
+Building target: UART_T.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,UART_T.map -mmcu=atmega32 -o "UART_T.elf"  ./MCAL/UART/UART.o  ./MCAL/DIO/DIO.o  ./MCAL/DELAY/TIMER0.o  ./MCAL/ADC/ADC.o  ./ECUAL/TEMP_SENSOR/TEMP.o  ./ECUAL/LED/LED.o  ./ECUAL/LCD/LCD.o  ./main.o   
+Finished building target: UART_T.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S UART_T.elf  >"UART_T.lss"
+Finished building: UART_T.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex UART_T.elf  "UART_T.hex"
+Finished building: UART_T.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex UART_T.elf  "UART_T.eep"
+Finished building: UART_T.eep
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 UART_T.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    7526 bytes (23.0% Full)
+(.text + .data + .bootloader)
+
+Data:         18 bytes (0.9% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+03:11:00 **** Incremental Build of configuration Debug for project UART_T ****
+make all 
+Building file: ../main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"main.d" -MT"main.o" -c -o "main.o" "../main.c"
+Finished building: ../main.c
+ 
+Building target: UART_T.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,UART_T.map -mmcu=atmega32 -o "UART_T.elf"  ./MCAL/UART/UART.o  ./MCAL/DIO/DIO.o  ./MCAL/DELAY/TIMER0.o  ./MCAL/ADC/ADC.o  ./ECUAL/TEMP_SENSOR/TEMP.o  ./ECUAL/LED/LED.o  ./ECUAL/LCD/LCD.o  ./main.o   
+Finished building target: UART_T.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S UART_T.elf  >"UART_T.lss"
+Finished building: UART_T.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex UART_T.elf  "UART_T.hex"
+Finished building: UART_T.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex UART_T.elf  "UART_T.eep"
+Finished building: UART_T.eep
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 UART_T.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    7528 bytes (23.0% Full)
+(.text + .data + .bootloader)
+
+Data:         18 bytes (0.9% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+03:12:08 **** Incremental Build of configuration Debug for project UART_T ****
+make all 
+Building file: ../main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"main.d" -MT"main.o" -c -o "main.o" "../main.c"
+../main.c: In function 'main':
+../main.c:39: warning: unused variable 'u8LastByte'
+Finished building: ../main.c
+ 
+Building target: UART_T.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,UART_T.map -mmcu=atmega32 -o "UART_T.elf"  ./MCAL/UART/UART.o  ./MCAL/DIO/DIO.o  ./MCAL/DELAY/TIMER0.o  ./MCAL/ADC/ADC.o  ./ECUAL/TEMP_SENSOR/TEMP.o  ./ECUAL/LED/LED.o  ./ECUAL/LCD/LCD.o  ./main.o   
+Finished building target: UART_T.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S UART_T.elf  >"UART_T.lss"
+Finished building: UART_T.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex UART_T.elf  "UART_T.hex"
+Finished building: UART_T.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex UART_T.elf  "UART_T.eep"
+Finished building: UART_T.eep
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 UART_T.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    7542 bytes (23.0% Full)
+(.text + .data + .bootloader)
+
+Data:         18 bytes (0.9% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+03:12:20 **** Incremental Build of configuration Debug for project UART_T ****
+make all 
+Building file: ../main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"main.d" -MT"main.o" -c -o "main.o" "../main.c"
+Finished building: ../main.c
+ 
+Building target: UART_T.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,UART_T.map -mmcu=atmega32 -o "UART_T.elf"  ./MCAL/UART/UART.o  ./MCAL/DIO/DIO.o  ./MCAL/DELAY/TIMER0.o  ./MCAL/ADC/ADC.o  ./ECUAL/TEMP_SENSOR/TEMP.o  ./ECUAL/LED/LED.o  ./ECUAL/LCD/LCD.o  ./main.o   
+Finished building target: UART_T.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S UART_T.elf  >"UART_T.lss"
+Finished building: UART_T.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex UART_T.elf  "UART_T.hex"
+Finished building: UART_T.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex UART_T.elf  "UART_T.eep"
+Finished building: UART_T.eep
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 UART_T.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    7536 bytes (23.0% Full)
+(.text + .data + .bootloader)
+
+Data:         18 bytes (0.9% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+03:13:29 **** Incremental Build of configuration Debug for project UART_T ****
+make all 
+Building file: ../MCAL/UART/UART.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"MCAL/UART/UART.d" -MT"MCAL/UART/UART.o" -c -o "MCAL/UART/UART.o" "../MCAL/UART/UART.c"
+../MCAL/UART/UART.c: In function 'UART_u8RecieveString':
+../MCAL/UART/UART.c:112: warning: unused variable 'u8ErrorState'
+../MCAL/UART/UART.c:125: warning: control reaches end of non-void function
+Finished building: ../MCAL/UART/UART.c
+ 
+Building target: UART_T.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,UART_T.map -mmcu=atmega32 -o "UART_T.elf"  ./MCAL/UART/UART.o  ./MCAL/DIO/DIO.o  ./MCAL/DELAY/TIMER0.o  ./MCAL/ADC/ADC.o  ./ECUAL/TEMP_SENSOR/TEMP.o  ./ECUAL/LED/LED.o  ./ECUAL/LCD/LCD.o  ./main.o   
+Finished building target: UART_T.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S UART_T.elf  >"UART_T.lss"
+Finished building: UART_T.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex UART_T.elf  "UART_T.hex"
+Finished building: UART_T.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex UART_T.elf  "UART_T.eep"
+Finished building: UART_T.eep
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 UART_T.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    7536 bytes (23.0% Full)
+(.text + .data + .bootloader)
+
+Data:         18 bytes (0.9% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+03:15:02 **** Incremental Build of configuration Debug for project UART_T ****
+make all 
+Building file: ../main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"main.d" -MT"main.o" -c -o "main.o" "../main.c"
+Finished building: ../main.c
+ 
+Building target: UART_T.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,UART_T.map -mmcu=atmega32 -o "UART_T.elf"  ./MCAL/UART/UART.o  ./MCAL/DIO/DIO.o  ./MCAL/DELAY/TIMER0.o  ./MCAL/ADC/ADC.o  ./ECUAL/TEMP_SENSOR/TEMP.o  ./ECUAL/LED/LED.o  ./ECUAL/LCD/LCD.o  ./main.o   
+Finished building target: UART_T.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S UART_T.elf  >"UART_T.lss"
+Finished building: UART_T.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex UART_T.elf  "UART_T.hex"
+Finished building: UART_T.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex UART_T.elf  "UART_T.eep"
+Finished building: UART_T.eep
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 UART_T.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    7554 bytes (23.1% Full)
+(.text + .data + .bootloader)
+
+Data:         18 bytes (0.9% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+03:15:31 **** Incremental Build of configuration Debug for project UART_T ****
+make all 
+Building file: ../main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"main.d" -MT"main.o" -c -o "main.o" "../main.c"
+Finished building: ../main.c
+ 
+Building target: UART_T.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,UART_T.map -mmcu=atmega32 -o "UART_T.elf"  ./MCAL/UART/UART.o  ./MCAL/DIO/DIO.o  ./MCAL/DELAY/TIMER0.o  ./MCAL/ADC/ADC.o  ./ECUAL/TEMP_SENSOR/TEMP.o  ./ECUAL/LED/LED.o  ./ECUAL/LCD/LCD.o  ./main.o   
+Finished building target: UART_T.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S UART_T.elf  >"UART_T.lss"
+Finished building: UART_T.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex UART_T.elf  "UART_T.hex"
+Finished building: UART_T.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex UART_T.elf  "UART_T.eep"
+Finished building: UART_T.eep
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 UART_T.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    7562 bytes (23.1% Full)
+(.text + .data + .bootloader)
+
+Data:         18 bytes (0.9% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+03:19:29 **** Incremental Build of configuration Debug for project UART_T ****
+make all 
+Building file: ../MCAL/UART/UART.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"MCAL/UART/UART.d" -MT"MCAL/UART/UART.o" -c -o "MCAL/UART/UART.o" "../MCAL/UART/UART.c"
+../MCAL/UART/UART.c: In function 'UART_u8SendString':
+../MCAL/UART/UART.c:105: warning: unused variable 'u8ErrorState'
+../MCAL/UART/UART.c:115: warning: control reaches end of non-void function
+../MCAL/UART/UART.c: In function 'UART_u8RecieveString':
+../MCAL/UART/UART.c:127: warning: unused variable 'u8ErrorState'
+../MCAL/UART/UART.c:140: warning: control reaches end of non-void function
+Finished building: ../MCAL/UART/UART.c
+ 
+Building file: ../main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"main.d" -MT"main.o" -c -o "main.o" "../main.c"
+Finished building: ../main.c
+ 
+Building target: UART_T.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,UART_T.map -mmcu=atmega32 -o "UART_T.elf"  ./MCAL/UART/UART.o  ./MCAL/DIO/DIO.o  ./MCAL/DELAY/TIMER0.o  ./MCAL/ADC/ADC.o  ./ECUAL/TEMP_SENSOR/TEMP.o  ./ECUAL/LED/LED.o  ./ECUAL/LCD/LCD.o  ./main.o   
+Finished building target: UART_T.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S UART_T.elf  >"UART_T.lss"
+Finished building: UART_T.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex UART_T.elf  "UART_T.hex"
+Finished building: UART_T.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex UART_T.elf  "UART_T.eep"
+Finished building: UART_T.eep
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 UART_T.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    7576 bytes (23.1% Full)
+(.text + .data + .bootloader)
+
+Data:         18 bytes (0.9% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+04:08:00 **** Incremental Build of configuration Debug for project UART_T ****
+make all 
+Building file: ../MCAL/UART/UART.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"MCAL/UART/UART.d" -MT"MCAL/UART/UART.o" -c -o "MCAL/UART/UART.o" "../MCAL/UART/UART.c"
+In file included from ../MCAL/UART/UART_interface.h:13,
+                 from ../MCAL/UART/UART.c:8:
+../MCAL/UART/../../LIB/Typedef.h:4: error: two or more data types in declaration specifiers
+../MCAL/UART/../../LIB/Typedef.h:4: warning: useless type name in empty declaration
+In file included from ../MCAL/UART/UART.c:8:
+../MCAL/UART/UART_interface.h:42: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'UART_u8Init'
+../MCAL/UART/UART_interface.h:53: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'UART_u8SendByte'
+../MCAL/UART/UART_interface.h:66: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'UART_u8SendString'
+../MCAL/UART/UART_interface.h:79: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'UART_u8RecieveByte'
+../MCAL/UART/UART_interface.h:92: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'UART_u8RecieveString'
+../MCAL/UART/UART_interface.h:105: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'UART_u8EnableRecievingInterrupt'
+../MCAL/UART/UART_interface.h:118: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'UART_u8EnableSendingInterrupt'
+../MCAL/UART/UART_interface.h:131: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'UART_u8DisableTransmittionInterrupt'
+../MCAL/UART/UART.c:12: error: variable or field 'gu8_IntializationFlag' declared void
+../MCAL/UART/UART.c: In function 'UART_u8Init':
+../MCAL/UART/UART.c:18: error: variable or field 'u8ErrorState' declared void
+../MCAL/UART/UART.c:21: error: expected ')' before 'uint8_t'
+../MCAL/UART/UART.c:21: warning: type defaults to 'int' in declaration of 'type name'
+../MCAL/UART/UART.c:21: error: invalid type argument of 'unary *' (have 'int')
+../MCAL/UART/UART.c:24: error: expected ')' before 'uint8_t'
+../MCAL/UART/UART.c:24: warning: type defaults to 'int' in declaration of 'type name'
+../MCAL/UART/UART.c:24: error: invalid type argument of 'unary *' (have 'int')
+../MCAL/UART/UART.c:25: error: expected ')' before 'uint8_t'
+../MCAL/UART/UART.c:25: warning: type defaults to 'int' in declaration of 'type name'
+../MCAL/UART/UART.c:25: error: invalid type argument of 'unary *' (have 'int')
+../MCAL/UART/UART.c:52: error: expected ')' before 'uint8_t'
+../MCAL/UART/UART.c:52: warning: type defaults to 'int' in declaration of 'type name'
+../MCAL/UART/UART.c:52: error: invalid type argument of 'unary *' (have 'int')
+../MCAL/UART/UART.c:53: error: expected ')' before 'uint8_t'
+../MCAL/UART/UART.c:53: warning: type defaults to 'int' in declaration of 'type name'
+../MCAL/UART/UART.c:53: error: invalid type argument of 'unary *' (have 'int')
+../MCAL/UART/UART.c:54: error: expected ')' before 'uint8_t'
+../MCAL/UART/UART.c:54: warning: type defaults to 'int' in declaration of 'type name'
+../MCAL/UART/UART.c:54: error: invalid type argument of 'unary *' (have 'int')
+../MCAL/UART/UART.c:64: error: expected ')' before 'uint8_t'
+../MCAL/UART/UART.c:64: warning: type defaults to 'int' in declaration of 'type name'
+../MCAL/UART/UART.c:64: error: invalid type argument of 'unary *' (have 'int')
+../MCAL/UART/UART.c:65: error: expected ')' before 'uint8_t'
+../MCAL/UART/UART.c:65: warning: type defaults to 'int' in declaration of 'type name'
+../MCAL/UART/UART.c:65: error: invalid type argument of 'unary *' (have 'int')
+../MCAL/UART/UART.c:77: error: expected ')' before 'uint8_t'
+../MCAL/UART/UART.c:77: warning: type defaults to 'int' in declaration of 'type name'
+../MCAL/UART/UART.c:77: error: invalid type argument of 'unary *' (have 'int')
+../MCAL/UART/UART.c:84: error: expected ')' before 'uint8_t'
+../MCAL/UART/UART.c:84: warning: type defaults to 'int' in declaration of 'type name'
+../MCAL/UART/UART.c:84: error: invalid type argument of 'unary *' (have 'int')
+../MCAL/UART/UART.c:85: error: expected ')' before 'uint8_t'
+../MCAL/UART/UART.c:85: warning: type defaults to 'int' in declaration of 'type name'
+../MCAL/UART/UART.c:85: error: invalid type argument of 'unary *' (have 'int')
+../MCAL/UART/UART.c:87: error: expected ')' before 'uint8_t'
+../MCAL/UART/UART.c:87: warning: type defaults to 'int' in declaration of 'type name'
+../MCAL/UART/UART.c:87: error: invalid type argument of 'unary *' (have 'int')
+../MCAL/UART/UART.c:88: error: expected ')' before 'uint8_t'
+../MCAL/UART/UART.c:88: warning: type defaults to 'int' in declaration of 'type name'
+../MCAL/UART/UART.c:88: error: invalid type argument of 'unary *' (have 'int')
+../MCAL/UART/UART.c:92: warning: 'return' with a value, in function returning void
+../MCAL/UART/UART.c: At top level:
+../MCAL/UART/UART.c:94: error: parameter 1 ('u8Data') has incomplete type
+../MCAL/UART/UART.c: In function 'UART_u8SendByte':
+../MCAL/UART/UART.c:96: error: expected ')' before 'uint8_t'
+../MCAL/UART/UART.c:96: warning: type defaults to 'int' in declaration of 'type name'
+../MCAL/UART/UART.c:96: error: invalid type argument of 'unary *' (have 'int')
+../MCAL/UART/UART.c:97: error: expected ')' before 'uint8_t'
+../MCAL/UART/UART.c:97: warning: type defaults to 'int' in declaration of 'type name'
+../MCAL/UART/UART.c:97: error: invalid type argument of 'unary *' (have 'int')
+../MCAL/UART/UART.c: In function 'UART_u8SendString':
+../MCAL/UART/UART.c:102: error: variable or field 'u8ErrorState' declared void
+../MCAL/UART/UART.c:103: error: variable or field 'u8LastByte' declared void
+../MCAL/UART/UART.c:107: warning: dereferencing 'void *' pointer
+../MCAL/UART/UART.c:107: error: void value not ignored as it ought to be
+../MCAL/UART/UART.c:108: error: type of formal parameter 1 is incomplete
+../MCAL/UART/UART.c:102: warning: unused variable 'u8ErrorState'
+../MCAL/UART/UART.c: In function 'UART_u8RecieveByte':
+../MCAL/UART/UART.c:116: error: variable or field 'u8ErrorState' declared void
+../MCAL/UART/UART.c:117: error: expected ')' before 'uint8_t'
+../MCAL/UART/UART.c:117: warning: type defaults to 'int' in declaration of 'type name'
+../MCAL/UART/UART.c:117: error: invalid type argument of 'unary *' (have 'int')
+../MCAL/UART/UART.c:118: warning: dereferencing 'void *' pointer
+../MCAL/UART/UART.c:118: error: expected ')' before 'uint8_t'
+../MCAL/UART/UART.c:118: warning: type defaults to 'int' in declaration of 'type name'
+../MCAL/UART/UART.c:118: error: invalid type argument of 'unary *' (have 'int')
+../MCAL/UART/UART.c:118: error: invalid use of void expression
+../MCAL/UART/UART.c:119: warning: 'return' with a value, in function returning void
+../MCAL/UART/UART.c: In function 'UART_u8RecieveString':
+../MCAL/UART/UART.c:124: error: variable or field 'u8ErrorState' declared void
+../MCAL/UART/UART.c:125: error: variable or field 'u8PreReding' declared void
+../MCAL/UART/UART.c:131: warning: dereferencing 'void *' pointer
+../MCAL/UART/UART.c:131: error: invalid use of void expression
+../MCAL/UART/UART.c:124: warning: unused variable 'u8ErrorState'
+../MCAL/UART/UART.c: In function 'UART_u8EnableRecievingInterrupt':
+../MCAL/UART/UART.c:140: error: variable or field 'u8ErrorState' declared void
+../MCAL/UART/UART.c:144: error: expected ')' before 'uint8_t'
+../MCAL/UART/UART.c:144: warning: type defaults to 'int' in declaration of 'type name'
+../MCAL/UART/UART.c:144: error: invalid type argument of 'unary *' (have 'int')
+../MCAL/UART/UART.c:145: error: expected ')' before 'uint8_t'
+../MCAL/UART/UART.c:145: warning: type defaults to 'int' in declaration of 'type name'
+../MCAL/UART/UART.c:145: error: invalid type argument of 'unary *' (have 'int')
+../MCAL/UART/UART.c:151: warning: 'return' with a value, in function returning void
+../MCAL/UART/UART.c: In function 'UART_u8EnableSendingInterrupt':
+../MCAL/UART/UART.c:155: error: variable or field 'u8ErrorState' declared void
+../MCAL/UART/UART.c:159: error: expected ')' before 'uint8_t'
+../MCAL/UART/UART.c:159: warning: type defaults to 'int' in declaration of 'type name'
+../MCAL/UART/UART.c:159: error: invalid type argument of 'unary *' (have 'int')
+../MCAL/UART/UART.c:160: error: expected ')' before 'uint8_t'
+../MCAL/UART/UART.c:160: warning: type defaults to 'int' in declaration of 'type name'
+../MCAL/UART/UART.c:160: error: invalid type argument of 'unary *' (have 'int')
+../MCAL/UART/UART.c:166: warning: 'return' with a value, in function returning void
+../MCAL/UART/UART.c: In function 'UART_u8DisableReceivingInterrupt':
+../MCAL/UART/UART.c:171: error: variable or field 'u8ErrorState' declared void
+../MCAL/UART/UART.c:173: error: expected ')' before 'uint8_t'
+../MCAL/UART/UART.c:173: warning: type defaults to 'int' in declaration of 'type name'
+../MCAL/UART/UART.c:173: error: invalid type argument of 'unary *' (have 'int')
+../MCAL/UART/UART.c:174: warning: 'return' with a value, in function returning void
+../MCAL/UART/UART.c: In function 'UART_u8DisableTransmittionInterrupt':
+../MCAL/UART/UART.c:178: error: variable or field 'u8ErrorState' declared void
+../MCAL/UART/UART.c:180: error: expected ')' before 'uint8_t'
+../MCAL/UART/UART.c:180: warning: type defaults to 'int' in declaration of 'type name'
+../MCAL/UART/UART.c:180: error: invalid type argument of 'unary *' (have 'int')
+../MCAL/UART/UART.c:181: warning: 'return' with a value, in function returning void
+../MCAL/UART/UART.c: In function 'UART_u8Deinit':
+../MCAL/UART/UART.c:185: error: expected ')' before 'uint8_t'
+../MCAL/UART/UART.c:185: warning: type defaults to 'int' in declaration of 'type name'
+../MCAL/UART/UART.c:185: error: invalid type argument of 'unary *' (have 'int')
+../MCAL/UART/UART.c:186: error: expected ')' before 'uint8_t'
+../MCAL/UART/UART.c:186: warning: type defaults to 'int' in declaration of 'type name'
+../MCAL/UART/UART.c:186: error: invalid type argument of 'unary *' (have 'int')
+../MCAL/UART/UART.c: In function '__vector_13':
+../MCAL/UART/UART.c:192: error: variable or field 'UDRFlush' declared void
+../MCAL/UART/UART.c:198: error: expected ')' before 'uint8_t'
+../MCAL/UART/UART.c:198: warning: type defaults to 'int' in declaration of 'type name'
+../MCAL/UART/UART.c:198: error: invalid type argument of 'unary *' (have 'int')
+make: *** [MCAL/UART/UART.o] Error 1
+04:09:11 **** Incremental Build of configuration Debug for project UART_T ****
+make all 
+Building file: ../MCAL/UART/UART.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"MCAL/UART/UART.d" -MT"MCAL/UART/UART.o" -c -o "MCAL/UART/UART.o" "../MCAL/UART/UART.c"
+../MCAL/UART/UART.c:94: error: conflicting types for 'UART_u8SendByte'
+../MCAL/UART/UART_interface.h:53: error: previous declaration of 'UART_u8SendByte' was here
+../MCAL/UART/UART.c: In function 'UART_u8SendString':
+../MCAL/UART/UART.c:102: warning: unused variable 'u8ErrorState'
+../MCAL/UART/UART.c:112: warning: control reaches end of non-void function
+../MCAL/UART/UART.c: In function 'UART_u8RecieveString':
+../MCAL/UART/UART.c:124: warning: unused variable 'u8ErrorState'
+../MCAL/UART/UART.c:137: warning: control reaches end of non-void function
+../MCAL/UART/UART.c: At top level:
+../MCAL/UART/UART.c:169: error: conflicting types for 'UART_u8DisableReceivingInterrupt'
+../MCAL/UART/UART_interface.h:125: error: previous declaration of 'UART_u8DisableReceivingInterrupt' was here
+make: *** [MCAL/UART/UART.o] Error 1
+04:10:12 **** Incremental Build of configuration Debug for project UART_T ****
+make all 
+Building file: ../MCAL/UART/UART.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"MCAL/UART/UART.d" -MT"MCAL/UART/UART.o" -c -o "MCAL/UART/UART.o" "../MCAL/UART/UART.c"
+../MCAL/UART/UART.c:94: error: conflicting types for 'UART_u8SendByte'
+../MCAL/UART/UART_interface.h:53: error: previous declaration of 'UART_u8SendByte' was here
+../MCAL/UART/UART.c: In function 'UART_u8SendString':
+../MCAL/UART/UART.c:102: warning: unused variable 'u8ErrorState'
+../MCAL/UART/UART.c:112: warning: control reaches end of non-void function
+../MCAL/UART/UART.c: In function 'UART_u8RecieveString':
+../MCAL/UART/UART.c:124: warning: unused variable 'u8ErrorState'
+../MCAL/UART/UART.c:137: warning: control reaches end of non-void function
+make: *** [MCAL/UART/UART.o] Error 1
+04:10:39 **** Incremental Build of configuration Debug for project UART_T ****
+make all 
+Building file: ../MCAL/UART/UART.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"MCAL/UART/UART.d" -MT"MCAL/UART/UART.o" -c -o "MCAL/UART/UART.o" "../MCAL/UART/UART.c"
+../MCAL/UART/UART.c: In function 'UART_u8SendByte':
+../MCAL/UART/UART.c:98: warning: control reaches end of non-void function
+../MCAL/UART/UART.c: In function 'UART_u8SendString':
+../MCAL/UART/UART.c:102: warning: unused variable 'u8ErrorState'
+../MCAL/UART/UART.c:112: warning: control reaches end of non-void function
+../MCAL/UART/UART.c: In function 'UART_u8RecieveString':
+../MCAL/UART/UART.c:124: warning: unused variable 'u8ErrorState'
+../MCAL/UART/UART.c:137: warning: control reaches end of non-void function
+Finished building: ../MCAL/UART/UART.c
+ 
+Building file: ../MCAL/DIO/DIO.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"MCAL/DIO/DIO.d" -MT"MCAL/DIO/DIO.o" -c -o "MCAL/DIO/DIO.o" "../MCAL/DIO/DIO.c"
+Finished building: ../MCAL/DIO/DIO.c
+ 
+Building file: ../MCAL/DELAY/TIMER0.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"MCAL/DELAY/TIMER0.d" -MT"MCAL/DELAY/TIMER0.o" -c -o "MCAL/DELAY/TIMER0.o" "../MCAL/DELAY/TIMER0.c"
+In file included from ../MCAL/DELAY/TIMER0.c:7:
+../MCAL/DELAY/TIMER0.h:15:1: warning: "F_CPU" redefined
+<command-line>: warning: this is the location of the previous definition
+Finished building: ../MCAL/DELAY/TIMER0.c
+ 
+Building file: ../MCAL/ADC/ADC.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"MCAL/ADC/ADC.d" -MT"MCAL/ADC/ADC.o" -c -o "MCAL/ADC/ADC.o" "../MCAL/ADC/ADC.c"
+In file included from ../MCAL/ADC/ADC.c:11:
+../MCAL/ADC/../DELAY/TIMER0.h:15:1: warning: "F_CPU" redefined
+<command-line>: warning: this is the location of the previous definition
+Finished building: ../MCAL/ADC/ADC.c
+ 
+Building file: ../ECUAL/TEMP_SENSOR/TEMP.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"ECUAL/TEMP_SENSOR/TEMP.d" -MT"ECUAL/TEMP_SENSOR/TEMP.o" -c -o "ECUAL/TEMP_SENSOR/TEMP.o" "../ECUAL/TEMP_SENSOR/TEMP.c"
+Finished building: ../ECUAL/TEMP_SENSOR/TEMP.c
+ 
+Building file: ../ECUAL/LED/LED.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"ECUAL/LED/LED.d" -MT"ECUAL/LED/LED.o" -c -o "ECUAL/LED/LED.o" "../ECUAL/LED/LED.c"
+Finished building: ../ECUAL/LED/LED.c
+ 
+Building file: ../ECUAL/LCD/LCD.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"ECUAL/LCD/LCD.d" -MT"ECUAL/LCD/LCD.o" -c -o "ECUAL/LCD/LCD.o" "../ECUAL/LCD/LCD.c"
+In file included from ../ECUAL/LCD/LCD.h:14,
+                 from ../ECUAL/LCD/LCD.c:8:
+../ECUAL/LCD/../../MCAL/DELAY/TIMER0.h:15:1: warning: "F_CPU" redefined
+<command-line>: warning: this is the location of the previous definition
+../ECUAL/LCD/LCD.c: In function 'LCD_u8Init':
+../ECUAL/LCD/LCD.c:43: warning: large integer implicitly truncated to unsigned type
+../ECUAL/LCD/LCD.c:57: warning: control reaches end of non-void function
+../ECUAL/LCD/LCD.c: In function 'LCD_u8SendCommand':
+../ECUAL/LCD/LCD.c:78: warning: control reaches end of non-void function
+../ECUAL/LCD/LCD.c: In function 'LCD_u8SendData':
+../ECUAL/LCD/LCD.c:119: warning: control reaches end of non-void function
+../ECUAL/LCD/LCD.c: In function 'LCD_u8SendCustomized':
+../ECUAL/LCD/LCD.c:215: warning: control reaches end of non-void function
+../ECUAL/LCD/LCD.c: In function 'LCD_u8printCustomized':
+../ECUAL/LCD/LCD.c:220: warning: control reaches end of non-void function
+Finished building: ../ECUAL/LCD/LCD.c
+ 
+Building file: ../main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"main.d" -MT"main.o" -c -o "main.o" "../main.c"
+Finished building: ../main.c
+ 
+Building target: UART_T.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,UART_T.map -mmcu=atmega32 -o "UART_T.elf"  ./MCAL/UART/UART.o  ./MCAL/DIO/DIO.o  ./MCAL/DELAY/TIMER0.o  ./MCAL/ADC/ADC.o  ./ECUAL/TEMP_SENSOR/TEMP.o  ./ECUAL/LED/LED.o  ./ECUAL/LCD/LCD.o  ./main.o   
+Finished building target: UART_T.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S UART_T.elf  >"UART_T.lss"
+Finished building: UART_T.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex UART_T.elf  "UART_T.hex"
+Finished building: UART_T.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex UART_T.elf  "UART_T.eep"
+Finished building: UART_T.eep
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 UART_T.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    7560 bytes (23.1% Full)
+(.text + .data + .bootloader)
+
+Data:         17 bytes (0.8% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+04:12:16 **** Incremental Build of configuration Debug for project UART_T ****
+make all 
+Building file: ../MCAL/UART/UART.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"MCAL/UART/UART.d" -MT"MCAL/UART/UART.o" -c -o "MCAL/UART/UART.o" "../MCAL/UART/UART.c"
+../MCAL/UART/UART.c: In function 'UART_u8SendByte':
+../MCAL/UART/UART.c:98: warning: control reaches end of non-void function
+../MCAL/UART/UART.c: In function 'UART_u8SendString':
+../MCAL/UART/UART.c:102: warning: unused variable 'u8ErrorState'
+../MCAL/UART/UART.c:112: warning: control reaches end of non-void function
+../MCAL/UART/UART.c: In function 'UART_u8RecieveString':
+../MCAL/UART/UART.c:124: warning: unused variable 'u8ErrorState'
+../MCAL/UART/UART.c:137: warning: control reaches end of non-void function
+Finished building: ../MCAL/UART/UART.c
+ 
+Building file: ../main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"main.d" -MT"main.o" -c -o "main.o" "../main.c"
+Finished building: ../main.c
+ 
+Building target: UART_T.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,UART_T.map -mmcu=atmega32 -o "UART_T.elf"  ./MCAL/UART/UART.o  ./MCAL/DIO/DIO.o  ./MCAL/DELAY/TIMER0.o  ./MCAL/ADC/ADC.o  ./ECUAL/TEMP_SENSOR/TEMP.o  ./ECUAL/LED/LED.o  ./ECUAL/LCD/LCD.o  ./main.o   
+Finished building target: UART_T.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S UART_T.elf  >"UART_T.lss"
+Finished building: UART_T.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex UART_T.elf  "UART_T.hex"
+Finished building: UART_T.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex UART_T.elf  "UART_T.eep"
+Finished building: UART_T.eep
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 UART_T.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    7560 bytes (23.1% Full)
+(.text + .data + .bootloader)
+
+Data:         17 bytes (0.8% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+04:36:14 **** Incremental Build of configuration Debug for project UART_T ****
+make all 
+Building file: ../MCAL/UART/UART.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"MCAL/UART/UART.d" -MT"MCAL/UART/UART.o" -c -o "MCAL/UART/UART.o" "../MCAL/UART/UART.c"
+../MCAL/UART/UART.c: In function 'UART_u8SendString':
+../MCAL/UART/UART.c:153: warning: unused variable 'u8ErrorState'
+../MCAL/UART/UART.c:162: warning: control reaches end of non-void function
+../MCAL/UART/UART.c: In function 'UART_u8RecieveString':
+../MCAL/UART/UART.c:174: warning: unused variable 'u8ErrorState'
+../MCAL/UART/UART.c:187: warning: control reaches end of non-void function
+Finished building: ../MCAL/UART/UART.c
+ 
+Building target: UART_T.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,UART_T.map -mmcu=atmega32 -o "UART_T.elf"  ./MCAL/UART/UART.o  ./MCAL/DIO/DIO.o  ./MCAL/DELAY/TIMER0.o  ./MCAL/ADC/ADC.o  ./ECUAL/TEMP_SENSOR/TEMP.o  ./ECUAL/LED/LED.o  ./ECUAL/LCD/LCD.o  ./main.o   
+Finished building target: UART_T.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S UART_T.elf  >"UART_T.lss"
+Finished building: UART_T.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex UART_T.elf  "UART_T.hex"
+Finished building: UART_T.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex UART_T.elf  "UART_T.eep"
+Finished building: UART_T.eep
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 UART_T.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    7582 bytes (23.1% Full)
+(.text + .data + .bootloader)
+
+Data:         17 bytes (0.8% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+04:39:48 **** Incremental Build of configuration Debug for project UART_T ****
+make all 
+Building file: ../MCAL/UART/UART.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"MCAL/UART/UART.d" -MT"MCAL/UART/UART.o" -c -o "MCAL/UART/UART.o" "../MCAL/UART/UART.c"
+../MCAL/UART/UART.c: In function 'UART_u8RecieveString':
+../MCAL/UART/UART.c:193: warning: unused variable 'u8ErrorState'
+../MCAL/UART/UART.c:206: warning: control reaches end of non-void function
+Finished building: ../MCAL/UART/UART.c
+ 
+Building target: UART_T.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,UART_T.map -mmcu=atmega32 -o "UART_T.elf"  ./MCAL/UART/UART.o  ./MCAL/DIO/DIO.o  ./MCAL/DELAY/TIMER0.o  ./MCAL/ADC/ADC.o  ./ECUAL/TEMP_SENSOR/TEMP.o  ./ECUAL/LED/LED.o  ./ECUAL/LCD/LCD.o  ./main.o   
+Finished building target: UART_T.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S UART_T.elf  >"UART_T.lss"
+Finished building: UART_T.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex UART_T.elf  "UART_T.hex"
+Finished building: UART_T.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex UART_T.elf  "UART_T.eep"
+Finished building: UART_T.eep
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 UART_T.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    7606 bytes (23.2% Full)
+(.text + .data + .bootloader)
+
+Data:         17 bytes (0.8% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+04:57:14 **** Incremental Build of configuration Debug for project UART_T ****
+make all 
+Building file: ../MCAL/UART/UART.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"MCAL/UART/UART.d" -MT"MCAL/UART/UART.o" -c -o "MCAL/UART/UART.o" "../MCAL/UART/UART.c"
+Finished building: ../MCAL/UART/UART.c
+ 
+Building file: ../main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"main.d" -MT"main.o" -c -o "main.o" "../main.c"
+Finished building: ../main.c
+ 
+Building target: UART_T.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,UART_T.map -mmcu=atmega32 -o "UART_T.elf"  ./MCAL/UART/UART.o  ./MCAL/DIO/DIO.o  ./MCAL/DELAY/TIMER0.o  ./MCAL/ADC/ADC.o  ./ECUAL/TEMP_SENSOR/TEMP.o  ./ECUAL/LED/LED.o  ./ECUAL/LCD/LCD.o  ./main.o   
+Finished building target: UART_T.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S UART_T.elf  >"UART_T.lss"
+Finished building: UART_T.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex UART_T.elf  "UART_T.hex"
+Finished building: UART_T.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex UART_T.elf  "UART_T.eep"
+Finished building: UART_T.eep
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 UART_T.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    7650 bytes (23.3% Full)
+(.text + .data + .bootloader)
+
+Data:         17 bytes (0.8% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+05:15:54 **** Incremental Build of configuration Debug for project UART_T ****
+make all 
+Building file: ../MCAL/UART/UART.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"MCAL/UART/UART.d" -MT"MCAL/UART/UART.o" -c -o "MCAL/UART/UART.o" "../MCAL/UART/UART.c"
+Finished building: ../MCAL/UART/UART.c
+ 
+Building file: ../main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"main.d" -MT"main.o" -c -o "main.o" "../main.c"
+Finished building: ../main.c
+ 
+Building target: UART_T.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,UART_T.map -mmcu=atmega32 -o "UART_T.elf"  ./MCAL/UART/UART.o  ./MCAL/DIO/DIO.o  ./MCAL/DELAY/TIMER0.o  ./MCAL/ADC/ADC.o  ./ECUAL/TEMP_SENSOR/TEMP.o  ./ECUAL/LED/LED.o  ./ECUAL/LCD/LCD.o  ./main.o   
+Finished building target: UART_T.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S UART_T.elf  >"UART_T.lss"
+Finished building: UART_T.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex UART_T.elf  "UART_T.hex"
+Finished building: UART_T.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex UART_T.elf  "UART_T.eep"
+Finished building: UART_T.eep
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 UART_T.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    7712 bytes (23.5% Full)
+(.text + .data + .bootloader)
+
+Data:         17 bytes (0.8% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+05:24:52 **** Incremental Build of configuration Debug for project UART_T ****
+make all 
+Building file: ../MCAL/UART/UART.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"MCAL/UART/UART.d" -MT"MCAL/UART/UART.o" -c -o "MCAL/UART/UART.o" "../MCAL/UART/UART.c"
+Finished building: ../MCAL/UART/UART.c
+ 
+Building target: UART_T.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,UART_T.map -mmcu=atmega32 -o "UART_T.elf"  ./MCAL/UART/UART.o  ./MCAL/DIO/DIO.o  ./MCAL/DELAY/TIMER0.o  ./MCAL/ADC/ADC.o  ./ECUAL/TEMP_SENSOR/TEMP.o  ./ECUAL/LED/LED.o  ./ECUAL/LCD/LCD.o  ./main.o   
+Finished building target: UART_T.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S UART_T.elf  >"UART_T.lss"
+Finished building: UART_T.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex UART_T.elf  "UART_T.hex"
+Finished building: UART_T.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex UART_T.elf  "UART_T.eep"
+Finished building: UART_T.eep
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 UART_T.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    7712 bytes (23.5% Full)
+(.text + .data + .bootloader)
+
+Data:         17 bytes (0.8% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 

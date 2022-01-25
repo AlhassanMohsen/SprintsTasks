@@ -1,0 +1,369 @@
+/*
+ * UART.c
+ *
+ *  Created on: Jan 24, 2022
+ *      Author: vip
+ */
+
+#include "UART_interface.h"
+#include "UART_prv.h"
+#include "UARTConfig.h"
+
+
+static uint8_t gu8_IntializationFlag = UART_NOT_INTIALIZED; /// This flag is used to detect when user is trying to use the Peripheral before initialization
+static void (*gpf_RecieveCallBack)(void)=NULL; /// pointer to the function that will be called in the Receive interrupt
+static void (*gpf_TransmitCallBack)(void)=NULL; /// pointer to the function that will be called in the Transmission interrupt
+
+/**
+ * @fn uint8_t UART_u8Init(uint32_t UART_u32BaudRate)
+ * @brief This function is used to Initiate the UART Peripheral
+ */
+uint8_t UART_u8Init(uint32_t UART_u32BaudRate)
+{
+	uint8_t u8ErrorState = UART_OK;
+	uint16_t u16UBBR;  /// A Temporary Variable used to hold the calculated value of the UBBR register depending on the Baudrate
+
+	// Make the Access to UCSRC Register
+	SET_BIT(UCSRC_REG,URSEL_BIT);
+
+	/*
+	 * Set the operation mode of the UART Depending on the chosen UART_OPERATION_MODE Configuration
+	 */
+#if   UART_OPERATION_MODE == UART_ASYNC_NORMAL_SPEED
+	CLR_BIT(UCSRC_REG,UMSEL_BIT);
+	CLR_BIT(UCSRA_REG,U2X_BIT);
+	//Calculate the UBBR Value depending on the CPU frequency and the input desired baudrate
+	// in the UART_ASYNC_NORMAL_SPEED the baudrate divisor is 16
+	u16UBBR = (UART_F_CPU/(16UL*UART_u32BaudRate)-1);
+#elif UART_OPERATION_MODE == UART_ASYNC_DOUBLE_SPEED
+	CLR_BIT(UCSRC_REG,UMSEL_BIT);
+	SET_BIT(UCSRA_REG,U2X_BIT);
+	//Calculate the UBBR Value depending on the CPU frequency and the input desired baudrate
+	// in the UART_ASYNC_NORMAL_SPEED the baudrate divisor is 8
+	u16UBBR = (UART_F_CPU/(8UL*UART_u32BaudRate)-1);
+#elif UART_OPERATION_MODE == UART_SYNC_MODE
+	SET_BIT(UCSRC_REG,UMSEL_BIT);
+	CLR_BIT(UCSRC_REG,UCPOL_BIT);
+	//Calculate the UBBR Value depending on the CPU frequency and the input desired baudrate
+	// in the UART_ASYNC_NORMAL_SPEED the baudrate divisor is 2
+	u16UBBR = (UART_F_CPU/(2UL*UART_u32BaudRate)-1);
+#else
+	// if the UART_OPERATION_MODE is not one of this values then update the Error state
+	u8ErrorState = WRONG_OPERATION_MODE_CFG;
+#endif
+
+	/*
+	 * Set the Data bits number in the frame of the UART Depending on the chosen UART_CHARACTER_SIZE Configuration
+	 */
+#if UART_CHARACTER_SIZE == UART_5_BIT_CHARACTER
+	CLR_BIT(UCSRC_REG,UCSZ0_BIT);
+	CLR_BIT(UCSRC_REG,UCSZ1_BIT);
+	CLR_BIT(UCSRB_REG,UCSZ2_BIT);
+#elif UART_CHARACTER_SIZE == UART_6_BIT_CHARACTER
+	SET_BIT(UCSRC_REG,UCSZ0_BIT);
+	CLR_BIT(UCSRC_REG,UCSZ1_BIT);
+	CLR_BIT(UCSRB_REG,UCSZ2_BIT);
+#elif UART_CHARACTER_SIZE == UART_7_BIT_CHARACTER
+	CLR_BIT(UCSRC_REG,UCSZ0_BIT);
+	SET_BIT(UCSRC_REG,UCSZ1_BIT);
+	CLR_BIT(UCSRB_REG,UCSZ2_BIT);
+#elif UART_CHARACTER_SIZE == UART_8_BIT_CHARACTER
+	SET_BIT(UCSRC_REG,UCSZ0_BIT);
+	SET_BIT(UCSRC_REG,UCSZ1_BIT);
+	CLR_BIT(UCSRB_REG,UCSZ2_BIT);
+#elif UART_CHARACTER_SIZE == UART_9_BIT_CHARACTER
+	SET_BIT(UCSRC_REG,UCSZ0_BIT);
+	SET_BIT(UCSRC_REG,UCSZ1_BIT);
+	SET_BIT(UCSRB_REG,UCSZ2_BIT);
+#else
+	// if the UART_CHARACTER_SIZE is not one of this values then update the Error state
+	u8ErrorState = WRONG_CHARACTER_SIZE_CFG;
+#endif
+
+	/*
+	 * Set the Parity mode of the UART Depending on the chosen UART_PARITY_MODE Configuration
+	 */
+#if UART_PARITY_MODE == UART_DISABLE_PARITY
+	CLR_BIT(UCSRC_REG,UPM0_BIT);
+	CLR_BIT(UCSRC_REG,UPM1_BIT);
+#elif UART_PARITY_MODE == UART_EVEN_PARITY
+	CLR_BIT(UCSRC_REG,UPM0_BIT);
+	SET_BIT(UCSRC_REG,UPM1_BIT);
+#elif UART_PARITY_MODE == UART_ODD_PARITY
+	SET_BIT(UCSRC_REG,UPM0_BIT);
+	SET_BIT(UCSRC_REG,UPM1_BIT);
+#else
+	// if the UART_PARITY_MODE is not one of this values then update the Error state
+	u8ErrorState = WRONG_PARITY_CFG;
+#endif
+
+	/*
+	 * Set the Stop bits number in the frame of the UART Depending on the chosen UART_STOP_BITS_NUMBER Configuration
+	 */
+#if UART_STOP_BITS_NUMBER == UART_1_STOP_BIT
+	CLR_BIT(UCSRC_REG,USBS_BIT);
+#elif UART_STOP_BITS_NUMBER == UART_2_STOP_BIT
+	SET_BIT(UCSRC_REG,USBS_BIT);
+#else
+	// if the UART_STOP_BITS_NUMBER is not one of this values then update the Error state
+	u8ErrorState = WRONG_STOP_BITS_CFG;
+#endif
+
+	// Set the UBRR Register to the calculated value to configure the input baudrate
+	UBRRL_REG= u16UBBR;
+	UBRRH_REG= (u16UBBR>>8);
+	//Enable the Receiving and Transmitting Capabilities in the UART
+	SET_BIT(UCSRB_REG,RXEN_BIT);
+	SET_BIT(UCSRB_REG,TXEN_BIT);
+	if (u8ErrorState == UART_OK)
+	{
+		// if there is no errors happened the Rise the Initialization flag indicating that the Peripherals is Initialized Correctly
+		gu8_IntializationFlag = UART_INITIALIZED;
+	}else
+	{
+		//NOP
+	}
+	return u8ErrorState;
+}
+
+/**
+ * @fn uint8_t UART_u8SendByte(uint8_t u8Data)
+ * @brief This function is used to Send a Byte by polling mechanism
+ * @pre the UART must be initialized
+ */
+uint8_t UART_u8SendByte(uint8_t u8Data)
+{
+	uint8_t u8ErrorState;
+	if (gu8_IntializationFlag==UART_INITIALIZED) // Check if the UART is initialized
+	{
+		// Busy wait until the current UART Transmittion ends and the UDR register is Available
+		while(!GET_BIT(UCSRA_REG,UDRE_BIT));
+		// After the Register is available Load it with the Data Desired to be sent to initiate a transmission
+		UDR_REG = u8Data;
+	}else{
+		// if the UART is not initialized then update the Error State
+		u8ErrorState=UART_INITIALIZATION_ERROR;
+	}
+	return u8ErrorState;
+}
+
+/**
+ * @fn uint8_t UART_u8SendString(uint8_t* pau8Data)
+ * @brief This function is used to Send a String of data by polling mechanism
+ * @pre - the UART must be initialized
+ * 		- the pointer to data not pointing to NULL
+ */
+uint8_t UART_u8SendString(uint8_t* pau8Data)
+{
+	uint8_t u8ErrorState = UART_OK;
+	uint8_t u8LastByte; 			/// a variable used to temporarily hold the value of the last character sent
+	uint16_t u16StringCounter=0; 	/// counter to navigate the string as array
+
+	if (gu8_IntializationFlag==UART_INITIALIZED) // Check if the UART is initialized
+	{
+		// if it is then check if the pointer is not pointing to NULL
+		if (pau8Data!=NULL)
+		{
+			// if not pointing to null
+			do{
+				//save the value of the character to a temporary variable
+				u8LastByte=pau8Data[u16StringCounter];
+				// Send this character through UART
+				UART_u8SendByte(u8LastByte);
+				// increment the array navigator to get the next character
+				u16StringCounter++;
+
+			}while(u8LastByte!=0x0D);// do the same while the sent byte wasn't a new line
+		}else
+		{
+			// if it is pointing to NULL then Update the Error State
+			u8ErrorState = UART_NULL_INPUT;
+		}
+	}else
+	{
+		// if the UART is not Initialized then Update the Error State
+		u8ErrorState = UART_INITIALIZATION_ERROR;
+	}
+
+	return u8ErrorState;
+
+}
+
+
+/**
+ * @fn  UART_u8RecieveByte(uint8_t* pu8RecievedData)
+ * @brief This function is used to Get the Received byte of data by polling mechanism
+ * @pre - the UART must be initialized
+ * 		- the pointer to data not pointing to NULL
+ */
+uint8_t UART_u8ReceiveByte(uint8_t* pu8RecievedData)
+{
+	uint8_t u8ErrorState = UART_OK;
+	// Check if the UART is Initialized
+	if (gu8_IntializationFlag==UART_INITIALIZED)
+	{
+		//if it is initialized then check that the pointer is not pointing to null
+		if (pu8RecievedData!=NULL)
+		{
+			//if not pointing to null
+			// Busy wait until the UART Receive a byte
+			while (!GET_BIT(UCSRA_REG,RXC_BIT));
+			// Then Load the received byte from the UDR register and save it to the data location input
+			*pu8RecievedData = UDR_REG;
+		}else
+		{
+			// if the Pointer is pointing to NULL then update the Error State
+			u8ErrorState = UART_NULL_INPUT;
+		}
+	}else
+	{
+		// if the UART is not initialized then update the Error State
+		u8ErrorState=UART_INITIALIZATION_ERROR;
+	}
+
+	return u8ErrorState;
+}
+
+/**
+ * @fn  UART_u8RecieveString(uint8_t* pu8ReceivedData)
+ * @brief This function is used to Get a Received String by polling mechanism
+ * @pre - the UART must be initialized
+ * 		- the pointer to data not pointing to NULL
+ */
+uint8_t UART_u8RecieveString(uint8_t* pau8RecievedData)
+{
+	uint8_t u8ErrorState = UART_OK;
+	uint8_t u8PreReading; 			/// a variable used to temporarily hold the value of the last character received
+	uint8_t* Temp=pau8RecievedData; /// a temporarily pointer initialized with the place of the first character of the array to save the received string in
+
+	if (gu8_IntializationFlag == UART_INITIALIZED)// Check if the UART is initialized
+	{
+		// if it is then check if the pointer is not pointing to NULL
+		if (pau8RecievedData!=NULL)
+		{
+			do{
+				// Receive a character through UART
+				UART_u8ReceiveByte(&u8PreReading);
+				//Save the received character to the last empty place in the array
+				*Temp =u8PreReading;
+				//Update the last empty place in the array
+				Temp++;
+			}while (u8PreReading!=0x0D); // do this while the received byte is not endline
+
+		}else
+		{
+			// if it is pointing to NULL then Update the Error State
+			u8ErrorState = UART_NULL_INPUT;
+		}
+	}else
+	{
+		// if the UART is not Initialized then Update the Error State
+		u8ErrorState= UART_INITIALIZATION_ERROR;
+	}
+
+	return u8ErrorState;
+}
+
+
+/**
+ * @fn UART_u8EnableRecievingInterrupt(void (*pfnCallBack)(void))
+ * @brief This function is called to enable the Receiving complete Interrupt
+ * @pre - the UART must be initialized
+ * 		- the pointer to function not pointing to NULL
+ */
+uint8_t UART_u8EnableRecievingInterrupt(void (*pfnCallBack)(void))
+{
+	uint8_t u8ErrorState = UART_OK;
+
+	if (gu8_IntializationFlag==UART_INITIALIZED)// Check if the UART is initialized
+	{
+		// if it is then check if the pointer is not pointing to NULL
+		if (pfnCallBack!=NULL)
+		{
+			//update the pointer of the CallBack function with the passed address of function
+			gpf_RecieveCallBack = pfnCallBack;
+			//Enable the Receiving Interrupt
+			SET_BIT(UCSRB_REG,RXCIE_BIT);
+			//Enable the Global Interrupt
+			SET_BIT(SREG_REG,I_BIT);
+		}else
+		{
+			// if it is pointing to NULL then Update the Error State
+			u8ErrorState = UART_NULL_INPUT;
+		}
+
+	}else
+	{
+		// if the UART is not Initialized then Update the Error State
+		u8ErrorState = UART_INITIALIZATION_ERROR;
+	}
+
+	return u8ErrorState;
+}
+uint8_t UART_u8EnableSendingInterrupt(void (*pfnCallBack)(void))
+{
+	uint8_t u8ErrorState = UART_OK;
+	if (gu8_IntializationFlag==UART_INITIALIZED)// Check if the UART is initialized
+	{
+		// if it is then check if the pointer is not pointing to NULL
+		if (pfnCallBack!=NULL)
+		{
+			//update the pointer of the CallBack function with the passed address of function
+			gpf_RecieveCallBack = pfnCallBack;
+			//Enable the Receiving Interrupt
+			SET_BIT(UCSRB_REG,RXCIE_BIT);
+			//Enable the Global Interrupt
+			SET_BIT(SREG_REG,I_BIT);
+		}else
+		{
+			// if it is pointing to NULL then Update the Error State
+			u8ErrorState = UART_NULL_INPUT;
+		}
+
+	}else
+	{
+		// if the UART is not Initialized then Update the Error State
+		u8ErrorState = UART_INITIALIZATION_ERROR;
+	}
+
+	return u8ErrorState;
+
+}
+void UART_u8DisableReceivingInterrupt(void)
+{
+
+	gpf_RecieveCallBack = NULL;
+	CLR_BIT(UCSRB_REG,RXCIE_BIT);
+
+}
+uint8_t UART_u8DisableTransmittionInterrupt(void)
+{
+	uint8_t u8ErrorState = UART_OK;
+	gpf_TransmitCallBack = NULL;
+	CLR_BIT(UCSRB_REG,TXCIE_BIT);
+	return u8ErrorState;
+}
+void UART_u8Deinit(void)
+{
+	CLR_BIT(UCSRB_REG,RXEN_BIT);
+	CLR_BIT(UCSRB_REG,TXEN_BIT);
+	gu8_IntializationFlag = UART_INITIALIZED;
+}
+
+
+void __vector_13(void) {
+	uint8_t UDRFlush;
+	if (gpf_RecieveCallBack!=NULL)
+	{
+		gpf_RecieveCallBack();
+	}else
+	{
+		UDRFlush = UDR_REG;
+	}
+}
+void __vector_14(void) {
+	if (gpf_RecieveCallBack!=NULL)
+	{
+		gpf_TransmitCallBack();
+	}
+}

@@ -43,5 +43,10 @@
  */
 #define UART_PARITY_MODE		UART_PARITY_DISABLE
 
+/**
+ * Enter the Clock frequency of the micro-controller
+ */
 #define UART_F_CPU		8000000UL
+
+
 #endif /* MCAL_UART_UARTCONFIG_H_ */

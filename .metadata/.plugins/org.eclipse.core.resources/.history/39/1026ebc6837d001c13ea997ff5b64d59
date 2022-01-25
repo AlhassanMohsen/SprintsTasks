@@ -1,0 +1,37 @@
+/*
+ * main.c
+ *
+ *  Created on: Jan 24, 2022
+ *      Author: vip
+ */
+
+
+
+
+#include "MCAL/UART/UART_interface.h"
+#include "ECUAL/LED/LED.h"
+LED_t LEDT = {PORTB,PIN7};
+
+void fn(void);
+int main (void)
+{
+	LED_u8Init(&LEDT);
+	void u8RecievedByte[100];
+
+	UART_u8Init(9600);
+	UART_u8EnableSendingInterrupt(fn);
+	while (1)
+	{
+		//LED_u8On(&LEDTest);
+		UART_u8RecieveString(u8RecievedByte);
+		LED_u8On(&LEDT);
+		UART_u8SendString(u8RecievedByte);
+		LED_u8Off(&LEDT);
+
+	}
+}
+
+void fn(void)
+{
+	//LED_u8Off(&LEDTest);
+}

@@ -1,0 +1,140 @@
+/*
+ * UART_interface.h
+ *
+ *  Created on: Jan 24, 2022
+ *      Author: vip
+ */
+
+#ifndef MCAL_UART_UART_INTERFACE_H_
+#define MCAL_UART_UART_INTERFACE_H_
+
+#include "../../LIB/BIT_Math.h"
+#include "../../LIB/atmega32.h"
+#include "../../LIB/Typedef.h"
+
+/**
+ * @enum UARTErrorState_t
+ * @brief Defines the possible Error States of the UART Driver
+ */
+typedef enum {
+	UART_OK=1,               //!< NO Errors Happened
+	WRONG_OPERATION_MODE_CFG,//!< Error in Configuring the Operation mode in Configuration file
+	WRONG_CHARACTER_SIZE_CFG,//!< Error in Configuring the Character size in Configuration file
+	WRONG_PARITY_CFG,        //!< Error in Configuring the Parity bit mode in Configuration file
+	WRONG_STOP_BITS_CFG,     //!< Error in Configuring the number of stop bits in Configuration file
+	WRONG_BAUD_RATE,         //!< The Entered Baudrate is not supported
+	UART_NULL_INPUT,         //!< The input pointer is pointing to NULL
+	UART_INTIALIZATION_ERROR //!< The UART is not Intialized
+}UARTErrorState_t;
+
+/**
+ * @fn uint8_t UART_u8Init(uint32_t UART_u32BaudRate)
+ * @brief This function is used to Initiate the UART Peripheral
+ * @param UART_u32BaudRate : This is the Desired Baudrate that the UART will use in communication
+ * @return return a number from 1-255 representing the error state of the Function and it can be :
+ *              -UART_OK=1,                  //!< NO Errors Happened
+ *              -WRONG_OPERATION_MODE_CFG=2,//!< Error in Configuring the Operation mode in Configuration file
+ *              -WRONG_CHARACTER_SIZE_CFG=3,//!< Error in Configuring the Character size in Configuration file
+ *              -WRONG_PARITY_CFG=4,        //!< Error in Configuring the Parity bit mode in Configuration file
+ *              -WRONG_STOP_BITS_CFG=5,     //!< Error in Configuring the number of stop bits in Configuration file
+ *              -WRONG_BAUD_RATE=6,         //!< The Entered Baudrate is not supported
+ */
+uint8_t UART_u8Init(uint32_t UART_u32BaudRate);
+
+/**
+ * @fn uint8_t UART_u8SendByte(uint8_t u8Data)
+ * @brief This function is used to Send a Byte by polling mechanism
+ * @pre the UART must be initialized
+ * @param u8Data 8 bit data to be sent
+ * @return return a number from 1-255 representing the error state of the Function and it can be
+ * 				-UART_OK=1,                  //!< NO Errors Happened
+ * 				-UART_INTIALIZATION_ERROR=8 //!< The UART is not Intialized
+ */
+uint8_t UART_u8SendByte(uint8_t u8Data);
+
+/**
+ * @fn uint8_t UART_u8SendString(uint8_t* pau8Data)
+ * @brief This function is used to Send a String of data by polling mechanism
+ * @pre - the UART must be initialized
+ * 		- the pointer to data not pointing to NULL
+ * @param pau8Data a pointer to the first character of the String
+ * @return return a number from 1-255 representing the error state of the Function and it can be
+ * 				-UART_OK=1,                  //!< NO Errors Happened
+ * 				-UART_NULL_INPUT=7,         //!< The input pointer is pointing to NULL
+ * 				-UART_INTIALIZATION_ERROR=8 //!< The UART is not Intialized
+ */
+uint8_t UART_u8SendString(uint8_t* pau8Data);
+
+/**
+ * @fn  UART_u8RecieveByte(uint8_t* pu8RecievedData)
+ * @brief This function is used to Get the Received byte of data by polling mechanism
+ * @pre - the UART must be initialized
+ * 		- the pointer to data not pointing to NULL
+ * @param pu8ReceivedData a pointer to a memory place to save the data received
+ * @return return a number from 1-255 representing the error state of the Function and it can be
+ * 				-UART_OK=1,                  //!< NO Errors Happened
+ * 				-UART_NULL_INPUT=7,         //!< The input pointer is pointing to NULL
+ * 				-UART_INTIALIZATION_ERROR=8 //!< The UART is not Intialized
+ */
+uint8_t UART_u8RecieveByte(uint8_t* pu8ReceivedData);
+
+/**
+ * @fn  UART_u8RecieveString(uint8_t* pu8ReceivedData)
+ * @brief This function is used to Get a Received String by polling mechanism
+ * @pre - the UART must be initialized
+ * 		- the pointer to data not pointing to NULL
+ * @param pu8ReceivedData a pointer to a memory place to save the data received
+ * @return return a number from 1-255 representing the error state of the Function and it can be
+ * 				-UART_OK=1,                  //!< NO Errors Happened
+ * 				-UART_NULL_INPUT=7,         //!< The input pointer is pointing to NULL
+ * 				-UART_INTIALIZATION_ERROR=8 //!< The UART is not Intialized
+ */
+uint8_t UART_u8RecieveString(uint8_t* pu8ReceivedData);
+
+/**
+ * @fn UART_u8EnableRecievingInterrupt(void (*pfnCallBack)(void))
+ * @brief This function is called to enable the Receiving complete Interrupt
+ * @pre - the UART must be initialized
+ * 		- the pointer to function not pointing to NULL
+ * @param pfnCallBack this is a pointer to function that will be called when the interrupt is fired
+ * @return return a number from 1-255 representing the error state of the Function and it can be
+ * 				-UART_OK=1,                  //!< NO Errors Happened
+ * 				-UART_NULL_INPUT=7,         //!< The input pointer is pointing to NULL
+ * 				-UART_INTIALIZATION_ERROR=8 //!< The UART is not Intialized
+ */
+uint8_t UART_u8EnableRecievingInterrupt(void (*pfnCallBack)(void));
+
+/**
+ * @fn UART_u8EnableSendingInterrupt(void (*pfnCallBack)(void))
+ * @brief This function is called to enable the Sending complete Interrupt
+ * @pre - the UART must be initialized
+ * 		- the pointer to function not pointing to NULL
+ * @param pfnCallBack this is a pointer to function that will be called when the interrupt is fired
+ * @return return a number from 1-255 representing the error state of the Function and it can be
+ * 				-UART_OK=1,                  //!< NO Errors Happened
+ * 				-UART_NULL_INPUT=7,         //!< The input pointer is pointing to NULL
+ * 				-UART_INTIALIZATION_ERROR=8 //!< The UART is not Intialized
+ */
+uint8_t UART_u8EnableSendingInterrupt(void (*pfnCallBack)(void));
+
+/**
+ * @fn UART_u8DisableRecievingInterrupt(void)
+ * @brief This function is called to disable the Receiving complete Interrupt
+ * @param pfnCallBack this is a pointer to function that will be called when the interrupt is fired
+ */
+void UART_u8DisableReceivingInterrupt(void);
+/**
+ * @fn UART_u8DisableSendingInterrupt(void)
+ * @brief This function is called to disable the Transmission complete Interrupt
+ * @param pfnCallBack this is a pointer to function that will be called when the interrupt is fired
+ */
+uint8_t UART_u8DisableTransmittionInterrupt(void);
+
+/**
+ * @fn UART_u8Deinit(void)
+ * @brief This function is called to Stop the UART Peripheral and De-initialize it
+ *  */
+void UART_u8Deinit(void);
+
+
+#endif /* MCAL_UART_UART_INTERFACE_H_ */

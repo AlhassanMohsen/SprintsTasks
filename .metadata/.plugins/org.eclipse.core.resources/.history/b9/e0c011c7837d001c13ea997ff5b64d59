@@ -1,0 +1,28 @@
+/*
+ * LCD.h
+ *
+ * Created: 1/17/2022 12:19:20 AM
+ *  Author: Alhassan Mohsen
+ */
+
+#ifndef LCD_H_
+#define LCD_H_
+
+#include "../../LIB/Typedef.h"
+#include "LCD_cfg.h"
+#include "../../MCAL/DIO/DIO_interface.h"
+#include "../../MCAL/DELAY/TIMER0.h"
+#include "../../LIB/BIT_Math.h"
+
+void LCD_u8Init(void);
+
+void LCD_u8SendCommand(void command);
+
+void LCD_u8SendData(void data);
+void LCD_u8SendNumber(uint16_t num);
+void LCD_u8SendString(void *str);
+void LCD_u8SetCursor(void row, void col);
+void LCD_u8printCustomized(void u8CharID);
+void LCD_u8SendCustomized(void * pu8CustomChar,void u8CharID);
+
+#endif /* LCD_H_ */
