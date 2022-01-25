@@ -1,0 +1,42 @@
+01:59:05 **** Incremental Build of configuration Debug for project UART_T ****
+make all 
+Building file: ../main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"main.d" -MT"main.o" -c -o "main.o" "../main.c"
+Finished building: ../main.c
+ 
+Building target: UART_T.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,UART_T.map -mmcu=atmega32 -o "UART_T.elf"  ./MCAL/UART/UART.o  ./MCAL/DIO/DIO.o  ./MCAL/DELAY/TIMER0.o  ./MCAL/ADC/ADC.o  ./ECUAL/TEMP_SENSOR/TEMP.o  ./ECUAL/LED/LED.o  ./ECUAL/LCD/LCD.o  ./main.o   
+Finished building target: UART_T.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S UART_T.elf  >"UART_T.lss"
+Finished building: UART_T.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex UART_T.elf  "UART_T.hex"
+Finished building: UART_T.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex UART_T.elf  "UART_T.eep"
+Finished building: UART_T.eep
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 UART_T.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    7232 bytes (22.1% Full)
+(.text + .data + .bootloader)
+
+Data:         16 bytes (0.8% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+
+01:59:06 Build Finished (took 988ms)
+

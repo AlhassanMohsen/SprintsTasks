@@ -1,0 +1,52 @@
+/*
+ * LCD_cfg.h
+ *
+ * Created: 1/17/2022 1:00:23 PM
+ *  Author: Alhassan Mohsen
+ */
+
+#ifndef LCD_CFG_H_
+#define LCD_CFG_H_
+
+
+#define PORT_DATA      PORTA
+#define PORT_CONTROL   PORTA
+
+#define LCD_RS_PIN     PIN1
+#define LCD_RW_PIN     PIN2
+#define LCD_E_PIN      PIN3
+
+#define LCD_D4_PIN     PIN4
+#define LCD_D5_PIN     PIN5
+#define LCD_D6_PIN     PIN6
+#define LCD_D7_PIN     PIN7
+/*
+ *   choose Function SET :
+ *   FUNCTION_SET_8BIT_MODE_2LINES
+ *   FUNCTION_SET_8BIT_MODE_1LINES
+ *   FUNCTION_SET_4BIT_MODE_2LINES
+ *   FUNCTION_SET_4BIT_MODE_1LINES
+ */
+
+
+#define FUNCTION_SET  FUNCTION_SET_4BIT_MODE_2LINES
+
+/*
+ * choose DISPLAY_ON_OFF :
+ * DISPLAY_ON_CURSOR_ON_BLINK
+ * DISPLAY_ON_CURSOR_ON_NOBLINK
+ * DISPLAY_ON_CURSOR_OFF_NOBLINK
+ * DISPLAY_OFF
+ */
+#define DISPLAY_ON_OFF  DISPLAY_ON_CURSOR_OFF_NOBLINK
+
+/*
+ * choose ENTRY_MODE_SET:
+ * ENTRY_MODE_SET_INCREASE
+ * ENTRY_MODE_SET_DECREASE
+ */
+#define ENTRY_MODE_SET ENTRY_MODE_SET_INCREASE
+
+
+#endif /* LCD_CFG_H_ */
+

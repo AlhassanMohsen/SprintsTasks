@@ -1,0 +1,30 @@
+/*
+ * main.c
+ *
+ *  Created on: Jan 24, 2022
+ *      Author: vip
+ */
+
+
+
+
+#include "MCAL/UART/UART_interface.h"
+
+
+int main (void)
+{
+
+	UART_u8Init(9600);
+
+	while (1)
+	{
+
+	}
+}
+
+void fn(void)
+{
+	uint8_t RecievedData;
+	UART_u8RecieveByte(&RecievedData);
+	UART_u8SendByte(RecievedData);
+}

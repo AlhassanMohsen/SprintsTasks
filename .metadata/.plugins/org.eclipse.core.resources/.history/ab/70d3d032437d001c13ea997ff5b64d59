@@ -1,0 +1,13 @@
+/*
+ * UARTConfig.h
+ *
+ *  Created on: Jan 24, 2022
+ *      Author: vip
+ */
+
+#ifndef MCAL_UART_UARTCONFIG_H_
+#define MCAL_UART_UARTCONFIG_H_
+
+
+
+#endif /* MCAL_UART_UARTCONFIG_H_ */

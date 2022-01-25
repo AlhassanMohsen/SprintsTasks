@@ -1,0 +1,26 @@
+/*
+ * UART_prv.h
+ *
+ *  Created on: Jan 24, 2022
+ *      Author: vip
+ */
+
+#ifndef MCAL_UART_UART_PRV_H_
+#define MCAL_UART_UART_PRV_H_
+
+
+#define UART_ASYNC_NORMAL_SPEED 0
+#define UART_ASYNC_DOUBLE_SPEED 1
+#define UART_SYNC_MODE			2
+
+#define UART_9_BIT_CHARACTER	0
+#define UART_8_BIT_CHARACTER	1
+#define UART_7_BIT_CHARACTER	2
+#define UART_6_BIT_CHARACTER	3
+#define UART_5_BIT_CHARACTER	4
+
+#define UART_PARITY_DISABLE		0
+#define UART_EVEN_PARITY		1
+
+
+#endif /* MCAL_UART_UART_PRV_H_ */

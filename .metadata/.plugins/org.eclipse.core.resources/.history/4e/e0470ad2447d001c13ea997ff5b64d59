@@ -1,0 +1,22 @@
+/*
+ * UARTConfig.h
+ *
+ *  Created on: Jan 24, 2022
+ *      Author: vip
+ */
+
+#ifndef MCAL_UART_UARTCONFIG_H_
+#define MCAL_UART_UARTCONFIG_H_
+
+
+/**
+ * Configure the operation mode of the UART to one of the following modes
+ * 		-UART_ASYNC_NORMAL_SPEED  : Asynchronous with the divisor of the baud rate set to 16
+ * 		-UART_ASYNC_DOUBLE_SPEED  :	Asynchronous with the divisor of the baud rate set to 8 effectively doubling the transfer rate
+ * 		-UART_SYNC_MODE			  :
+ */
+#define UART_OPERATION_MODE	UART_ASYNC_NORMAL_SPEED
+
+#define UART_CHARACTER_SIZE		UART_8_BIT_CHARACTER
+
+#endif /* MCAL_UART_UARTCONFIG_H_ */

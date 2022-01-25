@@ -1,0 +1,17 @@
+/*
+ * UARTConfig.h
+ *
+ *  Created on: Jan 24, 2022
+ *      Author: vip
+ */
+
+#ifndef MCAL_UART_UARTCONFIG_H_
+#define MCAL_UART_UARTCONFIG_H_
+
+
+/**
+ *
+ */
+#define UART_OPERATION_MODE	UART_ASYNC_NORMAL_SPEED
+
+#endif /* MCAL_UART_UARTCONFIG_H_ */
