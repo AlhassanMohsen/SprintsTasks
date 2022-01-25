@@ -1,0 +1,17 @@
+/*
+ * SPI_prv.h
+ *
+ *  Created on: Jan 25, 2022
+ *      Author: Alhassan Mohsen
+ */
+
+#ifndef MCAL_SPI_SPI_PRV_H_
+#define MCAL_SPI_SPI_PRV_H_
+
+/**
+ * Define the Data order possible modes
+ */
+#define SPI_LSB_FIRST	0
+#define SPI_MSB_FIRST	1
+
+#endif /* MCAL_SPI_SPI_PRV_H_ */

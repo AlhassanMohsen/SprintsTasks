@@ -1,0 +1,19 @@
+/*
+ * SPI_ERR_HANDLE.h
+ *
+ *  Created on: Jan 25, 2022
+ *      Author: Alhassan Mohsen
+ */
+
+#ifndef MCAL_SPI_SPI_ERR_HANDLE_H_
+#define MCAL_SPI_SPI_ERR_HANDLE_H_
+
+typedef enum{
+	SPI_OK=1,
+	SPI_WRONG_CLK_CFG,
+	SPI_WRONG_SAMPLE_MODE_CFG,
+	SPI_WRONG_DATA_ORDER_CFG,
+	SPI_WRONG_MODE
+}SPIErrorState_t;
+
+#endif /* MCAL_SPI_SPI_ERR_HANDLE_H_ */

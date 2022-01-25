@@ -1,0 +1,50 @@
+/*
+ * SPI.c
+ *
+ *  Created on: Jan 25, 2022
+ *      Author: Alhassan Mohsen
+ */
+
+#include "SPI_prv.h"
+#include "SPIConfig.h"
+#include "SPI_interface.h"
+
+uint8_t SPI_u8Init()
+{
+	uint8_t u8ErrorState = SPI_OK;
+
+	/*
+	 * Set the transmittion Clock of the SPI as configured by the SPI_CLK_RATE Configuration
+	 */
+#if SPI_CLK_RATE == SPI_CPU_4
+	CLR_BIT(SPCR_REG,SPR0_BIT);
+	CLR_BIT(SPCR_REG,SPR1_BIT);
+	CLR_BIT(SPSR_REG,SPI2X_BIT);
+#elif SPI_CLK_RATE == SPI_CPU_16
+	CLR_BIT(SPCR_REG,SPR0_BIT);
+	CLR_BIT(SPCR_REG,SPR1_BIT);
+	CLR_BIT(SPSR_REG,SPI2X_BIT);
+#elif SPI_CLK_RATE == SPI_CPU_64
+	CLR_BIT(SPCR_REG,SPR0_BIT);
+	CLR_BIT(SPCR_REG,SPR1_BIT);
+	CLR_BIT(SPSR_REG,SPI2X_BIT);
+#elif SPI_CLK_RATE == SPI_CPU_128
+	CLR_BIT(SPCR_REG,SPR0_BIT);
+	CLR_BIT(SPCR_REG,SPR1_BIT);
+	CLR_BIT(SPSR_REG,SPI2X_BIT);
+#elif SPI_CLK_RATE == SPI_CPU_2
+	CLR_BIT(SPCR_REG,SPR0_BIT);
+	CLR_BIT(SPCR_REG,SPR1_BIT);
+	CLR_BIT(SPSR_REG,SPI2X_BIT);
+#elif SPI_CLK_RATE == SPI_CPU_8
+	CLR_BIT(SPCR_REG,SPR0_BIT);
+	CLR_BIT(SPCR_REG,SPR1_BIT);
+	CLR_BIT(SPSR_REG,SPI2X_BIT);
+#elif SPI_CLK_RATE == SPI_CPU_32
+	CLR_BIT(SPCR_REG,SPR0_BIT);
+	CLR_BIT(SPCR_REG,SPR1_BIT);
+	CLR_BIT(SPSR_REG,SPI2X_BIT);
+#else
+	u8ErrorState = SPI_WRONG_CLK_CFG
+#endif
+}

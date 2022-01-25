@@ -1,0 +1,13 @@
+/*
+ * SPI_interface.h
+ *
+ *  Created on: Jan 25, 2022
+ *      Author: Alhassan Mohsen
+ */
+
+#ifndef MCAL_SPI_SPI_INTERFACE_H_
+#define MCAL_SPI_SPI_INTERFACE_H_
+
+
+
+#endif /* MCAL_SPI_SPI_INTERFACE_H_ */

@@ -1,0 +1,15 @@
+/*
+ * SPI.c
+ *
+ *  Created on: Jan 25, 2022
+ *      Author: Alhassan Mohsen
+ */
+
+#include "SPI_prv.h"
+#include "SPIConfig.h"
+
+
+uint8_t SPI_u8Init()
+{
+#if SPI_CLK_RATE ==
+}

@@ -1,0 +1,29 @@
+/*
+ * SPI_prv.h
+ *
+ *  Created on: Jan 25, 2022
+ *      Author: Alhassan Mohsen
+ */
+
+#ifndef MCAL_SPI_SPI_PRV_H_
+#define MCAL_SPI_SPI_PRV_H_
+
+/**
+ * Define the Data order possible modes
+ */
+#define SPI_LSB_FIRST	0
+#define SPI_MSB_FIRST	1
+
+
+/**
+ * Define the Different Possibilties of the SPI Clock Rate
+ */
+#define SPI_CPU_4
+#define SPI_CPU_16
+#define SPI_CPU_64
+#define SPI_CPU_128
+#define SPI_CPU_2
+#define SPI_CPU_8
+#define SPI_CPU_32
+
+#endif /* MCAL_SPI_SPI_PRV_H_ */

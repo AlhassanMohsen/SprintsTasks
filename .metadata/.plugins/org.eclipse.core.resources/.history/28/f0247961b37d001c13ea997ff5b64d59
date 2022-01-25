@@ -1,0 +1,21 @@
+/*
+ * SPIConfig.h
+ *
+ *  Created on: Jan 25, 2022
+ *      Author: Alhassan Mohsen
+ */
+
+#ifndef MCAL_SPI_SPICONFIG_H_
+#define MCAL_SPI_SPICONFIG_H_
+
+
+/**
+ *  Configure in which order the Data Bits will be transmitted to one of the following options
+ *  		-SPI_LSB_FIRST
+ *  		-SPI_MSB_FIRST
+ */
+#define SPI_DATA_ORDER		SPI_LSB_FIRST
+
+#define SPI_CLK_RATE		SPI_CPU_/4
+
+#endif /* MCAL_SPI_SPICONFIG_H_ */

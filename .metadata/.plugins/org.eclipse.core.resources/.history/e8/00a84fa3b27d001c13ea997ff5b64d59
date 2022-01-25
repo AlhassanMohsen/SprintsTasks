@@ -1,0 +1,13 @@
+/*
+ * SPIConfig.h
+ *
+ *  Created on: Jan 25, 2022
+ *      Author: Alhassan Mohsen
+ */
+
+#ifndef MCAL_SPI_SPICONFIG_H_
+#define MCAL_SPI_SPICONFIG_H_
+
+
+
+#endif /* MCAL_SPI_SPICONFIG_H_ */

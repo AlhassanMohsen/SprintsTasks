@@ -1,0 +1,53 @@
+/*
+ * SPI_interface.h
+ *
+ *  Created on: Jan 25, 2022
+ *      Author: Alhassan Mohsen
+ */
+
+#ifndef MCAL_SPI_SPI_INTERFACE_H_
+#define MCAL_SPI_SPI_INTERFACE_H_
+
+#include "../../LIB/BIT_Math.h"
+#include "../../LIB/atmega32.h"
+#include "../../LIB/Typedef.h"
+#include "SPI_ERR_HANDLE.h"
+
+/**
+ * @enum Define the possible states of the SPI Peripheral
+ */
+typedef enum {
+	SPI_NOT_INITIALIZED,//!< The Peripheral is not initialized and can't be used
+	SPI_MASTER,         //!< The peripheral is initialized in Master mode
+	SPI_SLAVE           //!< The peripheral is initialized in slave mode
+}SPIMode_t;
+
+/**
+ * @fn uint8_t SPI_u8Init(SPIMode_t u8SPIMode)
+ * @brief This function is used to initialize the SPI peripheral in the passed mode
+ * @param u8SPIMode indicates the desired mode of the SPI
+ * @pre This function require
+ * 			- the configurations in the peripheral configuration file is configured with allowed options
+ * 			- the u8SPIMode should take only two possibilities  SPI_MASTER or SPI_SLAVE
+ * @return number between 1-255 indicates the error states of the function
+ */
+uint8_t SPI_u8Init(SPIMode_t u8SPIMode);
+
+/**
+ * @fn uint8_t SPI_u8ReceiveByte(uint8_t* u8Data)
+ * @brief This function is used to Receive a byte from the SPI peripheral
+ * @param pu8Data a pointer to a memory place to save the reading in.
+ * @pre This function require
+ * 			- The SPI to be initialized
+ * 			- the pu8Data pointer can not points to NULL
+ * @return number between 1-255 indicates the error states of the function
+ */
+uint8_t SPI_u8ReceiveByte(uint8_t* pu8Data);
+uint8_t SPI_u8SendByte(uint8_t u8Data);
+uint8_t SPI_u8SendString(uint8_t* pu8Data);
+uint8_t SPI_u8ReceiveString(uint8_t* pu8Data);
+uint8_t SPI_u8EnableInterrupt(void (*pfnCallBack)(void));
+void SPI_u8DisableInterrupt(void);
+void SPI_u8Deinit(void);
+
+#endif /* MCAL_SPI_SPI_INTERFACE_H_ */

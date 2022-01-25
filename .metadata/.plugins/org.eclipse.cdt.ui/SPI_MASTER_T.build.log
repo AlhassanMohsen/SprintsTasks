@@ -1,0 +1,47 @@
+15:05:53 **** Incremental Build of configuration Debug for project SPI_MASTER_T ****
+make all 
+Building file: ../MCAL/SPI/SPI.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"MCAL/SPI/SPI.d" -MT"MCAL/SPI/SPI.o" -c -o "MCAL/SPI/SPI.o" "../MCAL/SPI/SPI.c"
+Finished building: ../MCAL/SPI/SPI.c
+ 
+Building file: ../APP/main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"APP/main.d" -MT"APP/main.o" -c -o "APP/main.o" "../APP/main.c"
+Finished building: ../APP/main.c
+ 
+Building target: SPI_MASTER_T.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,SPI_MASTER_T.map -mmcu=atmega32 -o "SPI_MASTER_T.elf"  ./MCAL/UART/UART.o  ./MCAL/SPI/SPI.o  ./MCAL/DIO/DIO.o  ./ECUAL/LED/LED.o  ./APP/main.o   
+Finished building target: SPI_MASTER_T.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S SPI_MASTER_T.elf  >"SPI_MASTER_T.lss"
+Finished building: SPI_MASTER_T.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex SPI_MASTER_T.elf  "SPI_MASTER_T.hex"
+Finished building: SPI_MASTER_T.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex SPI_MASTER_T.elf  "SPI_MASTER_T.eep"
+Finished building: SPI_MASTER_T.eep
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 SPI_MASTER_T.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    6060 bytes (18.5% Full)
+(.text + .data + .bootloader)
+
+Data:         10 bytes (0.5% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+
+15:05:54 Build Finished (took 1s.143ms)
+

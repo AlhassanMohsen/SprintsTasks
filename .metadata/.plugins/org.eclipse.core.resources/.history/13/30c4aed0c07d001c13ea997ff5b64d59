@@ -1,0 +1,24 @@
+/*
+ * SPI_interface.h
+ *
+ *  Created on: Jan 25, 2022
+ *      Author: Alhassan Mohsen
+ */
+
+#ifndef MCAL_SPI_SPI_INTERFACE_H_
+#define MCAL_SPI_SPI_INTERFACE_H_
+
+#include "../../LIB/BIT_Math.h"
+#include "../../LIB/atmega32.h"
+#include "../../LIB/Typedef.h"
+#include "SPI_ERR_HANDLE.h"
+
+typedef enum {
+	SPI_NOT_INITIALIZED,
+	SPI_MASTER,
+	SPI_SLAVE
+}SPIMode_t;
+
+uint8_t SPI_u8Init(SPIMode_t u8SPIMode);
+
+#endif /* MCAL_SPI_SPI_INTERFACE_H_ */

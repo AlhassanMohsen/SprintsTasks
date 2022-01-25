@@ -1,0 +1,168 @@
+/*
+ * SPI.c
+ *
+ *  Created on: Jan 25, 2022
+ *      Author: Alhassan Mohsen
+ */
+
+#include "SPI_prv.h"
+#include "SPIConfig.h"
+#include "SPI_interface.h"
+
+
+uint8_t gu8_SPIState= SPI_NOT_INITIALIZED; /// This flag is used to detect when user is trying to use the Peripheral before initialization or in wrong mode
+
+uint8_t SPI_u8Init(SPIMode_t u8SPIMode)
+{
+	uint8_t u8ErrorState = SPI_OK;
+
+	/*
+	 * Set the transmittion Clock of the SPI as configured by the SPI_CLK_RATE Configuration
+	 */
+#if SPI_CLK_RATE == SPI_CPU_4
+	CLR_BIT(SPCR_REG,SPR0_BIT);
+	CLR_BIT(SPCR_REG,SPR1_BIT);
+	CLR_BIT(SPSR_REG,SPI2X_BIT);
+#elif SPI_CLK_RATE == SPI_CPU_16
+	SET_BIT(SPCR_REG,SPR0_BIT);
+	CLR_BIT(SPCR_REG,SPR1_BIT);
+	CLR_BIT(SPSR_REG,SPI2X_BIT);
+#elif SPI_CLK_RATE == SPI_CPU_64
+	CLR_BIT(SPCR_REG,SPR0_BIT);
+	SET_BIT(SPCR_REG,SPR1_BIT);
+	CLR_BIT(SPSR_REG,SPI2X_BIT);
+#elif SPI_CLK_RATE == SPI_CPU_128
+	SET_BIT(SPCR_REG,SPR0_BIT);
+	SET_BIT(SPCR_REG,SPR1_BIT);
+	CLR_BIT(SPSR_REG,SPI2X_BIT);
+#elif SPI_CLK_RATE == SPI_CPU_2
+	CLR_BIT(SPCR_REG,SPR0_BIT);
+	CLR_BIT(SPCR_REG,SPR1_BIT);
+	SET_BIT(SPSR_REG,SPI2X_BIT);
+#elif SPI_CLK_RATE == SPI_CPU_8
+	SET_BIT(SPCR_REG,SPR0_BIT);
+	CLR_BIT(SPCR_REG,SPR1_BIT);
+	SET_BIT(SPSR_REG,SPI2X_BIT);
+#elif SPI_CLK_RATE == SPI_CPU_32
+	CLR_BIT(SPCR_REG,SPR0_BIT);
+	SET_BIT(SPCR_REG,SPR1_BIT);
+	SET_BIT(SPSR_REG,SPI2X_BIT);
+#else
+	u8ErrorState = SPI_WRONG_CLK_CFG;
+#endif
+
+	/*
+	 * Set the DATA sampling mode of the SPI as configured by the SPI_DATA_MODE configuration in the configuration file
+	 */
+#if SPI_DATA_MODE == SPI_SAMPLE_LEADING_RISING
+	CLR_BIT(SPCR_REG,CPHA_BIT);
+	CLR_BIT(SPCR_REG,CPOL_BIT);
+#elif SPI_DATA_MODE == SPI_SAMPLE_TRAILING_FALLING
+	SET_BIT(SPCR_REG,CPHA_BIT);
+	CLR_BIT(SPCR_REG,CPOL_BIT);
+#elif SPI_DATA_MODE == SPI_SAMPLE_LEADING_FALLING
+	CLR_BIT(SPCR_REG,CPHA_BIT);
+	SET_BIT(SPCR_REG,CPOL_BIT);
+#elif SPI_DATA_MODE == SPI_SAMPLE_TRAILING_RISING
+	SET_BIT(SPCR_REG,CPHA_BIT);
+	SET_BIT(SPCR_REG,CPOL_BIT);
+#else
+	u8ErrorState = SPI_WRONG_SAMPLE_MODE_CFG;
+#endif
+
+	/*
+	 * Setting the Data bits transmitting order as configured by the SPI_DATA_ORDER configuration in the configuration file
+	 */
+#if SPI_DATA_ORDER == SPI_LSB_FIRST
+	SET_BIT(SPCR_REG,DORD_BIT);
+#elif SPI_DATA_ORDER == SPI_MSB_FIRST
+	CLR_BIT(SPCR_REG,DORD_BIT);
+#else
+	u8ErrorState = SPI_WRONG_DATA_ORDER_CFG;
+#endif
+
+	/*Set the SPI Mode */
+	if (u8SPIMode == SPI_MASTER)
+	{
+		SET_BIT(SPCR_REG,MSTR_BIT);
+	}else if (u8SPIMode == SPI_SLAVE)
+	{
+		CLR_BIT(SPCR_REG,MSTR_BIT);
+	}else
+	{
+		u8ErrorState = SPI_WRONG_MODE;
+	}
+
+	/*Check if no error occurred in the previous stages then Enable the SPI with the Written Configurations*/
+	if (u8ErrorState==SPI_OK)
+	{
+		SET_BIT(SPCR_REG,SPE_BIT);
+		/*Change the state of the SPI to initialized as MASTER/SLAVE indicating that it is initialized and in this mode*/
+		gu8_SPIState = u8SPIMode;
+	}
+	else
+	{
+		//if not do nothing
+	}
+
+	return u8ErrorState;
+}
+
+uint8_t SPI_u8SendByte(uint8_t u8Data)
+{
+	uint8_t u8ErrorState = SPI_OK;
+
+	if (gu8_SPIState!=SPI_NOT_INITIALIZED)
+	{
+		//Load the Data to the SPI data Register to initiate the transmission
+		SPDR_REG = u8Data;
+		//Wait until the Transmission is complete
+		while (!GET_BIT(SPSR_REG,SPIF_BIT));
+	}else
+	{
+		u8ErrorState = SPI_INITIALIZATION_ERROR;
+	}
+	return u8ErrorState;
+}
+
+uint8_t SPI_u8ReceiveByte(uint8_t* u8Data)
+{
+	uint8_t u8ErrorState = SPI_OK;
+
+	if (gu8_SPIState!=SPI_NOT_INITIALIZED)
+	{
+		if (u8Data!=NULL)
+		{
+			//Wait until the Reception is complete
+			while (!GET_BIT(SPSR_REG,SPIF_BIT));
+			//Load the SPI data Register to the place the pointer holding its address
+			SPDR_REG = u8Data;
+		}else
+		{
+			u8ErrorState = SPI_NULL_INPUT;
+		}
+
+	}else
+	{
+		u8ErrorState = SPI_INITIALIZATION_ERROR;
+	}
+	return u8ErrorState;
+}
+
+
+
+
+
+
+
+
+
+
+uint8_t u8ErrorState = SPI_OK;
+
+if (gu8_SPIState!=SPI_NOT_INITIALIZED)
+{
+
+}
+
+return u8ErrorState;

@@ -1,0 +1,20 @@
+/*
+ * main.c
+ *
+ *  Created on: Jan 25, 2022
+ *      Author: Alhassan Mohsen
+ */
+
+
+#include "../MCAL/SPI/SPI_interface.h"
+
+
+int main(void)
+{
+	SPI_u8Init(SPI_MASTER);
+
+	while(1)
+	{
+		SPI_u8SendByte('A');
+	}
+}
