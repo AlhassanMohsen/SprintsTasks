@@ -1,0 +1,19 @@
+/*
+ * I2C.c
+ *
+ *  Created on: Jan 27, 2022
+ *      Author: Alhassan Mohsen
+ */
+
+#include "I2C_interface.h"
+
+static volatile uint8_t gu8_I2CState;
+static volatile uint8_t gu8_I2CMode;
+
+
+switch (gu8_I2CState)
+{
+case I2C_MT_START_TRANSMITTED:
+
+}
+

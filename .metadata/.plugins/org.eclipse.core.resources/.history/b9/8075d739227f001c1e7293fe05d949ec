@@ -1,0 +1,74 @@
+/*
+ * I2C.c
+ *
+ *  Created on: Jan 27, 2022
+ *      Author: Alhassan Mohsen
+ */
+
+#include "I2C_interface.h"
+#include "I2C_prv.h"
+
+static volatile uint8_t gu8_I2CState;
+static volatile uint8_t gu8_I2CMode;
+static volatile uint8_t gu8_I2CData[255]={0};
+static volatile uint8_t gu8_I2CLastByte= 0;
+
+
+
+main()
+{
+	static uint8_t DataNavigator = 0;
+	switch (gu8_I2CState)
+	{
+	case I2C_MT_START_TRANSMITTED:
+		switch (gu8_I2CMode)
+		{
+		case I2C_MT:
+			TWDR_REG = SLAVE_ADDRESS+W;
+			break;
+		case I2C_MR:
+			TWDR_REG = SLAVE_ADDRESS+R;
+			break;
+		default:
+			break;
+		}
+		ASSIGN_HIGH_NIB(TWCR_REG,I2C_CLR_INTERRUPT_FLAG);
+		break;
+	case I2C_MT_REPEATED_START_TRANSMITTED:
+		switch (gu8_I2CMode)
+		{
+		case I2C_MT:
+			TWDR_REG = SLAVE_ADDRESS+W;
+			break;
+		case I2C_MR:
+			TWDR_REG = SLAVE_ADDRESS+R;
+			break;
+		default:
+			break;
+		}
+		ASSIGN_HIGH_NIB(TWCR_REG,I2C_CLR_INTERRUPT_FLAG);
+		break;
+	case I2C_MT_SLAVE_WRITE_TRANSMITTED_ACK:
+		TWDR_REG = gu8_I2CData[DataNavigator];
+		ASSIGN_HIGH_NIB(TWCR_REG,I2C_CLR_INTERRUPT_FLAG);
+		break;
+	case I2C_MT_SLAVE_WRITE_TRANSMITTED_NACK:
+		TWDR_REG = gu8_I2CData[DataNavigator];
+		ASSIGN_HIGH_NIB(TWCR_REG,I2C_CLR_INTERRUPT_FLAG);
+		DataNavigator++;
+		break;
+	case I2C_MT_DATA_TRANSMITTED_ACK:
+		if (gu8_I2CData[DataNavigator] ==0 && gu8_I2CLastByte==1)
+		{
+			//if the last byte has been sent Send Stop Condition
+
+		}else if (gu8_I2CData[DataNavigator] ==0 && gu8_I2CLastByte==0)
+		{
+			TWDR_REG = gu8_I2CData[DataNavigator];
+			gu8_I2CLastByte=1;
+		}
+
+	}
+
+}
+

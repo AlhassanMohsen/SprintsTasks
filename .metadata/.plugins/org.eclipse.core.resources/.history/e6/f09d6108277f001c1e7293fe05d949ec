@@ -1,0 +1,57 @@
+/*
+ * I2C.c
+ *
+ *  Created on: Jan 27, 2022
+ *      Author: Alhassan Mohsen
+ */
+
+#include "I2C_interface.h"
+#include "I2C_prv.h"
+
+static volatile uint8_t gu8_I2CState;
+static volatile uint8_t gu8_I2CMode;
+static volatile uint8_t gu8_I2CData[255]={0};
+static volatile uint8_t gu8_I2CLastByte= 0;
+static volatile uint8_t gu8_I2CRepeatedStart= 0;
+
+uint8_t I2C_u8GetStatus(void)
+{
+	return TWSR_REG & I2C_PRESCALAR_MASK;
+}
+
+uint8_t I2C_u8SendByte(uint8_t u8SlaveAddress, uint8_t u8Data)
+{
+	uint8_t u8ErrorState = I2C_OK;
+	uint8_t I2CStatus;
+
+	//Send the Start Condition
+	SET_BIT(TWCR_REG,TWSTA_BIT);
+	//Wait until it is sent
+	while (!GET_BIT(TWCR_REG,TWINT_BIT));
+	//Get the state of the I2C
+	I2CStatus= I2C_u8GetStatus();
+	//Check if it is state that the start condition is successfully sent
+
+	switch()
+	{
+	case I2C_MT_START_TRANSMITTED:
+	}
+
+
+
+	if (I2CStatus== I2C_MT_START_TRANSMITTED)
+	{
+		//if it is then load the slave address in the data register and set the mode to write
+		TWDR_REG = u8SlaveAddress;
+		CLR_BIT(TWDR_REG,7);
+	}else
+	{
+		//else then update the error state
+		u8ErrorState = I2C_START_ERROR;
+	}
+
+
+
+
+	return u8ErrorState;
+}

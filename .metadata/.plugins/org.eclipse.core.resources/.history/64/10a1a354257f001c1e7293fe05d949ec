@@ -1,0 +1,29 @@
+/*
+ * I2C.c
+ *
+ *  Created on: Jan 27, 2022
+ *      Author: Alhassan Mohsen
+ */
+
+#include "I2C_interface.h"
+#include "I2C_prv.h"
+
+static volatile uint8_t gu8_I2CState;
+static volatile uint8_t gu8_I2CMode;
+static volatile uint8_t gu8_I2CData[255]={0};
+static volatile uint8_t gu8_I2CLastByte= 0;
+static volatile uint8_t gu8_I2CRepeatedStart= 0;
+
+
+
+uint8_t I2C_u8SendByte(uint8_t u8SlaveAddress, uint8_t u8Data)
+{
+	uint8_t u8ErrorState = I2C_OK;
+
+	SET_BIT(TWCR_REG,TWSTA_BIT);
+	while (!GET_BIT(TWCR_REG,TWINT_BIT));
+	TWDR_REG = u8SlaveAddress|(1<<7);
+
+
+	return u8ErrorState;
+}

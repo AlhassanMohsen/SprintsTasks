@@ -1,0 +1,45 @@
+20:18:33 **** Incremental Build of configuration Debug for project I2C_SLAVE ****
+make all 
+Building file: ../MCAL/I2C/I2C.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"MCAL/I2C/I2C.d" -MT"MCAL/I2C/I2C.o" -c -o "MCAL/I2C/I2C.o" "../MCAL/I2C/I2C.c"
+../MCAL/I2C/I2C.c: In function 'I2C_u8SlaveGetByte':
+../MCAL/I2C/I2C.c:143: warning: unused variable 'u8TempReading'
+../MCAL/I2C/I2C.c:159: warning: control reaches end of non-void function
+Finished building: ../MCAL/I2C/I2C.c
+ 
+Building target: I2C_SLAVE.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,I2C_SLAVE.map -mmcu=atmega32 -o "I2C_SLAVE.elf"  ./MCAL/UART/UART.o  ./MCAL/SPI/SPI.o  ./MCAL/I2C/I2C.o  ./MCAL/DIO/DIO.o  ./ECUAL/LED/LED.o  ./APP/main.o   
+Finished building target: I2C_SLAVE.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S I2C_SLAVE.elf  >"I2C_SLAVE.lss"
+Finished building: I2C_SLAVE.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex I2C_SLAVE.elf  "I2C_SLAVE.hex"
+Finished building: I2C_SLAVE.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex I2C_SLAVE.elf  "I2C_SLAVE.eep"
+Finished building: I2C_SLAVE.eep
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 I2C_SLAVE.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    6744 bytes (20.6% Full)
+(.text + .data + .bootloader)
+
+Data:        274 bytes (13.4% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+
+20:18:34 Build Finished (took 1s.83ms)
+

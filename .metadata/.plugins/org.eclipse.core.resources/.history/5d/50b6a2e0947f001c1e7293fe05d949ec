@@ -1,0 +1,15 @@
+/*
+ * main.c
+ *
+ *  Created on: Jan 27, 2022
+ *      Author: Alhassan Mohsen
+ */
+
+
+
+#include "../MCAL/I2C/I2C_interface.h"
+#include "../MCAL/UART/UART_interface.h"
+
+
+
+

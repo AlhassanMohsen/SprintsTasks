@@ -1,0 +1,14 @@
+/*
+ * I2C_prv.h
+ *
+ *  Created on: Jan 27, 2022
+ *      Author: Alhassan Mohsen
+ */
+
+#ifndef MCAL_I2C_I2C_PRV_H_
+#define MCAL_I2C_I2C_PRV_H_
+
+#define I2C_CLR_INTERRUPT_FLAG		8
+#define I2C_SEND_STOP_CONDITION		9
+#define I2C_PRESCALAR_MASK			0b11111000
+#endif /* MCAL_I2C_I2C_PRV_H_ */

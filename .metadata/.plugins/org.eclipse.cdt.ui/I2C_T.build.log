@@ -1,0 +1,20 @@
+20:18:34 **** Incremental Build of configuration Debug for project I2C_T ****
+make all 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 I2C_T.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    6760 bytes (20.6% Full)
+(.text + .data + .bootloader)
+
+Data:        274 bytes (13.4% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+
+20:18:35 Build Finished (took 279ms)
+
