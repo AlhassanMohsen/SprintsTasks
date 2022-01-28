@@ -61,9 +61,27 @@ typedef enum {
 	I2C_START_ERROR,
 	I2C_WRONG_STATUS,
 	I2C_WRONG_ADDRESS,
-	I2C_START_WRONG_PLACE
+	I2C_START_WRONG_PLACE,
+	I2C_ILLEGAL_START,
+	I2C_SLAVE_NOT_AVLBL,
 }I2CErrorState_t;
 
+typedef enum {
+	I2C_MASTER_WRITE,
+	I2C_MASTER_READ
+}I2CMasterOperation_t;
+
+
+uint8_t I2C_u8Init();
+uint8_t I2C_u8GetStatus(void);
+uint8_t I2C_u8MasterSendSLA(uint8_t u8SlaveAddress,uint8_t u8MasterOperation);
+uint8_t I2C_u8MasterSendByte(uint8_t u8Data);
+uint8_t I2C_u8MasterSendStart(void);
+uint8_t I2C_u8MasterReceiveWithNAK(uint8_t* pu8Data);
+uint8_t I2C_u8MasterReceiveWithACK(uint8_t* pu8Data);
+uint8_t I2C_u8SendRepeatedStart(void);
+uint8_t I2C_u8Stop(void);
+uint8_t I2C_u8SlaveGetByte(uint8_t* pu8Reading);
 
 
 #endif /* MCAL_I2C_I2C_INTERFACE_H_ */

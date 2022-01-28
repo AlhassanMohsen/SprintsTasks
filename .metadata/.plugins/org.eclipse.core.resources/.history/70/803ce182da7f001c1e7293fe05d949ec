@@ -1,0 +1,10 @@
+/*
+ * EEPROM.c
+ *
+ *  Created on: Jan 27, 2022
+ *      Author: Alhassan Mohsen
+ */
+
+#include "EEPROM_prv.h"
+#include "EEPROM_cfg.h"
+#include "EEPROM_interface.h"

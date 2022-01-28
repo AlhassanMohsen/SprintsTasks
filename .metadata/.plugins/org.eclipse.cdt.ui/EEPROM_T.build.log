@@ -1,0 +1,20 @@
+10:12:50 **** Incremental Build of configuration Debug for project EEPROM_T ****
+make all 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 EEPROM_T.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    8958 bytes (27.3% Full)
+(.text + .data + .bootloader)
+
+Data:         34 bytes (1.7% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+
+10:12:50 Build Finished (took 278ms)
+

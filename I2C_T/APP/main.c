@@ -24,7 +24,14 @@ int main(void)
 	while (1)
 	{
 		UART_u8ReceiveByte(&u8ReceivedByte);
-		I2C_u8MasterSendByte(0x02,u8ReceivedByte);
+		I2C_u8MasterSendStart();
+		I2C_u8MasterSendSLA(0x02,I2C_MASTER_WRITE);
+		do
+		{
+			I2C_u8MasterSendByte(u8ReceivedByte);
+			UART_u8ReceiveByte(&u8ReceivedByte);
+		}while(u8ReceivedByte!=0x0D);
+
 		I2C_u8Stop();
 		LED_u8On(&LEDT);
 	}

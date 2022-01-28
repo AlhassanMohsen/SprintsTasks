@@ -1,0 +1,19 @@
+/*
+ * EEPROM.c
+ *
+ *  Created on: Jan 27, 2022
+ *      Author: Alhassan Mohsen
+ */
+
+#include "EEPROM_prv.h"
+#include "EEPROM_cfg.h"
+#include "EEPROM_interface.h"
+
+
+
+uint8_t EEPROM_u8WriteByteTo(uint8_t u8ChipAddress,uint8_t u8ByteAddress,uint8_t u8Data)
+{
+	uint8_t u8OperationAddress;
+	u8OperationAddress
+	I2C_u8MasterSendByte()
+}

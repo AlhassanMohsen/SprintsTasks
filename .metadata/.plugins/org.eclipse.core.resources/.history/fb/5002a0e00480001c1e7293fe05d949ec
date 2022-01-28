@@ -1,0 +1,20 @@
+/*
+ * EEPROM_interface.h
+ *
+ *  Created on: Jan 27, 2022
+ *      Author: Alhassan Mohsen
+ */
+
+#ifndef ECUAL_EEPROM_EEPROM_INTERFACE_H_
+#define ECUAL_EEPROM_EEPROM_INTERFACE_H_
+
+#include "../../LIB/Typedef.h"
+#include "../../LIB/atmega32.h"
+#include "../../LIB/BIT_Math.h"
+#include "../../MCAL/DIO/DIO_interface.h"
+#include "../../MCAL/I2C/I2C_interface.h"
+
+void EEPROM_Init(void);
+
+
+#endif /* ECUAL_EEPROM_EEPROM_INTERFACE_H_ */

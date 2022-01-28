@@ -1,0 +1,13 @@
+/*
+ * EEPROM_prv.h
+ *
+ *  Created on: Jan 27, 2022
+ *      Author: Alhassan Mohsen
+ */
+
+#ifndef ECUAL_EEPROM_EEPROM_PRV_H_
+#define ECUAL_EEPROM_EEPROM_PRV_H_
+
+#define EEPROM_CONTROL_BYTE_HIGH_NIBBLE_MASK			0b10100000
+
+#endif /* ECUAL_EEPROM_EEPROM_PRV_H_ */
