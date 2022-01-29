@@ -20,14 +20,16 @@ int main(void)
 	 //////////// EEPROM Application //////*
 	 *////////////////////////////////////*
 	uint8_t u8ReceivedByte[10];
+	uint32_t u32Num;
 	EEPROM_Init();
-	EEPROM_u8WriteStringTo(0,0x0001,"Sprints");
+	EEPROM_u8WriteIntTo(0,0x0001,1000000000);
 	TIMER0_u8PollingDelay(30);
-	EEPROM_u8ReadStringFrom(0,0x0001,&u8ReceivedByte);
+	EEPROM_u8ReadIntFrom(0,0x0001,&u32Num);
 	UART_u8Init(9600);
+	UART_u8SendInt(u32Num);
 	while (1)
 	{
-		UART_u8SendString(u8ReceivedByte);
+
 		LED_u8On(&LEDT);
 	}
 }

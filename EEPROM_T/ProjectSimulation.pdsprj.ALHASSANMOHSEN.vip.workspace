@@ -11,6 +11,7 @@
      <ITEM name="Message Column Width">659</ITEM>
      <ITEM name="ShowGrid">No</ITEM>
      <ITEM name="Source Column Width">100</ITEM>
+     <ITEM name="Time Column Width">120</ITEM>
      <ITEM name="Version">100</ITEM>
     </PROPERTIES>
    </POPUP>
@@ -31,7 +32,7 @@
      <ITEM name="nItems">0</ITEM>
     </PROPERTIES>
    </POPUP>
-   <POPUP w="450" x="313" flags="00000023" y="640" h="250" pid="0" iid="7">
+   <POPUP w="450" x="348" flags="00008023" y="688" h="250" pid="0" iid="7">
     <PROPERTIES>
      <ITEM name="AutoEcho">1</ITEM>
      <ITEM name="HexMode">0</ITEM>
@@ -110,7 +111,7 @@
      <ITEM name="TopLineAddress">00000000</ITEM>
     </PROPERTIES>
    </POPUP>
-   <POPUP w="450" x="937" flags="00008023" y="553" h="250" pid="0" iid="8">
+   <POPUP w="565" x="1077" flags="00000023" y="603" h="369" pid="0" iid="8">
     <PROPERTIES>
      <ITEM name="ComboBox1000">S</ITEM>
      <ITEM name="ComboBox1001">Sr</ITEM>
@@ -122,8 +123,8 @@
      <ITEM name="ComboBox1007">P</ITEM>
      <ITEM name="ComboBox1008">A</ITEM>
      <ITEM name="ComboBox1009">N</ITEM>
-     <ITEM name="HSplitter1Pos">125</ITEM>
-     <ITEM name="VSplitter1Pos">298</ITEM>
+     <ITEM name="HSplitter1Pos">6</ITEM>
+     <ITEM name="VSplitter1Pos">6</ITEM>
     </PROPERTIES>
    </POPUP>
   </PWI>

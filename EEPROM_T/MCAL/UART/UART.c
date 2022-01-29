@@ -8,7 +8,8 @@
 #include "UART_interface.h"
 #include "UART_prv.h"
 #include "UARTConfig.h"
-
+#include "../../ECUAL/LED/LED.h"
+LED_t LED1={PORTB,PIN7};
 
 static uint8_t gu8_IntializationFlag = UART_NOT_INTIALIZED; /// This flag is used to detect when user is trying to use the Peripheral before initialization
 static void (*gpf_RecieveCallBack)(void)=NULL; /// pointer to the function that will be called in the Receive interrupt
@@ -20,6 +21,7 @@ static void (*gpf_TransmitCallBack)(void)=NULL; /// pointer to the function that
  */
 uint8_t UART_u8Init(uint32_t UART_u32BaudRate)
 {
+	LED_u8Init(&LED1);
 	uint8_t u8ErrorState = UART_OK;
 	uint16_t u16UBBR;  /// A Temporary Variable used to hold the calculated value of the UBBR register depending on the Baudrate
 
@@ -147,6 +149,41 @@ uint8_t UART_u8SendByte(uint8_t u8Data)
 	return u8ErrorState;
 }
 
+
+uint8_t UART_u8SendInt(uint32_t u32Data)
+{
+	uint32_t au8Number[12]={0};
+	uint32_t u8Counter =1;
+	uint32_t u8NumberASCII;
+	/*
+	do {
+		au8Number[u8Counter]=((u32Data % 10) + '0'); //send the lowestdigit
+		u32Data = u32Data / 10;
+		u8Counter++;
+	} while (u32Data>=1);
+
+
+	for (sint8_t i=(u8Counter-1);i>=0;i--)
+	{
+		UART_u8SendByte(au8Number[i]);
+	}
+
+*/
+	while(u32Data > 0){
+		u8Counter = (u8Counter * 10) + (u32Data % 10);
+		u32Data = u32Data /10;
+	}
+
+	while(u8Counter>0)
+	{
+		u8NumberASCII=((u8Counter%10)+48);
+		UART_u8SendByte(u8NumberASCII);
+		u8Counter=u8Counter/10;
+	}
+
+
+}
+
 /**
  * @fn uint8_t UART_u8SendString(uint8_t* pau8Data)
  * @brief This function is used to Send a String of data by polling mechanism
@@ -172,8 +209,8 @@ uint8_t UART_u8SendString(uint8_t* pau8Data)
 				UART_u8SendByte(u8LastByte);
 				// increment the array navigator to get the next character
 				u16StringCounter++;
+
 			}while(u8LastByte!=0x00);// do the same while the sent byte wasn't a new line
-			UART_u8SendByte(0x0D);
 		}else
 		{
 			// if it is pointing to NULL then Update the Error State
@@ -230,6 +267,7 @@ uint8_t UART_u8ReceiveByte(uint8_t* pu8RecievedData)
  * @pre - the UART must be initialized
  * 		- the pointer to data not pointing to NULL
  */
+
 uint8_t UART_u8RecieveString(uint8_t* pau8RecievedData)
 {
 	uint8_t u8ErrorState = UART_OK;
