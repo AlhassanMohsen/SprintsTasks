@@ -1,20 +1,102 @@
-10:12:50 **** Incremental Build of configuration Debug for project EEPROM_T ****
+09:04:51 **** Build of configuration Debug for project EEPROM_T ****
 make all 
+Building file: ../MCAL/UART/UART.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"MCAL/UART/UART.d" -MT"MCAL/UART/UART.o" -c -o "MCAL/UART/UART.o" "../MCAL/UART/UART.c"
+../MCAL/UART/UART.c: In function 'UART_u8SendInt':
+../MCAL/UART/UART.c:182: warning: control reaches end of non-void function
+Finished building: ../MCAL/UART/UART.c
+ 
+Building file: ../MCAL/TIMER/TIMER.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"MCAL/TIMER/TIMER.d" -MT"MCAL/TIMER/TIMER.o" -c -o "MCAL/TIMER/TIMER.o" "../MCAL/TIMER/TIMER.c"
+Finished building: ../MCAL/TIMER/TIMER.c
+ 
+Building file: ../MCAL/SPI/SPI.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"MCAL/SPI/SPI.d" -MT"MCAL/SPI/SPI.o" -c -o "MCAL/SPI/SPI.o" "../MCAL/SPI/SPI.c"
+Finished building: ../MCAL/SPI/SPI.c
+ 
+Building file: ../MCAL/I2C/I2C.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"MCAL/I2C/I2C.d" -MT"MCAL/I2C/I2C.o" -c -o "MCAL/I2C/I2C.o" "../MCAL/I2C/I2C.c"
+../MCAL/I2C/I2C.c: In function 'I2C_u8SlaveGetByte':
+../MCAL/I2C/I2C.c:191: warning: control reaches end of non-void function
+Finished building: ../MCAL/I2C/I2C.c
+ 
+Building file: ../MCAL/DIO/DIO.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"MCAL/DIO/DIO.d" -MT"MCAL/DIO/DIO.o" -c -o "MCAL/DIO/DIO.o" "../MCAL/DIO/DIO.c"
+Finished building: ../MCAL/DIO/DIO.c
+ 
+Building file: ../MCAL/DELAY/TIMER0.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"MCAL/DELAY/TIMER0.d" -MT"MCAL/DELAY/TIMER0.o" -c -o "MCAL/DELAY/TIMER0.o" "../MCAL/DELAY/TIMER0.c"
+In file included from ../MCAL/DELAY/TIMER0.c:7:
+../MCAL/DELAY/TIMER0.h:15:1: warning: "F_CPU" redefined
+<command-line>: warning: this is the location of the previous definition
+Finished building: ../MCAL/DELAY/TIMER0.c
+ 
+Building file: ../ECUAL/LED/LED.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"ECUAL/LED/LED.d" -MT"ECUAL/LED/LED.o" -c -o "ECUAL/LED/LED.o" "../ECUAL/LED/LED.c"
+Finished building: ../ECUAL/LED/LED.c
+ 
+Building file: ../ECUAL/EEPROM/EEPROM.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"ECUAL/EEPROM/EEPROM.d" -MT"ECUAL/EEPROM/EEPROM.o" -c -o "ECUAL/EEPROM/EEPROM.o" "../ECUAL/EEPROM/EEPROM.c"
+In file included from ../ECUAL/EEPROM/EEPROM_interface.h:16,
+                 from ../ECUAL/EEPROM/EEPROM.c:10:
+../ECUAL/EEPROM/../../MCAL/DELAY/TIMER0.h:15:1: warning: "F_CPU" redefined
+<command-line>: warning: this is the location of the previous definition
+../ECUAL/EEPROM/EEPROM.c: In function 'EEPROM_u8WriteByteTo':
+../ECUAL/EEPROM/EEPROM.c:32: warning: control reaches end of non-void function
+../ECUAL/EEPROM/EEPROM.c: In function 'EEPROM_u8RandonReadFrom':
+../ECUAL/EEPROM/EEPROM.c:51: warning: control reaches end of non-void function
+../ECUAL/EEPROM/EEPROM.c: In function 'EEPROM_u8WriteStringTo':
+../ECUAL/EEPROM/EEPROM.c:74: warning: control reaches end of non-void function
+../ECUAL/EEPROM/EEPROM.c: In function 'EEPROM_u8ReadStringFrom':
+../ECUAL/EEPROM/EEPROM.c:97: warning: control reaches end of non-void function
+../ECUAL/EEPROM/EEPROM.c: In function 'EEPROM_u8WriteIntTo':
+../ECUAL/EEPROM/EEPROM.c:113: warning: control reaches end of non-void function
+../ECUAL/EEPROM/EEPROM.c: In function 'EEPROM_u8ReadIntFrom':
+../ECUAL/EEPROM/EEPROM.c:129: warning: left shift count >= width of type
+../ECUAL/EEPROM/EEPROM.c:129: warning: left shift count >= width of type
+../ECUAL/EEPROM/EEPROM.c:130: warning: control reaches end of non-void function
+Finished building: ../ECUAL/EEPROM/EEPROM.c
+ 
+Building target: EEPROM_T.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,EEPROM_T.map -mmcu=atmega32 -o "EEPROM_T.elf"  ./MCAL/UART/UART.o  ./MCAL/TIMER/TIMER.o  ./MCAL/SPI/SPI.o  ./MCAL/I2C/I2C.o  ./MCAL/DIO/DIO.o  ./MCAL/DELAY/TIMER0.o  ./ECUAL/LED/LED.o  ./ECUAL/EEPROM/EEPROM.o  ./APP/main.o   
+Finished building target: EEPROM_T.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S EEPROM_T.elf  >"EEPROM_T.lss"
+Finished building: EEPROM_T.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex EEPROM_T.elf  "EEPROM_T.hex"
+Finished building: EEPROM_T.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex EEPROM_T.elf  "EEPROM_T.eep"
+Finished building: EEPROM_T.eep
+ 
 Invoking: Print Size
 avr-size --format=avr --mcu=atmega32 EEPROM_T.elf
 AVR Memory Usage
 ----------------
 Device: atmega32
 
-Program:    8958 bytes (27.3% Full)
+Program:    9598 bytes (29.3% Full)
 (.text + .data + .bootloader)
 
-Data:         34 bytes (1.7% Full)
+Data:         28 bytes (1.4% Full)
 (.data + .bss + .noinit)
 
 
 Finished building: sizedummy
  
 
-10:12:50 Build Finished (took 278ms)
+09:04:53 Build Finished (took 2s.197ms)
 

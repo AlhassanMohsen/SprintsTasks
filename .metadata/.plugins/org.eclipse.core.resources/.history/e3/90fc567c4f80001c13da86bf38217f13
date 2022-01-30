@@ -1,0 +1,17 @@
+/*
+ * ATM.h
+ *
+ *  Created on: Jan 28, 2022
+ *      Author: Alhassan Mohsen
+ */
+
+#ifndef APP_ATM_H_
+#define APP_ATM_H_
+
+typedef enum{
+
+	ATM_PROGRAMMING_MODE,
+	ATM_OPERATION_MODE
+}ATMModes_t;
+
+#endif /* APP_ATM_H_ */

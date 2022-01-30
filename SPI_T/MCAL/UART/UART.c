@@ -8,7 +8,8 @@
 #include "UART_interface.h"
 #include "UART_prv.h"
 #include "UARTConfig.h"
-
+#include "../../ECUAL/LED/LED.h"
+LED_t LED1={PORTB,PIN7};
 
 static uint8_t gu8_IntializationFlag = UART_NOT_INTIALIZED; /// This flag is used to detect when user is trying to use the Peripheral before initialization
 static void (*gpf_RecieveCallBack)(void)=NULL; /// pointer to the function that will be called in the Receive interrupt
@@ -20,6 +21,7 @@ static void (*gpf_TransmitCallBack)(void)=NULL; /// pointer to the function that
  */
 uint8_t UART_u8Init(uint32_t UART_u32BaudRate)
 {
+	LED_u8Init(&LED1);
 	uint8_t u8ErrorState = UART_OK;
 	uint16_t u16UBBR;  /// A Temporary Variable used to hold the calculated value of the UBBR register depending on the Baudrate
 
@@ -147,6 +149,79 @@ uint8_t UART_u8SendByte(uint8_t u8Data)
 	return u8ErrorState;
 }
 
+
+uint8_t UART_u8SendInt(uint32_t u32Data)
+{
+	DDRB_REG=0xff;
+	PORTB_REG=u32Data;
+	uint8_t au8Number[100]={0};
+	uint64_t u8Counter =1;
+	uint8_t u8NumberASCII;
+
+	    uint8_t i = 0;
+	    /* Handle 0 explicitly, otherwise empty string is printed for 0 */
+	    if (u32Data == 0)
+	    {
+	    	au8Number[i++] = '0';
+	    }
+
+	    // In standard itoa(), negative numbers are handled only with
+	    // base 10. Otherwise numbers are considered unsigned.
+
+	    // Process individual digits
+	    while (u32Data != 0)
+	    {
+	    	uint8_t rem = u32Data % 10;
+	        au8Number[i++] = (rem > 9)? (rem-10) + 'a' : rem + '0';
+	        u32Data = u32Data/10;
+	    }
+
+
+	    au8Number[i] = '\0'; // Append string terminator
+
+	    // Reverse the string
+	    uint8_t start = 0;
+	    uint8_t end = i -1;
+	    uint8_t temp;
+	    while (start < end)
+	    {
+	    	temp =*(au8Number+start);
+	    	*(au8Number+start) = *(au8Number+end);
+	    	*(au8Number+end) = temp;
+	        start++;
+	        end--;
+	    }
+	    UART_u8SendString(au8Number);
+
+
+/*	do {
+		au8Number[u8Counter]=((u32Data % 10) + '0'); //send the lowestdigit
+		u32Data = u32Data / 10;
+		u8Counter++;
+	} while (u32Data>=1);
+
+
+	for (sint8_t i=(u8Counter-1);i>=0;i--)
+	{
+		UART_u8SendByte(au8Number[i]);
+	}
+*/
+
+	/*while(u32Data > 0){
+		u8Counter = (u8Counter * 10) + (u32Data % 10);
+		u32Data = u32Data /10;
+	}
+
+	while(u8Counter>0)
+	{
+		u8NumberASCII=((u8Counter%10)+48);
+		UART_u8SendByte(u8NumberASCII);
+		u8Counter=u8Counter/10;
+	}
+
+*/
+}
+
 /**
  * @fn uint8_t UART_u8SendString(uint8_t* pau8Data)
  * @brief This function is used to Send a String of data by polling mechanism
@@ -172,8 +247,8 @@ uint8_t UART_u8SendString(uint8_t* pau8Data)
 				UART_u8SendByte(u8LastByte);
 				// increment the array navigator to get the next character
 				u16StringCounter++;
+
 			}while(u8LastByte!=0x00);// do the same while the sent byte wasn't a new line
-			UART_u8SendByte(0x0D);
 		}else
 		{
 			// if it is pointing to NULL then Update the Error State
@@ -224,12 +299,41 @@ uint8_t UART_u8ReceiveByte(uint8_t* pu8RecievedData)
 	return u8ErrorState;
 }
 
+
+uint8_t UART_u8ReceiveInt(uint32_t* pu32ReceivedInt)
+{
+    uint8_t u8ArrayCounter=0;
+    uint32_t u8Multiplier=1;
+    uint8_t ReceivedStr[11];
+
+    UART_u8RecieveString(ReceivedStr);
+    while (ReceivedStr[u8ArrayCounter]!='\0')
+    {
+    	u8ArrayCounter++;
+    }
+
+    for(uint8_t loopCounter=0;loopCounter<u8ArrayCounter;loopCounter++)
+    {
+
+        for(uint8_t multiplier=(u8ArrayCounter-1)-loopCounter;multiplier>0;multiplier--)
+        {
+        	u8Multiplier=10*u8Multiplier;
+        }
+        *pu32ReceivedInt = *pu32ReceivedInt + ((ReceivedStr[loopCounter]-'0')*u8Multiplier);
+        u8Multiplier=1;
+    }
+
+}
+
+
+
 /**
  * @fn  UART_u8RecieveString(uint8_t* pu8ReceivedData)
  * @brief This function is used to Get a Received String by polling mechanism
  * @pre - the UART must be initialized
  * 		- the pointer to data not pointing to NULL
  */
+
 uint8_t UART_u8RecieveString(uint8_t* pau8RecievedData)
 {
 	uint8_t u8ErrorState = UART_OK;
@@ -249,7 +353,7 @@ uint8_t UART_u8RecieveString(uint8_t* pau8RecievedData)
 				//Update the last empty place in the array
 				Temp++;
 			}while (u8PreReading!=0x0D); // do this while the received byte is not endline
-
+			*(Temp+1) ='\0';
 		}else
 		{
 			// if it is pointing to NULL then Update the Error State

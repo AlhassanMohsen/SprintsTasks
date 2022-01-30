@@ -1,9 +1,15 @@
-15:05:08 **** Incremental Build of configuration Debug for project SPI_T ****
+06:43:20 **** Build of configuration Debug for project SPI_T ****
 make all 
-Building file: ../MCAL/SPI/SPI.c
+Building file: ../MCAL/UART/UART.c
 Invoking: AVR Compiler
-avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"MCAL/SPI/SPI.d" -MT"MCAL/SPI/SPI.o" -c -o "MCAL/SPI/SPI.o" "../MCAL/SPI/SPI.c"
-Finished building: ../MCAL/SPI/SPI.c
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"MCAL/UART/UART.d" -MT"MCAL/UART/UART.o" -c -o "MCAL/UART/UART.o" "../MCAL/UART/UART.c"
+../MCAL/UART/UART.c: In function 'UART_u8SendInt':
+../MCAL/UART/UART.c:159: warning: unused variable 'u8NumberASCII'
+../MCAL/UART/UART.c:158: warning: unused variable 'u8Counter'
+../MCAL/UART/UART.c:223: warning: control reaches end of non-void function
+../MCAL/UART/UART.c: In function 'UART_u8ReceiveInt':
+../MCAL/UART/UART.c:326: warning: control reaches end of non-void function
+Finished building: ../MCAL/UART/UART.c
  
 Building file: ../APP/main.c
 Invoking: AVR Compiler
@@ -33,15 +39,15 @@ AVR Memory Usage
 ----------------
 Device: atmega32
 
-Program:    6066 bytes (18.5% Full)
+Program:    6796 bytes (20.7% Full)
 (.text + .data + .bootloader)
 
-Data:         10 bytes (0.5% Full)
+Data:         12 bytes (0.6% Full)
 (.data + .bss + .noinit)
 
 
 Finished building: sizedummy
  
 
-15:05:09 Build Finished (took 1s.93ms)
+06:43:21 Build Finished (took 1s.249ms)
 

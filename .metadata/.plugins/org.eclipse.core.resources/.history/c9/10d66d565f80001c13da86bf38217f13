@@ -1,0 +1,22 @@
+/*
+ * ATM_prv.h
+ *
+ *  Created on: Jan 28, 2022
+ *      Author: Alhassan Mohsen
+ */
+
+#ifndef APP_ATM_PRV_H_
+#define APP_ATM_PRV_H_
+
+#define ATM_PASSWORD_LOCATION		0x01
+#define ATM_MAX_AMOUNT_LOCATION		0x05
+#define ATM_DATA_START_ADDRESS		0x06
+#define ATM_EEPROM_ADDRESS			0x00
+
+#define ATM_ADMIN_PASSWORD			"1234"
+
+
+
+
+
+#endif /* APP_ATM_PRV_H_ */

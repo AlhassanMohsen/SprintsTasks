@@ -1,0 +1,13 @@
+/*
+ * ATM_prv.h
+ *
+ *  Created on: Jan 28, 2022
+ *      Author: Alhassan Mohsen
+ */
+
+#ifndef APP_ATM_PRV_H_
+#define APP_ATM_PRV_H_
+
+#define ATM_PASSWORD_LOCATION
+
+#endif /* APP_ATM_PRV_H_ */
