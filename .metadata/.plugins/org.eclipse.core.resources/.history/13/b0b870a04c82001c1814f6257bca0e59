@@ -1,0 +1,30 @@
+/*
+ * ATM.h
+ *
+ *  Created on: Jan 28, 2022
+ *      Author: Alhassan Mohsen
+ */
+
+#ifndef APP_ATM_H_
+#define APP_ATM_H_
+
+#include "../LIB/BIT_Math.h"
+#include "../LIB/Typedef.h"
+#include "../MCAL/UART/UART_interface.h"
+#include "../ECUAL/EEPROM/EEPROM_interface.h"
+#include "../ECUAL/LCD/LCD.h"
+#include "../ECUAL/KEYPAD/KEYPAD_interface.h"
+
+typedef enum{
+	ATM_START,
+	ATM_PROGRAMMING_MODE,
+	ATM_OPERATION_MODE,
+	ATM_WRONG_MODE_INPUT,
+}ATMModes_t;
+
+
+void ATM_UpdateMode(void);
+void ATM_CheckPassword(uint8_t* pu8CheckResult);
+void ATM_AddNewAccount(void);
+void ATM_AddMaxAmount(void);
+#endif /* APP_ATM_H_ */

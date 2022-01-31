@@ -1,38 +1,5 @@
-06:43:15 **** Incremental Build of configuration Debug for project SPI_MASTER_T ****
+06:24:16 **** Incremental Build of configuration Debug for project SPI_MASTER_T ****
 make all 
-Building file: ../MCAL/UART/UART.c
-Invoking: AVR Compiler
-avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"MCAL/UART/UART.d" -MT"MCAL/UART/UART.o" -c -o "MCAL/UART/UART.o" "../MCAL/UART/UART.c"
-../MCAL/UART/UART.c: In function 'UART_u8SendInt':
-../MCAL/UART/UART.c:159: warning: unused variable 'u8NumberASCII'
-../MCAL/UART/UART.c:158: warning: unused variable 'u8Counter'
-../MCAL/UART/UART.c:223: warning: control reaches end of non-void function
-../MCAL/UART/UART.c: In function 'UART_u8ReceiveInt':
-../MCAL/UART/UART.c:326: warning: control reaches end of non-void function
-Finished building: ../MCAL/UART/UART.c
- 
-Building file: ../APP/main.c
-Invoking: AVR Compiler
-avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"APP/main.d" -MT"APP/main.o" -c -o "APP/main.o" "../APP/main.c"
-Finished building: ../APP/main.c
- 
-Building target: SPI_MASTER_T.elf
-Invoking: AVR C Linker
-avr-gcc -Wl,-Map,SPI_MASTER_T.map -mmcu=atmega32 -o "SPI_MASTER_T.elf"  ./MCAL/UART/UART.o  ./MCAL/SPI/SPI.o  ./MCAL/DIO/DIO.o  ./ECUAL/LED/LED.o  ./APP/main.o   
-Finished building target: SPI_MASTER_T.elf
- 
-Invoking: AVR Create Extended Listing
-avr-objdump -h -S SPI_MASTER_T.elf  >"SPI_MASTER_T.lss"
-Finished building: SPI_MASTER_T.lss
- 
-Create Flash image (ihex format)
-avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex SPI_MASTER_T.elf  "SPI_MASTER_T.hex"
-Finished building: SPI_MASTER_T.hex
- 
-Create eeprom image (ihex format)
-avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex SPI_MASTER_T.elf  "SPI_MASTER_T.eep"
-Finished building: SPI_MASTER_T.eep
- 
 Invoking: Print Size
 avr-size --format=avr --mcu=atmega32 SPI_MASTER_T.elf
 AVR Memory Usage
@@ -49,5 +16,5 @@ Data:         12 bytes (0.6% Full)
 Finished building: sizedummy
  
 
-06:43:16 Build Finished (took 1s.350ms)
+06:24:17 Build Finished (took 231ms)
 

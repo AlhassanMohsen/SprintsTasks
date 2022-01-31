@@ -1,0 +1,205 @@
+/*
+ * ATM.c
+ *
+ *  Created on: Jan 28, 2022
+ *      Author: Alhassan Mohsen
+ */
+
+#include "ATM_prv.h"
+#include "ATM.h"
+#include "../ECUAL/LED/LED.h"
+LED_t LEDTEST={PORTB,PIN3};
+#include "../MCAL/TIMER/TIMER.h"
+static volatile ATMModes_t gu8_ATMMode= ATM_START;
+static volatile uint8_t LastAccountPtr;
+static volatile uint8_t gu8_MaxAmount;
+uint8_t ReceivedStr[11];
+
+//static volatile uint8_t gu8_ATMPollingReadFlag = 0;
+
+void ATM_Init(void)
+{
+	UART_u8Init(9600);
+	UART_u8EnableRecievingInterrupt(ATM_UpdateMode);
+	EEPROM_Init();
+	LED_u8Init(&LEDTEST);
+	EEPROM_u8RandonReadFrom(ATM_EEPROM_ADDRESS,ATM_EEPROM_FIRST_TIME_ADDRESS,&LastAccountPtr);
+	TIMER0_u8PollingDelay(10);
+	if (LastAccountPtr!=ATM_EEPROM_FIRST_TIME_DATA)
+	{
+		EEPROM_u8WriteByteTo(ATM_EEPROM_ADDRESS,ATM_EEPROM_FIRST_TIME_ADDRESS,ATM_EEPROM_FIRST_TIME_DATA);
+		TIMER0_u8PollingDelay(10);
+		EEPROM_u8WriteByteTo(ATM_EEPROM_ADDRESS,ATM_EEPROM_PTR,ATM_DATA_START_ADDRESS);
+		TIMER0_u8PollingDelay(10);
+	}else{
+
+		EEPROM_u8RandonReadFrom(ATM_EEPROM_ADDRESS,ATM_EEPROM_PTR,&LastAccountPtr);
+		TIMER0_u8PollingDelay(10);
+	}
+	EEPROM_u8WriteStringTo(ATM_EEPROM_ADDRESS,ATM_PASSWORD_LOCATION,ATM_ADMIN_PASSWORD);
+	TIMER0_u8PollingDelay(10);
+
+
+}
+
+void ATM_APP(void)
+{
+	uint8_t u8PasswordCheck;
+	uint8_t u8UserInput;
+	while (1)
+	{
+		switch (gu8_ATMMode)
+		{
+		case ATM_START:
+			break;
+		case ATM_PROGRAMMING_MODE:
+			UART_u8DisableReceivingInterrupt();
+			ATM_CheckPassword(&u8PasswordCheck);
+			if (u8PasswordCheck==ATM_PASSWORD_OK)
+			{
+				UART_u8SendString("\r\n 1- Add Customer Data \n");
+				UART_u8SendString("\r\n 2- Edit the Max Amount \r\n");
+				do{
+					UART_u8ReceiveByte(&u8UserInput);
+					if (u8UserInput=='1')
+					{
+						ATM_AddNewAccount();
+
+					}else if (u8UserInput=='2')
+					{
+						ATM_AddMaxAmount();
+					}else
+					{
+						UART_u8SendString("\r\n Wrong Input \r\n");
+					}
+				}while (!(u8UserInput=='2'||u8UserInput=='1'));
+
+			}else if (u8PasswordCheck==ATM_PASSWORD_NOK){
+				UART_u8SendString("\r\n Wrong Password \r\n");}
+
+			gu8_ATMMode=ATM_START;
+			UART_u8EnableRecievingInterrupt(ATM_UpdateMode);
+
+			break;
+		case ATM_OPERATION_MODE:
+			break;
+		case ATM_WRONG_MODE_INPUT:
+			break;
+		default:
+			UART_u8SendString("Wrong Entry \r\n");
+
+		}
+
+	}
+}
+
+
+void ATM_UpdateMode(void)
+{
+//	if (gu8_ATMPollingReadFlag==0)
+//	{
+		uint8_t au8TerminalCommand[10];
+		UART_u8RecieveString(au8TerminalCommand);
+		switch (au8TerminalCommand[0])
+		{
+		case 'A':
+			gu8_ATMMode = ATM_PROGRAMMING_MODE;
+			break;
+		case 'U':
+			gu8_ATMMode = ATM_OPERATION_MODE;
+			break;
+		default:
+			gu8_ATMMode =ATM_WRONG_MODE_INPUT;
+		}
+
+	//}else
+	//{
+		//NOP
+	//}
+}
+
+void ATM_CheckPassword(uint8_t* pu8CheckResult)
+{
+	uint8_t au8UserPassword[4];
+	uint8_t u8PasswordReading;
+	uint8_t RightPasswordCounter=0;
+
+	UART_u8SendString("Please Enter ADMIN Password: \r\n");
+	for (uint8_t i=0;i<4;i++)
+	{
+		//gu8_ATMPollingReadFlag=1;
+		UART_u8ReceiveByte(&au8UserPassword[i]);
+		EEPROM_u8RandonReadFrom(ATM_EEPROM_ADDRESS,(ATM_PASSWORD_LOCATION+i),&u8PasswordReading);
+		if (au8UserPassword[i]==u8PasswordReading)
+		{
+			RightPasswordCounter++;
+		}else {
+			//NOP
+		}
+	}
+	if (RightPasswordCounter==4)
+	{
+		*pu8CheckResult=ATM_PASSWORD_OK;
+	}else
+	{
+		*pu8CheckResult=ATM_PASSWORD_NOK;
+	}
+//	gu8_ATMPollingReadFlag=0;
+
+}
+
+void ATM_AddNewAccount()
+{
+	uint32_t u8customerData;
+	uint8_t u8UserInput='y';
+	while (u8UserInput!='n')
+	{
+		UART_u8SendString("\r\n Please Enter the PAN: \r\n");
+		UART_u8ReceiveInt(u8customerData);
+		EEPROM_u8WriteIntTo(ATM_EEPROM_ADDRESS,LastAccountPtr,u8customerData);
+		for (uint8_t i=0;i<9;i++)
+		{
+			UART_u8ReceiveByte(&u8customerData);
+
+			TIMER0_u8PollingDelay(10);
+			LastAccountPtr++;
+		}
+
+		UART_u8SendString("\r\n Please Enter the Balance: \r\n");
+		while(u8customerData!=0x0D)
+		{
+			UART_u8ReceiveByte(&u8customerData);
+			EEPROM_u8WriteByteTo(ATM_EEPROM_ADDRESS,LastAccountPtr,u8customerData);
+			TIMER0_u8PollingDelay(10);
+			LastAccountPtr++;
+		}
+
+
+		UART_u8SendString("\r\n 1- Enter new Account(y/n) \r\n");
+		UART_u8ReceiveByte(&u8UserInput);
+	}
+	TIMER0_u8PollingDelay(10);
+	EEPROM_u8WriteByteTo(ATM_EEPROM_ADDRESS,ATM_EEPROM_PTR,LastAccountPtr);
+
+}
+
+void ATM_AddMaxAmount(void)
+{
+	uint32_t u8UserInput;
+	uint32_t u32MaxAmount=0;
+	uint8_t ArrayNav=0;
+
+	uint32_t* tempReceivedStr;
+
+	uint32_t u8ArrayCounter=0;
+	uint32_t u8Multiplier=10;
+	uint32_t exp;
+	UART_u8SendString("\r\n Please Enter the Max Amount: \r\n");
+	UART_u8ReceiveInt(&u32MaxAmount);
+	EEPROM_u8WriteIntTo(ATM_EEPROM_ADDRESS,ATM_MAX_AMOUNT_LOCATION,u32MaxAmount);
+	UART_u8SendString("\r\n The new Max Amount is : \r\n");
+	EEPROM_u8ReadIntFrom(ATM_EEPROM_ADDRESS,ATM_MAX_AMOUNT_LOCATION,&u8UserInput);
+	TIMER0_u8PollingDelay(30);
+	EEPROM_u8WriteIntTo(ATM_EEPROM_ADDRESS,ATM_MAX_AMOUNT_LOCATION,u8UserInput);
+	UART_u8SendInt(u8UserInput);
+}
