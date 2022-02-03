@@ -1,5 +1,5 @@
 /*
- * UART_interface.h
+uint8_t UART_u8SendInt(uint32_t u32Data) * UART_interface.h
  *
  *  Created on: Jan 24, 2022
  *      Author: vip
@@ -64,7 +64,8 @@ uint8_t UART_u8SendByte(uint8_t u8Data);
  * 				-UART_INTIALIZATION_ERROR=8 //!< The UART is not Intialized
  */
 uint8_t UART_u8SendString(uint8_t* pau8Data);
-
+uint8_t UART_u8SendInt(uint32_t u32Data);
+uint8_t UART_u8ReceiveInt(uint32_t* pu32ReceivedInt);
 /**
  * @fn  UART_u8RecieveByte(uint8_t* pu8RecievedData)
  * @brief This function is used to Get the Received byte of data by polling mechanism
@@ -87,6 +88,7 @@ uint8_t UART_u8ReceiveByte(uint8_t* pu8ReceivedData);
  * @return return a number from 1-255 representing the error state of the Function and it can be
  * 				-UART_OK=1,                  //!< NO Errors Happened
  * 				-UART_NULL_INPUT=7,         //!< The input pointer is pointing to NULL
+ *
  * 				-UART_INTIALIZATION_ERROR=8 //!< The UART is not Intialized
  */
 uint8_t UART_u8RecieveString(uint8_t* pu8ReceivedData);
@@ -135,6 +137,7 @@ void UART_u8DisableTransmittionInterrupt(void);
  * @brief This function is called to Stop the UART Peripheral and De-initialize it
  */
 void UART_u8Deinit(void);
+uint8_t UART_u8ReceiveCountedString(uint8_t*pau8RecievedData,uint8_t* Count);
 
 
 #endif /* MCAL_UART_UART_INTERFACE_H_ */

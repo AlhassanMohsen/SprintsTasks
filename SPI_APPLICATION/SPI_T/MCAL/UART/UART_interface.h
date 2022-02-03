@@ -1,5 +1,5 @@
 /*
- * UART_interface.h
+uint8_t UART_u8SendInt(uint32_t u32Data) * UART_interface.h
  *
  *  Created on: Jan 24, 2022
  *      Author: vip
@@ -135,6 +135,7 @@ void UART_u8DisableTransmittionInterrupt(void);
  * @brief This function is called to Stop the UART Peripheral and De-initialize it
  */
 void UART_u8Deinit(void);
-
+uint8_t UART_u8SendInt(uint32_t u32Data);
+uint8_t UART_u8ReceiveInt(uint32_t* pu32ReceivedInt);
 
 #endif /* MCAL_UART_UART_INTERFACE_H_ */
