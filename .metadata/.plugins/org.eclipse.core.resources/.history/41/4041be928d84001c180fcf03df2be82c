@@ -1,0 +1,14 @@
+/*
+ * STR.h
+ *
+ *  Created on: Feb 3, 2022
+ *      Author: Esraa
+ */
+
+#ifndef SERVICE_STRINGS_STR_H_
+#define SERVICE_STRINGS_STR_H_
+
+#define CMP_MATCH	1
+#define CMP_NOT_MATCHED	0
+
+#endif /* SERVICE_STRINGS_STR_H_ */

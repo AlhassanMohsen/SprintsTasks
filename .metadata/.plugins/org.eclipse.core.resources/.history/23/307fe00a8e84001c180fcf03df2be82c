@@ -1,0 +1,31 @@
+/*
+ * main.c
+ *
+ *  Created on: Jan 27, 2022
+ *      Author: Alhassan Mohsen
+ */
+
+
+
+#include "../MCAL/UART/UART_interface.h"
+#include "../MCAL/DELAY/TIMER0.h"
+#include "../ECUAL/LED/LED.h"
+#include "../Service/Strings/STR.h"
+
+int main(void)
+{
+	uint8_t u8CommandReceived;
+
+	UART_u8RecieveString(&u8CommandReceived);
+
+
+
+	while (1)
+	{
+
+		LED_u8On(&LEDT);
+	}
+
+}
+
+

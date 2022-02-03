@@ -1,0 +1,16 @@
+/*
+ * Card_prv.h
+ *
+ *  Created on: Jan 31, 2022
+ *      Author: Esraa
+ */
+
+#ifndef APP_CARD_PRV_H_
+#define APP_CARD_PRV_H_
+
+#define CARD_EEPROM_FIRST_TIME_ADDRESS 	0xFF
+#define CARD_EEPROM_FIRST_TIME_DATA	   	0xAA
+
+
+
+#endif /* APP_CARD_PRV_H_ */

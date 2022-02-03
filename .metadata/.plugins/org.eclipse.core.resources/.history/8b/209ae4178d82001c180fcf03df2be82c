@@ -1,0 +1,31 @@
+/*
+ * Card.h
+ *
+ * Created: 1/28/2022 2:29:33 PM
+ *  Author: Khaled Ali
+ */ 
+
+
+#ifndef CARD_H_
+#define CARD_H_
+
+#include "../MCAL/TIMER/TIMER.h"
+#include "../MCAL/SPI/SPI.h"
+
+#include "../ECUAL/EEPROM/EEPROM_interface.h"
+#include "../ECUAL/INTERFACE/TERMINAL_SLAVE.h"
+#include "../ECUAL/INTERFACE/INTERFACE_SLAVE.h"
+#include "../ECUAL/LED/LED.h"
+
+#define  UNIQUE_PATTERN 0x10101010
+
+
+
+
+typedef enum{
+	PROGRAMMING,
+	USER
+	}STATE;
+void Card_App(void);
+void UART_callBack(uint8_t data);
+#endif /* CARD_H_ */

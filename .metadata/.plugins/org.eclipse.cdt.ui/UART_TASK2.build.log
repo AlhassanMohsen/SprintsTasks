@@ -1,0 +1,12 @@
+05:53:37 **** Incremental Build of configuration Debug for project UART_TASK2 ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t UART_TASK2.elf
+   text	   data	    bss	    dec	    hex	filename
+  12098	    364	     19	  12481	   30c1	UART_TASK2.elf
+  12098	    364	     19	  12481	   30c1	(TOTALS)
+Finished building: sizedummy
+ 
+
+05:53:37 Build Finished (took 331ms)
+

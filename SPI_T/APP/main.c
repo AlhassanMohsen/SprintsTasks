@@ -20,5 +20,6 @@ int main(void)
 	{
 		SPI_u8ReceiveString(Data);
 		UART_u8SendString(Data);
+		UART_u8SendByte(0x0D);
 	}
 }

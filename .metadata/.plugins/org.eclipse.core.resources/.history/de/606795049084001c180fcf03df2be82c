@@ -1,0 +1,58 @@
+/*
+ * main.c
+ *
+ *  Created on: Jan 27, 2022
+ *      Author: Alhassan Mohsen
+ */
+
+
+
+#include "../MCAL/UART/UART_interface.h"
+#include "../MCAL/DELAY/TIMER0.h"
+#include "../ECUAL/LED/LED.h"
+#include "../Service/Strings/STR.h"
+
+int main(void)
+{
+	uint8_t u8CommandReceived[10];
+	LED_t LEDGreen={PORTA,PIN6};
+	LED_t LEDYellow={PORTA,PIN3};
+	LED_t LEDRed={PORTA,PIN0};
+
+	LED_u8Init(&LEDGreen);
+	LED_u8Init(&LEDYellow);
+	LED_u8Init(&LEDRed);
+	UART_u8Init(9600);
+
+	UART_u8RecieveString(u8CommandReceived);
+	UART_u8SendString(u8CommandReceived);
+	UART_u8SendByte(0x0D);
+
+
+	while (1)
+	{
+
+		if (STR_CMP(u8CommandReceived,(uint8_t*)"START"))
+		{
+			LED_u8On(&LEDGreen);
+			LEDu8Off(&LEDRed);
+			LEDu8Off(&LEDYellow);
+			//UART_u8SendString((uint8_t*)"Green LED is on");
+		}else if (STR_CMP(u8CommandReceived,(uint8_t*)"WAIT"))
+		{
+			LED_u8Off(&LEDGreen);
+			LEDu8Off(&LEDRed);
+			LEDu8On(&LEDYellow);
+			//UART_u8SendString((uint8_t*)"Yellow LED is on");
+		}else if(STR_CMP(u8CommandReceived,(uint8_t*)"WAIT"))
+		{
+			LED_u8Off(&LEDGreen);
+			LEDu8On(&LEDRed);
+			LED_u8Off(&LEDYellow);
+			//UART_u8SendString((uint8_t*)"RED LED is on");
+		}
+	}
+
+}
+
+

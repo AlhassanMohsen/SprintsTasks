@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;CARD_ECU/MCAL/SPI/SPI_interface.h&apos; to &apos;SPI.h&apos;" description="Rename resource &apos;SPI_interface.h&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="MCAL/SPI/SPI_interface.h" name="SPI.h" stamp="1643711636105" updateReferences="true"/>
+</session>

@@ -1,25 +1,12 @@
-06:24:16 **** Incremental Build of configuration Debug for project ATMProject ****
+05:53:34 **** Incremental Build of configuration Debug for project ATMProject ****
 make all 
-Building file: ../ECUAL/KEYPAD/KEYPAD.c
-Invoking: AVR Compiler
-avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"ECUAL/KEYPAD/KEYPAD.d" -MT"ECUAL/KEYPAD/KEYPAD.o" -c -o "ECUAL/KEYPAD/KEYPAD.o" "../ECUAL/KEYPAD/KEYPAD.c"
-In file included from ../ECUAL/KEYPAD/KEYPAD.c:10:
-../ECUAL/KEYPAD/../../MCAL/DELAY/TIMER0.h:15:1: warning: "F_CPU" redefined
-<command-line>: warning: this is the location of the previous definition
-../ECUAL/KEYPAD/KEYPAD.c: In function 'KEYPAD_u8Init':
-../ECUAL/KEYPAD/KEYPAD.c:29: warning: control reaches end of non-void function
-../ECUAL/KEYPAD/KEYPAD.c: In function 'KEY_u8GetNum':
-../ECUAL/KEYPAD/KEYPAD.c:81: warning: control reaches end of non-void function
-Finished building: ../ECUAL/KEYPAD/KEYPAD.c
+Invoking: Print Size
+avr-size --format=berkeley -t ATMProject.elf
+   text	   data	    bss	    dec	    hex	filename
+  20280	    868	     41	  21189	   52c5	ATMProject.elf
+  20280	    868	     41	  21189	   52c5	(TOTALS)
+Finished building: sizedummy
  
-Building file: ../ECUAL/BTN/Button.c
-Invoking: AVR Compiler
-avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"ECUAL/BTN/Button.d" -MT"ECUAL/BTN/Button.o" -c -o "ECUAL/BTN/Button.o" "../ECUAL/BTN/Button.c"
-In file included from ../ECUAL/BTN/Button.c:9:
-../ECUAL/BTN/Button.h:11:46: error: ../../MCAL/DELAY/DELAY_interface.h: No such file or directory
-../ECUAL/BTN/Button.c: In function 'BTN_u8IsPressed':
-../ECUAL/BTN/Button.c:27: warning: implicit declaration of function 'DELAY_ms'
-make: *** [ECUAL/BTN/Button.o] Error 1
 
-06:24:16 Build Finished (took 536ms)
+05:53:34 Build Finished (took 403ms)
 

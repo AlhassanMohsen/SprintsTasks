@@ -1,20 +1,12 @@
-06:24:16 **** Incremental Build of configuration Debug for project SPI_MASTER_T ****
+05:24:54 **** Incremental Build of configuration Debug for project SPI_MASTER_T ****
 make all 
 Invoking: Print Size
-avr-size --format=avr --mcu=atmega32 SPI_MASTER_T.elf
-AVR Memory Usage
-----------------
-Device: atmega32
-
-Program:    6796 bytes (20.7% Full)
-(.text + .data + .bootloader)
-
-Data:         12 bytes (0.6% Full)
-(.data + .bss + .noinit)
-
-
+avr-size --format=berkeley -t SPI_MASTER_T.elf
+   text	   data	    bss	    dec	    hex	filename
+   8320	     32	     18	   8370	   20b2	SPI_MASTER_T.elf
+   8320	     32	     18	   8370	   20b2	(TOTALS)
 Finished building: sizedummy
  
 
-06:24:17 Build Finished (took 231ms)
+05:24:55 Build Finished (took 580ms)
 

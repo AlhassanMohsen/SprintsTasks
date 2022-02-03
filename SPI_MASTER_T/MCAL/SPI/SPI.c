@@ -176,7 +176,7 @@ uint8_t SPI_u8SendString(uint8_t* pu8Data)
 	{
 		if (pu8Data!=NULL) // if it is initialized then check the pointer is not pointing to NULL
 		{
-			while (pu8Data[u8CharCounter]!='\0')
+			while (pu8Data[u8CharCounter]!='\0'&&pu8Data[u8CharCounter]!=0x0D)
 			{
 				//While the current character is not endline
 				// Send the character through SPI

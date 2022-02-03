@@ -1,0 +1,30 @@
+/*
+ * main.c
+ *
+ *  Created on: Jan 27, 2022
+ *      Author: Alhassan Mohsen
+ */
+
+
+
+#include "../MCAL/I2C/I2C_interface.h"
+#include "../MCAL/UART/UART_interface.h"
+#define SLAVE_ADDRESS		0x02
+#define NEW_LINE_CHAR		0x0D
+#define UART_BAUDRATE		9600
+
+int main(void)
+{
+
+	uint8_t u8ReceivedByte;
+	I2C_u8Init();
+	UART_u8Init(9600);
+	while (1)
+	{
+		I2C_u8SlaveGetByte(&u8ReceivedByte);
+		LED_u8On(&LEDT);
+		UART_u8SendByte(u8ReceivedByte);
+	}
+}
+
+

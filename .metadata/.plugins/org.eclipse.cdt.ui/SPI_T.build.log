@@ -1,20 +1,12 @@
-06:24:17 **** Incremental Build of configuration Debug for project SPI_T ****
+05:24:55 **** Incremental Build of configuration Debug for project SPI_T ****
 make all 
 Invoking: Print Size
-avr-size --format=avr --mcu=atmega32 SPI_T.elf
-AVR Memory Usage
-----------------
-Device: atmega32
-
-Program:    6796 bytes (20.7% Full)
-(.text + .data + .bootloader)
-
-Data:         12 bytes (0.6% Full)
-(.data + .bss + .noinit)
-
-
+avr-size --format=berkeley -t SPI_T.elf
+   text	   data	    bss	    dec	    hex	filename
+   8104	      6	     18	   8128	   1fc0	SPI_T.elf
+   8104	      6	     18	   8128	   1fc0	(TOTALS)
 Finished building: sizedummy
  
 
-06:24:17 Build Finished (took 228ms)
+05:24:56 Build Finished (took 548ms)
 

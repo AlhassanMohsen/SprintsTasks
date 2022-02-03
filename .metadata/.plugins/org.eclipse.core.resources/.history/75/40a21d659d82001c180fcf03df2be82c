@@ -1,0 +1,24 @@
+/*
+ * INTERFACE_SLAVE.c
+ *
+ * Created: 1/28/2022 11:19:38 PM
+ *  Author: Khaled Ali
+ */ 
+#include "INTERFACE_SLAVE.h"
+
+
+uint8_t INTERFACE_u8Init(void){
+	SPI_u8Init(SPI_SLAVE);
+	return 1; //To be Changed
+}
+
+uint8_t INTERFACE_u8SendData(uint8_t* str){
+	uint8_t slave_select;
+	DIO_u8GetPinData(PORTB, PIN4, &slave_select);
+	UART_u8SendString("Hello");
+	//if slave selected
+	if(slave_select == DIO_LOW){
+		SPI_u8SendString(str);
+	}
+	return 1; //To be Changed
+}

@@ -1,0 +1,89 @@
+/*
+ * Card.c
+ *
+ * Created: 1/28/2022 2:29:22 PM
+ *  Author: Khaled Ali
+ */ 
+
+#include "Card_prv.h"
+#include "Card.h"
+
+STATE u8State;
+Card_t card;
+LED_t led_err = {PORTD, PIN7}; //Random Pin to be changed
+
+void Card_init()
+{
+	uint8_t u8FirstTimeCheck;
+
+	EEPROM_u8RandonReadFrom(CARD_EEPROM_ADDRESS,CARD_EEPROM_FIRST_TIME_ADDRESS,&u8FirstTimeCheck);
+	TIMER0_u8PollingDelay(10);
+	if (u8FirstTimeCheck!=CARD_EEPROM_FIRST_TIME_DATA)
+	{
+		u8State = PROGRAMMING;
+		card.MODE=CARD_PROGRAMMING_MODE;
+	}else{
+		u8State = USER;
+		EEPROM_u8ReadStringFrom(0, CARD_HOLDER_NAME_ADDRESS,  &card.NAME);
+		EEPROM_u8ReadStringFrom(0, CARD_PAN_ADDRESS, &card.PAN);
+		EEPROM_u8ReadStringFrom(0, CARD_PIN_ADDRESS, &card.PIN);
+	}
+
+}
+
+
+
+void Card_App(void){
+	TERMINAL_u8Init();
+	INTERFACE_u8Init();	
+	LED_u8Init(&led_err);
+	EEPROM_Init();
+//	uint8_t pattern;
+//	uint8_t status = EEPROM_u8RandonReadFrom(0, 0, &pattern);
+	uint8_t slave_selected;
+/*	if(status == 1){
+		if(pattern != UNIQUE_PATTERN){
+
+
+		}
+
+	}
+	else{
+		//Error
+		LED_u8On(&led_err);
+	}
+*/
+	while(1){
+		switch(u8State){
+			case PROGRAMMING:
+			//Enter Programming mode
+			TERMINAL_u8Interface(&card);
+			EEPROM_u8WriteStringTo(0, 1, card.NAME);
+			EEPROM_u8WriteStringTo(0, 11, card.PAN);
+			EEPROM_u8WriteStringTo(0, 21, card.PIN);	
+			u8State = USER;
+			TERMINAL_u8EnableInterrupt(UART_callBack);
+			break;
+			case USER:
+			INTERFACE_u8SendData(card.PAN);
+			INTERFACE_u8SendData(card.PIN);
+			break;
+			default:
+			break;
+		}	
+	}
+}
+
+
+void UART_callBack(uint8_t data){
+	static uint8_t iter = 0;
+	static uint8_t compared_value[] = "ADMIN";
+	if(data == compared_value[iter]){
+		iter++;
+		if(iter == 5){
+			u8State = PROGRAMMING;
+			TERMINAL_u8DisableInterrupt();
+			iter = 0;
+		}
+	}
+}

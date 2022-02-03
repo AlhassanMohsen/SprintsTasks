@@ -1,0 +1,113 @@
+/*
+ * Card.c
+ *
+ * Created: 1/28/2022 2:29:22 PM
+ *  Author: Khaled Ali
+ */ 
+
+#include "Card_prv.h"
+#include "Card.h"
+
+STATE u8State=USER;
+Card_t card;
+LED_t led_err = {PORTD, PIN7}; //Random Pin to be changed
+
+void Card_init()
+{
+	uint8_t u8FirstTimeCheck;
+	TERMINAL_u8Init();
+	INTERFACE_u8Init();
+	EEPROM_Init();
+	TERMINAL_u8EnableInterrupt(UART_callBack);
+	SET_BIT(SREG_REG,I_BIT);
+	CLR_BIT(GICR_REG,INT2_BIT);
+	SET_BIT(MCUCSR_REG,ISC2_BIT);
+	SET_BIT(GICR_REG,INT2_BIT);
+
+	EEPROM_u8RandonReadFrom(CARD_EEPROM_ADDRESS,CARD_EEPROM_FIRST_TIME_ADDRESS,&u8FirstTimeCheck);
+	TIMER0_u8PollingDelay(10);
+
+	if (u8FirstTimeCheck!=CARD_EEPROM_FIRST_TIME_DATA)
+	{
+		u8State = PROGRAMMING;
+		card.MODE=CARD_PROGRAMMING_MODE;
+		EEPROM_u8WriteByteTo(CARD_EEPROM_ADDRESS,CARD_EEPROM_FIRST_TIME_ADDRESS,CARD_EEPROM_FIRST_TIME_DATA);
+	}else{
+
+		u8State = USER;
+		EEPROM_u8ReadStringFrom(CARD_EEPROM_ADDRESS, CARD_HOLDER_NAME_ADDRESS,&card.NAME);
+		EEPROM_u8ReadStringFrom(CARD_EEPROM_ADDRESS, CARD_PAN_ADDRESS, &card.PAN);
+		EEPROM_u8ReadStringFrom(CARD_EEPROM_ADDRESS, CARD_PIN_ADDRESS, &card.PIN);
+
+		TERMINAL_u8EnableInterrupt(UART_callBack);
+	}
+	DIO_u8SetPinDirection(PORTB, PIN2, DIO_INPUT);
+
+
+}
+
+
+
+void Card_App(void){
+
+	uint8_t* m="Mohseno";
+
+	while(1){
+		switch(u8State){
+			case PROGRAMMING:
+			//Enter Programming mode
+			TERMINAL_u8Interface(&card);
+			EEPROM_u8WriteStringTo(CARD_EEPROM_ADDRESS, CARD_HOLDER_NAME_ADDRESS, card.NAME);
+			EEPROM_u8WriteStringTo(CARD_EEPROM_ADDRESS, CARD_PAN_ADDRESS, card.PAN);
+			EEPROM_u8WriteStringTo(CARD_EEPROM_ADDRESS, CARD_PIN_ADDRESS, card.PIN);
+			u8State = USER;
+			TERMINAL_u8EnableInterrupt(UART_callBack);
+			break;
+			case USER:
+				//UART_u8SendString("Hello");
+			//INTERFACE_u8SendData(&card.MODE);
+			//INTERFACE_u8SendData(m);
+			//INTERFACE_u8SendData(&card.PIN);
+
+			break;
+			default:
+			break;
+		}	
+	}
+}
+
+
+void UART_callBack(void){
+
+	uint8_t data[10];
+	static uint8_t iter = 0;
+	uint8_t* compared_value = "ADMIN";
+	UART_u8RecieveString(data);
+	UART_u8SendString(data);
+	if(data[iter] == compared_value[iter]){
+		iter++;
+		UART_u8SendByte(iter);
+		if(iter == 5){
+			UART_u8SendString("HI");
+			u8State = PROGRAMMING;
+			TERMINAL_u8DisableInterrupt();
+			iter = 0;
+		}
+	}else
+	{
+		UART_u8SendString("Wrong Input\r\n");
+		iter = 0;
+	}
+
+
+
+}
+
+
+void __vector_3(void) __attribute__ ((signal, used));
+
+void __vector_3(void)
+{
+	SPI_u8SendString(card.MODE);
+	CLR_BIT(GIFR_REG,5);
+}

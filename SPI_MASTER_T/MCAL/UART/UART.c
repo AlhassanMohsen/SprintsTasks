@@ -152,8 +152,6 @@ uint8_t UART_u8SendByte(uint8_t u8Data)
 
 uint8_t UART_u8SendInt(uint32_t u32Data)
 {
-	DDRB_REG=0xff;
-	PORTB_REG=u32Data;
 	uint8_t au8Number[100]={0};
 	uint64_t u8Counter =1;
 	uint8_t u8NumberASCII;
@@ -248,7 +246,7 @@ uint8_t UART_u8SendString(uint8_t* pau8Data)
 				// increment the array navigator to get the next character
 				u16StringCounter++;
 
-			}while(u8LastByte!=0x00);// do the same while the sent byte wasn't a new line
+			}while(u8LastByte!=0x00&&u8LastByte!=0x0D);// do the same while the sent byte wasn't a new line
 		}else
 		{
 			// if it is pointing to NULL then Update the Error State
@@ -305,9 +303,11 @@ uint8_t UART_u8ReceiveInt(uint32_t* pu32ReceivedInt)
     uint8_t u8ArrayCounter=0;
     uint32_t u8Multiplier=1;
     uint8_t ReceivedStr[11];
-
+    *pu32ReceivedInt=0;
     UART_u8RecieveString(ReceivedStr);
-    while (ReceivedStr[u8ArrayCounter]!='\0')
+    uint8_t ArrayNav=0;
+    //UART_u8SendString(ReceivedStr);
+    while (ReceivedStr[u8ArrayCounter]!=0x0D)
     {
     	u8ArrayCounter++;
     }
@@ -319,13 +319,12 @@ uint8_t UART_u8ReceiveInt(uint32_t* pu32ReceivedInt)
         {
         	u8Multiplier=10*u8Multiplier;
         }
-        *pu32ReceivedInt = *pu32ReceivedInt + ((ReceivedStr[loopCounter]-'0')*u8Multiplier);
+        *pu32ReceivedInt = *pu32ReceivedInt + ((ReceivedStr[ArrayNav]-'0')*u8Multiplier);
+        ArrayNav++;
         u8Multiplier=1;
     }
 
 }
-
-
 
 /**
  * @fn  UART_u8RecieveString(uint8_t* pu8ReceivedData)
@@ -353,7 +352,42 @@ uint8_t UART_u8RecieveString(uint8_t* pau8RecievedData)
 				//Update the last empty place in the array
 				Temp++;
 			}while (u8PreReading!=0x0D); // do this while the received byte is not endline
-			*(Temp+1) ='\0';
+			*(Temp) ='\0';
+
+		}else
+		{
+			// if it is pointing to NULL then Update the Error State
+			u8ErrorState = UART_NULL_INPUT;
+		}
+	}else
+	{
+		// if the UART is not Initialized then Update the Error State
+		u8ErrorState= UART_INITIALIZATION_ERROR;
+	}
+
+	return u8ErrorState;
+}
+
+uint8_t UART_u8ReceiveCountedString(uint8_t*pau8RecievedData,uint8_t* Count)
+{
+	uint8_t u8ErrorState = UART_OK;
+	uint8_t u8PreReading; 			/// a variable used to temporarily hold the value of the last character received
+	uint8_t* Temp=pau8RecievedData; /// a temporarily pointer initialized with the place of the first character of the array to save the received string in
+
+	if (gu8_IntializationFlag == UART_INITIALIZED)// Check if the UART is initialized
+	{
+		// if it is then check if the pointer is not pointing to NULL
+		if (pau8RecievedData!=NULL)
+		{
+			do{
+				// Receive a character through UART
+				UART_u8ReceiveByte(&u8PreReading);
+				//Save the received character to the last empty place in the array
+				*Temp =u8PreReading;
+				//Update the last empty place in the array
+				Temp++;
+				(*Count)--;
+			}while (u8PreReading!=0x0D&&*Count!=0); // do this while the received byte is not endline
 		}else
 		{
 			// if it is pointing to NULL then Update the Error State

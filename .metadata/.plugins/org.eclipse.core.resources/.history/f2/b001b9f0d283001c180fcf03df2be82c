@@ -1,0 +1,45 @@
+/*
+ * SERVICE.c
+ *
+ * Created: 1/31/2022 
+ *  Author: Abdelrhman Elsawy
+ */
+ 
+#include "SERVICE.h"
+
+uint8_t StringToInt (uint8_t * Str,uint32_t* pu32Result)
+{
+	uint32_t result = 0 ;
+	while ( *Str != '\0' )
+	{
+		*pu32Result = result * 10 + ( *Str - '0' );
+		Str++ ;
+	}
+	return 1 ;
+}
+
+f32_t StringToFloat (uint8_t * Str)
+{
+	f32_t iPart , dPart , result , mult ;
+	mult = 0.1 ;
+	iPart = dPart = result = 0.0 ;
+	UART_u8SendString(Str);
+	UART_u8SendByte(0x0D);
+	while( *Str != '.' ) 
+	{
+		iPart = iPart * 10.0 + (*Str -'0') ;
+		UART_u8SendInt(iPart);
+		UART_u8SendByte(0x0D);
+		Str++ ;
+	}
+	Str++;
+	while( *Str != '\0' ) 
+	{
+		dPart += (*Str - '0')*mult;
+		mult *= 0.1;
+		Str++ ;
+		UART_u8SendInt(dPart);
+		UART_u8SendByte(0x0D);
+	}
+	result = iPart + dPart;
+}

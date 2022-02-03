@@ -1,0 +1,25 @@
+/*
+ * main.c
+ *
+ *  Created on: Jan 25, 2022
+ *      Author: Alhassan Mohsen
+ */
+
+
+#include "../MCAL/SPI/SPI_interface.h"
+#include "../MCAL/UART/UART_interface.h"
+
+
+int main(void)
+{
+	uint8_t Data;
+	SPI_u8Init(SPI_SLAVE);
+	UART_u8Init(9600);
+
+	while(1)
+	{
+		//SPI_u8SendByte('B');
+		SPI_u8ReceiveByte(Data);
+		UART_u8SendByte(Data);
+	}
+}

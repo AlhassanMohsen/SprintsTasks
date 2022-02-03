@@ -1,0 +1,34 @@
+################################################################################
+# Automatically-generated file. Do not edit!
+################################################################################
+
+OBJ_SRCS := 
+S_SRCS := 
+ASM_SRCS := 
+C_SRCS := 
+S_UPPER_SRCS := 
+O_SRCS := 
+FLASH_IMAGE := 
+ELFS := 
+OBJS := 
+ASM_DEPS := 
+EEPROM_IMAGE := 
+S_DEPS := 
+SIZEDUMMY := 
+S_UPPER_DEPS := 
+LSS := 
+C_DEPS := 
+
+# Every subdirectory with source files must be described here
+SUBDIRS := \
+APP \
+ECUAL/BTN \
+ECUAL/KEYPAD \
+ECUAL/LED \
+MCAL/DELAY \
+MCAL/DIO \
+MCAL/PWM \
+MCAL/TIMER \
+MCAL/UART \
+Service/Strings \
+
