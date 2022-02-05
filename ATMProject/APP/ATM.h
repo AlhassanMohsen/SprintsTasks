@@ -18,6 +18,7 @@
 #include "../ECUAL/KEYPAD/KEYPAD_interface.h"
 #include "../ECUAL/MOTOR/MOTOR_interface.h"
 #include "../ECUAL/BTN/Button.h"
+#include "../ECUAL/TEMP_SENSOR/TEMP_interface.h"
 #include "../SERVICE/SERVICE.h"
 #include "../SERVICE/Strings/STR.h"
 
@@ -43,6 +44,8 @@ typedef struct
 
 
 
+void ATM_APP(void);
+void ATM_Init(void);
 
 void ATM_UpdateMode(void);
 void ATM_CheckPassword(uint8_t* pu8CheckResult);

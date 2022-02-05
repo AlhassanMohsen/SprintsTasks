@@ -36,6 +36,8 @@
 #define ATM_ADMIN_EXIT				'3'
 
 #define ATM_LCD_SECOND_ROW			1,0
+#define ATM_LCD_DISPLAY_TIME		5000
+
 
 #define ATM_INSERT_CARD				1
 #define ATM_GET_TEMP				2

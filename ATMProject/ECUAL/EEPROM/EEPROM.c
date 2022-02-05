@@ -50,6 +50,7 @@ uint8_t EEPROM_u8RandonReadFrom(uint8_t u8ChipAddress,uint16_t u16ByteAddress,ui
 	I2C_u8MasterSendByte(u8ByteAddressLow);
 	I2C_u8SendRepeatedStart();
 	I2C_u8MasterSendSLA(u8OperationAddress,I2C_MASTER_READ);
+
 	I2C_u8MasterReceiveWithNAK(u8Data);
 	I2C_u8Stop();
 	TIMER0_u8PollingDelay(10);

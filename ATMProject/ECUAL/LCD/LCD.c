@@ -224,10 +224,10 @@ uint8_t LCD_u8SendString(uint8_t *str){
 * param.: (input) the integer to be sent
 * return: (output) the Error state of the function 0 if an error happens and 1 otherwise
 */
-void LCD_u8SendNumber(uint16_t num)
+void LCD_u8SendNumber(uint32_t num)
 {
 
-	uint16_t y = 1;
+	uint32_t y = 1;
 	do{
 		y = (y * 10) + (num % 10);
 		num = num /10;

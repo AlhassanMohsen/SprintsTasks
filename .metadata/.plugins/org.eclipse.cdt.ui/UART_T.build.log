@@ -1,20 +1,12 @@
-20:29:23 **** Incremental Build of configuration Debug for project UART_T ****
+13:02:18 **** Incremental Build of configuration Debug for project UART_T ****
 make all 
 Invoking: Print Size
-avr-size --format=avr --mcu=atmega32 UART_T.elf
-AVR Memory Usage
-----------------
-Device: atmega32
-
-Program:    6746 bytes (20.6% Full)
-(.text + .data + .bootloader)
-
-Data:         28 bytes (1.4% Full)
-(.data + .bss + .noinit)
-
-
+avr-size --format=berkeley -t UART_T.elf
+   text	   data	    bss	    dec	    hex	filename
+   6730	     16	     12	   6758	   1a66	UART_T.elf
+   6730	     16	     12	   6758	   1a66	(TOTALS)
 Finished building: sizedummy
  
 
-20:29:23 Build Finished (took 284ms)
+13:02:19 Build Finished (took 566ms)
 

@@ -1,4 +1,4 @@
-10:13:36 **** Incremental Build of configuration Debug for project CARD_ECU ****
+13:02:17 **** Incremental Build of configuration Debug for project CARD_ECU ****
 make all 
 Invoking: Print Size
 avr-size --format=berkeley -t CARD_ECU.elf
@@ -8,5 +8,5 @@ avr-size --format=berkeley -t CARD_ECU.elf
 Finished building: sizedummy
  
 
-10:13:37 Build Finished (took 1s.4ms)
+13:02:18 Build Finished (took 1s.71ms)
 

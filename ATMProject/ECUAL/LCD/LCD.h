@@ -19,7 +19,7 @@ uint8_t LCD_u8Init(void);
 uint8_t LCD_u8SendCommand(uint8_t command);
 
 uint8_t LCD_u8SendData(uint8_t data);
-void LCD_u8SendNumber(uint16_t num);
+void LCD_u8SendNumber(uint32_t num);
 uint8_t LCD_u8SendString(uint8_t *str);
 uint8_t LCD_u8SetCursor(uint8_t row, uint8_t col);
 
