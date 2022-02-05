@@ -1,4 +1,4 @@
-05:53:37 **** Incremental Build of configuration Debug for project UART_TASK2 ****
+10:13:41 **** Incremental Build of configuration Debug for project UART_TASK2 ****
 make all 
 Invoking: Print Size
 avr-size --format=berkeley -t UART_TASK2.elf
@@ -8,5 +8,5 @@ avr-size --format=berkeley -t UART_TASK2.elf
 Finished building: sizedummy
  
 
-05:53:37 Build Finished (took 331ms)
+10:13:41 Build Finished (took 631ms)
 

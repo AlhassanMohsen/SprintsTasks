@@ -1,0 +1,56 @@
+/*
+ * EXTI.c
+ *
+ *  Created on: Feb 5, 2022
+ *      Author: Esraa
+ */
+
+#include "EXTI_prv.h"
+#include "EXTI.h"
+
+
+void EXTI_vidInit()
+{
+
+}
+uint8_t EXTI_u8Enable(EXTINumber_t u8InterruptNumber, EXTITiggerType_t u8InterruptTrigger)
+{
+	uint8_t u8ErrorState = EXTI_OK;
+
+	switch(u8InterruptNumber)
+	{
+	case INT0:
+		SET_BIT(GICR_REG,INT0_BIT);
+		SET_BIT(SREG_REG,I_BIT);
+		switch(u8InterruptTrigger)
+		{
+		case EXTI_LOW_LEVEL:
+			CLR_BIT(MCUCR_REG,ISC00_BIT);
+			CLR_BIT(MCUCR_REG,ISC01_BIT);
+			break;
+		case EXTI_TOGGLE:
+			SET_BIT(MCUCR_REG,ISC00_BIT);
+			CLR_BIT(MCUCR_REG,ISC01_BIT);
+			break;
+		case EXTI_LOW_LEVEL:
+			CLR_BIT(MCUCR_REG,ISC00_BIT);
+			CLR_BIT(MCUCR_REG,ISC01_BIT);
+			break;
+		case EXTI_LOW_LEVEL:
+			CLR_BIT(MCUCR_REG,ISC00_BIT);
+			CLR_BIT(MCUCR_REG,ISC01_BIT);
+			break;
+		}
+		break;
+	case INT1:
+		break;
+	case INT2:
+		break;
+	default:
+		u8ErrorState =EXTI_WRONG_INT_NUMBER;
+	}
+
+	return u8ErrorState;
+}
+
+void EXTI_vidGenerateInterrupt();

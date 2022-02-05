@@ -1,12 +1,12 @@
-03:18:09 **** Incremental Build of configuration Debug for project CARD_ECU ****
+10:13:36 **** Incremental Build of configuration Debug for project CARD_ECU ****
 make all 
 Invoking: Print Size
 avr-size --format=berkeley -t CARD_ECU.elf
    text	   data	    bss	    dec	    hex	filename
-  18502	    362	     59	  18923	   49eb	CARD_ECU.elf
-  18502	    362	     59	  18923	   49eb	(TOTALS)
+  20426	    390	     61	  20877	   518d	CARD_ECU.elf
+  20426	    390	     61	  20877	   518d	(TOTALS)
 Finished building: sizedummy
  
 
-03:18:10 Build Finished (took 761ms)
+10:13:37 Build Finished (took 1s.4ms)
 

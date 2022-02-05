@@ -19,40 +19,53 @@ BTN_t CardBTN={PORTB,PIN0};
 
 void ATM_Init(void)
 {
-	DIO_u8SetPinDirection(PORTB, PIN4, DIO_OUTPUT);
-	DIO_u8SetPinDirection(PORTB, PIN5, DIO_OUTPUT);
-	DIO_u8SetPinDirection(PORTB, PIN6, DIO_INPUT);
-	DIO_u8SetPinDirection(PORTB, PIN7, DIO_OUTPUT);
+	// DIO_u8SetPinDirection(PORTB, PIN4, DIO_OUTPUT);
+	// DIO_u8SetPinDirection(PORTB, PIN5, DIO_OUTPUT);
+	// DIO_u8SetPinDirection(PORTB, PIN6, DIO_INPUT);
+	// DIO_u8SetPinDirection(PORTB, PIN7, DIO_OUTPUT);
 
+	// configure the Interrupt pin that will be used to ask for the card data
+	DIO_u8SetPinDirection(PORTB,PIN2,DIO_OUTPUT);
 	DIO_u8SetPinData(PORTB, PIN2, DIO_LOW);
+	//Initiate the SPI in slave mode where the terminal is asking for the data when needed through an Interrupt PIN
 	SPI_u8Init(SPI_SLAVE);
-	TIMER0_u8PollingDelay(10);
-	UART_u8Init(9600);
+	///TIMER0_u8PollingDelay(10);
+	// Initiate UART communication between the ATM and the user through terminal
+	UART_u8Init(ATM_UART_BAUDRATE);
+	//Make the UART Update the Operating mode when the operation is interrupted by typing on the termincal
 	UART_u8EnableRecievingInterrupt(ATM_UpdateMode);
+	//Initiate the Communication with the EEPROM which acts as the Bank Servers
 	EEPROM_Init();
+	//Initiate the Communication with LCD and Keypad as User Interface
 	LCD_u8Init();
 	KEYPAD_u8Init();
+	//Initiate Card Button which emulate the task of the card reader
 	BTN_u8Init(CardBTN);
 
 
 #ifdef EEPROM_RESET
+	// if the EEPROM is in RESET mode Clear All the data saved on it by restoring the Data Pointer to its start location
 	EEPROM_u8WriteStringTo(ATM_EEPROM_ADDRESS,ATM_EEPROM_PTR,ATM_DATA_START_ADDRESS);
-	TIMER0_u8PollingDelay(10);
 
 #endif
 
+	// Read the data from tha address ATM_EEPROM_FIRST_TIME_ADDRESS and check if it contain the ATM_EEPROM_FIRST_TIME_DATA
+	//This mean that this EEPROM is used and initialized before so the user can fetch the data from it directly
 	EEPROM_u8RandonReadFrom(ATM_EEPROM_ADDRESS,ATM_EEPROM_FIRST_TIME_ADDRESS,&LastAccountPtr);
-	TIMER0_u8PollingDelay(10);
 	if (LastAccountPtr!=ATM_EEPROM_FIRST_TIME_DATA)
 	{
+		// if it doesn't contain ATM_EEPROM_FIRST_TIME_DATA Byte in this location then this is the first use
+
+		//Write the ATM_EEPROM_FIRST_TIME_DATA to the address so it is flagged as used before
 		EEPROM_u8WriteByteTo(ATM_EEPROM_ADDRESS,ATM_EEPROM_FIRST_TIME_ADDRESS,ATM_EEPROM_FIRST_TIME_DATA);
-		TIMER0_u8PollingDelay(10);
+		// Let the Data Start Address is saved in a memory location of the Last Data saved Pointer so it points to the beginning of the EEPROM Data segment
 		EEPROM_u8WriteByteTo(ATM_EEPROM_ADDRESS,ATM_EEPROM_PTR,ATM_DATA_START_ADDRESS);
-		TIMER0_u8PollingDelay(10);
 	}else{
 
+		//if it is used before then go and fetch the location of the last data address available
 		EEPROM_u8RandonReadFrom(ATM_EEPROM_ADDRESS,ATM_EEPROM_PTR,&LastAccountPtr);
-		TIMER0_u8PollingDelay(10);
+
+		//if the Last address available is the ATM_DATA_END_ADDRESS this means that ATM has reached it's maximum capacity and it will overrun
 		if (LastAccountPtr>=ATM_DATA_END_ADDRESS)
 		{
 			UART_u8SendString("RESET");
@@ -60,169 +73,247 @@ void ATM_Init(void)
 			LastAccountPtr = ATM_DATA_START_ADDRESS;
 		}
 	}
+	//Fetch the ATM ADMIN Mode password from the EEPROM
 	EEPROM_u8WriteStringTo(ATM_EEPROM_ADDRESS,ATM_PASSWORD_LOCATION,ATM_ADMIN_PASSWORD);
-	TIMER0_u8PollingDelay(10);
-	DIO_u8SetPinDirection(PORTB, PIN2, DIO_OUTPUT);
+
 
 
 }
 
 void ATM_APP(void)
 {
-	uint8_t u8PasswordCheck;
-	uint8_t u8UserInput;
-	uint8_t au8CardPAN[9];
-	uint32_t u32CardPAN;
-	uint8_t au8CardPIN[4];
-	uint8_t au8CardMode;
-	uint32_t u32UserBalance;
-	uint8_t u8CardServerAvailability;
-	uint8_t Pass[5];
-	uint32_t Ammount ;
+	uint8_t u8PasswordCheck; 					 /// a variable used to hold the result of the entered password checking
+	uint8_t u8UserInput;				  		 /// used to hold the inputs of the user interface modules
+	uint8_t au8CardPAN[9];					     /// an array that will receive the card PAN through SPI
+	uint32_t u32CardPAN; 						 // card PAN after converted to an integer number
+	uint8_t au8CardPIN[4]; 						 // an array that will receive the card PIN through SPI
+	uint8_t u8CardMode=CARD_ACCESSIBLE; 		 // a variable represent the card accessibility (Card can be inaccessible if it is in ADMIN mode
+	uint32_t u32UserBalance;					 // a variable that hold the user balance as stored on the server side
+	uint8_t u8AccountAvailability;			     // A variable represent if the card PAN is registered on the server or not
+	uint32_t u32InputAmount ;					 // integer number represent the user input to amount of money he want to withdraw
+	uint8_t au8TerminalCommand[10];				 // an array to hold the user input to terminal
 
 	while (1)
 	{
+		// Check the mode of the ATM
 		switch (gu8_ATMMode)
 		{
 		case ATM_START:
+			// if it is in the START mode Do nothing until the Terminal input some state to operate in
 			break;
 		case ATM_PROGRAMMING_MODE:
-			UART_u8DisableReceivingInterrupt();
-			ATM_CheckPassword(&u8PasswordCheck);
+			//if the input state is ATM_PROGRAMMING_MODE
 
+			//First disable the interrupt because now the inteface is done through UART terminal
+			UART_u8DisableReceivingInterrupt();
+			// Display on the ATM LCD that the LCD is in ADMIN Mode
+			LCD_u8SendString((uint8_t*)"ADMIN MODE\r\n");
+			// Ask for the ADMIN password and check correctness
+			ATM_CheckPassword(&u8PasswordCheck);
 			if (u8PasswordCheck==ATM_PASSWORD_OK)
 			{
-
+				//if the Password is right
 				do{
-					UART_u8SendString("\r\n 1- Add Customer Data \n");
-					UART_u8SendString("\r\n 2- Edit the Max Amount \n");
-					UART_u8SendString("\r\n 3- Exit \r\n");
+					//display the ADMIN menu
+					UART_u8SendString((uint8_t*)"\r\n 1- Add Customer Data \n");
+					UART_u8SendString((uint8_t*)"\r\n 2- Edit the Max Amount \n");
+					UART_u8SendString((uint8_t*)"\r\n 3- Exit \r\n");
+					// get the Choice
 					UART_u8ReceiveByte(&u8UserInput);
-					if (u8UserInput=='1')
+
+					//check what choice it is and implement its logic
+					if (u8UserInput==ATM_ADMIN_ADD_CUSTOMER)
 					{
 						ATM_AddNewAccount();
 
-					}else if (u8UserInput=='2')
+					}else if (u8UserInput==ATM_ADMIN_MAX_AMOUNT)
 					{
 						ATM_AddMaxAmount();
-					}else if (u8UserInput=='3')
+					}else if (u8UserInput==ATM_ADMIN_EXIT)
 					{
-						UART_u8SendString("\r\n Thank You!! \r\n");
+						UART_u8SendString((uint8_t*)"\r\n Thank You!! \r\n");
+						gu8_ATMMode=ATM_OPERATION_MODE;
 					}
 					else
 					{
-						UART_u8SendString("\r\n Wrong Input \r\n");
+						// if other input is entered display a error message
+						UART_u8SendString((uint8_t*)"\r\n Wrong Input \r\n");
 					}
-				}while ((u8UserInput!='3'));
+
+					// do this until the user choose EXIT
+				}while ((u8UserInput!=ATM_ADMIN_EXIT));
 
 			}else if (u8PasswordCheck==ATM_PASSWORD_NOK){
-				UART_u8SendString("\r\n Wrong Password \r\n");}
+				// if the Entered Password is wrong display an error message then exit to Operation mode
+				UART_u8SendString((uint8_t*)"\r\n Wrong Password \r\n");
+			}
 
-			gu8_ATMMode=ATM_START;
+			// After finishing convert the mode to Operation mode
+			gu8_ATMMode=ATM_OPERATION_MODE;
+
+			//Enable the interrupts again (now the interface is done using UI module not the UART terminal
 			UART_u8EnableRecievingInterrupt(ATM_UpdateMode);
-
 			break;
+
 		case ATM_OPERATION_MODE:
+			//if the current mode of the ATM is OPERATION MODE
 
-			do{
-				BTN_u8IsPressed(CardBTN,&u8UserInput);
-			}while (u8UserInput);
+			//Wait until a Card is present and the Card button is pressed
+			BTN_u8IsPressed(CardBTN,&u8UserInput);
 
+			while (!u8UserInput&&gu8_ATMMode!=ATM_PROGRAMMING_MODE)
+			{// While the card is present and there is no ADMIN command sent through the UART terminal
 
-			UART_u8DisableReceivingInterrupt();
-
-
-			ATM_GetCardData(au8CardPAN);
-			StringToInt(au8CardPAN,&u32CardPAN);
-			UART_u8SendByte(0x0D);
-			UART_u8SendInt(u32CardPAN);
-			UART_u8SendByte(0x0D);
-
-			ATM_GetBalance(u32CardPAN,&u32UserBalance,&u8CardServerAvailability);
-			UART_u8SendByte(0x0D);
-			UART_u8SendInt(u32UserBalance);
-			UART_u8SendByte(0x0D);
-
-			DIO_u8SetPinData(PORTB, PIN2, DIO_HIGH);
-			SPI_u8ReceiveByte(&au8CardMode);
-			UART_u8SendByte(0x0D);
-			UART_u8SendInt(au8CardMode);
-			UART_u8SendByte(0x0D);
-			DIO_u8SetPinData(PORTB, PIN2, DIO_LOW);
-
-
-			if (au8CardMode==CARD_ACCESSIBLE)
-			{
-				if(u8CardServerAvailability==1)
+				//First Get PAN Number from the Card using SPI channel
+				ATM_GetCardData(au8CardPAN);
+				//Check if the card send the string INACCESSIBLE
+				if(STR_CMP(au8CardPAN,(uint8_t*)"INACCESSIBLE"))
 				{
-					do{
-						LCD_u8SendCommand(LCD_CLEAR);
-						LCD_u8SendString((uint8_t*)"1- Insert Card");
-						LCD_u8SetCursor(1,0);
-						LCD_u8SendString((uint8_t*)"2- Get Temp");
+					UART_u8SendString("INACCESSIBLE");
+					//if it is sent then the card is not available to be used (may be the card is in Programming mode)
+					u8CardMode=CARD_INACCESSIBLE;
+				}else
+				{
+					//if the card sent another strings then the car is accessible and the Received String is the PAN
+					u8CardMode=CARD_ACCESSIBLE;
+					//Convert the PAN to integer to save it in the EEPROM in a searchable format
+					StringToInt(au8CardPAN,&u32CardPAN);
+					UART_u8SendInt(u32CardPAN);
+					//UART_u8SendByte(0x0D);
+					//UART_u8SendInt(u32CardPAN); //1
+					//UART_u8SendByte(0x0D);
 
-						KEYPAD_u8GetPressedKey(&u8UserInput);
-						if( u8UserInput == 1 )
-						{
+					// Get the second String from the Card which Represent the PIN Number
+					ATM_GetCardData(au8CardPIN);
+					//UART_u8SendByte(0x0D);
+					//UART_u8SendString((uint8_t*)"PIN:  ");
+					//UART_u8SendString(au8CardPIN);
+
+					// Check if the PAN number exist in the Server side or not and if exist return the Account Balance
+					ATM_GetBalance(u32CardPAN,&u32UserBalance,&u8AccountAvailability);
+					//UART_u8SendByte(0x0D);
+					//UART_u8SendInt(u8AccountAvailability);
+					//UART_u8SendByte(0x0D);
+				}
+
+				// if the card is Accessible
+				if (u8CardMode==CARD_ACCESSIBLE)
+				{
+					// and the PAN exist in the Bank Servers
+					if(u8AccountAvailability==1)
+					{
+						do{
+							//Display the user menu on the ATM LCD interface
 							LCD_u8SendCommand(LCD_CLEAR);
-							LCD_u8SendString("Your Pass :");
-							LCD_u8SetCursor(1,0);
-							ATM_GetCardData(au8CardPIN);
-							UART_u8SendByte(0x0D);
-							UART_u8SendString(au8CardPIN);
-							ATM_GetPass(au8CardPIN,&u8PasswordCheck);
+							LCD_u8SendString((uint8_t*)"1- Insert Card");
+							LCD_u8SetCursor(ATM_LCD_SECOND_ROW);
+							LCD_u8SendString((uint8_t*)"2- Get Temp");
 
-							//UART_u8SendString(au8CardPIN);
+							// Get the Customer choice
+							KEYPAD_u8GetPressedKey(&u8UserInput);
 
-							if (u8PasswordCheck==1)
+
+							if( u8UserInput == ATM_INSERT_CARD)
 							{
-								//TIMER0_u8PollingDelay(1000);
+								// if the user choose to insert a card then clear the lcd and ask him to enter the password of the Card
 								LCD_u8SendCommand(LCD_CLEAR);
-								LCD_u8SendString("Your Amount : ");
-								LCD_u8SetCursor(1,0);
-								ATM_GetAmmount(&Ammount);
-								UART_u8SendByte(0x0D);
-								UART_u8SendInt(Ammount);
-								UART_u8SendByte(0x0D);
+								LCD_u8SendString((uint8_t*)"Enter PIN: ");
+								LCD_u8SetCursor(ATM_LCD_SECOND_ROW);
 
-								UART_u8SendByte(0x0D);
-								UART_u8SendInt(u32UserBalance);
-								UART_u8SendByte(0x0D);
-								if(Ammount<=u32UserBalance)
+								// Get the entered PIN and check if the Input PIN match the received Card PIN
+								ATM_GetPass(au8CardPIN,&u8PasswordCheck);
+
+								//UART_u8SendString(au8CardPIN);
+
+								if (u8PasswordCheck==ATM_PASS_RIGHT)
 								{
+									// if the Input PIN is right clear the LCD and ask to enter an amount
 									LCD_u8SendCommand(LCD_CLEAR);
-									LCD_u8SendString("Operation Done");
-									TIMER0_u8PollingDelay(1000);
+									LCD_u8SendString((uint8_t*)"Your Amount : ");
+									LCD_u8SetCursor(ATM_LCD_SECOND_ROW);
+									ATM_GetAmmount(&u32InputAmount);
+									//UART_u8SendByte(0x0D);
+									//UART_u8SendInt(u32InputAmount);
+									//UART_u8SendByte(0x0D);
+
+									//UART_u8SendByte(0x0D);
+									//UART_u8SendInt(u32UserBalance);
+									//UART_u8SendByte(0x0D);
+
+									//Check if the Input Amount is less than or equal to the available balance in the account
+									if(u32InputAmount<=u32UserBalance)
+									{
+										//if it is then clear Display and print operation Done
+										LCD_u8SendCommand(LCD_CLEAR);
+										LCD_u8SendString((uint8_t*)"Operation Done");
+										TIMER0_u8PollingDelay(5000);
+
+									}else
+									{
+										// if not then clear Display and print No Credit fot 5 seconds
+										LCD_u8SendCommand(LCD_CLEAR);
+										LCD_u8SendString((uint8_t*)"No Credit");
+										TIMER0_u8PollingDelay(5000);
+									}
+
 
 								}else
 								{
+									// if the PIN entered is not right then display wrong PIN for 5 seconds
 									LCD_u8SendCommand(LCD_CLEAR);
-									LCD_u8SendString("No Credit");
-									TIMER0_u8PollingDelay(1000);
+									LCD_u8SendString((uint8_t*)"Wrong PIN");
+									TIMER0_u8PollingDelay(5000);
 								}
 
-
-							}else
-							{
-								LCD_u8SendCommand(LCD_CLEAR);
-								LCD_u8SendString("Operation fail");
 							}
 
-						}
-						KEYPAD_u8GetPressedKey(&u8UserInput);
-					}while(u8UserInput==KEYPAD_NO_PRESSED_KEY);
+							KEYPAD_u8GetPressedKey(&u8UserInput);
+						}while(u8UserInput==KEYPAD_NO_PRESSED_KEY&&gu8_ATMMode!=ATM_PROGRAMMING_MODE);
 
 
-				}else{
-					UART_u8SendString("Card Expired");
+					}else{
+
+						// if the card PAN is not on the Bank servers then clear display and inform the user that card is expired
+						LCD_u8SendCommand(LCD_CLEAR);
+						LCD_u8SendString((uint8_t*)"Card Expired");
+					}
+
+				}else
+				{
+					//if the card replied with inaccessible then the card is not available to be used
+					UART_u8SendString((uint8_t*)"Card Inaccessible");
+					LCD_u8SendString((uint8_t*)"Card Inaccessible");
+					TIMER0_u8PollingDelay(5000);
 				}
-			}else
-			{
-				UART_u8SendString("Card Inaccessible");
+
+				//update the state of the card button to check if it still exist
+				//if the card still exist and the programming mode is not entered using terminal then do the same sequence again
+				BTN_u8IsPressed(CardBTN,&u8UserInput);
 			}
+
+
 			//UART_u8EnableRecievingInterrupt(ATM_UpdateMode);
 			break;
 		case ATM_WRONG_MODE_INPUT:
+
+			UART_u8DisableReceivingInterrupt();
+			do{
+
+				UART_u8SendString((uint8_t*)"Wrong Input Please Enter either ADMIN or USER\r\n");
+
+				UART_u8RecieveString(au8TerminalCommand);
+				if (STR_CMP(au8TerminalCommand,(uint8_t*)"ADMIN"))
+				{
+					// check if the command received is ADMIN then set the ATM mode to ATM_PROGRAMMING_MODE
+					gu8_ATMMode = ATM_PROGRAMMING_MODE;
+				}else if(STR_CMP(au8TerminalCommand,(uint8_t*)"USER"))
+				{
+					// check if the command received is USER then set the ATM mode to ATM_OPERATION_MODE
+					gu8_ATMMode = ATM_OPERATION_MODE;
+				}
+			}while (gu8_ATMMode==ATM_WRONG_MODE_INPUT);
+
+			UART_u8EnableRecievingInterrupt(ATM_UpdateMode);
 			break;
 		default:
 			UART_u8SendString((uint8_t*)"Wrong Entry \r\n");
@@ -236,26 +327,35 @@ void ATM_APP(void)
 
 void ATM_GetCardData(uint8_t* pu8_DataPlace)
 {
+	//UART_u8SendString("GetData");
+	// Send an interrupt signal to the card ecu to request the beginning of the transmission on the SPI Channel
 	DIO_u8SetPinData(PORTB, PIN2, DIO_HIGH);
+	//Receive the data from the SPI channel and save it in the passed variable
 	SPI_u8ReceiveString(pu8_DataPlace);
+	//Return the interrupt pin to its original state
 	DIO_u8SetPinData(PORTB, PIN2, DIO_LOW);
 }
 
 void ATM_UpdateMode(void)
 {
 
-		uint8_t au8TerminalCommand[10];
+		uint8_t au8TerminalCommand[10];		// array to hold the command entered on the terminal
+
+		// Receive the command
 		UART_u8RecieveString(au8TerminalCommand);
 
-		switch (au8TerminalCommand[0])
+
+		if (STR_CMP(au8TerminalCommand,(uint8_t*)"ADMIN"))
 		{
-		case 'A':
+			// check if the command received is ADMIN then set the ATM mode to ATM_PROGRAMMING_MODE
 			gu8_ATMMode = ATM_PROGRAMMING_MODE;
-			break;
-		case 'U':
+		}else if(STR_CMP(au8TerminalCommand,(uint8_t*)"USER"))
+		{
+			// check if the command received is USER then set the ATM mode to ATM_OPERATION_MODE
 			gu8_ATMMode = ATM_OPERATION_MODE;
-			break;
-		default:
+		}else
+		{
+			// check if the command received is not one the two then set the ATM mode to ATM_WRONG_MODE_INPUT
 			gu8_ATMMode =ATM_WRONG_MODE_INPUT;
 		}
 
@@ -267,7 +367,7 @@ void ATM_CheckPassword(uint8_t* pu8CheckResult)
 	uint8_t u8PasswordReading;
 	uint8_t RightPasswordCounter=0;
 
-	UART_u8SendString("Please Enter ADMIN Password: \r\n");
+	UART_u8SendString((uint8_t*)"Please Enter ADMIN Password: \r\n");
 	for (uint8_t i=0;i<4;i++)
 	{
 		//gu8_ATMPollingReadFlag=1;
@@ -299,8 +399,9 @@ void ATM_AddNewAccount()
 	{
 
 
-		UART_u8SendString("\r\n Please Enter the PAN: \r\n");
+		UART_u8SendString((uint8_t*)"\r\n Please Enter the PAN: \r\n");
 		UART_u8ReceiveInt(&u8customerData);
+		UART_u8SendInt(u8customerData);
 		EEPROM_u8WriteIntTo(ATM_EEPROM_ADDRESS,LastAccountPtr,u8customerData);
 		UART_u8SendByte(0x0D);
 		UART_u8SendInt(LastAccountPtr);
@@ -311,7 +412,7 @@ void ATM_AddNewAccount()
 
 
 
-		UART_u8SendString("\r\n Please Enter the Balance: \r\n");
+		UART_u8SendString((uint8_t*)"\r\n Please Enter the Balance: \r\n");
 		UART_u8ReceiveInt(&u8customerData);
 		EEPROM_u8WriteIntTo(ATM_EEPROM_ADDRESS,LastAccountPtr,u8customerData);
 		EEPROM_u8ReadIntFrom(ATM_EEPROM_ADDRESS,LastAccountPtr,&u8customerData);
@@ -321,7 +422,7 @@ void ATM_AddNewAccount()
 		LastAccountPtr+=4;
 
 
-		UART_u8SendString("\r\n Enter new Account(y/n) \r\n");
+		UART_u8SendString((uint8_t*)"\r\n Enter new Account(y/n) \r\n");
 		UART_u8ReceiveByte(&u8UserInput);
 	}
 	TIMER0_u8PollingDelay(10);
@@ -334,12 +435,12 @@ void ATM_AddMaxAmount()
 	uint32_t u8UserInput;
 	uint32_t u32MaxAmount;
 	//uint8_t u8Counter=0;
-	UART_u8SendString("\r\n Please Enter the Max Amount: \r\n");
+	UART_u8SendString((uint8_t*)"\r\n Please Enter the Max Amount: \r\n");
 	UART_u8ReceiveInt(&u32MaxAmount);
 	EEPROM_u8WriteIntTo(ATM_EEPROM_ADDRESS,ATM_MAX_AMOUNT_LOCATION,u32MaxAmount);
 
 
-	UART_u8SendString("\r\n The new Max Amount is : \r\n");
+	UART_u8SendString((uint8_t*)"\r\n The new Max Amount is : \r\n");
 	EEPROM_u8ReadIntFrom(ATM_EEPROM_ADDRESS,ATM_MAX_AMOUNT_LOCATION,&u8UserInput);
 	TIMER0_u8PollingDelay(30);
 	EEPROM_u8WriteIntTo(ATM_EEPROM_ADDRESS,ATM_MAX_AMOUNT_LOCATION,u8UserInput);
@@ -349,7 +450,7 @@ void ATM_AddMaxAmount()
 
 uint8_t ATM_GetPass(uint8_t * Pass_int,uint8_t* pu8PasswordCheck)
 {
-	uint8_t Pass [5] = {"7891"} ;
+
 	uint8_t u8ErrorState = STD_TYPES_OK ;
 	uint8_t index = 0 ;
 	uint8_t u8PressedKey = KEYPAD_NO_PRESSED_KEY ;
@@ -374,7 +475,7 @@ uint8_t ATM_GetPass(uint8_t * Pass_int,uint8_t* pu8PasswordCheck)
 					index++;
 				}else
 				{
-					LCD_u8SendString("Wrong PIN");
+					LCD_u8SendString((uint8_t*)"Wrong PIN");
 					index=255;
 				}
 				//Pass_int[index] = u8PressedKey ;

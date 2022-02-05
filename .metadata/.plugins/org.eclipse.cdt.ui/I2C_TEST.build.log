@@ -1,0 +1,12 @@
+10:13:38 **** Incremental Build of configuration Debug for project I2C_TEST ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t I2C_TEST.elf
+   text	   data	    bss	    dec	    hex	filename
+   6984	      6	     10	   7000	   1b58	I2C_TEST.elf
+   6984	      6	     10	   7000	   1b58	(TOTALS)
+Finished building: sizedummy
+ 
+
+10:13:38 Build Finished (took 548ms)
+

@@ -1,12 +1,12 @@
-05:53:34 **** Incremental Build of configuration Debug for project ATMProject ****
+10:13:34 **** Incremental Build of configuration Debug for project ATMProject ****
 make all 
 Invoking: Print Size
 avr-size --format=berkeley -t ATMProject.elf
    text	   data	    bss	    dec	    hex	filename
-  20280	    868	     41	  21189	   52c5	ATMProject.elf
-  20280	    868	     41	  21189	   52c5	(TOTALS)
+  20458	    932	     41	  21431	   53b7	ATMProject.elf
+  20458	    932	     41	  21431	   53b7	(TOTALS)
 Finished building: sizedummy
  
 
-05:53:34 Build Finished (took 403ms)
+10:13:35 Build Finished (took 941ms)
 

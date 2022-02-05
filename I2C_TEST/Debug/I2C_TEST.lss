@@ -1,0 +1,4775 @@
+
+I2C_TEST.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00001b48  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000006  00800060  00001b48  00001bdc  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          0000000a  00800066  00800066  00001be2  2**0
+                  ALLOC
+  3 .stab         00002bc8  00000000  00000000  00001be4  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  4 .stabstr      00001700  00000000  00000000  000047ac  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+       0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
+       4:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+       8:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+       c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      10:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      14:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      18:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      1c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      20:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      24:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      28:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      2c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      30:	0c 94 7c 04 	jmp	0x8f8	; 0x8f8 <__vector_12>
+      34:	0c 94 57 02 	jmp	0x4ae	; 0x4ae <__vector_13>
+      38:	0c 94 91 02 	jmp	0x522	; 0x522 <__vector_14>
+      3c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      40:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      44:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      48:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      4c:	0c 94 3e 06 	jmp	0xc7c	; 0xc7c <__vector_19>
+      50:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+
+00000054 <__ctors_end>:
+      54:	11 24       	eor	r1, r1
+      56:	1f be       	out	0x3f, r1	; 63
+      58:	cf e5       	ldi	r28, 0x5F	; 95
+      5a:	d8 e0       	ldi	r29, 0x08	; 8
+      5c:	de bf       	out	0x3e, r29	; 62
+      5e:	cd bf       	out	0x3d, r28	; 61
+
+00000060 <__do_copy_data>:
+      60:	10 e0       	ldi	r17, 0x00	; 0
+      62:	a0 e6       	ldi	r26, 0x60	; 96
+      64:	b0 e0       	ldi	r27, 0x00	; 0
+      66:	e8 e4       	ldi	r30, 0x48	; 72
+      68:	fb e1       	ldi	r31, 0x1B	; 27
+      6a:	02 c0       	rjmp	.+4      	; 0x70 <.do_copy_data_start>
+
+0000006c <.do_copy_data_loop>:
+      6c:	05 90       	lpm	r0, Z+
+      6e:	0d 92       	st	X+, r0
+
+00000070 <.do_copy_data_start>:
+      70:	a6 36       	cpi	r26, 0x66	; 102
+      72:	b1 07       	cpc	r27, r17
+      74:	d9 f7       	brne	.-10     	; 0x6c <.do_copy_data_loop>
+
+00000076 <__do_clear_bss>:
+      76:	10 e0       	ldi	r17, 0x00	; 0
+      78:	a6 e6       	ldi	r26, 0x66	; 102
+      7a:	b0 e0       	ldi	r27, 0x00	; 0
+      7c:	01 c0       	rjmp	.+2      	; 0x80 <.do_clear_bss_start>
+
+0000007e <.do_clear_bss_loop>:
+      7e:	1d 92       	st	X+, r1
+
+00000080 <.do_clear_bss_start>:
+      80:	a0 37       	cpi	r26, 0x70	; 112
+      82:	b1 07       	cpc	r27, r17
+      84:	e1 f7       	brne	.-8      	; 0x7e <.do_clear_bss_loop>
+      86:	0e 94 65 0d 	call	0x1aca	; 0x1aca <main>
+      8a:	0c 94 a2 0d 	jmp	0x1b44	; 0x1b44 <_exit>
+
+0000008e <__bad_interrupt>:
+      8e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000092 <UART_u8Init>:
+/**
+ * @fn uint8_t UART_u8Init(uint32_t UART_u32BaudRate)
+ * @brief This function is used to Initiate the UART Peripheral
+ */
+uint8_t UART_u8Init(uint32_t UART_u32BaudRate)
+{
+      92:	df 93       	push	r29
+      94:	cf 93       	push	r28
+      96:	00 d0       	rcall	.+0      	; 0x98 <UART_u8Init+0x6>
+      98:	00 d0       	rcall	.+0      	; 0x9a <UART_u8Init+0x8>
+      9a:	0f 92       	push	r0
+      9c:	cd b7       	in	r28, 0x3d	; 61
+      9e:	de b7       	in	r29, 0x3e	; 62
+      a0:	9d 83       	std	Y+5, r25	; 0x05
+      a2:	8c 83       	std	Y+4, r24	; 0x04
+	uint8_t u8ErrorState = UART_OK;
+      a4:	81 e0       	ldi	r24, 0x01	; 1
+      a6:	8b 83       	std	Y+3, r24	; 0x03
+	uint16_t u16UBBR;  /// A Temporary Variable used to hold the calculated value of the UBBR register depending on the Baudrate
+
+	// Make the Access to UCSRC Register
+	SET_BIT(UCSRC_REG,URSEL_BIT);
+      a8:	a0 e4       	ldi	r26, 0x40	; 64
+      aa:	b0 e0       	ldi	r27, 0x00	; 0
+      ac:	e0 e4       	ldi	r30, 0x40	; 64
+      ae:	f0 e0       	ldi	r31, 0x00	; 0
+      b0:	80 81       	ld	r24, Z
+      b2:	80 68       	ori	r24, 0x80	; 128
+      b4:	8c 93       	st	X, r24
+
+	/*
+	 * Set the operation mode of the UART Depending on the chosen UART_OPERATION_MODE Configuration
+	 */
+#if   UART_OPERATION_MODE == UART_ASYNC_NORMAL_SPEED
+	CLR_BIT(UCSRC_REG,UMSEL_BIT);
+      b6:	a0 e4       	ldi	r26, 0x40	; 64
+      b8:	b0 e0       	ldi	r27, 0x00	; 0
+      ba:	e0 e4       	ldi	r30, 0x40	; 64
+      bc:	f0 e0       	ldi	r31, 0x00	; 0
+      be:	80 81       	ld	r24, Z
+      c0:	8f 7b       	andi	r24, 0xBF	; 191
+      c2:	8c 93       	st	X, r24
+	CLR_BIT(UCSRA_REG,U2X_BIT);
+      c4:	ab e2       	ldi	r26, 0x2B	; 43
+      c6:	b0 e0       	ldi	r27, 0x00	; 0
+      c8:	eb e2       	ldi	r30, 0x2B	; 43
+      ca:	f0 e0       	ldi	r31, 0x00	; 0
+      cc:	80 81       	ld	r24, Z
+      ce:	8d 7f       	andi	r24, 0xFD	; 253
+      d0:	8c 93       	st	X, r24
+	//Calculate the UBBR Value depending on the CPU frequency and the input desired baudrate
+	// in the UART_ASYNC_NORMAL_SPEED the baudrate divisor is 16
+	u16UBBR = (UART_F_CPU/(16UL*UART_u32BaudRate)-1);
+      d2:	8c 81       	ldd	r24, Y+4	; 0x04
+      d4:	9d 81       	ldd	r25, Y+5	; 0x05
+      d6:	cc 01       	movw	r24, r24
+      d8:	a0 e0       	ldi	r26, 0x00	; 0
+      da:	b0 e0       	ldi	r27, 0x00	; 0
+      dc:	88 0f       	add	r24, r24
+      de:	99 1f       	adc	r25, r25
+      e0:	aa 1f       	adc	r26, r26
+      e2:	bb 1f       	adc	r27, r27
+      e4:	88 0f       	add	r24, r24
+      e6:	99 1f       	adc	r25, r25
+      e8:	aa 1f       	adc	r26, r26
+      ea:	bb 1f       	adc	r27, r27
+      ec:	88 0f       	add	r24, r24
+      ee:	99 1f       	adc	r25, r25
+      f0:	aa 1f       	adc	r26, r26
+      f2:	bb 1f       	adc	r27, r27
+      f4:	88 0f       	add	r24, r24
+      f6:	99 1f       	adc	r25, r25
+      f8:	aa 1f       	adc	r26, r26
+      fa:	bb 1f       	adc	r27, r27
+      fc:	9c 01       	movw	r18, r24
+      fe:	ad 01       	movw	r20, r26
+     100:	80 e0       	ldi	r24, 0x00	; 0
+     102:	92 e1       	ldi	r25, 0x12	; 18
+     104:	aa e7       	ldi	r26, 0x7A	; 122
+     106:	b0 e0       	ldi	r27, 0x00	; 0
+     108:	bc 01       	movw	r22, r24
+     10a:	cd 01       	movw	r24, r26
+     10c:	0e 94 80 0d 	call	0x1b00	; 0x1b00 <__udivmodsi4>
+     110:	da 01       	movw	r26, r20
+     112:	c9 01       	movw	r24, r18
+     114:	01 97       	sbiw	r24, 0x01	; 1
+     116:	9a 83       	std	Y+2, r25	; 0x02
+     118:	89 83       	std	Y+1, r24	; 0x01
+#elif UART_CHARACTER_SIZE == UART_7_BIT_CHARACTER
+	CLR_BIT(UCSRC_REG,UCSZ0_BIT);
+	SET_BIT(UCSRC_REG,UCSZ1_BIT);
+	CLR_BIT(UCSRB_REG,UCSZ2_BIT);
+#elif UART_CHARACTER_SIZE == UART_8_BIT_CHARACTER
+	SET_BIT(UCSRC_REG,UCSZ0_BIT);
+     11a:	a0 e4       	ldi	r26, 0x40	; 64
+     11c:	b0 e0       	ldi	r27, 0x00	; 0
+     11e:	e0 e4       	ldi	r30, 0x40	; 64
+     120:	f0 e0       	ldi	r31, 0x00	; 0
+     122:	80 81       	ld	r24, Z
+     124:	82 60       	ori	r24, 0x02	; 2
+     126:	8c 93       	st	X, r24
+	SET_BIT(UCSRC_REG,UCSZ1_BIT);
+     128:	a0 e4       	ldi	r26, 0x40	; 64
+     12a:	b0 e0       	ldi	r27, 0x00	; 0
+     12c:	e0 e4       	ldi	r30, 0x40	; 64
+     12e:	f0 e0       	ldi	r31, 0x00	; 0
+     130:	80 81       	ld	r24, Z
+     132:	84 60       	ori	r24, 0x04	; 4
+     134:	8c 93       	st	X, r24
+	CLR_BIT(UCSRB_REG,UCSZ2_BIT);
+     136:	aa e2       	ldi	r26, 0x2A	; 42
+     138:	b0 e0       	ldi	r27, 0x00	; 0
+     13a:	ea e2       	ldi	r30, 0x2A	; 42
+     13c:	f0 e0       	ldi	r31, 0x00	; 0
+     13e:	80 81       	ld	r24, Z
+     140:	8b 7f       	andi	r24, 0xFB	; 251
+     142:	8c 93       	st	X, r24
+
+	/*
+	 * Set the Parity mode of the UART Depending on the chosen UART_PARITY_MODE Configuration
+	 */
+#if UART_PARITY_MODE == UART_DISABLE_PARITY
+	CLR_BIT(UCSRC_REG,UPM0_BIT);
+     144:	a0 e4       	ldi	r26, 0x40	; 64
+     146:	b0 e0       	ldi	r27, 0x00	; 0
+     148:	e0 e4       	ldi	r30, 0x40	; 64
+     14a:	f0 e0       	ldi	r31, 0x00	; 0
+     14c:	80 81       	ld	r24, Z
+     14e:	8f 7e       	andi	r24, 0xEF	; 239
+     150:	8c 93       	st	X, r24
+	CLR_BIT(UCSRC_REG,UPM1_BIT);
+     152:	a0 e4       	ldi	r26, 0x40	; 64
+     154:	b0 e0       	ldi	r27, 0x00	; 0
+     156:	e0 e4       	ldi	r30, 0x40	; 64
+     158:	f0 e0       	ldi	r31, 0x00	; 0
+     15a:	80 81       	ld	r24, Z
+     15c:	8f 7d       	andi	r24, 0xDF	; 223
+     15e:	8c 93       	st	X, r24
+
+	/*
+	 * Set the Stop bits number in the frame of the UART Depending on the chosen UART_STOP_BITS_NUMBER Configuration
+	 */
+#if UART_STOP_BITS_NUMBER == UART_1_STOP_BIT
+	CLR_BIT(UCSRC_REG,USBS_BIT);
+     160:	a0 e4       	ldi	r26, 0x40	; 64
+     162:	b0 e0       	ldi	r27, 0x00	; 0
+     164:	e0 e4       	ldi	r30, 0x40	; 64
+     166:	f0 e0       	ldi	r31, 0x00	; 0
+     168:	80 81       	ld	r24, Z
+     16a:	87 7f       	andi	r24, 0xF7	; 247
+     16c:	8c 93       	st	X, r24
+	// if the UART_STOP_BITS_NUMBER is not one of this values then update the Error state
+	u8ErrorState = WRONG_STOP_BITS_CFG;
+#endif
+
+	// Set the UBRR Register to the calculated value to configure the input baudrate
+	UBRRL_REG= u16UBBR;
+     16e:	e9 e2       	ldi	r30, 0x29	; 41
+     170:	f0 e0       	ldi	r31, 0x00	; 0
+     172:	89 81       	ldd	r24, Y+1	; 0x01
+     174:	80 83       	st	Z, r24
+	UBRRH_REG= (u16UBBR>>8);
+     176:	e0 e4       	ldi	r30, 0x40	; 64
+     178:	f0 e0       	ldi	r31, 0x00	; 0
+     17a:	89 81       	ldd	r24, Y+1	; 0x01
+     17c:	9a 81       	ldd	r25, Y+2	; 0x02
+     17e:	89 2f       	mov	r24, r25
+     180:	99 27       	eor	r25, r25
+     182:	80 83       	st	Z, r24
+	//Enable the Receiving and Transmitting Capabilities in the UART
+	SET_BIT(UCSRB_REG,RXEN_BIT);
+     184:	aa e2       	ldi	r26, 0x2A	; 42
+     186:	b0 e0       	ldi	r27, 0x00	; 0
+     188:	ea e2       	ldi	r30, 0x2A	; 42
+     18a:	f0 e0       	ldi	r31, 0x00	; 0
+     18c:	80 81       	ld	r24, Z
+     18e:	80 61       	ori	r24, 0x10	; 16
+     190:	8c 93       	st	X, r24
+	SET_BIT(UCSRB_REG,TXEN_BIT);
+     192:	aa e2       	ldi	r26, 0x2A	; 42
+     194:	b0 e0       	ldi	r27, 0x00	; 0
+     196:	ea e2       	ldi	r30, 0x2A	; 42
+     198:	f0 e0       	ldi	r31, 0x00	; 0
+     19a:	80 81       	ld	r24, Z
+     19c:	88 60       	ori	r24, 0x08	; 8
+     19e:	8c 93       	st	X, r24
+	if (u8ErrorState == UART_OK)
+     1a0:	8b 81       	ldd	r24, Y+3	; 0x03
+     1a2:	81 30       	cpi	r24, 0x01	; 1
+     1a4:	19 f4       	brne	.+6      	; 0x1ac <UART_u8Init+0x11a>
+	{
+		// if there is no errors happened the Rise the Initialization flag indicating that the Peripherals is Initialized Correctly
+		gu8_IntializationFlag = UART_INITIALIZED;
+     1a6:	81 e0       	ldi	r24, 0x01	; 1
+     1a8:	80 93 66 00 	sts	0x0066, r24
+	}else
+	{
+		//NOP
+	}
+	return u8ErrorState;
+     1ac:	8b 81       	ldd	r24, Y+3	; 0x03
+}
+     1ae:	0f 90       	pop	r0
+     1b0:	0f 90       	pop	r0
+     1b2:	0f 90       	pop	r0
+     1b4:	0f 90       	pop	r0
+     1b6:	0f 90       	pop	r0
+     1b8:	cf 91       	pop	r28
+     1ba:	df 91       	pop	r29
+     1bc:	08 95       	ret
+
+000001be <UART_u8SendByte>:
+ * @fn uint8_t UART_u8SendByte(uint8_t u8Data)
+ * @brief This function is used to Send a Byte by polling mechanism
+ * @pre the UART must be initialized
+ */
+uint8_t UART_u8SendByte(uint8_t u8Data)
+{
+     1be:	df 93       	push	r29
+     1c0:	cf 93       	push	r28
+     1c2:	00 d0       	rcall	.+0      	; 0x1c4 <UART_u8SendByte+0x6>
+     1c4:	cd b7       	in	r28, 0x3d	; 61
+     1c6:	de b7       	in	r29, 0x3e	; 62
+     1c8:	8a 83       	std	Y+2, r24	; 0x02
+	uint8_t u8ErrorState;
+	if (gu8_IntializationFlag==UART_INITIALIZED) // Check if the UART is initialized
+     1ca:	80 91 66 00 	lds	r24, 0x0066
+     1ce:	81 30       	cpi	r24, 0x01	; 1
+     1d0:	89 f4       	brne	.+34     	; 0x1f4 <UART_u8SendByte+0x36>
+	{
+		// Busy wait until the current UART Transmittion ends and the UDR register is Available
+		while(!GET_BIT(UCSRA_REG,UDRE_BIT));
+     1d2:	eb e2       	ldi	r30, 0x2B	; 43
+     1d4:	f0 e0       	ldi	r31, 0x00	; 0
+     1d6:	80 81       	ld	r24, Z
+     1d8:	82 95       	swap	r24
+     1da:	86 95       	lsr	r24
+     1dc:	87 70       	andi	r24, 0x07	; 7
+     1de:	88 2f       	mov	r24, r24
+     1e0:	90 e0       	ldi	r25, 0x00	; 0
+     1e2:	81 70       	andi	r24, 0x01	; 1
+     1e4:	90 70       	andi	r25, 0x00	; 0
+     1e6:	00 97       	sbiw	r24, 0x00	; 0
+     1e8:	a1 f3       	breq	.-24     	; 0x1d2 <UART_u8SendByte+0x14>
+		// After the Register is available Load it with the Data Desired to be sent to initiate a transmission
+		UDR_REG = u8Data;
+     1ea:	ec e2       	ldi	r30, 0x2C	; 44
+     1ec:	f0 e0       	ldi	r31, 0x00	; 0
+     1ee:	8a 81       	ldd	r24, Y+2	; 0x02
+     1f0:	80 83       	st	Z, r24
+     1f2:	02 c0       	rjmp	.+4      	; 0x1f8 <UART_u8SendByte+0x3a>
+	}else{
+		// if the UART is not initialized then update the Error State
+		u8ErrorState=UART_INITIALIZATION_ERROR;
+     1f4:	88 e0       	ldi	r24, 0x08	; 8
+     1f6:	89 83       	std	Y+1, r24	; 0x01
+	}
+	return u8ErrorState;
+     1f8:	89 81       	ldd	r24, Y+1	; 0x01
+}
+     1fa:	0f 90       	pop	r0
+     1fc:	0f 90       	pop	r0
+     1fe:	cf 91       	pop	r28
+     200:	df 91       	pop	r29
+     202:	08 95       	ret
+
+00000204 <UART_u8SendString>:
+ * @brief This function is used to Send a String of data by polling mechanism
+ * @pre - the UART must be initialized
+ * 		- the pointer to data not pointing to NULL
+ */
+uint8_t UART_u8SendString(uint8_t* pau8Data)
+{
+     204:	df 93       	push	r29
+     206:	cf 93       	push	r28
+     208:	00 d0       	rcall	.+0      	; 0x20a <UART_u8SendString+0x6>
+     20a:	00 d0       	rcall	.+0      	; 0x20c <UART_u8SendString+0x8>
+     20c:	00 d0       	rcall	.+0      	; 0x20e <UART_u8SendString+0xa>
+     20e:	cd b7       	in	r28, 0x3d	; 61
+     210:	de b7       	in	r29, 0x3e	; 62
+     212:	9e 83       	std	Y+6, r25	; 0x06
+     214:	8d 83       	std	Y+5, r24	; 0x05
+	uint8_t u8ErrorState = UART_OK;
+     216:	81 e0       	ldi	r24, 0x01	; 1
+     218:	8c 83       	std	Y+4, r24	; 0x04
+	uint8_t u8LastByte; 			/// a variable used to temporarily hold the value of the last character sent
+	uint16_t u16StringCounter=0; 	/// counter to navigate the string as array
+     21a:	1a 82       	std	Y+2, r1	; 0x02
+     21c:	19 82       	std	Y+1, r1	; 0x01
+
+	if (gu8_IntializationFlag==UART_INITIALIZED) // Check if the UART is initialized
+     21e:	80 91 66 00 	lds	r24, 0x0066
+     222:	81 30       	cpi	r24, 0x01	; 1
+     224:	f9 f4       	brne	.+62     	; 0x264 <UART_u8SendString+0x60>
+	{
+		// if it is then check if the pointer is not pointing to NULL
+		if (pau8Data!=NULL)
+     226:	8d 81       	ldd	r24, Y+5	; 0x05
+     228:	9e 81       	ldd	r25, Y+6	; 0x06
+     22a:	00 97       	sbiw	r24, 0x00	; 0
+     22c:	c1 f0       	breq	.+48     	; 0x25e <UART_u8SendString+0x5a>
+		{
+			// if not pointing to null
+			do{
+				//save the value of the character to a temporary variable
+				u8LastByte=pau8Data[u16StringCounter];
+     22e:	2d 81       	ldd	r18, Y+5	; 0x05
+     230:	3e 81       	ldd	r19, Y+6	; 0x06
+     232:	89 81       	ldd	r24, Y+1	; 0x01
+     234:	9a 81       	ldd	r25, Y+2	; 0x02
+     236:	f9 01       	movw	r30, r18
+     238:	e8 0f       	add	r30, r24
+     23a:	f9 1f       	adc	r31, r25
+     23c:	80 81       	ld	r24, Z
+     23e:	8b 83       	std	Y+3, r24	; 0x03
+				// Send this character through UART
+				UART_u8SendByte(u8LastByte);
+     240:	8b 81       	ldd	r24, Y+3	; 0x03
+     242:	0e 94 df 00 	call	0x1be	; 0x1be <UART_u8SendByte>
+				// increment the array navigator to get the next character
+				u16StringCounter++;
+     246:	89 81       	ldd	r24, Y+1	; 0x01
+     248:	9a 81       	ldd	r25, Y+2	; 0x02
+     24a:	01 96       	adiw	r24, 0x01	; 1
+     24c:	9a 83       	std	Y+2, r25	; 0x02
+     24e:	89 83       	std	Y+1, r24	; 0x01
+			}while(u8LastByte!=0x00);// do the same while the sent byte wasn't a new line
+     250:	8b 81       	ldd	r24, Y+3	; 0x03
+     252:	88 23       	and	r24, r24
+     254:	61 f7       	brne	.-40     	; 0x22e <UART_u8SendString+0x2a>
+			UART_u8SendByte(0x0D);
+     256:	8d e0       	ldi	r24, 0x0D	; 13
+     258:	0e 94 df 00 	call	0x1be	; 0x1be <UART_u8SendByte>
+     25c:	05 c0       	rjmp	.+10     	; 0x268 <UART_u8SendString+0x64>
+		}else
+		{
+			// if it is pointing to NULL then Update the Error State
+			u8ErrorState = UART_NULL_INPUT;
+     25e:	87 e0       	ldi	r24, 0x07	; 7
+     260:	8c 83       	std	Y+4, r24	; 0x04
+     262:	02 c0       	rjmp	.+4      	; 0x268 <UART_u8SendString+0x64>
+		}
+	}else
+	{
+		// if the UART is not Initialized then Update the Error State
+		u8ErrorState = UART_INITIALIZATION_ERROR;
+     264:	88 e0       	ldi	r24, 0x08	; 8
+     266:	8c 83       	std	Y+4, r24	; 0x04
+	}
+
+	return u8ErrorState;
+     268:	8c 81       	ldd	r24, Y+4	; 0x04
+
+}
+     26a:	26 96       	adiw	r28, 0x06	; 6
+     26c:	0f b6       	in	r0, 0x3f	; 63
+     26e:	f8 94       	cli
+     270:	de bf       	out	0x3e, r29	; 62
+     272:	0f be       	out	0x3f, r0	; 63
+     274:	cd bf       	out	0x3d, r28	; 61
+     276:	cf 91       	pop	r28
+     278:	df 91       	pop	r29
+     27a:	08 95       	ret
+
+0000027c <UART_u8ReceiveByte>:
+ * @brief This function is used to Get the Received byte of data by polling mechanism
+ * @pre - the UART must be initialized
+ * 		- the pointer to data not pointing to NULL
+ */
+uint8_t UART_u8ReceiveByte(uint8_t* pu8RecievedData)
+{
+     27c:	df 93       	push	r29
+     27e:	cf 93       	push	r28
+     280:	00 d0       	rcall	.+0      	; 0x282 <UART_u8ReceiveByte+0x6>
+     282:	0f 92       	push	r0
+     284:	cd b7       	in	r28, 0x3d	; 61
+     286:	de b7       	in	r29, 0x3e	; 62
+     288:	9b 83       	std	Y+3, r25	; 0x03
+     28a:	8a 83       	std	Y+2, r24	; 0x02
+	uint8_t u8ErrorState = UART_OK;
+     28c:	81 e0       	ldi	r24, 0x01	; 1
+     28e:	89 83       	std	Y+1, r24	; 0x01
+	// Check if the UART is Initialized
+	if (gu8_IntializationFlag==UART_INITIALIZED)
+     290:	80 91 66 00 	lds	r24, 0x0066
+     294:	81 30       	cpi	r24, 0x01	; 1
+     296:	99 f4       	brne	.+38     	; 0x2be <UART_u8ReceiveByte+0x42>
+	{
+		//if it is initialized then check that the pointer is not pointing to null
+		if (pu8RecievedData!=NULL)
+     298:	8a 81       	ldd	r24, Y+2	; 0x02
+     29a:	9b 81       	ldd	r25, Y+3	; 0x03
+     29c:	00 97       	sbiw	r24, 0x00	; 0
+     29e:	61 f0       	breq	.+24     	; 0x2b8 <UART_u8ReceiveByte+0x3c>
+		{
+			//if not pointing to null
+			// Busy wait until the UART Receive a byte
+			while (!GET_BIT(UCSRA_REG,RXC_BIT));
+     2a0:	eb e2       	ldi	r30, 0x2B	; 43
+     2a2:	f0 e0       	ldi	r31, 0x00	; 0
+     2a4:	80 81       	ld	r24, Z
+     2a6:	88 23       	and	r24, r24
+     2a8:	dc f7       	brge	.-10     	; 0x2a0 <UART_u8ReceiveByte+0x24>
+			// Then Load the received byte from the UDR register and save it to the data location input
+			*pu8RecievedData = UDR_REG;
+     2aa:	ec e2       	ldi	r30, 0x2C	; 44
+     2ac:	f0 e0       	ldi	r31, 0x00	; 0
+     2ae:	80 81       	ld	r24, Z
+     2b0:	ea 81       	ldd	r30, Y+2	; 0x02
+     2b2:	fb 81       	ldd	r31, Y+3	; 0x03
+     2b4:	80 83       	st	Z, r24
+     2b6:	05 c0       	rjmp	.+10     	; 0x2c2 <UART_u8ReceiveByte+0x46>
+		}else
+		{
+			// if the Pointer is pointing to NULL then update the Error State
+			u8ErrorState = UART_NULL_INPUT;
+     2b8:	87 e0       	ldi	r24, 0x07	; 7
+     2ba:	89 83       	std	Y+1, r24	; 0x01
+     2bc:	02 c0       	rjmp	.+4      	; 0x2c2 <UART_u8ReceiveByte+0x46>
+		}
+	}else
+	{
+		// if the UART is not initialized then update the Error State
+		u8ErrorState=UART_INITIALIZATION_ERROR;
+     2be:	88 e0       	ldi	r24, 0x08	; 8
+     2c0:	89 83       	std	Y+1, r24	; 0x01
+	}
+
+	return u8ErrorState;
+     2c2:	89 81       	ldd	r24, Y+1	; 0x01
+}
+     2c4:	0f 90       	pop	r0
+     2c6:	0f 90       	pop	r0
+     2c8:	0f 90       	pop	r0
+     2ca:	cf 91       	pop	r28
+     2cc:	df 91       	pop	r29
+     2ce:	08 95       	ret
+
+000002d0 <UART_u8RecieveString>:
+ * @brief This function is used to Get a Received String by polling mechanism
+ * @pre - the UART must be initialized
+ * 		- the pointer to data not pointing to NULL
+ */
+uint8_t UART_u8RecieveString(uint8_t* pau8RecievedData)
+{
+     2d0:	df 93       	push	r29
+     2d2:	cf 93       	push	r28
+     2d4:	00 d0       	rcall	.+0      	; 0x2d6 <UART_u8RecieveString+0x6>
+     2d6:	00 d0       	rcall	.+0      	; 0x2d8 <UART_u8RecieveString+0x8>
+     2d8:	00 d0       	rcall	.+0      	; 0x2da <UART_u8RecieveString+0xa>
+     2da:	cd b7       	in	r28, 0x3d	; 61
+     2dc:	de b7       	in	r29, 0x3e	; 62
+     2de:	9e 83       	std	Y+6, r25	; 0x06
+     2e0:	8d 83       	std	Y+5, r24	; 0x05
+	uint8_t u8ErrorState = UART_OK;
+     2e2:	81 e0       	ldi	r24, 0x01	; 1
+     2e4:	8b 83       	std	Y+3, r24	; 0x03
+	uint8_t u8PreReading; 			/// a variable used to temporarily hold the value of the last character received
+	uint8_t* Temp=pau8RecievedData; /// a temporarily pointer initialized with the place of the first character of the array to save the received string in
+     2e6:	8d 81       	ldd	r24, Y+5	; 0x05
+     2e8:	9e 81       	ldd	r25, Y+6	; 0x06
+     2ea:	9a 83       	std	Y+2, r25	; 0x02
+     2ec:	89 83       	std	Y+1, r24	; 0x01
+
+	if (gu8_IntializationFlag == UART_INITIALIZED)// Check if the UART is initialized
+     2ee:	80 91 66 00 	lds	r24, 0x0066
+     2f2:	81 30       	cpi	r24, 0x01	; 1
+     2f4:	c1 f4       	brne	.+48     	; 0x326 <UART_u8RecieveString+0x56>
+	{
+		// if it is then check if the pointer is not pointing to NULL
+		if (pau8RecievedData!=NULL)
+     2f6:	8d 81       	ldd	r24, Y+5	; 0x05
+     2f8:	9e 81       	ldd	r25, Y+6	; 0x06
+     2fa:	00 97       	sbiw	r24, 0x00	; 0
+     2fc:	89 f0       	breq	.+34     	; 0x320 <UART_u8RecieveString+0x50>
+		{
+			do{
+				// Receive a character through UART
+				UART_u8ReceiveByte(&u8PreReading);
+     2fe:	ce 01       	movw	r24, r28
+     300:	04 96       	adiw	r24, 0x04	; 4
+     302:	0e 94 3e 01 	call	0x27c	; 0x27c <UART_u8ReceiveByte>
+				//Save the received character to the last empty place in the array
+				*Temp =u8PreReading;
+     306:	8c 81       	ldd	r24, Y+4	; 0x04
+     308:	e9 81       	ldd	r30, Y+1	; 0x01
+     30a:	fa 81       	ldd	r31, Y+2	; 0x02
+     30c:	80 83       	st	Z, r24
+				//Update the last empty place in the array
+				Temp++;
+     30e:	89 81       	ldd	r24, Y+1	; 0x01
+     310:	9a 81       	ldd	r25, Y+2	; 0x02
+     312:	01 96       	adiw	r24, 0x01	; 1
+     314:	9a 83       	std	Y+2, r25	; 0x02
+     316:	89 83       	std	Y+1, r24	; 0x01
+			}while (u8PreReading!=0x0D); // do this while the received byte is not endline
+     318:	8c 81       	ldd	r24, Y+4	; 0x04
+     31a:	8d 30       	cpi	r24, 0x0D	; 13
+     31c:	81 f7       	brne	.-32     	; 0x2fe <UART_u8RecieveString+0x2e>
+     31e:	05 c0       	rjmp	.+10     	; 0x32a <UART_u8RecieveString+0x5a>
+
+		}else
+		{
+			// if it is pointing to NULL then Update the Error State
+			u8ErrorState = UART_NULL_INPUT;
+     320:	87 e0       	ldi	r24, 0x07	; 7
+     322:	8b 83       	std	Y+3, r24	; 0x03
+     324:	02 c0       	rjmp	.+4      	; 0x32a <UART_u8RecieveString+0x5a>
+		}
+	}else
+	{
+		// if the UART is not Initialized then Update the Error State
+		u8ErrorState= UART_INITIALIZATION_ERROR;
+     326:	88 e0       	ldi	r24, 0x08	; 8
+     328:	8b 83       	std	Y+3, r24	; 0x03
+	}
+
+	return u8ErrorState;
+     32a:	8b 81       	ldd	r24, Y+3	; 0x03
+}
+     32c:	26 96       	adiw	r28, 0x06	; 6
+     32e:	0f b6       	in	r0, 0x3f	; 63
+     330:	f8 94       	cli
+     332:	de bf       	out	0x3e, r29	; 62
+     334:	0f be       	out	0x3f, r0	; 63
+     336:	cd bf       	out	0x3d, r28	; 61
+     338:	cf 91       	pop	r28
+     33a:	df 91       	pop	r29
+     33c:	08 95       	ret
+
+0000033e <UART_u8EnableRecievingInterrupt>:
+ * @brief This function is called to enable the Receiving complete Interrupt
+ * @pre - the UART must be initialized
+ * 		- the pointer to function not pointing to NULL
+ */
+uint8_t UART_u8EnableRecievingInterrupt(void (*pfnCallBack)(void))
+{
+     33e:	df 93       	push	r29
+     340:	cf 93       	push	r28
+     342:	00 d0       	rcall	.+0      	; 0x344 <UART_u8EnableRecievingInterrupt+0x6>
+     344:	0f 92       	push	r0
+     346:	cd b7       	in	r28, 0x3d	; 61
+     348:	de b7       	in	r29, 0x3e	; 62
+     34a:	9b 83       	std	Y+3, r25	; 0x03
+     34c:	8a 83       	std	Y+2, r24	; 0x02
+	uint8_t u8ErrorState = UART_OK;
+     34e:	81 e0       	ldi	r24, 0x01	; 1
+     350:	89 83       	std	Y+1, r24	; 0x01
+
+	if (gu8_IntializationFlag==UART_INITIALIZED)// Check if the UART is initialized
+     352:	80 91 66 00 	lds	r24, 0x0066
+     356:	81 30       	cpi	r24, 0x01	; 1
+     358:	e1 f4       	brne	.+56     	; 0x392 <UART_u8EnableRecievingInterrupt+0x54>
+	{
+		// if it is then check if the pointer is not pointing to NULL
+		if (pfnCallBack!=NULL)
+     35a:	8a 81       	ldd	r24, Y+2	; 0x02
+     35c:	9b 81       	ldd	r25, Y+3	; 0x03
+     35e:	00 97       	sbiw	r24, 0x00	; 0
+     360:	a9 f0       	breq	.+42     	; 0x38c <UART_u8EnableRecievingInterrupt+0x4e>
+		{
+			//update the pointer of the CallBack function with the passed address of function
+			gpf_RecieveCallBack = pfnCallBack;
+     362:	8a 81       	ldd	r24, Y+2	; 0x02
+     364:	9b 81       	ldd	r25, Y+3	; 0x03
+     366:	90 93 68 00 	sts	0x0068, r25
+     36a:	80 93 67 00 	sts	0x0067, r24
+			//Enable the Receiving Interrupt
+			SET_BIT(UCSRB_REG,RXCIE_BIT);
+     36e:	aa e2       	ldi	r26, 0x2A	; 42
+     370:	b0 e0       	ldi	r27, 0x00	; 0
+     372:	ea e2       	ldi	r30, 0x2A	; 42
+     374:	f0 e0       	ldi	r31, 0x00	; 0
+     376:	80 81       	ld	r24, Z
+     378:	80 68       	ori	r24, 0x80	; 128
+     37a:	8c 93       	st	X, r24
+			//Enable the Global Interrupt
+			SET_BIT(SREG_REG,I_BIT);
+     37c:	af e5       	ldi	r26, 0x5F	; 95
+     37e:	b0 e0       	ldi	r27, 0x00	; 0
+     380:	ef e5       	ldi	r30, 0x5F	; 95
+     382:	f0 e0       	ldi	r31, 0x00	; 0
+     384:	80 81       	ld	r24, Z
+     386:	80 68       	ori	r24, 0x80	; 128
+     388:	8c 93       	st	X, r24
+     38a:	05 c0       	rjmp	.+10     	; 0x396 <UART_u8EnableRecievingInterrupt+0x58>
+		}else
+		{
+			// if it is pointing to NULL then Update the Error State
+			u8ErrorState = UART_NULL_INPUT;
+     38c:	87 e0       	ldi	r24, 0x07	; 7
+     38e:	89 83       	std	Y+1, r24	; 0x01
+     390:	02 c0       	rjmp	.+4      	; 0x396 <UART_u8EnableRecievingInterrupt+0x58>
+		}
+
+	}else
+	{
+		// if the UART is not Initialized then Update the Error State
+		u8ErrorState = UART_INITIALIZATION_ERROR;
+     392:	88 e0       	ldi	r24, 0x08	; 8
+     394:	89 83       	std	Y+1, r24	; 0x01
+	}
+
+	return u8ErrorState;
+     396:	89 81       	ldd	r24, Y+1	; 0x01
+}
+     398:	0f 90       	pop	r0
+     39a:	0f 90       	pop	r0
+     39c:	0f 90       	pop	r0
+     39e:	cf 91       	pop	r28
+     3a0:	df 91       	pop	r29
+     3a2:	08 95       	ret
+
+000003a4 <UART_u8EnableSendingInterrupt>:
+ * @brief This function is called to enable the Sending complete Interrupt
+ * @pre - the UART must be initialized
+ * 		- the pointer to function not pointing to NULL
+ */
+uint8_t UART_u8EnableSendingInterrupt(void (*pfnCallBack)(void))
+{
+     3a4:	df 93       	push	r29
+     3a6:	cf 93       	push	r28
+     3a8:	00 d0       	rcall	.+0      	; 0x3aa <UART_u8EnableSendingInterrupt+0x6>
+     3aa:	0f 92       	push	r0
+     3ac:	cd b7       	in	r28, 0x3d	; 61
+     3ae:	de b7       	in	r29, 0x3e	; 62
+     3b0:	9b 83       	std	Y+3, r25	; 0x03
+     3b2:	8a 83       	std	Y+2, r24	; 0x02
+	uint8_t u8ErrorState = UART_OK;
+     3b4:	81 e0       	ldi	r24, 0x01	; 1
+     3b6:	89 83       	std	Y+1, r24	; 0x01
+
+	if (gu8_IntializationFlag==UART_INITIALIZED)// Check if the UART is initialized
+     3b8:	80 91 66 00 	lds	r24, 0x0066
+     3bc:	81 30       	cpi	r24, 0x01	; 1
+     3be:	e1 f4       	brne	.+56     	; 0x3f8 <UART_u8EnableSendingInterrupt+0x54>
+	{
+		// if it is then check if the pointer is not pointing to NULL
+		if (pfnCallBack!=NULL)
+     3c0:	8a 81       	ldd	r24, Y+2	; 0x02
+     3c2:	9b 81       	ldd	r25, Y+3	; 0x03
+     3c4:	00 97       	sbiw	r24, 0x00	; 0
+     3c6:	a9 f0       	breq	.+42     	; 0x3f2 <UART_u8EnableSendingInterrupt+0x4e>
+		{
+			//update the pointer of the CallBack function with the passed address of function
+			gpf_TransmitCallBack = pfnCallBack;
+     3c8:	8a 81       	ldd	r24, Y+2	; 0x02
+     3ca:	9b 81       	ldd	r25, Y+3	; 0x03
+     3cc:	90 93 6a 00 	sts	0x006A, r25
+     3d0:	80 93 69 00 	sts	0x0069, r24
+			//Enable the Receiving Interrupt
+			SET_BIT(UCSRB_REG,TXCIE_BIT);
+     3d4:	aa e2       	ldi	r26, 0x2A	; 42
+     3d6:	b0 e0       	ldi	r27, 0x00	; 0
+     3d8:	ea e2       	ldi	r30, 0x2A	; 42
+     3da:	f0 e0       	ldi	r31, 0x00	; 0
+     3dc:	80 81       	ld	r24, Z
+     3de:	80 64       	ori	r24, 0x40	; 64
+     3e0:	8c 93       	st	X, r24
+			//Enable the Global Interrupt
+			SET_BIT(SREG_REG,I_BIT);
+     3e2:	af e5       	ldi	r26, 0x5F	; 95
+     3e4:	b0 e0       	ldi	r27, 0x00	; 0
+     3e6:	ef e5       	ldi	r30, 0x5F	; 95
+     3e8:	f0 e0       	ldi	r31, 0x00	; 0
+     3ea:	80 81       	ld	r24, Z
+     3ec:	80 68       	ori	r24, 0x80	; 128
+     3ee:	8c 93       	st	X, r24
+     3f0:	05 c0       	rjmp	.+10     	; 0x3fc <UART_u8EnableSendingInterrupt+0x58>
+		}else
+		{
+			// if it is pointing to NULL then Update the Error State
+			u8ErrorState = UART_NULL_INPUT;
+     3f2:	87 e0       	ldi	r24, 0x07	; 7
+     3f4:	89 83       	std	Y+1, r24	; 0x01
+     3f6:	02 c0       	rjmp	.+4      	; 0x3fc <UART_u8EnableSendingInterrupt+0x58>
+		}
+
+	}else
+	{
+		// if the UART is not Initialized then Update the Error State
+		u8ErrorState = UART_INITIALIZATION_ERROR;
+     3f8:	88 e0       	ldi	r24, 0x08	; 8
+     3fa:	89 83       	std	Y+1, r24	; 0x01
+	}
+
+	return u8ErrorState;
+     3fc:	89 81       	ldd	r24, Y+1	; 0x01
+
+}
+     3fe:	0f 90       	pop	r0
+     400:	0f 90       	pop	r0
+     402:	0f 90       	pop	r0
+     404:	cf 91       	pop	r28
+     406:	df 91       	pop	r29
+     408:	08 95       	ret
+
+0000040a <UART_u8DisableReceivingInterrupt>:
+/**
+ * @fn UART_u8DisableRecievingInterrupt(void)
+ * @brief This function is called to disable the Receiving complete Interrupt
+ */
+void UART_u8DisableReceivingInterrupt(void)
+{
+     40a:	df 93       	push	r29
+     40c:	cf 93       	push	r28
+     40e:	cd b7       	in	r28, 0x3d	; 61
+     410:	de b7       	in	r29, 0x3e	; 62
+	//Reset the pointer to the callback function to NULL
+	gpf_RecieveCallBack = NULL;
+     412:	10 92 68 00 	sts	0x0068, r1
+     416:	10 92 67 00 	sts	0x0067, r1
+	// Clear the Enable bit of the receiving Interrupt
+	CLR_BIT(UCSRB_REG,RXCIE_BIT);
+     41a:	aa e2       	ldi	r26, 0x2A	; 42
+     41c:	b0 e0       	ldi	r27, 0x00	; 0
+     41e:	ea e2       	ldi	r30, 0x2A	; 42
+     420:	f0 e0       	ldi	r31, 0x00	; 0
+     422:	80 81       	ld	r24, Z
+     424:	8f 77       	andi	r24, 0x7F	; 127
+     426:	8c 93       	st	X, r24
+}
+     428:	cf 91       	pop	r28
+     42a:	df 91       	pop	r29
+     42c:	08 95       	ret
+
+0000042e <UART_u8DisableTransmittionInterrupt>:
+/**
+ * @fn UART_u8DisableTransmittionInterrupt(void)
+ * @brief This function is called to disable the Transmission complete Interrupt
+ */
+void UART_u8DisableTransmittionInterrupt(void)
+{
+     42e:	df 93       	push	r29
+     430:	cf 93       	push	r28
+     432:	cd b7       	in	r28, 0x3d	; 61
+     434:	de b7       	in	r29, 0x3e	; 62
+	//Reset the pointer to the callback function to NULL
+	gpf_TransmitCallBack = NULL;
+     436:	10 92 6a 00 	sts	0x006A, r1
+     43a:	10 92 69 00 	sts	0x0069, r1
+	// Clear the Enable bit of the transmittion complete Interrupt
+	CLR_BIT(UCSRB_REG,TXCIE_BIT);
+     43e:	aa e2       	ldi	r26, 0x2A	; 42
+     440:	b0 e0       	ldi	r27, 0x00	; 0
+     442:	ea e2       	ldi	r30, 0x2A	; 42
+     444:	f0 e0       	ldi	r31, 0x00	; 0
+     446:	80 81       	ld	r24, Z
+     448:	8f 7b       	andi	r24, 0xBF	; 191
+     44a:	8c 93       	st	X, r24
+}
+     44c:	cf 91       	pop	r28
+     44e:	df 91       	pop	r29
+     450:	08 95       	ret
+
+00000452 <UART_u8Deinit>:
+/**
+ * @fn UART_u8Deinit(void)
+ * @brief This function is called to Stop the UART Peripheral and De-initialize it
+ */
+void UART_u8Deinit(void)
+{
+     452:	df 93       	push	r29
+     454:	cf 93       	push	r28
+     456:	cd b7       	in	r28, 0x3d	; 61
+     458:	de b7       	in	r29, 0x3e	; 62
+	// Disable the UART capabilities of Receiving and transmitting
+	CLR_BIT(UCSRB_REG,RXEN_BIT);
+     45a:	aa e2       	ldi	r26, 0x2A	; 42
+     45c:	b0 e0       	ldi	r27, 0x00	; 0
+     45e:	ea e2       	ldi	r30, 0x2A	; 42
+     460:	f0 e0       	ldi	r31, 0x00	; 0
+     462:	80 81       	ld	r24, Z
+     464:	8f 7e       	andi	r24, 0xEF	; 239
+     466:	8c 93       	st	X, r24
+	CLR_BIT(UCSRB_REG,TXEN_BIT);
+     468:	aa e2       	ldi	r26, 0x2A	; 42
+     46a:	b0 e0       	ldi	r27, 0x00	; 0
+     46c:	ea e2       	ldi	r30, 0x2A	; 42
+     46e:	f0 e0       	ldi	r31, 0x00	; 0
+     470:	80 81       	ld	r24, Z
+     472:	87 7f       	andi	r24, 0xF7	; 247
+     474:	8c 93       	st	X, r24
+	//Reset the pointer to the transmittion callback function to NULL
+	gpf_TransmitCallBack = NULL;
+     476:	10 92 6a 00 	sts	0x006A, r1
+     47a:	10 92 69 00 	sts	0x0069, r1
+	//Reset the pointer to the Receiving callback function to NULL
+	gpf_RecieveCallBack = NULL;
+     47e:	10 92 68 00 	sts	0x0068, r1
+     482:	10 92 67 00 	sts	0x0067, r1
+	// Clear the Enable bit of the receiving Interrupt
+	CLR_BIT(UCSRB_REG,RXCIE_BIT);
+     486:	aa e2       	ldi	r26, 0x2A	; 42
+     488:	b0 e0       	ldi	r27, 0x00	; 0
+     48a:	ea e2       	ldi	r30, 0x2A	; 42
+     48c:	f0 e0       	ldi	r31, 0x00	; 0
+     48e:	80 81       	ld	r24, Z
+     490:	8f 77       	andi	r24, 0x7F	; 127
+     492:	8c 93       	st	X, r24
+	// Clear the Enable bit of the transmittion complete Interrupt
+	CLR_BIT(UCSRB_REG,TXCIE_BIT);
+     494:	aa e2       	ldi	r26, 0x2A	; 42
+     496:	b0 e0       	ldi	r27, 0x00	; 0
+     498:	ea e2       	ldi	r30, 0x2A	; 42
+     49a:	f0 e0       	ldi	r31, 0x00	; 0
+     49c:	80 81       	ld	r24, Z
+     49e:	8f 7b       	andi	r24, 0xBF	; 191
+     4a0:	8c 93       	st	X, r24
+	// Reset the Initialization flag indicating that the UART is not initialized anymore
+	gu8_IntializationFlag = UART_INITIALIZED;
+     4a2:	81 e0       	ldi	r24, 0x01	; 1
+     4a4:	80 93 66 00 	sts	0x0066, r24
+
+}
+     4a8:	cf 91       	pop	r28
+     4aa:	df 91       	pop	r29
+     4ac:	08 95       	ret
+
+000004ae <__vector_13>:
+
+/**
+ * @brief the Receiving Interrupt ISR
+ */
+void __vector_13(void) {
+     4ae:	1f 92       	push	r1
+     4b0:	0f 92       	push	r0
+     4b2:	0f b6       	in	r0, 0x3f	; 63
+     4b4:	0f 92       	push	r0
+     4b6:	11 24       	eor	r1, r1
+     4b8:	2f 93       	push	r18
+     4ba:	3f 93       	push	r19
+     4bc:	4f 93       	push	r20
+     4be:	5f 93       	push	r21
+     4c0:	6f 93       	push	r22
+     4c2:	7f 93       	push	r23
+     4c4:	8f 93       	push	r24
+     4c6:	9f 93       	push	r25
+     4c8:	af 93       	push	r26
+     4ca:	bf 93       	push	r27
+     4cc:	ef 93       	push	r30
+     4ce:	ff 93       	push	r31
+     4d0:	df 93       	push	r29
+     4d2:	cf 93       	push	r28
+     4d4:	0f 92       	push	r0
+     4d6:	cd b7       	in	r28, 0x3d	; 61
+     4d8:	de b7       	in	r29, 0x3e	; 62
+
+	uint8_t UDRFlush; // this is a temporary variable used to read the UDR to clear the receive Complete flag
+	if (gpf_RecieveCallBack!=NULL) // check if the pointer to the Callback is pointing to NULL
+     4da:	80 91 67 00 	lds	r24, 0x0067
+     4de:	90 91 68 00 	lds	r25, 0x0068
+     4e2:	00 97       	sbiw	r24, 0x00	; 0
+     4e4:	31 f0       	breq	.+12     	; 0x4f2 <__vector_13+0x44>
+	{
+		//if not then call the function pointing to it
+		gpf_RecieveCallBack();
+     4e6:	e0 91 67 00 	lds	r30, 0x0067
+     4ea:	f0 91 68 00 	lds	r31, 0x0068
+     4ee:	09 95       	icall
+     4f0:	04 c0       	rjmp	.+8      	; 0x4fa <__vector_13+0x4c>
+	}else
+	{
+		// if it is the just flush the UDR
+		UDRFlush = UDR_REG;
+     4f2:	ec e2       	ldi	r30, 0x2C	; 44
+     4f4:	f0 e0       	ldi	r31, 0x00	; 0
+     4f6:	80 81       	ld	r24, Z
+     4f8:	89 83       	std	Y+1, r24	; 0x01
+	}
+}
+     4fa:	0f 90       	pop	r0
+     4fc:	cf 91       	pop	r28
+     4fe:	df 91       	pop	r29
+     500:	ff 91       	pop	r31
+     502:	ef 91       	pop	r30
+     504:	bf 91       	pop	r27
+     506:	af 91       	pop	r26
+     508:	9f 91       	pop	r25
+     50a:	8f 91       	pop	r24
+     50c:	7f 91       	pop	r23
+     50e:	6f 91       	pop	r22
+     510:	5f 91       	pop	r21
+     512:	4f 91       	pop	r20
+     514:	3f 91       	pop	r19
+     516:	2f 91       	pop	r18
+     518:	0f 90       	pop	r0
+     51a:	0f be       	out	0x3f, r0	; 63
+     51c:	0f 90       	pop	r0
+     51e:	1f 90       	pop	r1
+     520:	18 95       	reti
+
+00000522 <__vector_14>:
+
+/**
+ * @brief the Transmission Interrupt ISR
+ */
+void __vector_14(void) {
+     522:	1f 92       	push	r1
+     524:	0f 92       	push	r0
+     526:	0f b6       	in	r0, 0x3f	; 63
+     528:	0f 92       	push	r0
+     52a:	11 24       	eor	r1, r1
+     52c:	2f 93       	push	r18
+     52e:	3f 93       	push	r19
+     530:	4f 93       	push	r20
+     532:	5f 93       	push	r21
+     534:	6f 93       	push	r22
+     536:	7f 93       	push	r23
+     538:	8f 93       	push	r24
+     53a:	9f 93       	push	r25
+     53c:	af 93       	push	r26
+     53e:	bf 93       	push	r27
+     540:	ef 93       	push	r30
+     542:	ff 93       	push	r31
+     544:	df 93       	push	r29
+     546:	cf 93       	push	r28
+     548:	cd b7       	in	r28, 0x3d	; 61
+     54a:	de b7       	in	r29, 0x3e	; 62
+	if (gpf_TransmitCallBack!=NULL)// check if the pointer to the Callback is pointing to NULL
+     54c:	80 91 69 00 	lds	r24, 0x0069
+     550:	90 91 6a 00 	lds	r25, 0x006A
+     554:	00 97       	sbiw	r24, 0x00	; 0
+     556:	29 f0       	breq	.+10     	; 0x562 <__vector_14+0x40>
+	{
+		//if not then call the function pointing to it
+		gpf_TransmitCallBack();
+     558:	e0 91 69 00 	lds	r30, 0x0069
+     55c:	f0 91 6a 00 	lds	r31, 0x006A
+     560:	09 95       	icall
+	}
+}
+     562:	cf 91       	pop	r28
+     564:	df 91       	pop	r29
+     566:	ff 91       	pop	r31
+     568:	ef 91       	pop	r30
+     56a:	bf 91       	pop	r27
+     56c:	af 91       	pop	r26
+     56e:	9f 91       	pop	r25
+     570:	8f 91       	pop	r24
+     572:	7f 91       	pop	r23
+     574:	6f 91       	pop	r22
+     576:	5f 91       	pop	r21
+     578:	4f 91       	pop	r20
+     57a:	3f 91       	pop	r19
+     57c:	2f 91       	pop	r18
+     57e:	0f 90       	pop	r0
+     580:	0f be       	out	0x3f, r0	; 63
+     582:	0f 90       	pop	r0
+     584:	1f 90       	pop	r1
+     586:	18 95       	reti
+
+00000588 <SPI_u8Init>:
+ * @pre This function require
+ * 			- the configurations in the peripheral configuration file is configured with allowed options
+ * 			- the u8SPIMode should take only two possibilities  SPI_MASTER or SPI_SLAVE
+ */
+uint8_t SPI_u8Init(SPIMode_t u8SPIMode)
+{
+     588:	df 93       	push	r29
+     58a:	cf 93       	push	r28
+     58c:	00 d0       	rcall	.+0      	; 0x58e <SPI_u8Init+0x6>
+     58e:	cd b7       	in	r28, 0x3d	; 61
+     590:	de b7       	in	r29, 0x3e	; 62
+     592:	8a 83       	std	Y+2, r24	; 0x02
+	uint8_t u8ErrorState = SPI_OK;
+     594:	81 e0       	ldi	r24, 0x01	; 1
+     596:	89 83       	std	Y+1, r24	; 0x01
+
+LED_u8Init(&LEDT);
+     598:	80 e6       	ldi	r24, 0x60	; 96
+     59a:	90 e0       	ldi	r25, 0x00	; 0
+     59c:	0e 94 0e 0d 	call	0x1a1c	; 0x1a1c <LED_u8Init>
+	/*
+	 * Set the transmittion Clock of the SPI as configured by the SPI_CLK_RATE Configuration
+	 */
+#if SPI_CLK_RATE == SPI_CPU_4
+	CLR_BIT(SPCR_REG,SPR0_BIT);
+     5a0:	ad e2       	ldi	r26, 0x2D	; 45
+     5a2:	b0 e0       	ldi	r27, 0x00	; 0
+     5a4:	ed e2       	ldi	r30, 0x2D	; 45
+     5a6:	f0 e0       	ldi	r31, 0x00	; 0
+     5a8:	80 81       	ld	r24, Z
+     5aa:	8e 7f       	andi	r24, 0xFE	; 254
+     5ac:	8c 93       	st	X, r24
+	CLR_BIT(SPCR_REG,SPR1_BIT);
+     5ae:	ad e2       	ldi	r26, 0x2D	; 45
+     5b0:	b0 e0       	ldi	r27, 0x00	; 0
+     5b2:	ed e2       	ldi	r30, 0x2D	; 45
+     5b4:	f0 e0       	ldi	r31, 0x00	; 0
+     5b6:	80 81       	ld	r24, Z
+     5b8:	8d 7f       	andi	r24, 0xFD	; 253
+     5ba:	8c 93       	st	X, r24
+	CLR_BIT(SPSR_REG,SPI2X_BIT);
+     5bc:	ae e2       	ldi	r26, 0x2E	; 46
+     5be:	b0 e0       	ldi	r27, 0x00	; 0
+     5c0:	ee e2       	ldi	r30, 0x2E	; 46
+     5c2:	f0 e0       	ldi	r31, 0x00	; 0
+     5c4:	80 81       	ld	r24, Z
+     5c6:	8e 7f       	andi	r24, 0xFE	; 254
+     5c8:	8c 93       	st	X, r24
+
+	/*
+	 * Set the DATA sampling mode of the SPI as configured by the SPI_DATA_MODE configuration in the configuration file
+	 */
+#if SPI_DATA_MODE == SPI_SAMPLE_LEADING_RISING
+	CLR_BIT(SPCR_REG,CPHA_BIT);
+     5ca:	ad e2       	ldi	r26, 0x2D	; 45
+     5cc:	b0 e0       	ldi	r27, 0x00	; 0
+     5ce:	ed e2       	ldi	r30, 0x2D	; 45
+     5d0:	f0 e0       	ldi	r31, 0x00	; 0
+     5d2:	80 81       	ld	r24, Z
+     5d4:	8b 7f       	andi	r24, 0xFB	; 251
+     5d6:	8c 93       	st	X, r24
+	CLR_BIT(SPCR_REG,CPOL_BIT);
+     5d8:	ad e2       	ldi	r26, 0x2D	; 45
+     5da:	b0 e0       	ldi	r27, 0x00	; 0
+     5dc:	ed e2       	ldi	r30, 0x2D	; 45
+     5de:	f0 e0       	ldi	r31, 0x00	; 0
+     5e0:	80 81       	ld	r24, Z
+     5e2:	87 7f       	andi	r24, 0xF7	; 247
+     5e4:	8c 93       	st	X, r24
+
+	/*
+	 * Setting the Data bits transmitting order as configured by the SPI_DATA_ORDER configuration in the configuration file
+	 */
+#if SPI_DATA_ORDER == SPI_LSB_FIRST
+	SET_BIT(SPCR_REG,DORD_BIT);
+     5e6:	ad e2       	ldi	r26, 0x2D	; 45
+     5e8:	b0 e0       	ldi	r27, 0x00	; 0
+     5ea:	ed e2       	ldi	r30, 0x2D	; 45
+     5ec:	f0 e0       	ldi	r31, 0x00	; 0
+     5ee:	80 81       	ld	r24, Z
+     5f0:	80 62       	ori	r24, 0x20	; 32
+     5f2:	8c 93       	st	X, r24
+#else
+	u8ErrorState = SPI_WRONG_DATA_ORDER_CFG;
+#endif
+
+	/*Set the SPI Mode and Configure the SPI PINS */
+	if (u8SPIMode == SPI_MASTER)
+     5f4:	8a 81       	ldd	r24, Y+2	; 0x02
+     5f6:	81 30       	cpi	r24, 0x01	; 1
+     5f8:	21 f5       	brne	.+72     	; 0x642 <SPI_u8Init+0xba>
+	{
+		//Set the SPI mode to master
+		SET_BIT(SPCR_REG,MSTR_BIT);
+     5fa:	ad e2       	ldi	r26, 0x2D	; 45
+     5fc:	b0 e0       	ldi	r27, 0x00	; 0
+     5fe:	ed e2       	ldi	r30, 0x2D	; 45
+     600:	f0 e0       	ldi	r31, 0x00	; 0
+     602:	80 81       	ld	r24, Z
+     604:	80 61       	ori	r24, 0x10	; 16
+     606:	8c 93       	st	X, r24
+		//Configure the MOSI pin as output
+		SET_BIT(DDRB_REG,DDB5_BIT);
+     608:	a7 e3       	ldi	r26, 0x37	; 55
+     60a:	b0 e0       	ldi	r27, 0x00	; 0
+     60c:	e7 e3       	ldi	r30, 0x37	; 55
+     60e:	f0 e0       	ldi	r31, 0x00	; 0
+     610:	80 81       	ld	r24, Z
+     612:	80 62       	ori	r24, 0x20	; 32
+     614:	8c 93       	st	X, r24
+		//Configure the Slave Select pin as output
+		SET_BIT(DDRB_REG,DDB4_BIT);
+     616:	a7 e3       	ldi	r26, 0x37	; 55
+     618:	b0 e0       	ldi	r27, 0x00	; 0
+     61a:	e7 e3       	ldi	r30, 0x37	; 55
+     61c:	f0 e0       	ldi	r31, 0x00	; 0
+     61e:	80 81       	ld	r24, Z
+     620:	80 61       	ori	r24, 0x10	; 16
+     622:	8c 93       	st	X, r24
+		SET_BIT(PORTB_REG,DDB4_BIT);
+     624:	a8 e3       	ldi	r26, 0x38	; 56
+     626:	b0 e0       	ldi	r27, 0x00	; 0
+     628:	e8 e3       	ldi	r30, 0x38	; 56
+     62a:	f0 e0       	ldi	r31, 0x00	; 0
+     62c:	80 81       	ld	r24, Z
+     62e:	80 61       	ori	r24, 0x10	; 16
+     630:	8c 93       	st	X, r24
+		//Configure the SCK pin as output
+		SET_BIT(DDRB_REG,DDB7_BIT);
+     632:	a7 e3       	ldi	r26, 0x37	; 55
+     634:	b0 e0       	ldi	r27, 0x00	; 0
+     636:	e7 e3       	ldi	r30, 0x37	; 55
+     638:	f0 e0       	ldi	r31, 0x00	; 0
+     63a:	80 81       	ld	r24, Z
+     63c:	80 68       	ori	r24, 0x80	; 128
+     63e:	8c 93       	st	X, r24
+     640:	14 c0       	rjmp	.+40     	; 0x66a <SPI_u8Init+0xe2>
+
+	}else if (u8SPIMode == SPI_SLAVE)
+     642:	8a 81       	ldd	r24, Y+2	; 0x02
+     644:	82 30       	cpi	r24, 0x02	; 2
+     646:	79 f4       	brne	.+30     	; 0x666 <SPI_u8Init+0xde>
+	{
+		//Set the SPI mode to Slave
+		CLR_BIT(SPCR_REG,MSTR_BIT);
+     648:	ad e2       	ldi	r26, 0x2D	; 45
+     64a:	b0 e0       	ldi	r27, 0x00	; 0
+     64c:	ed e2       	ldi	r30, 0x2D	; 45
+     64e:	f0 e0       	ldi	r31, 0x00	; 0
+     650:	80 81       	ld	r24, Z
+     652:	8f 7e       	andi	r24, 0xEF	; 239
+     654:	8c 93       	st	X, r24
+		//Configure the MISO pin as output
+		SET_BIT(DDRB_REG,DDB6_BIT);
+     656:	a7 e3       	ldi	r26, 0x37	; 55
+     658:	b0 e0       	ldi	r27, 0x00	; 0
+     65a:	e7 e3       	ldi	r30, 0x37	; 55
+     65c:	f0 e0       	ldi	r31, 0x00	; 0
+     65e:	80 81       	ld	r24, Z
+     660:	80 64       	ori	r24, 0x40	; 64
+     662:	8c 93       	st	X, r24
+     664:	02 c0       	rjmp	.+4      	; 0x66a <SPI_u8Init+0xe2>
+	}else
+	{
+		u8ErrorState = SPI_WRONG_MODE;
+     666:	85 e0       	ldi	r24, 0x05	; 5
+     668:	89 83       	std	Y+1, r24	; 0x01
+	}
+
+	/*Check if no error occurred in the previous stages then Enable the SPI with the Written Configurations*/
+	if (u8ErrorState==SPI_OK)
+     66a:	89 81       	ldd	r24, Y+1	; 0x01
+     66c:	81 30       	cpi	r24, 0x01	; 1
+     66e:	51 f4       	brne	.+20     	; 0x684 <SPI_u8Init+0xfc>
+	{
+		SET_BIT(SPCR_REG,SPE_BIT);
+     670:	ad e2       	ldi	r26, 0x2D	; 45
+     672:	b0 e0       	ldi	r27, 0x00	; 0
+     674:	ed e2       	ldi	r30, 0x2D	; 45
+     676:	f0 e0       	ldi	r31, 0x00	; 0
+     678:	80 81       	ld	r24, Z
+     67a:	80 64       	ori	r24, 0x40	; 64
+     67c:	8c 93       	st	X, r24
+		/*Change the state of the SPI to initialized as MASTER/SLAVE indicating that it is initialized and in this mode*/
+		gu8_SPIState = u8SPIMode;
+     67e:	8a 81       	ldd	r24, Y+2	; 0x02
+     680:	80 93 6b 00 	sts	0x006B, r24
+	else
+	{
+		//if not do nothing
+	}
+
+	return u8ErrorState;
+     684:	89 81       	ldd	r24, Y+1	; 0x01
+}
+     686:	0f 90       	pop	r0
+     688:	0f 90       	pop	r0
+     68a:	cf 91       	pop	r28
+     68c:	df 91       	pop	r29
+     68e:	08 95       	ret
+
+00000690 <SPI_u8SendByte>:
+ * @brief This function is used to Send a byte using the SPI peripheral
+ * @pre This function require
+ * 			- The SPI to be initialized
+ */
+uint8_t SPI_u8SendByte(uint8_t u8Data)
+{
+     690:	df 93       	push	r29
+     692:	cf 93       	push	r28
+     694:	00 d0       	rcall	.+0      	; 0x696 <SPI_u8SendByte+0x6>
+     696:	0f 92       	push	r0
+     698:	cd b7       	in	r28, 0x3d	; 61
+     69a:	de b7       	in	r29, 0x3e	; 62
+     69c:	8b 83       	std	Y+3, r24	; 0x03
+	uint8_t u8ErrorState = SPI_OK;
+     69e:	81 e0       	ldi	r24, 0x01	; 1
+     6a0:	8a 83       	std	Y+2, r24	; 0x02
+	uint8_t flush_buffer;
+	if (gu8_SPIState!=SPI_NOT_INITIALIZED)//check first if the SPI is initialized
+     6a2:	80 91 6b 00 	lds	r24, 0x006B
+     6a6:	88 23       	and	r24, r24
+     6a8:	a9 f0       	breq	.+42     	; 0x6d4 <SPI_u8SendByte+0x44>
+	{
+		CLR_BIT(PORTB_REG,DDB4_BIT);
+     6aa:	a8 e3       	ldi	r26, 0x38	; 56
+     6ac:	b0 e0       	ldi	r27, 0x00	; 0
+     6ae:	e8 e3       	ldi	r30, 0x38	; 56
+     6b0:	f0 e0       	ldi	r31, 0x00	; 0
+     6b2:	80 81       	ld	r24, Z
+     6b4:	8f 7e       	andi	r24, 0xEF	; 239
+     6b6:	8c 93       	st	X, r24
+		//Load the Data to the SPI data Register to initiate the transmission
+		SPDR_REG = u8Data;
+     6b8:	ef e2       	ldi	r30, 0x2F	; 47
+     6ba:	f0 e0       	ldi	r31, 0x00	; 0
+     6bc:	8b 81       	ldd	r24, Y+3	; 0x03
+     6be:	80 83       	st	Z, r24
+		//Wait until the Transmission is complete
+		while (!GET_BIT(SPSR_REG,SPIF_BIT));
+     6c0:	ee e2       	ldi	r30, 0x2E	; 46
+     6c2:	f0 e0       	ldi	r31, 0x00	; 0
+     6c4:	80 81       	ld	r24, Z
+     6c6:	88 23       	and	r24, r24
+     6c8:	dc f7       	brge	.-10     	; 0x6c0 <SPI_u8SendByte+0x30>
+		flush_buffer = SPDR_REG;		/* Flush received data */
+     6ca:	ef e2       	ldi	r30, 0x2F	; 47
+     6cc:	f0 e0       	ldi	r31, 0x00	; 0
+     6ce:	80 81       	ld	r24, Z
+     6d0:	89 83       	std	Y+1, r24	; 0x01
+     6d2:	02 c0       	rjmp	.+4      	; 0x6d8 <SPI_u8SendByte+0x48>
+//		SET_BIT(PORTB_REG,DDB4_BIT);
+	}else
+	{
+		u8ErrorState = SPI_INITIALIZATION_ERROR;
+     6d4:	86 e0       	ldi	r24, 0x06	; 6
+     6d6:	8a 83       	std	Y+2, r24	; 0x02
+	}
+	return u8ErrorState;
+     6d8:	8a 81       	ldd	r24, Y+2	; 0x02
+}
+     6da:	0f 90       	pop	r0
+     6dc:	0f 90       	pop	r0
+     6de:	0f 90       	pop	r0
+     6e0:	cf 91       	pop	r28
+     6e2:	df 91       	pop	r29
+     6e4:	08 95       	ret
+
+000006e6 <SPI_u8SendString>:
+ * @pre This function require
+ * 			- The SPI to be initialized
+ * 			- the pu8Data pointer can not points to NULL
+ */
+uint8_t SPI_u8SendString(uint8_t* pu8Data)
+{
+     6e6:	df 93       	push	r29
+     6e8:	cf 93       	push	r28
+     6ea:	00 d0       	rcall	.+0      	; 0x6ec <SPI_u8SendString+0x6>
+     6ec:	00 d0       	rcall	.+0      	; 0x6ee <SPI_u8SendString+0x8>
+     6ee:	cd b7       	in	r28, 0x3d	; 61
+     6f0:	de b7       	in	r29, 0x3e	; 62
+     6f2:	9c 83       	std	Y+4, r25	; 0x04
+     6f4:	8b 83       	std	Y+3, r24	; 0x03
+	uint8_t u8ErrorState=SPI_OK;
+     6f6:	81 e0       	ldi	r24, 0x01	; 1
+     6f8:	8a 83       	std	Y+2, r24	; 0x02
+	uint8_t u8CharCounter=0; /// a variable used to navigate the array of the characters
+     6fa:	19 82       	std	Y+1, r1	; 0x01
+
+	if (gu8_SPIState!=SPI_NOT_INITIALIZED)// Check first if the SPI is initialized
+     6fc:	80 91 6b 00 	lds	r24, 0x006B
+     700:	88 23       	and	r24, r24
+     702:	29 f1       	breq	.+74     	; 0x74e <SPI_u8SendString+0x68>
+	{
+		if (pu8Data!=NULL) // if it is initialized then check the pointer is not pointing to NULL
+     704:	8b 81       	ldd	r24, Y+3	; 0x03
+     706:	9c 81       	ldd	r25, Y+4	; 0x04
+     708:	00 97       	sbiw	r24, 0x00	; 0
+     70a:	f1 f0       	breq	.+60     	; 0x748 <SPI_u8SendString+0x62>
+     70c:	0e c0       	rjmp	.+28     	; 0x72a <SPI_u8SendString+0x44>
+		{
+			while (pu8Data[u8CharCounter]!='\0')
+			{
+				//While the current character is not endline
+				// Send the character through SPI
+				SPI_u8SendByte(pu8Data[u8CharCounter]);
+     70e:	89 81       	ldd	r24, Y+1	; 0x01
+     710:	28 2f       	mov	r18, r24
+     712:	30 e0       	ldi	r19, 0x00	; 0
+     714:	8b 81       	ldd	r24, Y+3	; 0x03
+     716:	9c 81       	ldd	r25, Y+4	; 0x04
+     718:	fc 01       	movw	r30, r24
+     71a:	e2 0f       	add	r30, r18
+     71c:	f3 1f       	adc	r31, r19
+     71e:	80 81       	ld	r24, Z
+     720:	0e 94 48 03 	call	0x690	; 0x690 <SPI_u8SendByte>
+				//check the next character
+				u8CharCounter++;
+     724:	89 81       	ldd	r24, Y+1	; 0x01
+     726:	8f 5f       	subi	r24, 0xFF	; 255
+     728:	89 83       	std	Y+1, r24	; 0x01
+
+	if (gu8_SPIState!=SPI_NOT_INITIALIZED)// Check first if the SPI is initialized
+	{
+		if (pu8Data!=NULL) // if it is initialized then check the pointer is not pointing to NULL
+		{
+			while (pu8Data[u8CharCounter]!='\0')
+     72a:	89 81       	ldd	r24, Y+1	; 0x01
+     72c:	28 2f       	mov	r18, r24
+     72e:	30 e0       	ldi	r19, 0x00	; 0
+     730:	8b 81       	ldd	r24, Y+3	; 0x03
+     732:	9c 81       	ldd	r25, Y+4	; 0x04
+     734:	fc 01       	movw	r30, r24
+     736:	e2 0f       	add	r30, r18
+     738:	f3 1f       	adc	r31, r19
+     73a:	80 81       	ld	r24, Z
+     73c:	88 23       	and	r24, r24
+     73e:	39 f7       	brne	.-50     	; 0x70e <SPI_u8SendString+0x28>
+				SPI_u8SendByte(pu8Data[u8CharCounter]);
+				//check the next character
+				u8CharCounter++;
+			}
+			//After sending the string send endline character indicating the end of the string
+			SPI_u8SendByte('\0');
+     740:	80 e0       	ldi	r24, 0x00	; 0
+     742:	0e 94 48 03 	call	0x690	; 0x690 <SPI_u8SendByte>
+     746:	05 c0       	rjmp	.+10     	; 0x752 <SPI_u8SendString+0x6c>
+
+		}else
+		{
+			// if the input pointer is pointing to NULL update the error state
+			u8ErrorState = SPI_NULL_INPUT;
+     748:	87 e0       	ldi	r24, 0x07	; 7
+     74a:	8a 83       	std	Y+2, r24	; 0x02
+     74c:	02 c0       	rjmp	.+4      	; 0x752 <SPI_u8SendString+0x6c>
+		}
+
+	}else
+	{
+		// if the SPI is not initialized then update the error state
+		u8ErrorState=SPI_INITIALIZATION_ERROR;
+     74e:	86 e0       	ldi	r24, 0x06	; 6
+     750:	8a 83       	std	Y+2, r24	; 0x02
+	}
+
+	return u8ErrorState;
+     752:	8a 81       	ldd	r24, Y+2	; 0x02
+}
+     754:	0f 90       	pop	r0
+     756:	0f 90       	pop	r0
+     758:	0f 90       	pop	r0
+     75a:	0f 90       	pop	r0
+     75c:	cf 91       	pop	r28
+     75e:	df 91       	pop	r29
+     760:	08 95       	ret
+
+00000762 <SPI_u8ReceiveByte>:
+ * @pre This function require
+ * 			- The SPI to be initialized
+ * 			- the pu8Data pointer can not points to NULL
+ */
+uint8_t SPI_u8ReceiveByte(uint8_t* pu8Data)
+{
+     762:	df 93       	push	r29
+     764:	cf 93       	push	r28
+     766:	00 d0       	rcall	.+0      	; 0x768 <SPI_u8ReceiveByte+0x6>
+     768:	0f 92       	push	r0
+     76a:	cd b7       	in	r28, 0x3d	; 61
+     76c:	de b7       	in	r29, 0x3e	; 62
+     76e:	9b 83       	std	Y+3, r25	; 0x03
+     770:	8a 83       	std	Y+2, r24	; 0x02
+	uint8_t u8ErrorState = SPI_OK;
+     772:	81 e0       	ldi	r24, 0x01	; 1
+     774:	89 83       	std	Y+1, r24	; 0x01
+
+
+	if (gu8_SPIState!=SPI_NOT_INITIALIZED)//check first if the SPI is initialized
+     776:	80 91 6b 00 	lds	r24, 0x006B
+     77a:	88 23       	and	r24, r24
+     77c:	99 f0       	breq	.+38     	; 0x7a4 <SPI_u8ReceiveByte+0x42>
+	{
+		if (pu8Data!=NULL)//Then Check if the pointer is not pointing to a NULL
+     77e:	8a 81       	ldd	r24, Y+2	; 0x02
+     780:	9b 81       	ldd	r25, Y+3	; 0x03
+     782:	00 97       	sbiw	r24, 0x00	; 0
+     784:	61 f0       	breq	.+24     	; 0x79e <SPI_u8ReceiveByte+0x3c>
+		{
+			//Wait until the Reception is complete
+			while (!GET_BIT(SPSR_REG,SPIF_BIT));
+     786:	ee e2       	ldi	r30, 0x2E	; 46
+     788:	f0 e0       	ldi	r31, 0x00	; 0
+     78a:	80 81       	ld	r24, Z
+     78c:	88 23       	and	r24, r24
+     78e:	dc f7       	brge	.-10     	; 0x786 <SPI_u8ReceiveByte+0x24>
+			//Load the SPI data Register to the place the pointer holding its address
+			*pu8Data = SPDR_REG;
+     790:	ef e2       	ldi	r30, 0x2F	; 47
+     792:	f0 e0       	ldi	r31, 0x00	; 0
+     794:	80 81       	ld	r24, Z
+     796:	ea 81       	ldd	r30, Y+2	; 0x02
+     798:	fb 81       	ldd	r31, Y+3	; 0x03
+     79a:	80 83       	st	Z, r24
+     79c:	05 c0       	rjmp	.+10     	; 0x7a8 <SPI_u8ReceiveByte+0x46>
+		}else
+		{
+			u8ErrorState = SPI_NULL_INPUT;
+     79e:	87 e0       	ldi	r24, 0x07	; 7
+     7a0:	89 83       	std	Y+1, r24	; 0x01
+     7a2:	02 c0       	rjmp	.+4      	; 0x7a8 <SPI_u8ReceiveByte+0x46>
+		}
+
+	}else
+	{
+		u8ErrorState = SPI_INITIALIZATION_ERROR;
+     7a4:	86 e0       	ldi	r24, 0x06	; 6
+     7a6:	89 83       	std	Y+1, r24	; 0x01
+	}
+	return u8ErrorState;
+     7a8:	89 81       	ldd	r24, Y+1	; 0x01
+}
+     7aa:	0f 90       	pop	r0
+     7ac:	0f 90       	pop	r0
+     7ae:	0f 90       	pop	r0
+     7b0:	cf 91       	pop	r28
+     7b2:	df 91       	pop	r29
+     7b4:	08 95       	ret
+
+000007b6 <SPI_u8ReceiveString>:
+ * @pre This function require
+ * 			- The SPI to be initialized
+ * 			- the pu8Data pointer can not points to NULL
+ */
+uint8_t SPI_u8ReceiveString(uint8_t* pu8Data)
+{
+     7b6:	df 93       	push	r29
+     7b8:	cf 93       	push	r28
+     7ba:	00 d0       	rcall	.+0      	; 0x7bc <SPI_u8ReceiveString+0x6>
+     7bc:	00 d0       	rcall	.+0      	; 0x7be <SPI_u8ReceiveString+0x8>
+     7be:	0f 92       	push	r0
+     7c0:	cd b7       	in	r28, 0x3d	; 61
+     7c2:	de b7       	in	r29, 0x3e	; 62
+     7c4:	9d 83       	std	Y+5, r25	; 0x05
+     7c6:	8c 83       	std	Y+4, r24	; 0x04
+	uint8_t u8ErrorState=SPI_OK;
+     7c8:	81 e0       	ldi	r24, 0x01	; 1
+     7ca:	8a 83       	std	Y+2, r24	; 0x02
+	uint8_t u8CharCounter=0;  /// a variable used to navigate the array of the characters
+     7cc:	19 82       	std	Y+1, r1	; 0x01
+	uint8_t u8Temp;			/// a variable used to temporarily hold the value of the last character sent
+
+	if (gu8_SPIState!=SPI_NOT_INITIALIZED)// Check first if the SPI is initialized
+     7ce:	80 91 6b 00 	lds	r24, 0x006B
+     7d2:	88 23       	and	r24, r24
+     7d4:	31 f1       	breq	.+76     	; 0x822 <SPI_u8ReceiveString+0x6c>
+	{
+		if (pu8Data!=NULL)// if it is initialized then check the pointer is not pointing to NULL
+     7d6:	8c 81       	ldd	r24, Y+4	; 0x04
+     7d8:	9d 81       	ldd	r25, Y+5	; 0x05
+     7da:	00 97       	sbiw	r24, 0x00	; 0
+     7dc:	f9 f0       	breq	.+62     	; 0x81c <SPI_u8ReceiveString+0x66>
+		{
+			do
+			{
+				//Receive Byte
+				SPI_u8ReceiveByte(&u8Temp);
+     7de:	ce 01       	movw	r24, r28
+     7e0:	03 96       	adiw	r24, 0x03	; 3
+     7e2:	0e 94 b1 03 	call	0x762	; 0x762 <SPI_u8ReceiveByte>
+				//Save the received byte to the first empty place in the array of characters
+				pu8Data[u8CharCounter] = u8Temp;
+     7e6:	89 81       	ldd	r24, Y+1	; 0x01
+     7e8:	28 2f       	mov	r18, r24
+     7ea:	30 e0       	ldi	r19, 0x00	; 0
+     7ec:	8c 81       	ldd	r24, Y+4	; 0x04
+     7ee:	9d 81       	ldd	r25, Y+5	; 0x05
+     7f0:	fc 01       	movw	r30, r24
+     7f2:	e2 0f       	add	r30, r18
+     7f4:	f3 1f       	adc	r31, r19
+     7f6:	8b 81       	ldd	r24, Y+3	; 0x03
+     7f8:	80 83       	st	Z, r24
+				//update the array navigator
+				u8CharCounter++;
+     7fa:	89 81       	ldd	r24, Y+1	; 0x01
+     7fc:	8f 5f       	subi	r24, 0xFF	; 255
+     7fe:	89 83       	std	Y+1, r24	; 0x01
+			}while (u8Temp!='\0'); // do this until we receive endline character indicating the end of the string
+     800:	8b 81       	ldd	r24, Y+3	; 0x03
+     802:	88 23       	and	r24, r24
+     804:	61 f7       	brne	.-40     	; 0x7de <SPI_u8ReceiveString+0x28>
+
+			// save the endline character in the end of the string
+			pu8Data[u8CharCounter] = u8Temp;
+     806:	89 81       	ldd	r24, Y+1	; 0x01
+     808:	28 2f       	mov	r18, r24
+     80a:	30 e0       	ldi	r19, 0x00	; 0
+     80c:	8c 81       	ldd	r24, Y+4	; 0x04
+     80e:	9d 81       	ldd	r25, Y+5	; 0x05
+     810:	fc 01       	movw	r30, r24
+     812:	e2 0f       	add	r30, r18
+     814:	f3 1f       	adc	r31, r19
+     816:	8b 81       	ldd	r24, Y+3	; 0x03
+     818:	80 83       	st	Z, r24
+     81a:	05 c0       	rjmp	.+10     	; 0x826 <SPI_u8ReceiveString+0x70>
+
+		}else
+		{
+			// if the input pointer is pointing to NULL update the error state
+			u8ErrorState = SPI_NULL_INPUT;
+     81c:	87 e0       	ldi	r24, 0x07	; 7
+     81e:	8a 83       	std	Y+2, r24	; 0x02
+     820:	02 c0       	rjmp	.+4      	; 0x826 <SPI_u8ReceiveString+0x70>
+		}
+
+	}else
+	{
+		// if the SPI is not initialized then update the error state
+		u8ErrorState=SPI_INITIALIZATION_ERROR;
+     822:	86 e0       	ldi	r24, 0x06	; 6
+     824:	8a 83       	std	Y+2, r24	; 0x02
+	}
+
+	return u8ErrorState;
+     826:	8a 81       	ldd	r24, Y+2	; 0x02
+}
+     828:	0f 90       	pop	r0
+     82a:	0f 90       	pop	r0
+     82c:	0f 90       	pop	r0
+     82e:	0f 90       	pop	r0
+     830:	0f 90       	pop	r0
+     832:	cf 91       	pop	r28
+     834:	df 91       	pop	r29
+     836:	08 95       	ret
+
+00000838 <SPI_u8EnableInterrupt>:
+ * @brief This function is called to enable the SPI Transmit complete Interrupt
+ * @pre - the SPI must be initialized
+ * 		- the pointer to function not pointing to NULL
+ */
+uint8_t SPI_u8EnableInterrupt(void (*pfnCallBack)(void))
+{
+     838:	df 93       	push	r29
+     83a:	cf 93       	push	r28
+     83c:	00 d0       	rcall	.+0      	; 0x83e <SPI_u8EnableInterrupt+0x6>
+     83e:	0f 92       	push	r0
+     840:	cd b7       	in	r28, 0x3d	; 61
+     842:	de b7       	in	r29, 0x3e	; 62
+     844:	9b 83       	std	Y+3, r25	; 0x03
+     846:	8a 83       	std	Y+2, r24	; 0x02
+	uint8_t u8ErrorState = SPI_OK;
+     848:	81 e0       	ldi	r24, 0x01	; 1
+     84a:	89 83       	std	Y+1, r24	; 0x01
+	if (gu8_SPIState != SPI_NOT_INITIALIZED)// Check first if the SPI is initialized
+     84c:	80 91 6b 00 	lds	r24, 0x006B
+     850:	88 23       	and	r24, r24
+     852:	e1 f0       	breq	.+56     	; 0x88c <__stack+0x2d>
+	{
+		if (pfnCallBack!=NULL)// if it is initialized then check the pointer is not pointing to NULL
+     854:	8a 81       	ldd	r24, Y+2	; 0x02
+     856:	9b 81       	ldd	r25, Y+3	; 0x03
+     858:	00 97       	sbiw	r24, 0x00	; 0
+     85a:	a9 f0       	breq	.+42     	; 0x886 <__stack+0x27>
+		{
+			// Set the pointer of the call function to the function address passed by the user
+			gpf_SPICallBack = pfnCallBack;
+     85c:	8a 81       	ldd	r24, Y+2	; 0x02
+     85e:	9b 81       	ldd	r25, Y+3	; 0x03
+     860:	90 93 6d 00 	sts	0x006D, r25
+     864:	80 93 6c 00 	sts	0x006C, r24
+			// Set the Enable bit of the SPI Interrupt
+			SET_BIT(SPCR_REG,SPIE_BIT);
+     868:	ad e2       	ldi	r26, 0x2D	; 45
+     86a:	b0 e0       	ldi	r27, 0x00	; 0
+     86c:	ed e2       	ldi	r30, 0x2D	; 45
+     86e:	f0 e0       	ldi	r31, 0x00	; 0
+     870:	80 81       	ld	r24, Z
+     872:	80 68       	ori	r24, 0x80	; 128
+     874:	8c 93       	st	X, r24
+			// Set the Enable bit of the Global Interrupt
+			SET_BIT(SREG_REG,I_BIT);
+     876:	af e5       	ldi	r26, 0x5F	; 95
+     878:	b0 e0       	ldi	r27, 0x00	; 0
+     87a:	ef e5       	ldi	r30, 0x5F	; 95
+     87c:	f0 e0       	ldi	r31, 0x00	; 0
+     87e:	80 81       	ld	r24, Z
+     880:	80 68       	ori	r24, 0x80	; 128
+     882:	8c 93       	st	X, r24
+     884:	05 c0       	rjmp	.+10     	; 0x890 <__stack+0x31>
+		}else
+		{
+			// if the input pointer is pointing to NULL update the error state
+			u8ErrorState = SPI_NULL_INPUT;
+     886:	87 e0       	ldi	r24, 0x07	; 7
+     888:	89 83       	std	Y+1, r24	; 0x01
+     88a:	02 c0       	rjmp	.+4      	; 0x890 <__stack+0x31>
+		}
+	}else
+	{
+		// if the SPI is not initialized then update the error state
+		u8ErrorState = SPI_INITIALIZATION_ERROR;
+     88c:	86 e0       	ldi	r24, 0x06	; 6
+     88e:	89 83       	std	Y+1, r24	; 0x01
+	}
+	return u8ErrorState;
+     890:	89 81       	ldd	r24, Y+1	; 0x01
+
+}
+     892:	0f 90       	pop	r0
+     894:	0f 90       	pop	r0
+     896:	0f 90       	pop	r0
+     898:	cf 91       	pop	r28
+     89a:	df 91       	pop	r29
+     89c:	08 95       	ret
+
+0000089e <SPI_u8DisableInterrupt>:
+/**
+ * @fn void SPI_u8DisableInterrupt(void)
+ * @brief Used to disable the SPI Interrupt
+ */
+void SPI_u8DisableInterrupt(void)
+{
+     89e:	df 93       	push	r29
+     8a0:	cf 93       	push	r28
+     8a2:	cd b7       	in	r28, 0x3d	; 61
+     8a4:	de b7       	in	r29, 0x3e	; 62
+	// Reset the pointer of the call function to NULL
+	gpf_SPICallBack = NULL;
+     8a6:	10 92 6d 00 	sts	0x006D, r1
+     8aa:	10 92 6c 00 	sts	0x006C, r1
+	// Reset the Enable bit of the SPI Interrupt to disable it
+	CLR_BIT(SPCR_REG,SPIE_BIT);
+     8ae:	ad e2       	ldi	r26, 0x2D	; 45
+     8b0:	b0 e0       	ldi	r27, 0x00	; 0
+     8b2:	ed e2       	ldi	r30, 0x2D	; 45
+     8b4:	f0 e0       	ldi	r31, 0x00	; 0
+     8b6:	80 81       	ld	r24, Z
+     8b8:	8f 77       	andi	r24, 0x7F	; 127
+     8ba:	8c 93       	st	X, r24
+}
+     8bc:	cf 91       	pop	r28
+     8be:	df 91       	pop	r29
+     8c0:	08 95       	ret
+
+000008c2 <SPI_u8Deinit>:
+/**
+ * @fn void SPI_u8Deinit(void)
+ * @brief This function is called to Stop the SPI Peripheral and De-initialize it
+ */
+void SPI_u8Deinit(void)
+{
+     8c2:	df 93       	push	r29
+     8c4:	cf 93       	push	r28
+     8c6:	cd b7       	in	r28, 0x3d	; 61
+     8c8:	de b7       	in	r29, 0x3e	; 62
+	// Disable the SPI capabilities of Receiving and transmitting
+	CLR_BIT(SPCR_REG,SPE_BIT);
+     8ca:	ad e2       	ldi	r26, 0x2D	; 45
+     8cc:	b0 e0       	ldi	r27, 0x00	; 0
+     8ce:	ed e2       	ldi	r30, 0x2D	; 45
+     8d0:	f0 e0       	ldi	r31, 0x00	; 0
+     8d2:	80 81       	ld	r24, Z
+     8d4:	8f 7b       	andi	r24, 0xBF	; 191
+     8d6:	8c 93       	st	X, r24
+	//Reset the pointer to the callback function to NULL
+	gpf_SPICallBack = NULL;
+     8d8:	10 92 6d 00 	sts	0x006D, r1
+     8dc:	10 92 6c 00 	sts	0x006C, r1
+	// Clear the Enable bit of the SPI Interrupt
+	CLR_BIT(SPCR_REG,SPIE_BIT);
+     8e0:	ad e2       	ldi	r26, 0x2D	; 45
+     8e2:	b0 e0       	ldi	r27, 0x00	; 0
+     8e4:	ed e2       	ldi	r30, 0x2D	; 45
+     8e6:	f0 e0       	ldi	r31, 0x00	; 0
+     8e8:	80 81       	ld	r24, Z
+     8ea:	8f 77       	andi	r24, 0x7F	; 127
+     8ec:	8c 93       	st	X, r24
+	// Reset the Initialization flag indicating that the SPI is not initialized anymore
+	gu8_SPIState = SPI_NOT_INITIALIZED;
+     8ee:	10 92 6b 00 	sts	0x006B, r1
+
+}
+     8f2:	cf 91       	pop	r28
+     8f4:	df 91       	pop	r29
+     8f6:	08 95       	ret
+
+000008f8 <__vector_12>:
+
+
+/**
+ * @brief the SPI Interrupt ISR
+ */
+void __vector_12(void) {
+     8f8:	df 93       	push	r29
+     8fa:	cf 93       	push	r28
+     8fc:	cd b7       	in	r28, 0x3d	; 61
+     8fe:	de b7       	in	r29, 0x3e	; 62
+
+	if (gpf_SPICallBack!=NULL) // check if the pointer to the Callback is pointing to NULL
+     900:	80 91 6c 00 	lds	r24, 0x006C
+     904:	90 91 6d 00 	lds	r25, 0x006D
+     908:	00 97       	sbiw	r24, 0x00	; 0
+     90a:	29 f0       	breq	.+10     	; 0x916 <__vector_12+0x1e>
+	{
+		//if not then call the function pointing to it
+		gpf_SPICallBack();
+     90c:	e0 91 6c 00 	lds	r30, 0x006C
+     910:	f0 91 6d 00 	lds	r31, 0x006D
+     914:	09 95       	icall
+	}
+}
+     916:	cf 91       	pop	r28
+     918:	df 91       	pop	r29
+     91a:	08 95       	ret
+
+0000091c <I2C_u8Init>:
+static volatile uint8_t gu8_I2CState= I2C_NO_INFO;
+
+
+
+uint8_t I2C_u8Init()
+{
+     91c:	df 93       	push	r29
+     91e:	cf 93       	push	r28
+     920:	0f 92       	push	r0
+     922:	cd b7       	in	r28, 0x3d	; 61
+     924:	de b7       	in	r29, 0x3e	; 62
+	uint8_t u8ErrorState = I2C_OK;
+     926:	81 e0       	ldi	r24, 0x01	; 1
+     928:	89 83       	std	Y+1, r24	; 0x01
+
+	//Set the clock rate of the I2C bus
+	TWBR_REG = I2C_400KHZ;
+     92a:	e0 e2       	ldi	r30, 0x20	; 32
+     92c:	f0 e0       	ldi	r31, 0x00	; 0
+     92e:	88 e4       	ldi	r24, 0x48	; 72
+     930:	80 83       	st	Z, r24
+	//Set the slave address which it will respond to
+	TWAR_REG =I2C_OWN_SLAVE_ADDRESS;
+     932:	e2 e2       	ldi	r30, 0x22	; 34
+     934:	f0 e0       	ldi	r31, 0x00	; 0
+     936:	82 e0       	ldi	r24, 0x02	; 2
+     938:	80 83       	st	Z, r24
+	//Enable the ACK
+	SET_BIT(TWCR_REG,TWEA_BIT);
+     93a:	a6 e5       	ldi	r26, 0x56	; 86
+     93c:	b0 e0       	ldi	r27, 0x00	; 0
+     93e:	e6 e5       	ldi	r30, 0x56	; 86
+     940:	f0 e0       	ldi	r31, 0x00	; 0
+     942:	80 81       	ld	r24, Z
+     944:	80 64       	ori	r24, 0x40	; 64
+     946:	8c 93       	st	X, r24
+	SET_BIT(TWCR_REG,TWIE_BIT);
+     948:	a6 e5       	ldi	r26, 0x56	; 86
+     94a:	b0 e0       	ldi	r27, 0x00	; 0
+     94c:	e6 e5       	ldi	r30, 0x56	; 86
+     94e:	f0 e0       	ldi	r31, 0x00	; 0
+     950:	80 81       	ld	r24, Z
+     952:	81 60       	ori	r24, 0x01	; 1
+     954:	8c 93       	st	X, r24
+	SET_BIT(SREG_REG,I_BIT);
+     956:	af e5       	ldi	r26, 0x5F	; 95
+     958:	b0 e0       	ldi	r27, 0x00	; 0
+     95a:	ef e5       	ldi	r30, 0x5F	; 95
+     95c:	f0 e0       	ldi	r31, 0x00	; 0
+     95e:	80 81       	ld	r24, Z
+     960:	80 68       	ori	r24, 0x80	; 128
+     962:	8c 93       	st	X, r24
+	//Enable the I2C Peripheral
+	SET_BIT(TWCR_REG,TWEN_BIT);
+     964:	a6 e5       	ldi	r26, 0x56	; 86
+     966:	b0 e0       	ldi	r27, 0x00	; 0
+     968:	e6 e5       	ldi	r30, 0x56	; 86
+     96a:	f0 e0       	ldi	r31, 0x00	; 0
+     96c:	80 81       	ld	r24, Z
+     96e:	84 60       	ori	r24, 0x04	; 4
+     970:	8c 93       	st	X, r24
+
+#ifdef DEBUG_MODE
+	LED_u8Init(&LEDTEST1);
+     972:	8e e6       	ldi	r24, 0x6E	; 110
+     974:	90 e0       	ldi	r25, 0x00	; 0
+     976:	0e 94 0e 0d 	call	0x1a1c	; 0x1a1c <LED_u8Init>
+	LED_u8Init(&LEDTEST2);
+     97a:	82 e6       	ldi	r24, 0x62	; 98
+     97c:	90 e0       	ldi	r25, 0x00	; 0
+     97e:	0e 94 0e 0d 	call	0x1a1c	; 0x1a1c <LED_u8Init>
+#endif
+
+	return u8ErrorState;
+     982:	89 81       	ldd	r24, Y+1	; 0x01
+}
+     984:	0f 90       	pop	r0
+     986:	cf 91       	pop	r28
+     988:	df 91       	pop	r29
+     98a:	08 95       	ret
+
+0000098c <I2C_u8GetStatus>:
+
+
+uint8_t I2C_u8GetStatus(void)
+{
+     98c:	df 93       	push	r29
+     98e:	cf 93       	push	r28
+     990:	cd b7       	in	r28, 0x3d	; 61
+     992:	de b7       	in	r29, 0x3e	; 62
+	return TWSR_REG & I2C_PRESCALAR_MASK;
+     994:	e1 e2       	ldi	r30, 0x21	; 33
+     996:	f0 e0       	ldi	r31, 0x00	; 0
+     998:	80 81       	ld	r24, Z
+     99a:	88 7f       	andi	r24, 0xF8	; 248
+}
+     99c:	cf 91       	pop	r28
+     99e:	df 91       	pop	r29
+     9a0:	08 95       	ret
+
+000009a2 <I2C_u8MasterSendSLA>:
+
+uint8_t I2C_u8MasterSendSLA(uint8_t u8SlaveAddress,uint8_t u8MasterOperation)
+{
+     9a2:	df 93       	push	r29
+     9a4:	cf 93       	push	r28
+     9a6:	00 d0       	rcall	.+0      	; 0x9a8 <I2C_u8MasterSendSLA+0x6>
+     9a8:	0f 92       	push	r0
+     9aa:	cd b7       	in	r28, 0x3d	; 61
+     9ac:	de b7       	in	r29, 0x3e	; 62
+     9ae:	8a 83       	std	Y+2, r24	; 0x02
+     9b0:	6b 83       	std	Y+3, r22	; 0x03
+	uint8_t u8ErrorState= I2C_OK;
+     9b2:	81 e0       	ldi	r24, 0x01	; 1
+     9b4:	89 83       	std	Y+1, r24	; 0x01
+		while (!GET_BIT(TWCR_REG,TWINT_BIT));
+     9b6:	e6 e5       	ldi	r30, 0x56	; 86
+     9b8:	f0 e0       	ldi	r31, 0x00	; 0
+     9ba:	80 81       	ld	r24, Z
+     9bc:	88 23       	and	r24, r24
+     9be:	dc f7       	brge	.-10     	; 0x9b6 <I2C_u8MasterSendSLA+0x14>
+		if (gu8_I2CState==I2C_MT_START_TRANSMITTED||gu8_I2CState==I2C_MT_REPEATED_START_TRANSMITTED)
+     9c0:	80 91 64 00 	lds	r24, 0x0064
+     9c4:	88 30       	cpi	r24, 0x08	; 8
+     9c6:	21 f0       	breq	.+8      	; 0x9d0 <I2C_u8MasterSendSLA+0x2e>
+     9c8:	80 91 64 00 	lds	r24, 0x0064
+     9cc:	80 31       	cpi	r24, 0x10	; 16
+     9ce:	71 f4       	brne	.+28     	; 0x9ec <I2C_u8MasterSendSLA+0x4a>
+		{//if it is state that the start condition is successfully sent then load the slave address in the data register and set the mode to write
+			TWDR_REG = (u8SlaveAddress|u8MasterOperation);
+     9d0:	e3 e2       	ldi	r30, 0x23	; 35
+     9d2:	f0 e0       	ldi	r31, 0x00	; 0
+     9d4:	9a 81       	ldd	r25, Y+2	; 0x02
+     9d6:	8b 81       	ldd	r24, Y+3	; 0x03
+     9d8:	89 2b       	or	r24, r25
+     9da:	80 83       	st	Z, r24
+			// Clear the interrupt flag to start the next action by the peripheral
+			ASSIGN_HIGH_NIB(TWCR_REG,I2C_CLR_INTERRUPT_FLAG);
+     9dc:	a6 e5       	ldi	r26, 0x56	; 86
+     9de:	b0 e0       	ldi	r27, 0x00	; 0
+     9e0:	e6 e5       	ldi	r30, 0x56	; 86
+     9e2:	f0 e0       	ldi	r31, 0x00	; 0
+     9e4:	80 81       	ld	r24, Z
+     9e6:	8f 70       	andi	r24, 0x0F	; 15
+     9e8:	80 68       	ori	r24, 0x80	; 128
+     9ea:	8c 93       	st	X, r24
+		}
+		while (!GET_BIT(TWCR_REG,TWINT_BIT));
+     9ec:	e6 e5       	ldi	r30, 0x56	; 86
+     9ee:	f0 e0       	ldi	r31, 0x00	; 0
+     9f0:	80 81       	ld	r24, Z
+     9f2:	88 23       	and	r24, r24
+     9f4:	dc f7       	brge	.-10     	; 0x9ec <I2C_u8MasterSendSLA+0x4a>
+
+	return u8ErrorState;
+     9f6:	89 81       	ldd	r24, Y+1	; 0x01
+}
+     9f8:	0f 90       	pop	r0
+     9fa:	0f 90       	pop	r0
+     9fc:	0f 90       	pop	r0
+     9fe:	cf 91       	pop	r28
+     a00:	df 91       	pop	r29
+     a02:	08 95       	ret
+
+00000a04 <I2C_u8MasterSendByte>:
+
+
+uint8_t I2C_u8MasterSendByte(uint8_t u8Data)
+{
+     a04:	df 93       	push	r29
+     a06:	cf 93       	push	r28
+     a08:	00 d0       	rcall	.+0      	; 0xa0a <I2C_u8MasterSendByte+0x6>
+     a0a:	cd b7       	in	r28, 0x3d	; 61
+     a0c:	de b7       	in	r29, 0x3e	; 62
+     a0e:	8a 83       	std	Y+2, r24	; 0x02
+	uint8_t u8ErrorState = I2C_OK;
+     a10:	81 e0       	ldi	r24, 0x01	; 1
+     a12:	89 83       	std	Y+1, r24	; 0x01
+
+	//Load the data in the I2C Data Register
+	TWDR_REG= u8Data;
+     a14:	e3 e2       	ldi	r30, 0x23	; 35
+     a16:	f0 e0       	ldi	r31, 0x00	; 0
+     a18:	8a 81       	ldd	r24, Y+2	; 0x02
+     a1a:	80 83       	st	Z, r24
+	// Clear the interrupt flag to start the next action by the peripheral
+	ASSIGN_HIGH_NIB(TWCR_REG,I2C_CLR_INTERRUPT_FLAG);
+     a1c:	a6 e5       	ldi	r26, 0x56	; 86
+     a1e:	b0 e0       	ldi	r27, 0x00	; 0
+     a20:	e6 e5       	ldi	r30, 0x56	; 86
+     a22:	f0 e0       	ldi	r31, 0x00	; 0
+     a24:	80 81       	ld	r24, Z
+     a26:	8f 70       	andi	r24, 0x0F	; 15
+     a28:	80 68       	ori	r24, 0x80	; 128
+     a2a:	8c 93       	st	X, r24
+	while (!GET_BIT(TWCR_REG,TWINT_BIT));
+     a2c:	e6 e5       	ldi	r30, 0x56	; 86
+     a2e:	f0 e0       	ldi	r31, 0x00	; 0
+     a30:	80 81       	ld	r24, Z
+     a32:	88 23       	and	r24, r24
+     a34:	dc f7       	brge	.-10     	; 0xa2c <I2C_u8MasterSendByte+0x28>
+	//wait until the byte is sent
+	return u8ErrorState;
+     a36:	89 81       	ldd	r24, Y+1	; 0x01
+}
+     a38:	0f 90       	pop	r0
+     a3a:	0f 90       	pop	r0
+     a3c:	cf 91       	pop	r28
+     a3e:	df 91       	pop	r29
+     a40:	08 95       	ret
+
+00000a42 <I2C_u8MasterSendStart>:
+
+uint8_t I2C_u8MasterSendStart(void)
+{
+     a42:	df 93       	push	r29
+     a44:	cf 93       	push	r28
+     a46:	0f 92       	push	r0
+     a48:	cd b7       	in	r28, 0x3d	; 61
+     a4a:	de b7       	in	r29, 0x3e	; 62
+	uint8_t u8ErrorState=I2C_OK;
+     a4c:	81 e0       	ldi	r24, 0x01	; 1
+     a4e:	89 83       	std	Y+1, r24	; 0x01
+	if (gu8_I2CState==I2C_NO_INFO)
+     a50:	80 91 64 00 	lds	r24, 0x0064
+     a54:	88 3f       	cpi	r24, 0xF8	; 248
+     a56:	69 f4       	brne	.+26     	; 0xa72 <I2C_u8MasterSendStart+0x30>
+	{// if it is the first communication or after stop condition
+
+		//Send the Start Condition
+		SET_BIT(TWCR_REG,TWSTA_BIT);
+     a58:	a6 e5       	ldi	r26, 0x56	; 86
+     a5a:	b0 e0       	ldi	r27, 0x00	; 0
+     a5c:	e6 e5       	ldi	r30, 0x56	; 86
+     a5e:	f0 e0       	ldi	r31, 0x00	; 0
+     a60:	80 81       	ld	r24, Z
+     a62:	80 62       	ori	r24, 0x20	; 32
+     a64:	8c 93       	st	X, r24
+		//Wait until it is sent
+		while (!GET_BIT(TWCR_REG,TWINT_BIT));
+     a66:	e6 e5       	ldi	r30, 0x56	; 86
+     a68:	f0 e0       	ldi	r31, 0x00	; 0
+     a6a:	80 81       	ld	r24, Z
+     a6c:	88 23       	and	r24, r24
+     a6e:	dc f7       	brge	.-10     	; 0xa66 <I2C_u8MasterSendStart+0x24>
+     a70:	02 c0       	rjmp	.+4      	; 0xa76 <I2C_u8MasterSendStart+0x34>
+
+	}else
+	{
+		u8ErrorState= I2C_ILLEGAL_START;
+     a72:	86 e0       	ldi	r24, 0x06	; 6
+     a74:	89 83       	std	Y+1, r24	; 0x01
+	}
+
+	return u8ErrorState;
+     a76:	89 81       	ldd	r24, Y+1	; 0x01
+}
+     a78:	0f 90       	pop	r0
+     a7a:	cf 91       	pop	r28
+     a7c:	df 91       	pop	r29
+     a7e:	08 95       	ret
+
+00000a80 <I2C_u8SendRepeatedStart>:
+
+uint8_t I2C_u8SendRepeatedStart(void)
+{
+     a80:	df 93       	push	r29
+     a82:	cf 93       	push	r28
+     a84:	0f 92       	push	r0
+     a86:	cd b7       	in	r28, 0x3d	; 61
+     a88:	de b7       	in	r29, 0x3e	; 62
+	uint8_t u8ErrorState = I2C_OK;
+     a8a:	81 e0       	ldi	r24, 0x01	; 1
+     a8c:	89 83       	std	Y+1, r24	; 0x01
+//	uint8_t u8I2CState= I2C_u8GetStatus();
+	while (!GET_BIT(TWCR_REG,TWINT_BIT));
+     a8e:	e6 e5       	ldi	r30, 0x56	; 86
+     a90:	f0 e0       	ldi	r31, 0x00	; 0
+     a92:	80 81       	ld	r24, Z
+     a94:	88 23       	and	r24, r24
+     a96:	dc f7       	brge	.-10     	; 0xa8e <I2C_u8SendRepeatedStart+0xe>
+
+	if (gu8_I2CState==I2C_MT_DATA_TRANSMITTED_ACK || gu8_I2CState==I2C_MT_DATA_TRANSMITTED_NACK)
+     a98:	80 91 64 00 	lds	r24, 0x0064
+     a9c:	88 32       	cpi	r24, 0x28	; 40
+     a9e:	21 f0       	breq	.+8      	; 0xaa8 <I2C_u8SendRepeatedStart+0x28>
+     aa0:	80 91 64 00 	lds	r24, 0x0064
+     aa4:	80 33       	cpi	r24, 0x30	; 48
+     aa6:	49 f4       	brne	.+18     	; 0xaba <I2C_u8SendRepeatedStart+0x3a>
+	{// if the current state is the data byte is sent
+		//Then send the Repeated start condition and clear the interrupt flag to send it
+		ASSIGN_HIGH_NIB(TWCR_REG,I2C_SEND_START_CONDITION);
+     aa8:	a6 e5       	ldi	r26, 0x56	; 86
+     aaa:	b0 e0       	ldi	r27, 0x00	; 0
+     aac:	e6 e5       	ldi	r30, 0x56	; 86
+     aae:	f0 e0       	ldi	r31, 0x00	; 0
+     ab0:	80 81       	ld	r24, Z
+     ab2:	8f 70       	andi	r24, 0x0F	; 15
+     ab4:	80 6a       	ori	r24, 0xA0	; 160
+     ab6:	8c 93       	st	X, r24
+     ab8:	02 c0       	rjmp	.+4      	; 0xabe <I2C_u8SendRepeatedStart+0x3e>
+	}else
+	{
+		// if not update the error state to indicate that the start condition can not be send here
+		u8ErrorState = I2C_START_WRONG_PLACE;
+     aba:	85 e0       	ldi	r24, 0x05	; 5
+     abc:	89 83       	std	Y+1, r24	; 0x01
+	}
+
+
+	return u8ErrorState;
+     abe:	89 81       	ldd	r24, Y+1	; 0x01
+}
+     ac0:	0f 90       	pop	r0
+     ac2:	cf 91       	pop	r28
+     ac4:	df 91       	pop	r29
+     ac6:	08 95       	ret
+
+00000ac8 <I2C_u8MasterReceiveWithACK>:
+
+
+uint8_t I2C_u8MasterReceiveWithACK(uint8_t* pu8Data)
+{
+     ac8:	df 93       	push	r29
+     aca:	cf 93       	push	r28
+     acc:	00 d0       	rcall	.+0      	; 0xace <I2C_u8MasterReceiveWithACK+0x6>
+     ace:	0f 92       	push	r0
+     ad0:	cd b7       	in	r28, 0x3d	; 61
+     ad2:	de b7       	in	r29, 0x3e	; 62
+     ad4:	9b 83       	std	Y+3, r25	; 0x03
+     ad6:	8a 83       	std	Y+2, r24	; 0x02
+	uint8_t u8ErrorState=I2C_OK;
+     ad8:	81 e0       	ldi	r24, 0x01	; 1
+     ada:	89 83       	std	Y+1, r24	; 0x01
+	while (!GET_BIT(TWCR_REG,TWINT_BIT));
+     adc:	e6 e5       	ldi	r30, 0x56	; 86
+     ade:	f0 e0       	ldi	r31, 0x00	; 0
+     ae0:	80 81       	ld	r24, Z
+     ae2:	88 23       	and	r24, r24
+     ae4:	dc f7       	brge	.-10     	; 0xadc <I2C_u8MasterReceiveWithACK+0x14>
+	if (gu8_I2CState==I2C_MR_SLAVE_ADDRESS_TRANSMITTED_ACK||gu8_I2CState==I2C_MR_DATA_RECEIVED_ACK)
+     ae6:	80 91 64 00 	lds	r24, 0x0064
+     aea:	80 34       	cpi	r24, 0x40	; 64
+     aec:	21 f0       	breq	.+8      	; 0xaf6 <I2C_u8MasterReceiveWithACK+0x2e>
+     aee:	80 91 64 00 	lds	r24, 0x0064
+     af2:	80 35       	cpi	r24, 0x50	; 80
+     af4:	c1 f4       	brne	.+48     	; 0xb26 <I2C_u8MasterReceiveWithACK+0x5e>
+	{
+		LED_u8On(&LEDTEST1);
+     af6:	8e e6       	ldi	r24, 0x6E	; 110
+     af8:	90 e0       	ldi	r25, 0x00	; 0
+     afa:	0e 94 24 0d 	call	0x1a48	; 0x1a48 <LED_u8On>
+		ASSIGN_HIGH_NIB(TWCR_REG,I2C_RECEIVE_WITH_ACK);
+     afe:	a6 e5       	ldi	r26, 0x56	; 86
+     b00:	b0 e0       	ldi	r27, 0x00	; 0
+     b02:	e6 e5       	ldi	r30, 0x56	; 86
+     b04:	f0 e0       	ldi	r31, 0x00	; 0
+     b06:	80 81       	ld	r24, Z
+     b08:	8f 70       	andi	r24, 0x0F	; 15
+     b0a:	80 6c       	ori	r24, 0xC0	; 192
+     b0c:	8c 93       	st	X, r24
+		while (!GET_BIT(TWCR_REG,TWINT_BIT));
+     b0e:	e6 e5       	ldi	r30, 0x56	; 86
+     b10:	f0 e0       	ldi	r31, 0x00	; 0
+     b12:	80 81       	ld	r24, Z
+     b14:	88 23       	and	r24, r24
+     b16:	dc f7       	brge	.-10     	; 0xb0e <I2C_u8MasterReceiveWithACK+0x46>
+		*pu8Data=TWDR_REG;
+     b18:	e3 e2       	ldi	r30, 0x23	; 35
+     b1a:	f0 e0       	ldi	r31, 0x00	; 0
+     b1c:	80 81       	ld	r24, Z
+     b1e:	ea 81       	ldd	r30, Y+2	; 0x02
+     b20:	fb 81       	ldd	r31, Y+3	; 0x03
+     b22:	80 83       	st	Z, r24
+     b24:	0e c0       	rjmp	.+28     	; 0xb42 <I2C_u8MasterReceiveWithACK+0x7a>
+
+	}else if (gu8_I2CState==I2C_MR_SLAVE_ADDRESS_TRANSMITTED_NACK)
+     b26:	80 91 64 00 	lds	r24, 0x0064
+     b2a:	88 34       	cpi	r24, 0x48	; 72
+     b2c:	51 f4       	brne	.+20     	; 0xb42 <I2C_u8MasterReceiveWithACK+0x7a>
+	{
+		u8ErrorState= I2C_SLAVE_NOT_AVLBL;
+     b2e:	87 e0       	ldi	r24, 0x07	; 7
+     b30:	89 83       	std	Y+1, r24	; 0x01
+		ASSIGN_HIGH_NIB(TWCR_REG,I2C_SEND_STOP_CONDITION);
+     b32:	a6 e5       	ldi	r26, 0x56	; 86
+     b34:	b0 e0       	ldi	r27, 0x00	; 0
+     b36:	e6 e5       	ldi	r30, 0x56	; 86
+     b38:	f0 e0       	ldi	r31, 0x00	; 0
+     b3a:	80 81       	ld	r24, Z
+     b3c:	8f 70       	andi	r24, 0x0F	; 15
+     b3e:	80 69       	ori	r24, 0x90	; 144
+     b40:	8c 93       	st	X, r24
+	}
+	return u8ErrorState;
+     b42:	89 81       	ldd	r24, Y+1	; 0x01
+}
+     b44:	0f 90       	pop	r0
+     b46:	0f 90       	pop	r0
+     b48:	0f 90       	pop	r0
+     b4a:	cf 91       	pop	r28
+     b4c:	df 91       	pop	r29
+     b4e:	08 95       	ret
+
+00000b50 <I2C_u8MasterReceiveWithNAK>:
+
+uint8_t I2C_u8MasterReceiveWithNAK(uint8_t* pu8Data)
+{
+     b50:	df 93       	push	r29
+     b52:	cf 93       	push	r28
+     b54:	00 d0       	rcall	.+0      	; 0xb56 <I2C_u8MasterReceiveWithNAK+0x6>
+     b56:	0f 92       	push	r0
+     b58:	cd b7       	in	r28, 0x3d	; 61
+     b5a:	de b7       	in	r29, 0x3e	; 62
+     b5c:	9b 83       	std	Y+3, r25	; 0x03
+     b5e:	8a 83       	std	Y+2, r24	; 0x02
+	uint8_t u8ErrorState=I2C_OK;
+     b60:	81 e0       	ldi	r24, 0x01	; 1
+     b62:	89 83       	std	Y+1, r24	; 0x01
+	while (!GET_BIT(TWCR_REG,TWINT_BIT));
+     b64:	e6 e5       	ldi	r30, 0x56	; 86
+     b66:	f0 e0       	ldi	r31, 0x00	; 0
+     b68:	80 81       	ld	r24, Z
+     b6a:	88 23       	and	r24, r24
+     b6c:	dc f7       	brge	.-10     	; 0xb64 <I2C_u8MasterReceiveWithNAK+0x14>
+	if (gu8_I2CState==I2C_MR_SLAVE_ADDRESS_TRANSMITTED_ACK||gu8_I2CState==I2C_MR_DATA_RECEIVED_ACK)
+     b6e:	80 91 64 00 	lds	r24, 0x0064
+     b72:	80 34       	cpi	r24, 0x40	; 64
+     b74:	21 f0       	breq	.+8      	; 0xb7e <I2C_u8MasterReceiveWithNAK+0x2e>
+     b76:	80 91 64 00 	lds	r24, 0x0064
+     b7a:	80 35       	cpi	r24, 0x50	; 80
+     b7c:	a1 f4       	brne	.+40     	; 0xba6 <I2C_u8MasterReceiveWithNAK+0x56>
+	{
+		ASSIGN_HIGH_NIB(TWCR_REG,I2C_CLR_INTERRUPT_FLAG);
+     b7e:	a6 e5       	ldi	r26, 0x56	; 86
+     b80:	b0 e0       	ldi	r27, 0x00	; 0
+     b82:	e6 e5       	ldi	r30, 0x56	; 86
+     b84:	f0 e0       	ldi	r31, 0x00	; 0
+     b86:	80 81       	ld	r24, Z
+     b88:	8f 70       	andi	r24, 0x0F	; 15
+     b8a:	80 68       	ori	r24, 0x80	; 128
+     b8c:	8c 93       	st	X, r24
+		while (!GET_BIT(TWCR_REG,TWINT_BIT));
+     b8e:	e6 e5       	ldi	r30, 0x56	; 86
+     b90:	f0 e0       	ldi	r31, 0x00	; 0
+     b92:	80 81       	ld	r24, Z
+     b94:	88 23       	and	r24, r24
+     b96:	dc f7       	brge	.-10     	; 0xb8e <I2C_u8MasterReceiveWithNAK+0x3e>
+		*pu8Data=TWDR_REG;
+     b98:	e3 e2       	ldi	r30, 0x23	; 35
+     b9a:	f0 e0       	ldi	r31, 0x00	; 0
+     b9c:	80 81       	ld	r24, Z
+     b9e:	ea 81       	ldd	r30, Y+2	; 0x02
+     ba0:	fb 81       	ldd	r31, Y+3	; 0x03
+     ba2:	80 83       	st	Z, r24
+     ba4:	0e c0       	rjmp	.+28     	; 0xbc2 <I2C_u8MasterReceiveWithNAK+0x72>
+
+	}else if (gu8_I2CState==I2C_MR_SLAVE_ADDRESS_TRANSMITTED_NACK)
+     ba6:	80 91 64 00 	lds	r24, 0x0064
+     baa:	88 34       	cpi	r24, 0x48	; 72
+     bac:	51 f4       	brne	.+20     	; 0xbc2 <I2C_u8MasterReceiveWithNAK+0x72>
+	{
+		u8ErrorState= I2C_SLAVE_NOT_AVLBL;
+     bae:	87 e0       	ldi	r24, 0x07	; 7
+     bb0:	89 83       	std	Y+1, r24	; 0x01
+		ASSIGN_HIGH_NIB(TWCR_REG,I2C_SEND_STOP_CONDITION);
+     bb2:	a6 e5       	ldi	r26, 0x56	; 86
+     bb4:	b0 e0       	ldi	r27, 0x00	; 0
+     bb6:	e6 e5       	ldi	r30, 0x56	; 86
+     bb8:	f0 e0       	ldi	r31, 0x00	; 0
+     bba:	80 81       	ld	r24, Z
+     bbc:	8f 70       	andi	r24, 0x0F	; 15
+     bbe:	80 69       	ori	r24, 0x90	; 144
+     bc0:	8c 93       	st	X, r24
+	}
+
+	return u8ErrorState;
+     bc2:	89 81       	ldd	r24, Y+1	; 0x01
+}
+     bc4:	0f 90       	pop	r0
+     bc6:	0f 90       	pop	r0
+     bc8:	0f 90       	pop	r0
+     bca:	cf 91       	pop	r28
+     bcc:	df 91       	pop	r29
+     bce:	08 95       	ret
+
+00000bd0 <I2C_u8Stop>:
+
+uint8_t I2C_u8Stop(void)
+{
+     bd0:	df 93       	push	r29
+     bd2:	cf 93       	push	r28
+     bd4:	0f 92       	push	r0
+     bd6:	cd b7       	in	r28, 0x3d	; 61
+     bd8:	de b7       	in	r29, 0x3e	; 62
+	uint8_t u8ErrorState = I2C_OK;
+     bda:	81 e0       	ldi	r24, 0x01	; 1
+     bdc:	89 83       	std	Y+1, r24	; 0x01
+	//uint8_t u8I2CState= I2C_u8GetStatus();
+
+	if (gu8_I2CState!=I2C_MT_START_TRANSMITTED || gu8_I2CState==I2C_MT_REPEATED_START_TRANSMITTED)
+     bde:	80 91 64 00 	lds	r24, 0x0064
+     be2:	88 30       	cpi	r24, 0x08	; 8
+     be4:	21 f4       	brne	.+8      	; 0xbee <I2C_u8Stop+0x1e>
+     be6:	80 91 64 00 	lds	r24, 0x0064
+     bea:	80 31       	cpi	r24, 0x10	; 16
+     bec:	49 f4       	brne	.+18     	; 0xc00 <I2C_u8Stop+0x30>
+	{// if the current state is not after a start condition
+
+		//Then send the stop condition and clear the interrupt flag to send it
+		ASSIGN_HIGH_NIB(TWCR_REG,I2C_SEND_STOP_CONDITION);
+     bee:	a6 e5       	ldi	r26, 0x56	; 86
+     bf0:	b0 e0       	ldi	r27, 0x00	; 0
+     bf2:	e6 e5       	ldi	r30, 0x56	; 86
+     bf4:	f0 e0       	ldi	r31, 0x00	; 0
+     bf6:	80 81       	ld	r24, Z
+     bf8:	8f 70       	andi	r24, 0x0F	; 15
+     bfa:	80 69       	ori	r24, 0x90	; 144
+     bfc:	8c 93       	st	X, r24
+     bfe:	02 c0       	rjmp	.+4      	; 0xc04 <I2C_u8Stop+0x34>
+	}else
+	{
+		// if not update the error state to indicate that the start condition can not be send here
+		u8ErrorState = I2C_START_WRONG_PLACE;
+     c00:	85 e0       	ldi	r24, 0x05	; 5
+     c02:	89 83       	std	Y+1, r24	; 0x01
+	}
+	gu8_I2CState=I2C_NO_INFO;
+     c04:	88 ef       	ldi	r24, 0xF8	; 248
+     c06:	80 93 64 00 	sts	0x0064, r24
+
+
+	return u8ErrorState;
+     c0a:	89 81       	ldd	r24, Y+1	; 0x01
+}
+     c0c:	0f 90       	pop	r0
+     c0e:	cf 91       	pop	r28
+     c10:	df 91       	pop	r29
+     c12:	08 95       	ret
+
+00000c14 <I2C_u8SlaveGetByte>:
+
+uint8_t I2C_u8SlaveGetByte(uint8_t* pu8Reading)
+{
+     c14:	df 93       	push	r29
+     c16:	cf 93       	push	r28
+     c18:	00 d0       	rcall	.+0      	; 0xc1a <I2C_u8SlaveGetByte+0x6>
+     c1a:	0f 92       	push	r0
+     c1c:	cd b7       	in	r28, 0x3d	; 61
+     c1e:	de b7       	in	r29, 0x3e	; 62
+     c20:	9a 83       	std	Y+2, r25	; 0x02
+     c22:	89 83       	std	Y+1, r24	; 0x01
+	/*Wait until the Device is addressed*/
+	while (!GET_BIT(TWCR_REG,TWINT_BIT));
+     c24:	e6 e5       	ldi	r30, 0x56	; 86
+     c26:	f0 e0       	ldi	r31, 0x00	; 0
+     c28:	80 81       	ld	r24, Z
+     c2a:	88 23       	and	r24, r24
+     c2c:	dc f7       	brge	.-10     	; 0xc24 <I2C_u8SlaveGetByte+0x10>
+
+	/*Assign the high nibble of the I2C control register with value that will make it send a NACK after receiving data*/
+	ASSIGN_HIGH_NIB(TWCR_REG,I2C_RECEIVE_WITH_ACK);
+     c2e:	a6 e5       	ldi	r26, 0x56	; 86
+     c30:	b0 e0       	ldi	r27, 0x00	; 0
+     c32:	e6 e5       	ldi	r30, 0x56	; 86
+     c34:	f0 e0       	ldi	r31, 0x00	; 0
+     c36:	80 81       	ld	r24, Z
+     c38:	8f 70       	andi	r24, 0x0F	; 15
+     c3a:	80 6c       	ori	r24, 0xC0	; 192
+     c3c:	8c 93       	st	X, r24
+	while (!(gu8_I2CState==I2C_SR_DATA_RECIEVED ||gu8_I2CState==I2C_SR_LAST_BYTE_RECIEVED ) );
+     c3e:	80 91 64 00 	lds	r24, 0x0064
+     c42:	80 38       	cpi	r24, 0x80	; 128
+     c44:	21 f0       	breq	.+8      	; 0xc4e <I2C_u8SlaveGetByte+0x3a>
+     c46:	80 91 64 00 	lds	r24, 0x0064
+     c4a:	88 38       	cpi	r24, 0x88	; 136
+     c4c:	c1 f7       	brne	.-16     	; 0xc3e <I2C_u8SlaveGetByte+0x2a>
+	ASSIGN_HIGH_NIB(TWCR_REG,I2C_RECOGNIZE_SLA_WITH_ACK);
+     c4e:	a6 e5       	ldi	r26, 0x56	; 86
+     c50:	b0 e0       	ldi	r27, 0x00	; 0
+     c52:	e6 e5       	ldi	r30, 0x56	; 86
+     c54:	f0 e0       	ldi	r31, 0x00	; 0
+     c56:	80 81       	ld	r24, Z
+     c58:	8f 70       	andi	r24, 0x0F	; 15
+     c5a:	80 6c       	ori	r24, 0xC0	; 192
+     c5c:	8c 93       	st	X, r24
+	gu8_I2CState=I2C_NO_INFO;
+     c5e:	88 ef       	ldi	r24, 0xF8	; 248
+     c60:	80 93 64 00 	sts	0x0064, r24
+	*pu8Reading= TWDR_REG;
+     c64:	e3 e2       	ldi	r30, 0x23	; 35
+     c66:	f0 e0       	ldi	r31, 0x00	; 0
+     c68:	80 81       	ld	r24, Z
+     c6a:	e9 81       	ldd	r30, Y+1	; 0x01
+     c6c:	fa 81       	ldd	r31, Y+2	; 0x02
+     c6e:	80 83       	st	Z, r24
+}
+     c70:	0f 90       	pop	r0
+     c72:	0f 90       	pop	r0
+     c74:	0f 90       	pop	r0
+     c76:	cf 91       	pop	r28
+     c78:	df 91       	pop	r29
+     c7a:	08 95       	ret
+
+00000c7c <__vector_19>:
+
+
+
+void __vector_19(void) {
+     c7c:	1f 92       	push	r1
+     c7e:	0f 92       	push	r0
+     c80:	0f b6       	in	r0, 0x3f	; 63
+     c82:	0f 92       	push	r0
+     c84:	11 24       	eor	r1, r1
+     c86:	8f 93       	push	r24
+     c88:	ef 93       	push	r30
+     c8a:	ff 93       	push	r31
+     c8c:	df 93       	push	r29
+     c8e:	cf 93       	push	r28
+     c90:	cd b7       	in	r28, 0x3d	; 61
+     c92:	de b7       	in	r29, 0x3e	; 62
+	gu8_I2CState=TWSR_REG & I2C_PRESCALAR_MASK;
+     c94:	e1 e2       	ldi	r30, 0x21	; 33
+     c96:	f0 e0       	ldi	r31, 0x00	; 0
+     c98:	80 81       	ld	r24, Z
+     c9a:	88 7f       	andi	r24, 0xF8	; 248
+     c9c:	80 93 64 00 	sts	0x0064, r24
+}
+     ca0:	cf 91       	pop	r28
+     ca2:	df 91       	pop	r29
+     ca4:	ff 91       	pop	r31
+     ca6:	ef 91       	pop	r30
+     ca8:	8f 91       	pop	r24
+     caa:	0f 90       	pop	r0
+     cac:	0f be       	out	0x3f, r0	; 63
+     cae:	0f 90       	pop	r0
+     cb0:	1f 90       	pop	r1
+     cb2:	18 95       	reti
+
+00000cb4 <DIO_u8SetPinDirection>:
+#include "../../LIB/atmega32.h"
+#include "DIO_interface.h"
+
+// function to set direction of pin 
+uint8_t DIO_u8SetPinDirection(DIOPort_t u8_PortName, DIOPin_t u8_PinNum,
+		DIODir_t u8_PinDir) {
+     cb4:	df 93       	push	r29
+     cb6:	cf 93       	push	r28
+     cb8:	cd b7       	in	r28, 0x3d	; 61
+     cba:	de b7       	in	r29, 0x3e	; 62
+     cbc:	2e 97       	sbiw	r28, 0x0e	; 14
+     cbe:	0f b6       	in	r0, 0x3f	; 63
+     cc0:	f8 94       	cli
+     cc2:	de bf       	out	0x3e, r29	; 62
+     cc4:	0f be       	out	0x3f, r0	; 63
+     cc6:	cd bf       	out	0x3d, r28	; 61
+     cc8:	8a 83       	std	Y+2, r24	; 0x02
+     cca:	6b 83       	std	Y+3, r22	; 0x03
+     ccc:	4c 83       	std	Y+4, r20	; 0x04
+	uint8_t u8ErrorState = STD_TYPES_OK;
+     cce:	81 e0       	ldi	r24, 0x01	; 1
+     cd0:	89 83       	std	Y+1, r24	; 0x01
+
+	/*Check if the inputs are in the right range*/
+	if (u8_PinNum < DIO_PINS_NUMBER && u8_PortName < DIO_PORTS_NUMBER) {
+     cd2:	8b 81       	ldd	r24, Y+3	; 0x03
+     cd4:	88 30       	cpi	r24, 0x08	; 8
+     cd6:	08 f0       	brcs	.+2      	; 0xcda <DIO_u8SetPinDirection+0x26>
+     cd8:	2c c2       	rjmp	.+1112   	; 0x1132 <DIO_u8SetPinDirection+0x47e>
+     cda:	8a 81       	ldd	r24, Y+2	; 0x02
+     cdc:	84 30       	cpi	r24, 0x04	; 4
+     cde:	08 f0       	brcs	.+2      	; 0xce2 <DIO_u8SetPinDirection+0x2e>
+     ce0:	28 c2       	rjmp	.+1104   	; 0x1132 <DIO_u8SetPinDirection+0x47e>
+		/*Check which port */
+		switch (u8_PortName) {
+     ce2:	8a 81       	ldd	r24, Y+2	; 0x02
+     ce4:	28 2f       	mov	r18, r24
+     ce6:	30 e0       	ldi	r19, 0x00	; 0
+     ce8:	3e 87       	std	Y+14, r19	; 0x0e
+     cea:	2d 87       	std	Y+13, r18	; 0x0d
+     cec:	8d 85       	ldd	r24, Y+13	; 0x0d
+     cee:	9e 85       	ldd	r25, Y+14	; 0x0e
+     cf0:	81 30       	cpi	r24, 0x01	; 1
+     cf2:	91 05       	cpc	r25, r1
+     cf4:	09 f4       	brne	.+2      	; 0xcf8 <DIO_u8SetPinDirection+0x44>
+     cf6:	98 c0       	rjmp	.+304    	; 0xe28 <DIO_u8SetPinDirection+0x174>
+     cf8:	2d 85       	ldd	r18, Y+13	; 0x0d
+     cfa:	3e 85       	ldd	r19, Y+14	; 0x0e
+     cfc:	22 30       	cpi	r18, 0x02	; 2
+     cfe:	31 05       	cpc	r19, r1
+     d00:	2c f4       	brge	.+10     	; 0xd0c <DIO_u8SetPinDirection+0x58>
+     d02:	8d 85       	ldd	r24, Y+13	; 0x0d
+     d04:	9e 85       	ldd	r25, Y+14	; 0x0e
+     d06:	00 97       	sbiw	r24, 0x00	; 0
+     d08:	71 f0       	breq	.+28     	; 0xd26 <DIO_u8SetPinDirection+0x72>
+     d0a:	11 c2       	rjmp	.+1058   	; 0x112e <DIO_u8SetPinDirection+0x47a>
+     d0c:	2d 85       	ldd	r18, Y+13	; 0x0d
+     d0e:	3e 85       	ldd	r19, Y+14	; 0x0e
+     d10:	22 30       	cpi	r18, 0x02	; 2
+     d12:	31 05       	cpc	r19, r1
+     d14:	09 f4       	brne	.+2      	; 0xd18 <DIO_u8SetPinDirection+0x64>
+     d16:	09 c1       	rjmp	.+530    	; 0xf2a <DIO_u8SetPinDirection+0x276>
+     d18:	8d 85       	ldd	r24, Y+13	; 0x0d
+     d1a:	9e 85       	ldd	r25, Y+14	; 0x0e
+     d1c:	83 30       	cpi	r24, 0x03	; 3
+     d1e:	91 05       	cpc	r25, r1
+     d20:	09 f4       	brne	.+2      	; 0xd24 <DIO_u8SetPinDirection+0x70>
+     d22:	84 c1       	rjmp	.+776    	; 0x102c <DIO_u8SetPinDirection+0x378>
+     d24:	04 c2       	rjmp	.+1032   	; 0x112e <DIO_u8SetPinDirection+0x47a>
+		case PORTA:
+			/*Check which Direction the user wants the pin to be in */
+			switch (u8_PinDir) {
+     d26:	8c 81       	ldd	r24, Y+4	; 0x04
+     d28:	28 2f       	mov	r18, r24
+     d2a:	30 e0       	ldi	r19, 0x00	; 0
+     d2c:	3c 87       	std	Y+12, r19	; 0x0c
+     d2e:	2b 87       	std	Y+11, r18	; 0x0b
+     d30:	8b 85       	ldd	r24, Y+11	; 0x0b
+     d32:	9c 85       	ldd	r25, Y+12	; 0x0c
+     d34:	81 30       	cpi	r24, 0x01	; 1
+     d36:	91 05       	cpc	r25, r1
+     d38:	99 f1       	breq	.+102    	; 0xda0 <DIO_u8SetPinDirection+0xec>
+     d3a:	2b 85       	ldd	r18, Y+11	; 0x0b
+     d3c:	3c 85       	ldd	r19, Y+12	; 0x0c
+     d3e:	22 30       	cpi	r18, 0x02	; 2
+     d40:	31 05       	cpc	r19, r1
+     d42:	09 f4       	brne	.+2      	; 0xd46 <DIO_u8SetPinDirection+0x92>
+     d44:	5b c0       	rjmp	.+182    	; 0xdfc <DIO_u8SetPinDirection+0x148>
+     d46:	8b 85       	ldd	r24, Y+11	; 0x0b
+     d48:	9c 85       	ldd	r25, Y+12	; 0x0c
+     d4a:	00 97       	sbiw	r24, 0x00	; 0
+     d4c:	09 f0       	breq	.+2      	; 0xd50 <DIO_u8SetPinDirection+0x9c>
+     d4e:	6a c0       	rjmp	.+212    	; 0xe24 <DIO_u8SetPinDirection+0x170>
+
+			case DIO_INPUT:
+				// for input tristate mode ({DDxn, PORTxn} = 0b00)
+				CLR_BIT(DDRA_REG, u8_PinNum);
+     d50:	aa e3       	ldi	r26, 0x3A	; 58
+     d52:	b0 e0       	ldi	r27, 0x00	; 0
+     d54:	ea e3       	ldi	r30, 0x3A	; 58
+     d56:	f0 e0       	ldi	r31, 0x00	; 0
+     d58:	80 81       	ld	r24, Z
+     d5a:	48 2f       	mov	r20, r24
+     d5c:	8b 81       	ldd	r24, Y+3	; 0x03
+     d5e:	28 2f       	mov	r18, r24
+     d60:	30 e0       	ldi	r19, 0x00	; 0
+     d62:	81 e0       	ldi	r24, 0x01	; 1
+     d64:	90 e0       	ldi	r25, 0x00	; 0
+     d66:	02 c0       	rjmp	.+4      	; 0xd6c <DIO_u8SetPinDirection+0xb8>
+     d68:	88 0f       	add	r24, r24
+     d6a:	99 1f       	adc	r25, r25
+     d6c:	2a 95       	dec	r18
+     d6e:	e2 f7       	brpl	.-8      	; 0xd68 <DIO_u8SetPinDirection+0xb4>
+     d70:	80 95       	com	r24
+     d72:	84 23       	and	r24, r20
+     d74:	8c 93       	st	X, r24
+				CLR_BIT(PORTA_REG, u8_PinNum);
+     d76:	ab e3       	ldi	r26, 0x3B	; 59
+     d78:	b0 e0       	ldi	r27, 0x00	; 0
+     d7a:	eb e3       	ldi	r30, 0x3B	; 59
+     d7c:	f0 e0       	ldi	r31, 0x00	; 0
+     d7e:	80 81       	ld	r24, Z
+     d80:	48 2f       	mov	r20, r24
+     d82:	8b 81       	ldd	r24, Y+3	; 0x03
+     d84:	28 2f       	mov	r18, r24
+     d86:	30 e0       	ldi	r19, 0x00	; 0
+     d88:	81 e0       	ldi	r24, 0x01	; 1
+     d8a:	90 e0       	ldi	r25, 0x00	; 0
+     d8c:	02 2e       	mov	r0, r18
+     d8e:	02 c0       	rjmp	.+4      	; 0xd94 <DIO_u8SetPinDirection+0xe0>
+     d90:	88 0f       	add	r24, r24
+     d92:	99 1f       	adc	r25, r25
+     d94:	0a 94       	dec	r0
+     d96:	e2 f7       	brpl	.-8      	; 0xd90 <DIO_u8SetPinDirection+0xdc>
+     d98:	80 95       	com	r24
+     d9a:	84 23       	and	r24, r20
+     d9c:	8c 93       	st	X, r24
+     d9e:	ca c1       	rjmp	.+916    	; 0x1134 <DIO_u8SetPinDirection+0x480>
+				break;
+			case DIO_INPUT_PULLUP:
+				// for input PULLUP mode ({DDxn, PORTxn,PUD} = 0b010)
+				CLR_BIT(SFIOR_REG, PUD_BIT);
+     da0:	a0 e5       	ldi	r26, 0x50	; 80
+     da2:	b0 e0       	ldi	r27, 0x00	; 0
+     da4:	e0 e5       	ldi	r30, 0x50	; 80
+     da6:	f0 e0       	ldi	r31, 0x00	; 0
+     da8:	80 81       	ld	r24, Z
+     daa:	8b 7f       	andi	r24, 0xFB	; 251
+     dac:	8c 93       	st	X, r24
+				CLR_BIT(DDRA_REG, u8_PinNum);
+     dae:	aa e3       	ldi	r26, 0x3A	; 58
+     db0:	b0 e0       	ldi	r27, 0x00	; 0
+     db2:	ea e3       	ldi	r30, 0x3A	; 58
+     db4:	f0 e0       	ldi	r31, 0x00	; 0
+     db6:	80 81       	ld	r24, Z
+     db8:	48 2f       	mov	r20, r24
+     dba:	8b 81       	ldd	r24, Y+3	; 0x03
+     dbc:	28 2f       	mov	r18, r24
+     dbe:	30 e0       	ldi	r19, 0x00	; 0
+     dc0:	81 e0       	ldi	r24, 0x01	; 1
+     dc2:	90 e0       	ldi	r25, 0x00	; 0
+     dc4:	02 c0       	rjmp	.+4      	; 0xdca <DIO_u8SetPinDirection+0x116>
+     dc6:	88 0f       	add	r24, r24
+     dc8:	99 1f       	adc	r25, r25
+     dca:	2a 95       	dec	r18
+     dcc:	e2 f7       	brpl	.-8      	; 0xdc6 <DIO_u8SetPinDirection+0x112>
+     dce:	80 95       	com	r24
+     dd0:	84 23       	and	r24, r20
+     dd2:	8c 93       	st	X, r24
+				SET_BIT(PORTA_REG, u8_PinNum);
+     dd4:	ab e3       	ldi	r26, 0x3B	; 59
+     dd6:	b0 e0       	ldi	r27, 0x00	; 0
+     dd8:	eb e3       	ldi	r30, 0x3B	; 59
+     dda:	f0 e0       	ldi	r31, 0x00	; 0
+     ddc:	80 81       	ld	r24, Z
+     dde:	48 2f       	mov	r20, r24
+     de0:	8b 81       	ldd	r24, Y+3	; 0x03
+     de2:	28 2f       	mov	r18, r24
+     de4:	30 e0       	ldi	r19, 0x00	; 0
+     de6:	81 e0       	ldi	r24, 0x01	; 1
+     de8:	90 e0       	ldi	r25, 0x00	; 0
+     dea:	02 2e       	mov	r0, r18
+     dec:	02 c0       	rjmp	.+4      	; 0xdf2 <DIO_u8SetPinDirection+0x13e>
+     dee:	88 0f       	add	r24, r24
+     df0:	99 1f       	adc	r25, r25
+     df2:	0a 94       	dec	r0
+     df4:	e2 f7       	brpl	.-8      	; 0xdee <DIO_u8SetPinDirection+0x13a>
+     df6:	84 2b       	or	r24, r20
+     df8:	8c 93       	st	X, r24
+     dfa:	9c c1       	rjmp	.+824    	; 0x1134 <DIO_u8SetPinDirection+0x480>
+				break;
+			case DIO_OUTPUT:
+				// for OUTPUT mode ({DDxn, PORTxn} = 0b1x)
+				SET_BIT(DDRA_REG, u8_PinNum);
+     dfc:	aa e3       	ldi	r26, 0x3A	; 58
+     dfe:	b0 e0       	ldi	r27, 0x00	; 0
+     e00:	ea e3       	ldi	r30, 0x3A	; 58
+     e02:	f0 e0       	ldi	r31, 0x00	; 0
+     e04:	80 81       	ld	r24, Z
+     e06:	48 2f       	mov	r20, r24
+     e08:	8b 81       	ldd	r24, Y+3	; 0x03
+     e0a:	28 2f       	mov	r18, r24
+     e0c:	30 e0       	ldi	r19, 0x00	; 0
+     e0e:	81 e0       	ldi	r24, 0x01	; 1
+     e10:	90 e0       	ldi	r25, 0x00	; 0
+     e12:	02 2e       	mov	r0, r18
+     e14:	02 c0       	rjmp	.+4      	; 0xe1a <DIO_u8SetPinDirection+0x166>
+     e16:	88 0f       	add	r24, r24
+     e18:	99 1f       	adc	r25, r25
+     e1a:	0a 94       	dec	r0
+     e1c:	e2 f7       	brpl	.-8      	; 0xe16 <DIO_u8SetPinDirection+0x162>
+     e1e:	84 2b       	or	r24, r20
+     e20:	8c 93       	st	X, r24
+     e22:	88 c1       	rjmp	.+784    	; 0x1134 <DIO_u8SetPinDirection+0x480>
+				break;
+			default:
+				// If the input state is not one of the above cases return error state NOK
+				u8ErrorState = STD_TYPES_NOK;
+     e24:	19 82       	std	Y+1, r1	; 0x01
+     e26:	86 c1       	rjmp	.+780    	; 0x1134 <DIO_u8SetPinDirection+0x480>
+			}
+			break;
+		case PORTB:
+			/*Check if the inputs are in the right range*/
+			switch (u8_PinDir) {
+     e28:	8c 81       	ldd	r24, Y+4	; 0x04
+     e2a:	28 2f       	mov	r18, r24
+     e2c:	30 e0       	ldi	r19, 0x00	; 0
+     e2e:	3a 87       	std	Y+10, r19	; 0x0a
+     e30:	29 87       	std	Y+9, r18	; 0x09
+     e32:	89 85       	ldd	r24, Y+9	; 0x09
+     e34:	9a 85       	ldd	r25, Y+10	; 0x0a
+     e36:	81 30       	cpi	r24, 0x01	; 1
+     e38:	91 05       	cpc	r25, r1
+     e3a:	99 f1       	breq	.+102    	; 0xea2 <DIO_u8SetPinDirection+0x1ee>
+     e3c:	29 85       	ldd	r18, Y+9	; 0x09
+     e3e:	3a 85       	ldd	r19, Y+10	; 0x0a
+     e40:	22 30       	cpi	r18, 0x02	; 2
+     e42:	31 05       	cpc	r19, r1
+     e44:	09 f4       	brne	.+2      	; 0xe48 <DIO_u8SetPinDirection+0x194>
+     e46:	5b c0       	rjmp	.+182    	; 0xefe <DIO_u8SetPinDirection+0x24a>
+     e48:	89 85       	ldd	r24, Y+9	; 0x09
+     e4a:	9a 85       	ldd	r25, Y+10	; 0x0a
+     e4c:	00 97       	sbiw	r24, 0x00	; 0
+     e4e:	09 f0       	breq	.+2      	; 0xe52 <DIO_u8SetPinDirection+0x19e>
+     e50:	6a c0       	rjmp	.+212    	; 0xf26 <DIO_u8SetPinDirection+0x272>
+			case DIO_INPUT:
+				// for input tristate mode ({DDxn, PORTxn} = 0b00)
+				CLR_BIT(DDRB_REG, u8_PinNum);
+     e52:	a7 e3       	ldi	r26, 0x37	; 55
+     e54:	b0 e0       	ldi	r27, 0x00	; 0
+     e56:	e7 e3       	ldi	r30, 0x37	; 55
+     e58:	f0 e0       	ldi	r31, 0x00	; 0
+     e5a:	80 81       	ld	r24, Z
+     e5c:	48 2f       	mov	r20, r24
+     e5e:	8b 81       	ldd	r24, Y+3	; 0x03
+     e60:	28 2f       	mov	r18, r24
+     e62:	30 e0       	ldi	r19, 0x00	; 0
+     e64:	81 e0       	ldi	r24, 0x01	; 1
+     e66:	90 e0       	ldi	r25, 0x00	; 0
+     e68:	02 c0       	rjmp	.+4      	; 0xe6e <DIO_u8SetPinDirection+0x1ba>
+     e6a:	88 0f       	add	r24, r24
+     e6c:	99 1f       	adc	r25, r25
+     e6e:	2a 95       	dec	r18
+     e70:	e2 f7       	brpl	.-8      	; 0xe6a <DIO_u8SetPinDirection+0x1b6>
+     e72:	80 95       	com	r24
+     e74:	84 23       	and	r24, r20
+     e76:	8c 93       	st	X, r24
+				CLR_BIT(PORTB_REG, u8_PinNum);
+     e78:	a8 e3       	ldi	r26, 0x38	; 56
+     e7a:	b0 e0       	ldi	r27, 0x00	; 0
+     e7c:	e8 e3       	ldi	r30, 0x38	; 56
+     e7e:	f0 e0       	ldi	r31, 0x00	; 0
+     e80:	80 81       	ld	r24, Z
+     e82:	48 2f       	mov	r20, r24
+     e84:	8b 81       	ldd	r24, Y+3	; 0x03
+     e86:	28 2f       	mov	r18, r24
+     e88:	30 e0       	ldi	r19, 0x00	; 0
+     e8a:	81 e0       	ldi	r24, 0x01	; 1
+     e8c:	90 e0       	ldi	r25, 0x00	; 0
+     e8e:	02 2e       	mov	r0, r18
+     e90:	02 c0       	rjmp	.+4      	; 0xe96 <DIO_u8SetPinDirection+0x1e2>
+     e92:	88 0f       	add	r24, r24
+     e94:	99 1f       	adc	r25, r25
+     e96:	0a 94       	dec	r0
+     e98:	e2 f7       	brpl	.-8      	; 0xe92 <DIO_u8SetPinDirection+0x1de>
+     e9a:	80 95       	com	r24
+     e9c:	84 23       	and	r24, r20
+     e9e:	8c 93       	st	X, r24
+     ea0:	49 c1       	rjmp	.+658    	; 0x1134 <DIO_u8SetPinDirection+0x480>
+				break;
+			case DIO_INPUT_PULLUP:
+				// for input PULLUP mode ({DDxn, PORTxn,PUD} = 0b010)
+				CLR_BIT(SFIOR_REG, PUD_BIT);
+     ea2:	a0 e5       	ldi	r26, 0x50	; 80
+     ea4:	b0 e0       	ldi	r27, 0x00	; 0
+     ea6:	e0 e5       	ldi	r30, 0x50	; 80
+     ea8:	f0 e0       	ldi	r31, 0x00	; 0
+     eaa:	80 81       	ld	r24, Z
+     eac:	8b 7f       	andi	r24, 0xFB	; 251
+     eae:	8c 93       	st	X, r24
+				CLR_BIT(DDRB_REG, u8_PinNum);
+     eb0:	a7 e3       	ldi	r26, 0x37	; 55
+     eb2:	b0 e0       	ldi	r27, 0x00	; 0
+     eb4:	e7 e3       	ldi	r30, 0x37	; 55
+     eb6:	f0 e0       	ldi	r31, 0x00	; 0
+     eb8:	80 81       	ld	r24, Z
+     eba:	48 2f       	mov	r20, r24
+     ebc:	8b 81       	ldd	r24, Y+3	; 0x03
+     ebe:	28 2f       	mov	r18, r24
+     ec0:	30 e0       	ldi	r19, 0x00	; 0
+     ec2:	81 e0       	ldi	r24, 0x01	; 1
+     ec4:	90 e0       	ldi	r25, 0x00	; 0
+     ec6:	02 c0       	rjmp	.+4      	; 0xecc <DIO_u8SetPinDirection+0x218>
+     ec8:	88 0f       	add	r24, r24
+     eca:	99 1f       	adc	r25, r25
+     ecc:	2a 95       	dec	r18
+     ece:	e2 f7       	brpl	.-8      	; 0xec8 <DIO_u8SetPinDirection+0x214>
+     ed0:	80 95       	com	r24
+     ed2:	84 23       	and	r24, r20
+     ed4:	8c 93       	st	X, r24
+				SET_BIT(PORTB_REG, u8_PinNum);
+     ed6:	a8 e3       	ldi	r26, 0x38	; 56
+     ed8:	b0 e0       	ldi	r27, 0x00	; 0
+     eda:	e8 e3       	ldi	r30, 0x38	; 56
+     edc:	f0 e0       	ldi	r31, 0x00	; 0
+     ede:	80 81       	ld	r24, Z
+     ee0:	48 2f       	mov	r20, r24
+     ee2:	8b 81       	ldd	r24, Y+3	; 0x03
+     ee4:	28 2f       	mov	r18, r24
+     ee6:	30 e0       	ldi	r19, 0x00	; 0
+     ee8:	81 e0       	ldi	r24, 0x01	; 1
+     eea:	90 e0       	ldi	r25, 0x00	; 0
+     eec:	02 2e       	mov	r0, r18
+     eee:	02 c0       	rjmp	.+4      	; 0xef4 <DIO_u8SetPinDirection+0x240>
+     ef0:	88 0f       	add	r24, r24
+     ef2:	99 1f       	adc	r25, r25
+     ef4:	0a 94       	dec	r0
+     ef6:	e2 f7       	brpl	.-8      	; 0xef0 <DIO_u8SetPinDirection+0x23c>
+     ef8:	84 2b       	or	r24, r20
+     efa:	8c 93       	st	X, r24
+     efc:	1b c1       	rjmp	.+566    	; 0x1134 <DIO_u8SetPinDirection+0x480>
+				break;
+			case DIO_OUTPUT:
+				// for OUTPUT mode ({DDxn, PORTxn} = 0b1x)
+				SET_BIT(DDRB_REG, u8_PinNum);
+     efe:	a7 e3       	ldi	r26, 0x37	; 55
+     f00:	b0 e0       	ldi	r27, 0x00	; 0
+     f02:	e7 e3       	ldi	r30, 0x37	; 55
+     f04:	f0 e0       	ldi	r31, 0x00	; 0
+     f06:	80 81       	ld	r24, Z
+     f08:	48 2f       	mov	r20, r24
+     f0a:	8b 81       	ldd	r24, Y+3	; 0x03
+     f0c:	28 2f       	mov	r18, r24
+     f0e:	30 e0       	ldi	r19, 0x00	; 0
+     f10:	81 e0       	ldi	r24, 0x01	; 1
+     f12:	90 e0       	ldi	r25, 0x00	; 0
+     f14:	02 2e       	mov	r0, r18
+     f16:	02 c0       	rjmp	.+4      	; 0xf1c <DIO_u8SetPinDirection+0x268>
+     f18:	88 0f       	add	r24, r24
+     f1a:	99 1f       	adc	r25, r25
+     f1c:	0a 94       	dec	r0
+     f1e:	e2 f7       	brpl	.-8      	; 0xf18 <DIO_u8SetPinDirection+0x264>
+     f20:	84 2b       	or	r24, r20
+     f22:	8c 93       	st	X, r24
+     f24:	07 c1       	rjmp	.+526    	; 0x1134 <DIO_u8SetPinDirection+0x480>
+				break;
+			default:
+				// If the input state is not one of the above cases return error state NOK
+				u8ErrorState = STD_TYPES_NOK;
+     f26:	19 82       	std	Y+1, r1	; 0x01
+     f28:	05 c1       	rjmp	.+522    	; 0x1134 <DIO_u8SetPinDirection+0x480>
+			}
+			break;
+		case PORTC:
+			switch (u8_PinDir) {
+     f2a:	8c 81       	ldd	r24, Y+4	; 0x04
+     f2c:	28 2f       	mov	r18, r24
+     f2e:	30 e0       	ldi	r19, 0x00	; 0
+     f30:	38 87       	std	Y+8, r19	; 0x08
+     f32:	2f 83       	std	Y+7, r18	; 0x07
+     f34:	8f 81       	ldd	r24, Y+7	; 0x07
+     f36:	98 85       	ldd	r25, Y+8	; 0x08
+     f38:	81 30       	cpi	r24, 0x01	; 1
+     f3a:	91 05       	cpc	r25, r1
+     f3c:	99 f1       	breq	.+102    	; 0xfa4 <DIO_u8SetPinDirection+0x2f0>
+     f3e:	2f 81       	ldd	r18, Y+7	; 0x07
+     f40:	38 85       	ldd	r19, Y+8	; 0x08
+     f42:	22 30       	cpi	r18, 0x02	; 2
+     f44:	31 05       	cpc	r19, r1
+     f46:	09 f4       	brne	.+2      	; 0xf4a <DIO_u8SetPinDirection+0x296>
+     f48:	5b c0       	rjmp	.+182    	; 0x1000 <DIO_u8SetPinDirection+0x34c>
+     f4a:	8f 81       	ldd	r24, Y+7	; 0x07
+     f4c:	98 85       	ldd	r25, Y+8	; 0x08
+     f4e:	00 97       	sbiw	r24, 0x00	; 0
+     f50:	09 f0       	breq	.+2      	; 0xf54 <DIO_u8SetPinDirection+0x2a0>
+     f52:	6a c0       	rjmp	.+212    	; 0x1028 <DIO_u8SetPinDirection+0x374>
+			case DIO_INPUT:
+				// for input tristate mode ({DDxn, PORTxn} = 0b00)
+				CLR_BIT(DDRC_REG, u8_PinNum);
+     f54:	a4 e3       	ldi	r26, 0x34	; 52
+     f56:	b0 e0       	ldi	r27, 0x00	; 0
+     f58:	e4 e3       	ldi	r30, 0x34	; 52
+     f5a:	f0 e0       	ldi	r31, 0x00	; 0
+     f5c:	80 81       	ld	r24, Z
+     f5e:	48 2f       	mov	r20, r24
+     f60:	8b 81       	ldd	r24, Y+3	; 0x03
+     f62:	28 2f       	mov	r18, r24
+     f64:	30 e0       	ldi	r19, 0x00	; 0
+     f66:	81 e0       	ldi	r24, 0x01	; 1
+     f68:	90 e0       	ldi	r25, 0x00	; 0
+     f6a:	02 c0       	rjmp	.+4      	; 0xf70 <DIO_u8SetPinDirection+0x2bc>
+     f6c:	88 0f       	add	r24, r24
+     f6e:	99 1f       	adc	r25, r25
+     f70:	2a 95       	dec	r18
+     f72:	e2 f7       	brpl	.-8      	; 0xf6c <DIO_u8SetPinDirection+0x2b8>
+     f74:	80 95       	com	r24
+     f76:	84 23       	and	r24, r20
+     f78:	8c 93       	st	X, r24
+				CLR_BIT(PORTC_REG, u8_PinNum);
+     f7a:	a5 e3       	ldi	r26, 0x35	; 53
+     f7c:	b0 e0       	ldi	r27, 0x00	; 0
+     f7e:	e5 e3       	ldi	r30, 0x35	; 53
+     f80:	f0 e0       	ldi	r31, 0x00	; 0
+     f82:	80 81       	ld	r24, Z
+     f84:	48 2f       	mov	r20, r24
+     f86:	8b 81       	ldd	r24, Y+3	; 0x03
+     f88:	28 2f       	mov	r18, r24
+     f8a:	30 e0       	ldi	r19, 0x00	; 0
+     f8c:	81 e0       	ldi	r24, 0x01	; 1
+     f8e:	90 e0       	ldi	r25, 0x00	; 0
+     f90:	02 2e       	mov	r0, r18
+     f92:	02 c0       	rjmp	.+4      	; 0xf98 <DIO_u8SetPinDirection+0x2e4>
+     f94:	88 0f       	add	r24, r24
+     f96:	99 1f       	adc	r25, r25
+     f98:	0a 94       	dec	r0
+     f9a:	e2 f7       	brpl	.-8      	; 0xf94 <DIO_u8SetPinDirection+0x2e0>
+     f9c:	80 95       	com	r24
+     f9e:	84 23       	and	r24, r20
+     fa0:	8c 93       	st	X, r24
+     fa2:	c8 c0       	rjmp	.+400    	; 0x1134 <DIO_u8SetPinDirection+0x480>
+				break;
+			case DIO_INPUT_PULLUP:
+				// for input PULLUP mode ({DDxn, PORTxn,PUD} = 0b010)
+				CLR_BIT(SFIOR_REG, PUD_BIT);
+     fa4:	a0 e5       	ldi	r26, 0x50	; 80
+     fa6:	b0 e0       	ldi	r27, 0x00	; 0
+     fa8:	e0 e5       	ldi	r30, 0x50	; 80
+     faa:	f0 e0       	ldi	r31, 0x00	; 0
+     fac:	80 81       	ld	r24, Z
+     fae:	8b 7f       	andi	r24, 0xFB	; 251
+     fb0:	8c 93       	st	X, r24
+				CLR_BIT(DDRC_REG, u8_PinNum);
+     fb2:	a4 e3       	ldi	r26, 0x34	; 52
+     fb4:	b0 e0       	ldi	r27, 0x00	; 0
+     fb6:	e4 e3       	ldi	r30, 0x34	; 52
+     fb8:	f0 e0       	ldi	r31, 0x00	; 0
+     fba:	80 81       	ld	r24, Z
+     fbc:	48 2f       	mov	r20, r24
+     fbe:	8b 81       	ldd	r24, Y+3	; 0x03
+     fc0:	28 2f       	mov	r18, r24
+     fc2:	30 e0       	ldi	r19, 0x00	; 0
+     fc4:	81 e0       	ldi	r24, 0x01	; 1
+     fc6:	90 e0       	ldi	r25, 0x00	; 0
+     fc8:	02 c0       	rjmp	.+4      	; 0xfce <DIO_u8SetPinDirection+0x31a>
+     fca:	88 0f       	add	r24, r24
+     fcc:	99 1f       	adc	r25, r25
+     fce:	2a 95       	dec	r18
+     fd0:	e2 f7       	brpl	.-8      	; 0xfca <DIO_u8SetPinDirection+0x316>
+     fd2:	80 95       	com	r24
+     fd4:	84 23       	and	r24, r20
+     fd6:	8c 93       	st	X, r24
+				SET_BIT(PORTC_REG, u8_PinNum);
+     fd8:	a5 e3       	ldi	r26, 0x35	; 53
+     fda:	b0 e0       	ldi	r27, 0x00	; 0
+     fdc:	e5 e3       	ldi	r30, 0x35	; 53
+     fde:	f0 e0       	ldi	r31, 0x00	; 0
+     fe0:	80 81       	ld	r24, Z
+     fe2:	48 2f       	mov	r20, r24
+     fe4:	8b 81       	ldd	r24, Y+3	; 0x03
+     fe6:	28 2f       	mov	r18, r24
+     fe8:	30 e0       	ldi	r19, 0x00	; 0
+     fea:	81 e0       	ldi	r24, 0x01	; 1
+     fec:	90 e0       	ldi	r25, 0x00	; 0
+     fee:	02 2e       	mov	r0, r18
+     ff0:	02 c0       	rjmp	.+4      	; 0xff6 <DIO_u8SetPinDirection+0x342>
+     ff2:	88 0f       	add	r24, r24
+     ff4:	99 1f       	adc	r25, r25
+     ff6:	0a 94       	dec	r0
+     ff8:	e2 f7       	brpl	.-8      	; 0xff2 <DIO_u8SetPinDirection+0x33e>
+     ffa:	84 2b       	or	r24, r20
+     ffc:	8c 93       	st	X, r24
+     ffe:	9a c0       	rjmp	.+308    	; 0x1134 <DIO_u8SetPinDirection+0x480>
+				break;
+			case DIO_OUTPUT:
+				// for OUTPUT mode ({DDxn, PORTxn} = 0b1x)
+				SET_BIT(DDRC_REG, u8_PinNum);
+    1000:	a4 e3       	ldi	r26, 0x34	; 52
+    1002:	b0 e0       	ldi	r27, 0x00	; 0
+    1004:	e4 e3       	ldi	r30, 0x34	; 52
+    1006:	f0 e0       	ldi	r31, 0x00	; 0
+    1008:	80 81       	ld	r24, Z
+    100a:	48 2f       	mov	r20, r24
+    100c:	8b 81       	ldd	r24, Y+3	; 0x03
+    100e:	28 2f       	mov	r18, r24
+    1010:	30 e0       	ldi	r19, 0x00	; 0
+    1012:	81 e0       	ldi	r24, 0x01	; 1
+    1014:	90 e0       	ldi	r25, 0x00	; 0
+    1016:	02 2e       	mov	r0, r18
+    1018:	02 c0       	rjmp	.+4      	; 0x101e <DIO_u8SetPinDirection+0x36a>
+    101a:	88 0f       	add	r24, r24
+    101c:	99 1f       	adc	r25, r25
+    101e:	0a 94       	dec	r0
+    1020:	e2 f7       	brpl	.-8      	; 0x101a <DIO_u8SetPinDirection+0x366>
+    1022:	84 2b       	or	r24, r20
+    1024:	8c 93       	st	X, r24
+    1026:	86 c0       	rjmp	.+268    	; 0x1134 <DIO_u8SetPinDirection+0x480>
+				break;
+			default:
+				// If the input state is not one of the above cases return error state NOK
+				u8ErrorState = STD_TYPES_NOK;
+    1028:	19 82       	std	Y+1, r1	; 0x01
+    102a:	84 c0       	rjmp	.+264    	; 0x1134 <DIO_u8SetPinDirection+0x480>
+			}
+			break;
+		case PORTD:
+			switch (u8_PinDir) {
+    102c:	8c 81       	ldd	r24, Y+4	; 0x04
+    102e:	28 2f       	mov	r18, r24
+    1030:	30 e0       	ldi	r19, 0x00	; 0
+    1032:	3e 83       	std	Y+6, r19	; 0x06
+    1034:	2d 83       	std	Y+5, r18	; 0x05
+    1036:	8d 81       	ldd	r24, Y+5	; 0x05
+    1038:	9e 81       	ldd	r25, Y+6	; 0x06
+    103a:	81 30       	cpi	r24, 0x01	; 1
+    103c:	91 05       	cpc	r25, r1
+    103e:	99 f1       	breq	.+102    	; 0x10a6 <DIO_u8SetPinDirection+0x3f2>
+    1040:	2d 81       	ldd	r18, Y+5	; 0x05
+    1042:	3e 81       	ldd	r19, Y+6	; 0x06
+    1044:	22 30       	cpi	r18, 0x02	; 2
+    1046:	31 05       	cpc	r19, r1
+    1048:	09 f4       	brne	.+2      	; 0x104c <DIO_u8SetPinDirection+0x398>
+    104a:	5b c0       	rjmp	.+182    	; 0x1102 <DIO_u8SetPinDirection+0x44e>
+    104c:	8d 81       	ldd	r24, Y+5	; 0x05
+    104e:	9e 81       	ldd	r25, Y+6	; 0x06
+    1050:	00 97       	sbiw	r24, 0x00	; 0
+    1052:	09 f0       	breq	.+2      	; 0x1056 <DIO_u8SetPinDirection+0x3a2>
+    1054:	6a c0       	rjmp	.+212    	; 0x112a <DIO_u8SetPinDirection+0x476>
+			case DIO_INPUT:
+				// for input tristate mode ({DDxn, PORTxn} = 0b00)
+				CLR_BIT(DDRD_REG, u8_PinNum);
+    1056:	a1 e3       	ldi	r26, 0x31	; 49
+    1058:	b0 e0       	ldi	r27, 0x00	; 0
+    105a:	e1 e3       	ldi	r30, 0x31	; 49
+    105c:	f0 e0       	ldi	r31, 0x00	; 0
+    105e:	80 81       	ld	r24, Z
+    1060:	48 2f       	mov	r20, r24
+    1062:	8b 81       	ldd	r24, Y+3	; 0x03
+    1064:	28 2f       	mov	r18, r24
+    1066:	30 e0       	ldi	r19, 0x00	; 0
+    1068:	81 e0       	ldi	r24, 0x01	; 1
+    106a:	90 e0       	ldi	r25, 0x00	; 0
+    106c:	02 c0       	rjmp	.+4      	; 0x1072 <DIO_u8SetPinDirection+0x3be>
+    106e:	88 0f       	add	r24, r24
+    1070:	99 1f       	adc	r25, r25
+    1072:	2a 95       	dec	r18
+    1074:	e2 f7       	brpl	.-8      	; 0x106e <DIO_u8SetPinDirection+0x3ba>
+    1076:	80 95       	com	r24
+    1078:	84 23       	and	r24, r20
+    107a:	8c 93       	st	X, r24
+				CLR_BIT(PORTA_REG, u8_PinNum);
+    107c:	ab e3       	ldi	r26, 0x3B	; 59
+    107e:	b0 e0       	ldi	r27, 0x00	; 0
+    1080:	eb e3       	ldi	r30, 0x3B	; 59
+    1082:	f0 e0       	ldi	r31, 0x00	; 0
+    1084:	80 81       	ld	r24, Z
+    1086:	48 2f       	mov	r20, r24
+    1088:	8b 81       	ldd	r24, Y+3	; 0x03
+    108a:	28 2f       	mov	r18, r24
+    108c:	30 e0       	ldi	r19, 0x00	; 0
+    108e:	81 e0       	ldi	r24, 0x01	; 1
+    1090:	90 e0       	ldi	r25, 0x00	; 0
+    1092:	02 2e       	mov	r0, r18
+    1094:	02 c0       	rjmp	.+4      	; 0x109a <DIO_u8SetPinDirection+0x3e6>
+    1096:	88 0f       	add	r24, r24
+    1098:	99 1f       	adc	r25, r25
+    109a:	0a 94       	dec	r0
+    109c:	e2 f7       	brpl	.-8      	; 0x1096 <DIO_u8SetPinDirection+0x3e2>
+    109e:	80 95       	com	r24
+    10a0:	84 23       	and	r24, r20
+    10a2:	8c 93       	st	X, r24
+    10a4:	47 c0       	rjmp	.+142    	; 0x1134 <DIO_u8SetPinDirection+0x480>
+				break;
+			case DIO_INPUT_PULLUP:
+				// for input PULLUP mode ({DDxn, PORTxn,PUD} = 0b010)
+				CLR_BIT(SFIOR_REG, PUD_BIT);
+    10a6:	a0 e5       	ldi	r26, 0x50	; 80
+    10a8:	b0 e0       	ldi	r27, 0x00	; 0
+    10aa:	e0 e5       	ldi	r30, 0x50	; 80
+    10ac:	f0 e0       	ldi	r31, 0x00	; 0
+    10ae:	80 81       	ld	r24, Z
+    10b0:	8b 7f       	andi	r24, 0xFB	; 251
+    10b2:	8c 93       	st	X, r24
+				CLR_BIT(DDRD_REG, u8_PinNum);
+    10b4:	a1 e3       	ldi	r26, 0x31	; 49
+    10b6:	b0 e0       	ldi	r27, 0x00	; 0
+    10b8:	e1 e3       	ldi	r30, 0x31	; 49
+    10ba:	f0 e0       	ldi	r31, 0x00	; 0
+    10bc:	80 81       	ld	r24, Z
+    10be:	48 2f       	mov	r20, r24
+    10c0:	8b 81       	ldd	r24, Y+3	; 0x03
+    10c2:	28 2f       	mov	r18, r24
+    10c4:	30 e0       	ldi	r19, 0x00	; 0
+    10c6:	81 e0       	ldi	r24, 0x01	; 1
+    10c8:	90 e0       	ldi	r25, 0x00	; 0
+    10ca:	02 c0       	rjmp	.+4      	; 0x10d0 <DIO_u8SetPinDirection+0x41c>
+    10cc:	88 0f       	add	r24, r24
+    10ce:	99 1f       	adc	r25, r25
+    10d0:	2a 95       	dec	r18
+    10d2:	e2 f7       	brpl	.-8      	; 0x10cc <DIO_u8SetPinDirection+0x418>
+    10d4:	80 95       	com	r24
+    10d6:	84 23       	and	r24, r20
+    10d8:	8c 93       	st	X, r24
+				SET_BIT(PORTD_REG, u8_PinNum);
+    10da:	a2 e3       	ldi	r26, 0x32	; 50
+    10dc:	b0 e0       	ldi	r27, 0x00	; 0
+    10de:	e2 e3       	ldi	r30, 0x32	; 50
+    10e0:	f0 e0       	ldi	r31, 0x00	; 0
+    10e2:	80 81       	ld	r24, Z
+    10e4:	48 2f       	mov	r20, r24
+    10e6:	8b 81       	ldd	r24, Y+3	; 0x03
+    10e8:	28 2f       	mov	r18, r24
+    10ea:	30 e0       	ldi	r19, 0x00	; 0
+    10ec:	81 e0       	ldi	r24, 0x01	; 1
+    10ee:	90 e0       	ldi	r25, 0x00	; 0
+    10f0:	02 2e       	mov	r0, r18
+    10f2:	02 c0       	rjmp	.+4      	; 0x10f8 <DIO_u8SetPinDirection+0x444>
+    10f4:	88 0f       	add	r24, r24
+    10f6:	99 1f       	adc	r25, r25
+    10f8:	0a 94       	dec	r0
+    10fa:	e2 f7       	brpl	.-8      	; 0x10f4 <DIO_u8SetPinDirection+0x440>
+    10fc:	84 2b       	or	r24, r20
+    10fe:	8c 93       	st	X, r24
+    1100:	19 c0       	rjmp	.+50     	; 0x1134 <DIO_u8SetPinDirection+0x480>
+				break;
+			case DIO_OUTPUT:
+				// for OUTPUT mode ({DDxn, PORTxn} = 0b1x)
+				SET_BIT(DDRD_REG, u8_PinNum);
+    1102:	a1 e3       	ldi	r26, 0x31	; 49
+    1104:	b0 e0       	ldi	r27, 0x00	; 0
+    1106:	e1 e3       	ldi	r30, 0x31	; 49
+    1108:	f0 e0       	ldi	r31, 0x00	; 0
+    110a:	80 81       	ld	r24, Z
+    110c:	48 2f       	mov	r20, r24
+    110e:	8b 81       	ldd	r24, Y+3	; 0x03
+    1110:	28 2f       	mov	r18, r24
+    1112:	30 e0       	ldi	r19, 0x00	; 0
+    1114:	81 e0       	ldi	r24, 0x01	; 1
+    1116:	90 e0       	ldi	r25, 0x00	; 0
+    1118:	02 2e       	mov	r0, r18
+    111a:	02 c0       	rjmp	.+4      	; 0x1120 <DIO_u8SetPinDirection+0x46c>
+    111c:	88 0f       	add	r24, r24
+    111e:	99 1f       	adc	r25, r25
+    1120:	0a 94       	dec	r0
+    1122:	e2 f7       	brpl	.-8      	; 0x111c <DIO_u8SetPinDirection+0x468>
+    1124:	84 2b       	or	r24, r20
+    1126:	8c 93       	st	X, r24
+    1128:	05 c0       	rjmp	.+10     	; 0x1134 <DIO_u8SetPinDirection+0x480>
+				break;
+			default:
+				// If the input state is not one of the above cases return error state NOK
+				u8ErrorState = STD_TYPES_NOK;
+    112a:	19 82       	std	Y+1, r1	; 0x01
+    112c:	03 c0       	rjmp	.+6      	; 0x1134 <DIO_u8SetPinDirection+0x480>
+			}
+			break;
+		default:
+			// If the input port is not one of the above cases return error state NOK
+			u8ErrorState = STD_TYPES_NOK;
+    112e:	19 82       	std	Y+1, r1	; 0x01
+    1130:	01 c0       	rjmp	.+2      	; 0x1134 <DIO_u8SetPinDirection+0x480>
+		}
+	} else {
+		// If the input port or input pin is not suitable return error state NOK
+		u8ErrorState = STD_TYPES_NOK;
+    1132:	19 82       	std	Y+1, r1	; 0x01
+	}
+	return u8ErrorState;
+    1134:	89 81       	ldd	r24, Y+1	; 0x01
+}
+    1136:	2e 96       	adiw	r28, 0x0e	; 14
+    1138:	0f b6       	in	r0, 0x3f	; 63
+    113a:	f8 94       	cli
+    113c:	de bf       	out	0x3e, r29	; 62
+    113e:	0f be       	out	0x3f, r0	; 63
+    1140:	cd bf       	out	0x3d, r28	; 61
+    1142:	cf 91       	pop	r28
+    1144:	df 91       	pop	r29
+    1146:	08 95       	ret
+
+00001148 <DIO_u8SetPinData>:
+
+// function to assign value to pin 
+uint8_t DIO_u8SetPinData(DIOPort_t u8_PortName, DIOPin_t u8_PinNum,
+		DIODir_t u8_PinValue) {
+    1148:	df 93       	push	r29
+    114a:	cf 93       	push	r28
+    114c:	cd b7       	in	r28, 0x3d	; 61
+    114e:	de b7       	in	r29, 0x3e	; 62
+    1150:	2e 97       	sbiw	r28, 0x0e	; 14
+    1152:	0f b6       	in	r0, 0x3f	; 63
+    1154:	f8 94       	cli
+    1156:	de bf       	out	0x3e, r29	; 62
+    1158:	0f be       	out	0x3f, r0	; 63
+    115a:	cd bf       	out	0x3d, r28	; 61
+    115c:	8a 83       	std	Y+2, r24	; 0x02
+    115e:	6b 83       	std	Y+3, r22	; 0x03
+    1160:	4c 83       	std	Y+4, r20	; 0x04
+	uint8_t u8ErrorState = STD_TYPES_OK;
+    1162:	81 e0       	ldi	r24, 0x01	; 1
+    1164:	89 83       	std	Y+1, r24	; 0x01
+	if (u8_PinNum < DIO_PINS_NUMBER) {
+    1166:	8b 81       	ldd	r24, Y+3	; 0x03
+    1168:	88 30       	cpi	r24, 0x08	; 8
+    116a:	08 f0       	brcs	.+2      	; 0x116e <DIO_u8SetPinData+0x26>
+    116c:	06 c1       	rjmp	.+524    	; 0x137a <DIO_u8SetPinData+0x232>
+		/*Check which port */
+		switch (u8_PortName) {
+    116e:	8a 81       	ldd	r24, Y+2	; 0x02
+    1170:	28 2f       	mov	r18, r24
+    1172:	30 e0       	ldi	r19, 0x00	; 0
+    1174:	3e 87       	std	Y+14, r19	; 0x0e
+    1176:	2d 87       	std	Y+13, r18	; 0x0d
+    1178:	8d 85       	ldd	r24, Y+13	; 0x0d
+    117a:	9e 85       	ldd	r25, Y+14	; 0x0e
+    117c:	81 30       	cpi	r24, 0x01	; 1
+    117e:	91 05       	cpc	r25, r1
+    1180:	09 f4       	brne	.+2      	; 0x1184 <DIO_u8SetPinData+0x3c>
+    1182:	50 c0       	rjmp	.+160    	; 0x1224 <DIO_u8SetPinData+0xdc>
+    1184:	2d 85       	ldd	r18, Y+13	; 0x0d
+    1186:	3e 85       	ldd	r19, Y+14	; 0x0e
+    1188:	22 30       	cpi	r18, 0x02	; 2
+    118a:	31 05       	cpc	r19, r1
+    118c:	2c f4       	brge	.+10     	; 0x1198 <DIO_u8SetPinData+0x50>
+    118e:	8d 85       	ldd	r24, Y+13	; 0x0d
+    1190:	9e 85       	ldd	r25, Y+14	; 0x0e
+    1192:	00 97       	sbiw	r24, 0x00	; 0
+    1194:	71 f0       	breq	.+28     	; 0x11b2 <DIO_u8SetPinData+0x6a>
+    1196:	f2 c0       	rjmp	.+484    	; 0x137c <DIO_u8SetPinData+0x234>
+    1198:	2d 85       	ldd	r18, Y+13	; 0x0d
+    119a:	3e 85       	ldd	r19, Y+14	; 0x0e
+    119c:	22 30       	cpi	r18, 0x02	; 2
+    119e:	31 05       	cpc	r19, r1
+    11a0:	09 f4       	brne	.+2      	; 0x11a4 <DIO_u8SetPinData+0x5c>
+    11a2:	79 c0       	rjmp	.+242    	; 0x1296 <DIO_u8SetPinData+0x14e>
+    11a4:	8d 85       	ldd	r24, Y+13	; 0x0d
+    11a6:	9e 85       	ldd	r25, Y+14	; 0x0e
+    11a8:	83 30       	cpi	r24, 0x03	; 3
+    11aa:	91 05       	cpc	r25, r1
+    11ac:	09 f4       	brne	.+2      	; 0x11b0 <DIO_u8SetPinData+0x68>
+    11ae:	ac c0       	rjmp	.+344    	; 0x1308 <DIO_u8SetPinData+0x1c0>
+    11b0:	e5 c0       	rjmp	.+458    	; 0x137c <DIO_u8SetPinData+0x234>
+		case PORTA:
+			switch (u8_PinValue) {
+    11b2:	8c 81       	ldd	r24, Y+4	; 0x04
+    11b4:	28 2f       	mov	r18, r24
+    11b6:	30 e0       	ldi	r19, 0x00	; 0
+    11b8:	3c 87       	std	Y+12, r19	; 0x0c
+    11ba:	2b 87       	std	Y+11, r18	; 0x0b
+    11bc:	8b 85       	ldd	r24, Y+11	; 0x0b
+    11be:	9c 85       	ldd	r25, Y+12	; 0x0c
+    11c0:	00 97       	sbiw	r24, 0x00	; 0
+    11c2:	c9 f0       	breq	.+50     	; 0x11f6 <DIO_u8SetPinData+0xae>
+    11c4:	2b 85       	ldd	r18, Y+11	; 0x0b
+    11c6:	3c 85       	ldd	r19, Y+12	; 0x0c
+    11c8:	21 30       	cpi	r18, 0x01	; 1
+    11ca:	31 05       	cpc	r19, r1
+    11cc:	49 f5       	brne	.+82     	; 0x1220 <DIO_u8SetPinData+0xd8>
+			// set or clear bit depend on PinValue
+			case DIO_HIGH:
+				SET_BIT(PORTA_REG, u8_PinNum);
+    11ce:	ab e3       	ldi	r26, 0x3B	; 59
+    11d0:	b0 e0       	ldi	r27, 0x00	; 0
+    11d2:	eb e3       	ldi	r30, 0x3B	; 59
+    11d4:	f0 e0       	ldi	r31, 0x00	; 0
+    11d6:	80 81       	ld	r24, Z
+    11d8:	48 2f       	mov	r20, r24
+    11da:	8b 81       	ldd	r24, Y+3	; 0x03
+    11dc:	28 2f       	mov	r18, r24
+    11de:	30 e0       	ldi	r19, 0x00	; 0
+    11e0:	81 e0       	ldi	r24, 0x01	; 1
+    11e2:	90 e0       	ldi	r25, 0x00	; 0
+    11e4:	02 2e       	mov	r0, r18
+    11e6:	02 c0       	rjmp	.+4      	; 0x11ec <DIO_u8SetPinData+0xa4>
+    11e8:	88 0f       	add	r24, r24
+    11ea:	99 1f       	adc	r25, r25
+    11ec:	0a 94       	dec	r0
+    11ee:	e2 f7       	brpl	.-8      	; 0x11e8 <DIO_u8SetPinData+0xa0>
+    11f0:	84 2b       	or	r24, r20
+    11f2:	8c 93       	st	X, r24
+    11f4:	c3 c0       	rjmp	.+390    	; 0x137c <DIO_u8SetPinData+0x234>
+				break;
+			case DIO_LOW:
+				CLR_BIT(PORTA_REG, u8_PinNum);
+    11f6:	ab e3       	ldi	r26, 0x3B	; 59
+    11f8:	b0 e0       	ldi	r27, 0x00	; 0
+    11fa:	eb e3       	ldi	r30, 0x3B	; 59
+    11fc:	f0 e0       	ldi	r31, 0x00	; 0
+    11fe:	80 81       	ld	r24, Z
+    1200:	48 2f       	mov	r20, r24
+    1202:	8b 81       	ldd	r24, Y+3	; 0x03
+    1204:	28 2f       	mov	r18, r24
+    1206:	30 e0       	ldi	r19, 0x00	; 0
+    1208:	81 e0       	ldi	r24, 0x01	; 1
+    120a:	90 e0       	ldi	r25, 0x00	; 0
+    120c:	02 2e       	mov	r0, r18
+    120e:	02 c0       	rjmp	.+4      	; 0x1214 <DIO_u8SetPinData+0xcc>
+    1210:	88 0f       	add	r24, r24
+    1212:	99 1f       	adc	r25, r25
+    1214:	0a 94       	dec	r0
+    1216:	e2 f7       	brpl	.-8      	; 0x1210 <DIO_u8SetPinData+0xc8>
+    1218:	80 95       	com	r24
+    121a:	84 23       	and	r24, r20
+    121c:	8c 93       	st	X, r24
+    121e:	ae c0       	rjmp	.+348    	; 0x137c <DIO_u8SetPinData+0x234>
+				break;
+			default:
+				// If not HIGH or LOW return error state NOK
+				u8ErrorState = STD_TYPES_NOK;
+    1220:	19 82       	std	Y+1, r1	; 0x01
+    1222:	ac c0       	rjmp	.+344    	; 0x137c <DIO_u8SetPinData+0x234>
+			}
+			break;
+		case PORTB:
+			switch (u8_PinValue) {
+    1224:	8c 81       	ldd	r24, Y+4	; 0x04
+    1226:	28 2f       	mov	r18, r24
+    1228:	30 e0       	ldi	r19, 0x00	; 0
+    122a:	3a 87       	std	Y+10, r19	; 0x0a
+    122c:	29 87       	std	Y+9, r18	; 0x09
+    122e:	89 85       	ldd	r24, Y+9	; 0x09
+    1230:	9a 85       	ldd	r25, Y+10	; 0x0a
+    1232:	00 97       	sbiw	r24, 0x00	; 0
+    1234:	c9 f0       	breq	.+50     	; 0x1268 <DIO_u8SetPinData+0x120>
+    1236:	29 85       	ldd	r18, Y+9	; 0x09
+    1238:	3a 85       	ldd	r19, Y+10	; 0x0a
+    123a:	21 30       	cpi	r18, 0x01	; 1
+    123c:	31 05       	cpc	r19, r1
+    123e:	49 f5       	brne	.+82     	; 0x1292 <DIO_u8SetPinData+0x14a>
+			// set or clear bit depend on PinValue
+			case DIO_HIGH:
+				SET_BIT(PORTB_REG, u8_PinNum);
+    1240:	a8 e3       	ldi	r26, 0x38	; 56
+    1242:	b0 e0       	ldi	r27, 0x00	; 0
+    1244:	e8 e3       	ldi	r30, 0x38	; 56
+    1246:	f0 e0       	ldi	r31, 0x00	; 0
+    1248:	80 81       	ld	r24, Z
+    124a:	48 2f       	mov	r20, r24
+    124c:	8b 81       	ldd	r24, Y+3	; 0x03
+    124e:	28 2f       	mov	r18, r24
+    1250:	30 e0       	ldi	r19, 0x00	; 0
+    1252:	81 e0       	ldi	r24, 0x01	; 1
+    1254:	90 e0       	ldi	r25, 0x00	; 0
+    1256:	02 2e       	mov	r0, r18
+    1258:	02 c0       	rjmp	.+4      	; 0x125e <DIO_u8SetPinData+0x116>
+    125a:	88 0f       	add	r24, r24
+    125c:	99 1f       	adc	r25, r25
+    125e:	0a 94       	dec	r0
+    1260:	e2 f7       	brpl	.-8      	; 0x125a <DIO_u8SetPinData+0x112>
+    1262:	84 2b       	or	r24, r20
+    1264:	8c 93       	st	X, r24
+    1266:	8a c0       	rjmp	.+276    	; 0x137c <DIO_u8SetPinData+0x234>
+				break;
+			case DIO_LOW:
+				CLR_BIT(PORTB_REG, u8_PinNum);
+    1268:	a8 e3       	ldi	r26, 0x38	; 56
+    126a:	b0 e0       	ldi	r27, 0x00	; 0
+    126c:	e8 e3       	ldi	r30, 0x38	; 56
+    126e:	f0 e0       	ldi	r31, 0x00	; 0
+    1270:	80 81       	ld	r24, Z
+    1272:	48 2f       	mov	r20, r24
+    1274:	8b 81       	ldd	r24, Y+3	; 0x03
+    1276:	28 2f       	mov	r18, r24
+    1278:	30 e0       	ldi	r19, 0x00	; 0
+    127a:	81 e0       	ldi	r24, 0x01	; 1
+    127c:	90 e0       	ldi	r25, 0x00	; 0
+    127e:	02 2e       	mov	r0, r18
+    1280:	02 c0       	rjmp	.+4      	; 0x1286 <DIO_u8SetPinData+0x13e>
+    1282:	88 0f       	add	r24, r24
+    1284:	99 1f       	adc	r25, r25
+    1286:	0a 94       	dec	r0
+    1288:	e2 f7       	brpl	.-8      	; 0x1282 <DIO_u8SetPinData+0x13a>
+    128a:	80 95       	com	r24
+    128c:	84 23       	and	r24, r20
+    128e:	8c 93       	st	X, r24
+    1290:	75 c0       	rjmp	.+234    	; 0x137c <DIO_u8SetPinData+0x234>
+				break;
+			default:
+				// If not HIGH or LOW return error state NOK
+				u8ErrorState = STD_TYPES_NOK;
+    1292:	19 82       	std	Y+1, r1	; 0x01
+    1294:	73 c0       	rjmp	.+230    	; 0x137c <DIO_u8SetPinData+0x234>
+			}
+			break;
+		case PORTC:
+			switch (u8_PinValue) {
+    1296:	8c 81       	ldd	r24, Y+4	; 0x04
+    1298:	28 2f       	mov	r18, r24
+    129a:	30 e0       	ldi	r19, 0x00	; 0
+    129c:	38 87       	std	Y+8, r19	; 0x08
+    129e:	2f 83       	std	Y+7, r18	; 0x07
+    12a0:	8f 81       	ldd	r24, Y+7	; 0x07
+    12a2:	98 85       	ldd	r25, Y+8	; 0x08
+    12a4:	00 97       	sbiw	r24, 0x00	; 0
+    12a6:	c9 f0       	breq	.+50     	; 0x12da <DIO_u8SetPinData+0x192>
+    12a8:	2f 81       	ldd	r18, Y+7	; 0x07
+    12aa:	38 85       	ldd	r19, Y+8	; 0x08
+    12ac:	21 30       	cpi	r18, 0x01	; 1
+    12ae:	31 05       	cpc	r19, r1
+    12b0:	49 f5       	brne	.+82     	; 0x1304 <DIO_u8SetPinData+0x1bc>
+			// set or clear bit depend on PinValue
+			case DIO_HIGH:
+				SET_BIT(PORTC_REG, u8_PinNum);
+    12b2:	a5 e3       	ldi	r26, 0x35	; 53
+    12b4:	b0 e0       	ldi	r27, 0x00	; 0
+    12b6:	e5 e3       	ldi	r30, 0x35	; 53
+    12b8:	f0 e0       	ldi	r31, 0x00	; 0
+    12ba:	80 81       	ld	r24, Z
+    12bc:	48 2f       	mov	r20, r24
+    12be:	8b 81       	ldd	r24, Y+3	; 0x03
+    12c0:	28 2f       	mov	r18, r24
+    12c2:	30 e0       	ldi	r19, 0x00	; 0
+    12c4:	81 e0       	ldi	r24, 0x01	; 1
+    12c6:	90 e0       	ldi	r25, 0x00	; 0
+    12c8:	02 2e       	mov	r0, r18
+    12ca:	02 c0       	rjmp	.+4      	; 0x12d0 <DIO_u8SetPinData+0x188>
+    12cc:	88 0f       	add	r24, r24
+    12ce:	99 1f       	adc	r25, r25
+    12d0:	0a 94       	dec	r0
+    12d2:	e2 f7       	brpl	.-8      	; 0x12cc <DIO_u8SetPinData+0x184>
+    12d4:	84 2b       	or	r24, r20
+    12d6:	8c 93       	st	X, r24
+    12d8:	51 c0       	rjmp	.+162    	; 0x137c <DIO_u8SetPinData+0x234>
+				break;
+			case DIO_LOW:
+				CLR_BIT(PORTC_REG, u8_PinNum);
+    12da:	a5 e3       	ldi	r26, 0x35	; 53
+    12dc:	b0 e0       	ldi	r27, 0x00	; 0
+    12de:	e5 e3       	ldi	r30, 0x35	; 53
+    12e0:	f0 e0       	ldi	r31, 0x00	; 0
+    12e2:	80 81       	ld	r24, Z
+    12e4:	48 2f       	mov	r20, r24
+    12e6:	8b 81       	ldd	r24, Y+3	; 0x03
+    12e8:	28 2f       	mov	r18, r24
+    12ea:	30 e0       	ldi	r19, 0x00	; 0
+    12ec:	81 e0       	ldi	r24, 0x01	; 1
+    12ee:	90 e0       	ldi	r25, 0x00	; 0
+    12f0:	02 2e       	mov	r0, r18
+    12f2:	02 c0       	rjmp	.+4      	; 0x12f8 <DIO_u8SetPinData+0x1b0>
+    12f4:	88 0f       	add	r24, r24
+    12f6:	99 1f       	adc	r25, r25
+    12f8:	0a 94       	dec	r0
+    12fa:	e2 f7       	brpl	.-8      	; 0x12f4 <DIO_u8SetPinData+0x1ac>
+    12fc:	80 95       	com	r24
+    12fe:	84 23       	and	r24, r20
+    1300:	8c 93       	st	X, r24
+    1302:	3c c0       	rjmp	.+120    	; 0x137c <DIO_u8SetPinData+0x234>
+				break;
+			default:
+				// If not HIGH or LOW return error state NOK
+				u8ErrorState = STD_TYPES_NOK;
+    1304:	19 82       	std	Y+1, r1	; 0x01
+    1306:	3a c0       	rjmp	.+116    	; 0x137c <DIO_u8SetPinData+0x234>
+			}
+			break;
+		case PORTD:
+			switch (u8_PinValue) {
+    1308:	8c 81       	ldd	r24, Y+4	; 0x04
+    130a:	28 2f       	mov	r18, r24
+    130c:	30 e0       	ldi	r19, 0x00	; 0
+    130e:	3e 83       	std	Y+6, r19	; 0x06
+    1310:	2d 83       	std	Y+5, r18	; 0x05
+    1312:	8d 81       	ldd	r24, Y+5	; 0x05
+    1314:	9e 81       	ldd	r25, Y+6	; 0x06
+    1316:	00 97       	sbiw	r24, 0x00	; 0
+    1318:	c9 f0       	breq	.+50     	; 0x134c <DIO_u8SetPinData+0x204>
+    131a:	2d 81       	ldd	r18, Y+5	; 0x05
+    131c:	3e 81       	ldd	r19, Y+6	; 0x06
+    131e:	21 30       	cpi	r18, 0x01	; 1
+    1320:	31 05       	cpc	r19, r1
+    1322:	49 f5       	brne	.+82     	; 0x1376 <DIO_u8SetPinData+0x22e>
+			// set or clear bit depend on PinValue
+			case DIO_HIGH:
+				SET_BIT(PORTD_REG, u8_PinNum);
+    1324:	a2 e3       	ldi	r26, 0x32	; 50
+    1326:	b0 e0       	ldi	r27, 0x00	; 0
+    1328:	e2 e3       	ldi	r30, 0x32	; 50
+    132a:	f0 e0       	ldi	r31, 0x00	; 0
+    132c:	80 81       	ld	r24, Z
+    132e:	48 2f       	mov	r20, r24
+    1330:	8b 81       	ldd	r24, Y+3	; 0x03
+    1332:	28 2f       	mov	r18, r24
+    1334:	30 e0       	ldi	r19, 0x00	; 0
+    1336:	81 e0       	ldi	r24, 0x01	; 1
+    1338:	90 e0       	ldi	r25, 0x00	; 0
+    133a:	02 2e       	mov	r0, r18
+    133c:	02 c0       	rjmp	.+4      	; 0x1342 <DIO_u8SetPinData+0x1fa>
+    133e:	88 0f       	add	r24, r24
+    1340:	99 1f       	adc	r25, r25
+    1342:	0a 94       	dec	r0
+    1344:	e2 f7       	brpl	.-8      	; 0x133e <DIO_u8SetPinData+0x1f6>
+    1346:	84 2b       	or	r24, r20
+    1348:	8c 93       	st	X, r24
+    134a:	18 c0       	rjmp	.+48     	; 0x137c <DIO_u8SetPinData+0x234>
+				break;
+			case DIO_LOW:
+				CLR_BIT(PORTD_REG, u8_PinNum);
+    134c:	a2 e3       	ldi	r26, 0x32	; 50
+    134e:	b0 e0       	ldi	r27, 0x00	; 0
+    1350:	e2 e3       	ldi	r30, 0x32	; 50
+    1352:	f0 e0       	ldi	r31, 0x00	; 0
+    1354:	80 81       	ld	r24, Z
+    1356:	48 2f       	mov	r20, r24
+    1358:	8b 81       	ldd	r24, Y+3	; 0x03
+    135a:	28 2f       	mov	r18, r24
+    135c:	30 e0       	ldi	r19, 0x00	; 0
+    135e:	81 e0       	ldi	r24, 0x01	; 1
+    1360:	90 e0       	ldi	r25, 0x00	; 0
+    1362:	02 2e       	mov	r0, r18
+    1364:	02 c0       	rjmp	.+4      	; 0x136a <DIO_u8SetPinData+0x222>
+    1366:	88 0f       	add	r24, r24
+    1368:	99 1f       	adc	r25, r25
+    136a:	0a 94       	dec	r0
+    136c:	e2 f7       	brpl	.-8      	; 0x1366 <DIO_u8SetPinData+0x21e>
+    136e:	80 95       	com	r24
+    1370:	84 23       	and	r24, r20
+    1372:	8c 93       	st	X, r24
+    1374:	03 c0       	rjmp	.+6      	; 0x137c <DIO_u8SetPinData+0x234>
+				break;
+			default:
+				// If not HIGH or LOW return error state NOK
+				u8ErrorState = STD_TYPES_NOK;
+    1376:	19 82       	std	Y+1, r1	; 0x01
+    1378:	01 c0       	rjmp	.+2      	; 0x137c <DIO_u8SetPinData+0x234>
+			}
+			break;
+		}
+	} else {
+		// if not suitable port or pin state return error state NOK
+		u8ErrorState = STD_TYPES_NOK;
+    137a:	19 82       	std	Y+1, r1	; 0x01
+	}
+	return u8ErrorState;
+    137c:	89 81       	ldd	r24, Y+1	; 0x01
+}
+    137e:	2e 96       	adiw	r28, 0x0e	; 14
+    1380:	0f b6       	in	r0, 0x3f	; 63
+    1382:	f8 94       	cli
+    1384:	de bf       	out	0x3e, r29	; 62
+    1386:	0f be       	out	0x3f, r0	; 63
+    1388:	cd bf       	out	0x3d, r28	; 61
+    138a:	cf 91       	pop	r28
+    138c:	df 91       	pop	r29
+    138e:	08 95       	ret
+
+00001390 <DIO_u8GetPinData>:
+
+// function to read value on pin 
+uint8_t DIO_u8GetPinData(DIOPort_t u8_PortName, DIOPin_t u8_PinNum,
+		uint8_t* pu8_ReturnVar) {
+    1390:	df 93       	push	r29
+    1392:	cf 93       	push	r28
+    1394:	cd b7       	in	r28, 0x3d	; 61
+    1396:	de b7       	in	r29, 0x3e	; 62
+    1398:	27 97       	sbiw	r28, 0x07	; 7
+    139a:	0f b6       	in	r0, 0x3f	; 63
+    139c:	f8 94       	cli
+    139e:	de bf       	out	0x3e, r29	; 62
+    13a0:	0f be       	out	0x3f, r0	; 63
+    13a2:	cd bf       	out	0x3d, r28	; 61
+    13a4:	8a 83       	std	Y+2, r24	; 0x02
+    13a6:	6b 83       	std	Y+3, r22	; 0x03
+    13a8:	5d 83       	std	Y+5, r21	; 0x05
+    13aa:	4c 83       	std	Y+4, r20	; 0x04
+	uint8_t u8ErrorState = STD_TYPES_OK;
+    13ac:	81 e0       	ldi	r24, 0x01	; 1
+    13ae:	89 83       	std	Y+1, r24	; 0x01
+
+	if (u8_PinNum < DIO_PINS_NUMBER && pu8_ReturnVar != NULL) {
+    13b0:	8b 81       	ldd	r24, Y+3	; 0x03
+    13b2:	88 30       	cpi	r24, 0x08	; 8
+    13b4:	08 f0       	brcs	.+2      	; 0x13b8 <DIO_u8GetPinData+0x28>
+    13b6:	78 c0       	rjmp	.+240    	; 0x14a8 <DIO_u8GetPinData+0x118>
+    13b8:	8c 81       	ldd	r24, Y+4	; 0x04
+    13ba:	9d 81       	ldd	r25, Y+5	; 0x05
+    13bc:	00 97       	sbiw	r24, 0x00	; 0
+    13be:	09 f4       	brne	.+2      	; 0x13c2 <DIO_u8GetPinData+0x32>
+    13c0:	73 c0       	rjmp	.+230    	; 0x14a8 <DIO_u8GetPinData+0x118>
+		switch (u8_PortName) {
+    13c2:	8a 81       	ldd	r24, Y+2	; 0x02
+    13c4:	28 2f       	mov	r18, r24
+    13c6:	30 e0       	ldi	r19, 0x00	; 0
+    13c8:	3f 83       	std	Y+7, r19	; 0x07
+    13ca:	2e 83       	std	Y+6, r18	; 0x06
+    13cc:	4e 81       	ldd	r20, Y+6	; 0x06
+    13ce:	5f 81       	ldd	r21, Y+7	; 0x07
+    13d0:	41 30       	cpi	r20, 0x01	; 1
+    13d2:	51 05       	cpc	r21, r1
+    13d4:	59 f1       	breq	.+86     	; 0x142c <DIO_u8GetPinData+0x9c>
+    13d6:	8e 81       	ldd	r24, Y+6	; 0x06
+    13d8:	9f 81       	ldd	r25, Y+7	; 0x07
+    13da:	82 30       	cpi	r24, 0x02	; 2
+    13dc:	91 05       	cpc	r25, r1
+    13de:	34 f4       	brge	.+12     	; 0x13ec <DIO_u8GetPinData+0x5c>
+    13e0:	2e 81       	ldd	r18, Y+6	; 0x06
+    13e2:	3f 81       	ldd	r19, Y+7	; 0x07
+    13e4:	21 15       	cp	r18, r1
+    13e6:	31 05       	cpc	r19, r1
+    13e8:	69 f0       	breq	.+26     	; 0x1404 <DIO_u8GetPinData+0x74>
+    13ea:	5c c0       	rjmp	.+184    	; 0x14a4 <DIO_u8GetPinData+0x114>
+    13ec:	4e 81       	ldd	r20, Y+6	; 0x06
+    13ee:	5f 81       	ldd	r21, Y+7	; 0x07
+    13f0:	42 30       	cpi	r20, 0x02	; 2
+    13f2:	51 05       	cpc	r21, r1
+    13f4:	79 f1       	breq	.+94     	; 0x1454 <DIO_u8GetPinData+0xc4>
+    13f6:	8e 81       	ldd	r24, Y+6	; 0x06
+    13f8:	9f 81       	ldd	r25, Y+7	; 0x07
+    13fa:	83 30       	cpi	r24, 0x03	; 3
+    13fc:	91 05       	cpc	r25, r1
+    13fe:	09 f4       	brne	.+2      	; 0x1402 <DIO_u8GetPinData+0x72>
+    1400:	3d c0       	rjmp	.+122    	; 0x147c <DIO_u8GetPinData+0xec>
+    1402:	50 c0       	rjmp	.+160    	; 0x14a4 <DIO_u8GetPinData+0x114>
+		// get bit value in register to variable depend on port and pin 
+		case PORTA:
+			*pu8_ReturnVar = GET_BIT(PINA_REG, u8_PinNum);
+    1404:	e9 e3       	ldi	r30, 0x39	; 57
+    1406:	f0 e0       	ldi	r31, 0x00	; 0
+    1408:	80 81       	ld	r24, Z
+    140a:	28 2f       	mov	r18, r24
+    140c:	30 e0       	ldi	r19, 0x00	; 0
+    140e:	8b 81       	ldd	r24, Y+3	; 0x03
+    1410:	88 2f       	mov	r24, r24
+    1412:	90 e0       	ldi	r25, 0x00	; 0
+    1414:	a9 01       	movw	r20, r18
+    1416:	02 c0       	rjmp	.+4      	; 0x141c <DIO_u8GetPinData+0x8c>
+    1418:	55 95       	asr	r21
+    141a:	47 95       	ror	r20
+    141c:	8a 95       	dec	r24
+    141e:	e2 f7       	brpl	.-8      	; 0x1418 <DIO_u8GetPinData+0x88>
+    1420:	ca 01       	movw	r24, r20
+    1422:	81 70       	andi	r24, 0x01	; 1
+    1424:	ec 81       	ldd	r30, Y+4	; 0x04
+    1426:	fd 81       	ldd	r31, Y+5	; 0x05
+    1428:	80 83       	st	Z, r24
+    142a:	3f c0       	rjmp	.+126    	; 0x14aa <DIO_u8GetPinData+0x11a>
+			break;
+		case PORTB:
+			*pu8_ReturnVar = GET_BIT(PINB_REG, u8_PinNum);
+    142c:	e6 e3       	ldi	r30, 0x36	; 54
+    142e:	f0 e0       	ldi	r31, 0x00	; 0
+    1430:	80 81       	ld	r24, Z
+    1432:	28 2f       	mov	r18, r24
+    1434:	30 e0       	ldi	r19, 0x00	; 0
+    1436:	8b 81       	ldd	r24, Y+3	; 0x03
+    1438:	88 2f       	mov	r24, r24
+    143a:	90 e0       	ldi	r25, 0x00	; 0
+    143c:	a9 01       	movw	r20, r18
+    143e:	02 c0       	rjmp	.+4      	; 0x1444 <DIO_u8GetPinData+0xb4>
+    1440:	55 95       	asr	r21
+    1442:	47 95       	ror	r20
+    1444:	8a 95       	dec	r24
+    1446:	e2 f7       	brpl	.-8      	; 0x1440 <DIO_u8GetPinData+0xb0>
+    1448:	ca 01       	movw	r24, r20
+    144a:	81 70       	andi	r24, 0x01	; 1
+    144c:	ec 81       	ldd	r30, Y+4	; 0x04
+    144e:	fd 81       	ldd	r31, Y+5	; 0x05
+    1450:	80 83       	st	Z, r24
+    1452:	2b c0       	rjmp	.+86     	; 0x14aa <DIO_u8GetPinData+0x11a>
+			break;
+		case PORTC:
+			*pu8_ReturnVar = GET_BIT(PINC_REG, u8_PinNum);
+    1454:	e3 e3       	ldi	r30, 0x33	; 51
+    1456:	f0 e0       	ldi	r31, 0x00	; 0
+    1458:	80 81       	ld	r24, Z
+    145a:	28 2f       	mov	r18, r24
+    145c:	30 e0       	ldi	r19, 0x00	; 0
+    145e:	8b 81       	ldd	r24, Y+3	; 0x03
+    1460:	88 2f       	mov	r24, r24
+    1462:	90 e0       	ldi	r25, 0x00	; 0
+    1464:	a9 01       	movw	r20, r18
+    1466:	02 c0       	rjmp	.+4      	; 0x146c <DIO_u8GetPinData+0xdc>
+    1468:	55 95       	asr	r21
+    146a:	47 95       	ror	r20
+    146c:	8a 95       	dec	r24
+    146e:	e2 f7       	brpl	.-8      	; 0x1468 <DIO_u8GetPinData+0xd8>
+    1470:	ca 01       	movw	r24, r20
+    1472:	81 70       	andi	r24, 0x01	; 1
+    1474:	ec 81       	ldd	r30, Y+4	; 0x04
+    1476:	fd 81       	ldd	r31, Y+5	; 0x05
+    1478:	80 83       	st	Z, r24
+    147a:	17 c0       	rjmp	.+46     	; 0x14aa <DIO_u8GetPinData+0x11a>
+			break;
+		case PORTD:
+			*pu8_ReturnVar = GET_BIT(PIND_REG, u8_PinNum);
+    147c:	e0 e3       	ldi	r30, 0x30	; 48
+    147e:	f0 e0       	ldi	r31, 0x00	; 0
+    1480:	80 81       	ld	r24, Z
+    1482:	28 2f       	mov	r18, r24
+    1484:	30 e0       	ldi	r19, 0x00	; 0
+    1486:	8b 81       	ldd	r24, Y+3	; 0x03
+    1488:	88 2f       	mov	r24, r24
+    148a:	90 e0       	ldi	r25, 0x00	; 0
+    148c:	a9 01       	movw	r20, r18
+    148e:	02 c0       	rjmp	.+4      	; 0x1494 <DIO_u8GetPinData+0x104>
+    1490:	55 95       	asr	r21
+    1492:	47 95       	ror	r20
+    1494:	8a 95       	dec	r24
+    1496:	e2 f7       	brpl	.-8      	; 0x1490 <DIO_u8GetPinData+0x100>
+    1498:	ca 01       	movw	r24, r20
+    149a:	81 70       	andi	r24, 0x01	; 1
+    149c:	ec 81       	ldd	r30, Y+4	; 0x04
+    149e:	fd 81       	ldd	r31, Y+5	; 0x05
+    14a0:	80 83       	st	Z, r24
+    14a2:	03 c0       	rjmp	.+6      	; 0x14aa <DIO_u8GetPinData+0x11a>
+			break;
+		default:
+			// if not suitable port return error state NOK
+			u8ErrorState = STD_TYPES_NOK;
+    14a4:	19 82       	std	Y+1, r1	; 0x01
+    14a6:	01 c0       	rjmp	.+2      	; 0x14aa <DIO_u8GetPinData+0x11a>
+		}
+	} else {
+		// if return address not passed or not suitable pin number return error state NOK
+		u8ErrorState = STD_TYPES_NOK;
+    14a8:	19 82       	std	Y+1, r1	; 0x01
+	}
+
+	return u8ErrorState;
+    14aa:	89 81       	ldd	r24, Y+1	; 0x01
+}
+    14ac:	27 96       	adiw	r28, 0x07	; 7
+    14ae:	0f b6       	in	r0, 0x3f	; 63
+    14b0:	f8 94       	cli
+    14b2:	de bf       	out	0x3e, r29	; 62
+    14b4:	0f be       	out	0x3f, r0	; 63
+    14b6:	cd bf       	out	0x3d, r28	; 61
+    14b8:	cf 91       	pop	r28
+    14ba:	df 91       	pop	r29
+    14bc:	08 95       	ret
+
+000014be <DIO_u8SetPortDirection>:
+
+// function to set direction of pin
+uint8_t DIO_u8SetPortDirection(DIOPort_t u8_PortName, DIODir_t u8_Dir) {
+    14be:	df 93       	push	r29
+    14c0:	cf 93       	push	r28
+    14c2:	cd b7       	in	r28, 0x3d	; 61
+    14c4:	de b7       	in	r29, 0x3e	; 62
+    14c6:	2d 97       	sbiw	r28, 0x0d	; 13
+    14c8:	0f b6       	in	r0, 0x3f	; 63
+    14ca:	f8 94       	cli
+    14cc:	de bf       	out	0x3e, r29	; 62
+    14ce:	0f be       	out	0x3f, r0	; 63
+    14d0:	cd bf       	out	0x3d, r28	; 61
+    14d2:	8a 83       	std	Y+2, r24	; 0x02
+    14d4:	6b 83       	std	Y+3, r22	; 0x03
+	uint8_t u8ErrorState = STD_TYPES_OK;
+    14d6:	81 e0       	ldi	r24, 0x01	; 1
+    14d8:	89 83       	std	Y+1, r24	; 0x01
+	switch (u8_PortName) {
+    14da:	8a 81       	ldd	r24, Y+2	; 0x02
+    14dc:	28 2f       	mov	r18, r24
+    14de:	30 e0       	ldi	r19, 0x00	; 0
+    14e0:	3d 87       	std	Y+13, r19	; 0x0d
+    14e2:	2c 87       	std	Y+12, r18	; 0x0c
+    14e4:	8c 85       	ldd	r24, Y+12	; 0x0c
+    14e6:	9d 85       	ldd	r25, Y+13	; 0x0d
+    14e8:	81 30       	cpi	r24, 0x01	; 1
+    14ea:	91 05       	cpc	r25, r1
+    14ec:	09 f4       	brne	.+2      	; 0x14f0 <DIO_u8SetPortDirection+0x32>
+    14ee:	4b c0       	rjmp	.+150    	; 0x1586 <DIO_u8SetPortDirection+0xc8>
+    14f0:	2c 85       	ldd	r18, Y+12	; 0x0c
+    14f2:	3d 85       	ldd	r19, Y+13	; 0x0d
+    14f4:	22 30       	cpi	r18, 0x02	; 2
+    14f6:	31 05       	cpc	r19, r1
+    14f8:	2c f4       	brge	.+10     	; 0x1504 <DIO_u8SetPortDirection+0x46>
+    14fa:	8c 85       	ldd	r24, Y+12	; 0x0c
+    14fc:	9d 85       	ldd	r25, Y+13	; 0x0d
+    14fe:	00 97       	sbiw	r24, 0x00	; 0
+    1500:	71 f0       	breq	.+28     	; 0x151e <DIO_u8SetPortDirection+0x60>
+    1502:	dd c0       	rjmp	.+442    	; 0x16be <DIO_u8SetPortDirection+0x200>
+    1504:	2c 85       	ldd	r18, Y+12	; 0x0c
+    1506:	3d 85       	ldd	r19, Y+13	; 0x0d
+    1508:	22 30       	cpi	r18, 0x02	; 2
+    150a:	31 05       	cpc	r19, r1
+    150c:	09 f4       	brne	.+2      	; 0x1510 <DIO_u8SetPortDirection+0x52>
+    150e:	6f c0       	rjmp	.+222    	; 0x15ee <DIO_u8SetPortDirection+0x130>
+    1510:	8c 85       	ldd	r24, Y+12	; 0x0c
+    1512:	9d 85       	ldd	r25, Y+13	; 0x0d
+    1514:	83 30       	cpi	r24, 0x03	; 3
+    1516:	91 05       	cpc	r25, r1
+    1518:	09 f4       	brne	.+2      	; 0x151c <DIO_u8SetPortDirection+0x5e>
+    151a:	9d c0       	rjmp	.+314    	; 0x1656 <DIO_u8SetPortDirection+0x198>
+    151c:	d0 c0       	rjmp	.+416    	; 0x16be <DIO_u8SetPortDirection+0x200>
+	case PORTA:
+		switch (u8_Dir) {
+    151e:	8b 81       	ldd	r24, Y+3	; 0x03
+    1520:	28 2f       	mov	r18, r24
+    1522:	30 e0       	ldi	r19, 0x00	; 0
+    1524:	3b 87       	std	Y+11, r19	; 0x0b
+    1526:	2a 87       	std	Y+10, r18	; 0x0a
+    1528:	8a 85       	ldd	r24, Y+10	; 0x0a
+    152a:	9b 85       	ldd	r25, Y+11	; 0x0b
+    152c:	81 30       	cpi	r24, 0x01	; 1
+    152e:	91 05       	cpc	r25, r1
+    1530:	a1 f0       	breq	.+40     	; 0x155a <DIO_u8SetPortDirection+0x9c>
+    1532:	2a 85       	ldd	r18, Y+10	; 0x0a
+    1534:	3b 85       	ldd	r19, Y+11	; 0x0b
+    1536:	22 30       	cpi	r18, 0x02	; 2
+    1538:	31 05       	cpc	r19, r1
+    153a:	f1 f0       	breq	.+60     	; 0x1578 <DIO_u8SetPortDirection+0xba>
+    153c:	8a 85       	ldd	r24, Y+10	; 0x0a
+    153e:	9b 85       	ldd	r25, Y+11	; 0x0b
+    1540:	00 97       	sbiw	r24, 0x00	; 0
+    1542:	f9 f4       	brne	.+62     	; 0x1582 <DIO_u8SetPortDirection+0xc4>
+		case DIO_INPUT:
+			// for input tristate mode ({DDRx, PORTx} = {0x00,0x00})
+			DDRA_REG = DIO_PORT_LOW;
+    1544:	ea e3       	ldi	r30, 0x3A	; 58
+    1546:	f0 e0       	ldi	r31, 0x00	; 0
+    1548:	10 82       	st	Z, r1
+			SET_BIT(SFIOR_REG, PUD_BIT);
+    154a:	a0 e5       	ldi	r26, 0x50	; 80
+    154c:	b0 e0       	ldi	r27, 0x00	; 0
+    154e:	e0 e5       	ldi	r30, 0x50	; 80
+    1550:	f0 e0       	ldi	r31, 0x00	; 0
+    1552:	80 81       	ld	r24, Z
+    1554:	84 60       	ori	r24, 0x04	; 4
+    1556:	8c 93       	st	X, r24
+    1558:	b3 c0       	rjmp	.+358    	; 0x16c0 <DIO_u8SetPortDirection+0x202>
+			break;
+		case DIO_INPUT_PULLUP:
+			// for input PULLUP mode ( {DDRx, PORTx,PUD} =  {0b0,0x00,0xff} )
+			CLR_BIT(SFIOR_REG, PUD_BIT);
+    155a:	a0 e5       	ldi	r26, 0x50	; 80
+    155c:	b0 e0       	ldi	r27, 0x00	; 0
+    155e:	e0 e5       	ldi	r30, 0x50	; 80
+    1560:	f0 e0       	ldi	r31, 0x00	; 0
+    1562:	80 81       	ld	r24, Z
+    1564:	8b 7f       	andi	r24, 0xFB	; 251
+    1566:	8c 93       	st	X, r24
+			DDRA_REG = DIO_PORT_LOW;
+    1568:	ea e3       	ldi	r30, 0x3A	; 58
+    156a:	f0 e0       	ldi	r31, 0x00	; 0
+    156c:	10 82       	st	Z, r1
+			PORTA_REG = DIO_PORT_HIGH;
+    156e:	eb e3       	ldi	r30, 0x3B	; 59
+    1570:	f0 e0       	ldi	r31, 0x00	; 0
+    1572:	8f ef       	ldi	r24, 0xFF	; 255
+    1574:	80 83       	st	Z, r24
+    1576:	a4 c0       	rjmp	.+328    	; 0x16c0 <DIO_u8SetPortDirection+0x202>
+			break;
+		case DIO_OUTPUT:
+			// for input tristate mode ( DDRx = 0xff )
+			DDRA_REG = DIO_PORT_HIGH;
+    1578:	ea e3       	ldi	r30, 0x3A	; 58
+    157a:	f0 e0       	ldi	r31, 0x00	; 0
+    157c:	8f ef       	ldi	r24, 0xFF	; 255
+    157e:	80 83       	st	Z, r24
+    1580:	9f c0       	rjmp	.+318    	; 0x16c0 <DIO_u8SetPortDirection+0x202>
+			break;
+		default:
+			// If the input state is not one of the above cases return error state NOK
+			u8ErrorState = STD_TYPES_NOK;
+    1582:	19 82       	std	Y+1, r1	; 0x01
+    1584:	9d c0       	rjmp	.+314    	; 0x16c0 <DIO_u8SetPortDirection+0x202>
+		}
+		break;
+	case PORTB:
+		switch (u8_Dir) {
+    1586:	8b 81       	ldd	r24, Y+3	; 0x03
+    1588:	28 2f       	mov	r18, r24
+    158a:	30 e0       	ldi	r19, 0x00	; 0
+    158c:	39 87       	std	Y+9, r19	; 0x09
+    158e:	28 87       	std	Y+8, r18	; 0x08
+    1590:	88 85       	ldd	r24, Y+8	; 0x08
+    1592:	99 85       	ldd	r25, Y+9	; 0x09
+    1594:	81 30       	cpi	r24, 0x01	; 1
+    1596:	91 05       	cpc	r25, r1
+    1598:	a1 f0       	breq	.+40     	; 0x15c2 <DIO_u8SetPortDirection+0x104>
+    159a:	28 85       	ldd	r18, Y+8	; 0x08
+    159c:	39 85       	ldd	r19, Y+9	; 0x09
+    159e:	22 30       	cpi	r18, 0x02	; 2
+    15a0:	31 05       	cpc	r19, r1
+    15a2:	f1 f0       	breq	.+60     	; 0x15e0 <DIO_u8SetPortDirection+0x122>
+    15a4:	88 85       	ldd	r24, Y+8	; 0x08
+    15a6:	99 85       	ldd	r25, Y+9	; 0x09
+    15a8:	00 97       	sbiw	r24, 0x00	; 0
+    15aa:	f9 f4       	brne	.+62     	; 0x15ea <DIO_u8SetPortDirection+0x12c>
+		case DIO_INPUT:
+			// for input tristate mode ({DDRx, PORTx} = {0x00,0x00})
+			DDRB_REG = DIO_PORT_LOW;
+    15ac:	e7 e3       	ldi	r30, 0x37	; 55
+    15ae:	f0 e0       	ldi	r31, 0x00	; 0
+    15b0:	10 82       	st	Z, r1
+			SET_BIT(SFIOR_REG, PUD_BIT);
+    15b2:	a0 e5       	ldi	r26, 0x50	; 80
+    15b4:	b0 e0       	ldi	r27, 0x00	; 0
+    15b6:	e0 e5       	ldi	r30, 0x50	; 80
+    15b8:	f0 e0       	ldi	r31, 0x00	; 0
+    15ba:	80 81       	ld	r24, Z
+    15bc:	84 60       	ori	r24, 0x04	; 4
+    15be:	8c 93       	st	X, r24
+    15c0:	7f c0       	rjmp	.+254    	; 0x16c0 <DIO_u8SetPortDirection+0x202>
+			break;
+		case DIO_INPUT_PULLUP:
+			// for input PULLUP mode ( {DDRx, PORTx,PUD} =  {0b0,0x00,0xff} )
+			CLR_BIT(SFIOR_REG, PUD_BIT);
+    15c2:	a0 e5       	ldi	r26, 0x50	; 80
+    15c4:	b0 e0       	ldi	r27, 0x00	; 0
+    15c6:	e0 e5       	ldi	r30, 0x50	; 80
+    15c8:	f0 e0       	ldi	r31, 0x00	; 0
+    15ca:	80 81       	ld	r24, Z
+    15cc:	8b 7f       	andi	r24, 0xFB	; 251
+    15ce:	8c 93       	st	X, r24
+			DDRB_REG = DIO_PORT_LOW;
+    15d0:	e7 e3       	ldi	r30, 0x37	; 55
+    15d2:	f0 e0       	ldi	r31, 0x00	; 0
+    15d4:	10 82       	st	Z, r1
+			PORTB_REG = DIO_PORT_HIGH;
+    15d6:	e8 e3       	ldi	r30, 0x38	; 56
+    15d8:	f0 e0       	ldi	r31, 0x00	; 0
+    15da:	8f ef       	ldi	r24, 0xFF	; 255
+    15dc:	80 83       	st	Z, r24
+    15de:	70 c0       	rjmp	.+224    	; 0x16c0 <DIO_u8SetPortDirection+0x202>
+			break;
+		case DIO_OUTPUT:
+			// for input tristate mode ( DDRx = 0xff )
+			DDRB_REG = DIO_PORT_HIGH;
+    15e0:	e7 e3       	ldi	r30, 0x37	; 55
+    15e2:	f0 e0       	ldi	r31, 0x00	; 0
+    15e4:	8f ef       	ldi	r24, 0xFF	; 255
+    15e6:	80 83       	st	Z, r24
+    15e8:	6b c0       	rjmp	.+214    	; 0x16c0 <DIO_u8SetPortDirection+0x202>
+			break;
+		default:
+			// If the input state is not one of the above cases return error state NOK
+			u8ErrorState = STD_TYPES_NOK;
+    15ea:	19 82       	std	Y+1, r1	; 0x01
+    15ec:	69 c0       	rjmp	.+210    	; 0x16c0 <DIO_u8SetPortDirection+0x202>
+		}
+		break;
+	case PORTC:
+		switch (u8_Dir) {
+    15ee:	8b 81       	ldd	r24, Y+3	; 0x03
+    15f0:	28 2f       	mov	r18, r24
+    15f2:	30 e0       	ldi	r19, 0x00	; 0
+    15f4:	3f 83       	std	Y+7, r19	; 0x07
+    15f6:	2e 83       	std	Y+6, r18	; 0x06
+    15f8:	8e 81       	ldd	r24, Y+6	; 0x06
+    15fa:	9f 81       	ldd	r25, Y+7	; 0x07
+    15fc:	81 30       	cpi	r24, 0x01	; 1
+    15fe:	91 05       	cpc	r25, r1
+    1600:	a1 f0       	breq	.+40     	; 0x162a <DIO_u8SetPortDirection+0x16c>
+    1602:	2e 81       	ldd	r18, Y+6	; 0x06
+    1604:	3f 81       	ldd	r19, Y+7	; 0x07
+    1606:	22 30       	cpi	r18, 0x02	; 2
+    1608:	31 05       	cpc	r19, r1
+    160a:	f1 f0       	breq	.+60     	; 0x1648 <DIO_u8SetPortDirection+0x18a>
+    160c:	8e 81       	ldd	r24, Y+6	; 0x06
+    160e:	9f 81       	ldd	r25, Y+7	; 0x07
+    1610:	00 97       	sbiw	r24, 0x00	; 0
+    1612:	f9 f4       	brne	.+62     	; 0x1652 <DIO_u8SetPortDirection+0x194>
+		case DIO_INPUT:
+			// for input tristate mode ({DDRx, PORTx} = {0x00,0x00})
+			DDRC_REG = DIO_PORT_LOW;
+    1614:	e4 e3       	ldi	r30, 0x34	; 52
+    1616:	f0 e0       	ldi	r31, 0x00	; 0
+    1618:	10 82       	st	Z, r1
+			SET_BIT(SFIOR_REG, PUD_BIT);
+    161a:	a0 e5       	ldi	r26, 0x50	; 80
+    161c:	b0 e0       	ldi	r27, 0x00	; 0
+    161e:	e0 e5       	ldi	r30, 0x50	; 80
+    1620:	f0 e0       	ldi	r31, 0x00	; 0
+    1622:	80 81       	ld	r24, Z
+    1624:	84 60       	ori	r24, 0x04	; 4
+    1626:	8c 93       	st	X, r24
+    1628:	4b c0       	rjmp	.+150    	; 0x16c0 <DIO_u8SetPortDirection+0x202>
+			break;
+		case DIO_INPUT_PULLUP:
+			// for input PULLUP mode ( {DDRx, PORTx,PUD} =  {0b0,0x00,0xff} )
+			CLR_BIT(SFIOR_REG, PUD_BIT);
+    162a:	a0 e5       	ldi	r26, 0x50	; 80
+    162c:	b0 e0       	ldi	r27, 0x00	; 0
+    162e:	e0 e5       	ldi	r30, 0x50	; 80
+    1630:	f0 e0       	ldi	r31, 0x00	; 0
+    1632:	80 81       	ld	r24, Z
+    1634:	8b 7f       	andi	r24, 0xFB	; 251
+    1636:	8c 93       	st	X, r24
+			DDRC_REG = DIO_PORT_LOW;
+    1638:	e4 e3       	ldi	r30, 0x34	; 52
+    163a:	f0 e0       	ldi	r31, 0x00	; 0
+    163c:	10 82       	st	Z, r1
+			PORTC_REG = DIO_PORT_HIGH;
+    163e:	e5 e3       	ldi	r30, 0x35	; 53
+    1640:	f0 e0       	ldi	r31, 0x00	; 0
+    1642:	8f ef       	ldi	r24, 0xFF	; 255
+    1644:	80 83       	st	Z, r24
+    1646:	3c c0       	rjmp	.+120    	; 0x16c0 <DIO_u8SetPortDirection+0x202>
+			break;
+		case DIO_OUTPUT:
+			// for input tristate mode ( DDRx = 0xff )
+			DDRC_REG = DIO_PORT_HIGH;
+    1648:	e4 e3       	ldi	r30, 0x34	; 52
+    164a:	f0 e0       	ldi	r31, 0x00	; 0
+    164c:	8f ef       	ldi	r24, 0xFF	; 255
+    164e:	80 83       	st	Z, r24
+    1650:	37 c0       	rjmp	.+110    	; 0x16c0 <DIO_u8SetPortDirection+0x202>
+			break;
+		default:
+			// If the input state is not one of the above cases return error state NOK
+			u8ErrorState = STD_TYPES_NOK;
+    1652:	19 82       	std	Y+1, r1	; 0x01
+    1654:	35 c0       	rjmp	.+106    	; 0x16c0 <DIO_u8SetPortDirection+0x202>
+		}
+		break;
+	case PORTD:
+		switch (u8_Dir) {
+    1656:	8b 81       	ldd	r24, Y+3	; 0x03
+    1658:	28 2f       	mov	r18, r24
+    165a:	30 e0       	ldi	r19, 0x00	; 0
+    165c:	3d 83       	std	Y+5, r19	; 0x05
+    165e:	2c 83       	std	Y+4, r18	; 0x04
+    1660:	8c 81       	ldd	r24, Y+4	; 0x04
+    1662:	9d 81       	ldd	r25, Y+5	; 0x05
+    1664:	81 30       	cpi	r24, 0x01	; 1
+    1666:	91 05       	cpc	r25, r1
+    1668:	a1 f0       	breq	.+40     	; 0x1692 <DIO_u8SetPortDirection+0x1d4>
+    166a:	2c 81       	ldd	r18, Y+4	; 0x04
+    166c:	3d 81       	ldd	r19, Y+5	; 0x05
+    166e:	22 30       	cpi	r18, 0x02	; 2
+    1670:	31 05       	cpc	r19, r1
+    1672:	f1 f0       	breq	.+60     	; 0x16b0 <DIO_u8SetPortDirection+0x1f2>
+    1674:	8c 81       	ldd	r24, Y+4	; 0x04
+    1676:	9d 81       	ldd	r25, Y+5	; 0x05
+    1678:	00 97       	sbiw	r24, 0x00	; 0
+    167a:	f9 f4       	brne	.+62     	; 0x16ba <DIO_u8SetPortDirection+0x1fc>
+		case DIO_INPUT:
+			// for input tristate mode ({DDRx, PORTx} = {0x00,0x00})
+			DDRD_REG = DIO_PORT_LOW;
+    167c:	e1 e3       	ldi	r30, 0x31	; 49
+    167e:	f0 e0       	ldi	r31, 0x00	; 0
+    1680:	10 82       	st	Z, r1
+			SET_BIT(SFIOR_REG, PUD_BIT);
+    1682:	a0 e5       	ldi	r26, 0x50	; 80
+    1684:	b0 e0       	ldi	r27, 0x00	; 0
+    1686:	e0 e5       	ldi	r30, 0x50	; 80
+    1688:	f0 e0       	ldi	r31, 0x00	; 0
+    168a:	80 81       	ld	r24, Z
+    168c:	84 60       	ori	r24, 0x04	; 4
+    168e:	8c 93       	st	X, r24
+    1690:	17 c0       	rjmp	.+46     	; 0x16c0 <DIO_u8SetPortDirection+0x202>
+			break;
+		case DIO_INPUT_PULLUP:
+			// for input PULLUP mode ( {DDRx, PORTx,PUD} =  {0b0,0x00,0xff} )
+			CLR_BIT(SFIOR_REG, PUD_BIT);
+    1692:	a0 e5       	ldi	r26, 0x50	; 80
+    1694:	b0 e0       	ldi	r27, 0x00	; 0
+    1696:	e0 e5       	ldi	r30, 0x50	; 80
+    1698:	f0 e0       	ldi	r31, 0x00	; 0
+    169a:	80 81       	ld	r24, Z
+    169c:	8b 7f       	andi	r24, 0xFB	; 251
+    169e:	8c 93       	st	X, r24
+			DDRD_REG = DIO_PORT_LOW;
+    16a0:	e1 e3       	ldi	r30, 0x31	; 49
+    16a2:	f0 e0       	ldi	r31, 0x00	; 0
+    16a4:	10 82       	st	Z, r1
+			PORTD_REG = DIO_PORT_HIGH;
+    16a6:	e2 e3       	ldi	r30, 0x32	; 50
+    16a8:	f0 e0       	ldi	r31, 0x00	; 0
+    16aa:	8f ef       	ldi	r24, 0xFF	; 255
+    16ac:	80 83       	st	Z, r24
+    16ae:	08 c0       	rjmp	.+16     	; 0x16c0 <DIO_u8SetPortDirection+0x202>
+			break;
+		case DIO_OUTPUT:
+			// for input tristate mode ( DDRx = 0xff )
+			DDRD_REG = DIO_PORT_HIGH;
+    16b0:	e1 e3       	ldi	r30, 0x31	; 49
+    16b2:	f0 e0       	ldi	r31, 0x00	; 0
+    16b4:	8f ef       	ldi	r24, 0xFF	; 255
+    16b6:	80 83       	st	Z, r24
+    16b8:	03 c0       	rjmp	.+6      	; 0x16c0 <DIO_u8SetPortDirection+0x202>
+			break;
+		default:
+			// If the input state is not one of the above cases return error state NOK
+			u8ErrorState = STD_TYPES_NOK;
+    16ba:	19 82       	std	Y+1, r1	; 0x01
+    16bc:	01 c0       	rjmp	.+2      	; 0x16c0 <DIO_u8SetPortDirection+0x202>
+		}
+		break;
+	default:
+		// If the input port is not one of the above cases return error state NOK
+		u8ErrorState = STD_TYPES_NOK;
+    16be:	19 82       	std	Y+1, r1	; 0x01
+	}
+
+	return u8ErrorState;
+    16c0:	89 81       	ldd	r24, Y+1	; 0x01
+}
+    16c2:	2d 96       	adiw	r28, 0x0d	; 13
+    16c4:	0f b6       	in	r0, 0x3f	; 63
+    16c6:	f8 94       	cli
+    16c8:	de bf       	out	0x3e, r29	; 62
+    16ca:	0f be       	out	0x3f, r0	; 63
+    16cc:	cd bf       	out	0x3d, r28	; 61
+    16ce:	cf 91       	pop	r28
+    16d0:	df 91       	pop	r29
+    16d2:	08 95       	ret
+
+000016d4 <DIO_u8SetPortData>:
+
+// function to assign value to port
+uint8_t DIO_u8SetPortData(DIOPort_t u8_PortName, DIODir_t u8_Value) {
+    16d4:	df 93       	push	r29
+    16d6:	cf 93       	push	r28
+    16d8:	00 d0       	rcall	.+0      	; 0x16da <DIO_u8SetPortData+0x6>
+    16da:	00 d0       	rcall	.+0      	; 0x16dc <DIO_u8SetPortData+0x8>
+    16dc:	0f 92       	push	r0
+    16de:	cd b7       	in	r28, 0x3d	; 61
+    16e0:	de b7       	in	r29, 0x3e	; 62
+    16e2:	8a 83       	std	Y+2, r24	; 0x02
+    16e4:	6b 83       	std	Y+3, r22	; 0x03
+	uint8_t u8ErrorState = STD_TYPES_OK;
+    16e6:	81 e0       	ldi	r24, 0x01	; 1
+    16e8:	89 83       	std	Y+1, r24	; 0x01
+	if (u8_Value == DIO_PORT_HIGH || u8_Value == DIO_PORT_LOW) {
+    16ea:	8b 81       	ldd	r24, Y+3	; 0x03
+    16ec:	8f 3f       	cpi	r24, 0xFF	; 255
+    16ee:	19 f0       	breq	.+6      	; 0x16f6 <DIO_u8SetPortData+0x22>
+    16f0:	8b 81       	ldd	r24, Y+3	; 0x03
+    16f2:	88 23       	and	r24, r24
+    16f4:	a9 f5       	brne	.+106    	; 0x1760 <DIO_u8SetPortData+0x8c>
+		// check if value of port HIGH or LOW and assign it to the port 
+		switch (u8_PortName) {
+    16f6:	8a 81       	ldd	r24, Y+2	; 0x02
+    16f8:	28 2f       	mov	r18, r24
+    16fa:	30 e0       	ldi	r19, 0x00	; 0
+    16fc:	3d 83       	std	Y+5, r19	; 0x05
+    16fe:	2c 83       	std	Y+4, r18	; 0x04
+    1700:	8c 81       	ldd	r24, Y+4	; 0x04
+    1702:	9d 81       	ldd	r25, Y+5	; 0x05
+    1704:	81 30       	cpi	r24, 0x01	; 1
+    1706:	91 05       	cpc	r25, r1
+    1708:	d1 f0       	breq	.+52     	; 0x173e <DIO_u8SetPortData+0x6a>
+    170a:	2c 81       	ldd	r18, Y+4	; 0x04
+    170c:	3d 81       	ldd	r19, Y+5	; 0x05
+    170e:	22 30       	cpi	r18, 0x02	; 2
+    1710:	31 05       	cpc	r19, r1
+    1712:	2c f4       	brge	.+10     	; 0x171e <DIO_u8SetPortData+0x4a>
+    1714:	8c 81       	ldd	r24, Y+4	; 0x04
+    1716:	9d 81       	ldd	r25, Y+5	; 0x05
+    1718:	00 97       	sbiw	r24, 0x00	; 0
+    171a:	61 f0       	breq	.+24     	; 0x1734 <DIO_u8SetPortData+0x60>
+    171c:	1f c0       	rjmp	.+62     	; 0x175c <DIO_u8SetPortData+0x88>
+    171e:	2c 81       	ldd	r18, Y+4	; 0x04
+    1720:	3d 81       	ldd	r19, Y+5	; 0x05
+    1722:	22 30       	cpi	r18, 0x02	; 2
+    1724:	31 05       	cpc	r19, r1
+    1726:	81 f0       	breq	.+32     	; 0x1748 <DIO_u8SetPortData+0x74>
+    1728:	8c 81       	ldd	r24, Y+4	; 0x04
+    172a:	9d 81       	ldd	r25, Y+5	; 0x05
+    172c:	83 30       	cpi	r24, 0x03	; 3
+    172e:	91 05       	cpc	r25, r1
+    1730:	81 f0       	breq	.+32     	; 0x1752 <DIO_u8SetPortData+0x7e>
+    1732:	14 c0       	rjmp	.+40     	; 0x175c <DIO_u8SetPortData+0x88>
+		case PORTA:
+			PORTA_REG = u8_Value;
+    1734:	eb e3       	ldi	r30, 0x3B	; 59
+    1736:	f0 e0       	ldi	r31, 0x00	; 0
+    1738:	8b 81       	ldd	r24, Y+3	; 0x03
+    173a:	80 83       	st	Z, r24
+    173c:	12 c0       	rjmp	.+36     	; 0x1762 <DIO_u8SetPortData+0x8e>
+			break;
+		case PORTB:
+			PORTB_REG = u8_Value;
+    173e:	e8 e3       	ldi	r30, 0x38	; 56
+    1740:	f0 e0       	ldi	r31, 0x00	; 0
+    1742:	8b 81       	ldd	r24, Y+3	; 0x03
+    1744:	80 83       	st	Z, r24
+    1746:	0d c0       	rjmp	.+26     	; 0x1762 <DIO_u8SetPortData+0x8e>
+			break;
+		case PORTC:
+			PORTC_REG = u8_Value;
+    1748:	e5 e3       	ldi	r30, 0x35	; 53
+    174a:	f0 e0       	ldi	r31, 0x00	; 0
+    174c:	8b 81       	ldd	r24, Y+3	; 0x03
+    174e:	80 83       	st	Z, r24
+    1750:	08 c0       	rjmp	.+16     	; 0x1762 <DIO_u8SetPortData+0x8e>
+			break;
+		case PORTD:
+			PORTD_REG = u8_Value;
+    1752:	e2 e3       	ldi	r30, 0x32	; 50
+    1754:	f0 e0       	ldi	r31, 0x00	; 0
+    1756:	8b 81       	ldd	r24, Y+3	; 0x03
+    1758:	80 83       	st	Z, r24
+    175a:	03 c0       	rjmp	.+6      	; 0x1762 <DIO_u8SetPortData+0x8e>
+			break;
+		default:
+			// if input port is not one of the above cases return error state NOK
+			u8ErrorState = STD_TYPES_NOK;
+    175c:	19 82       	std	Y+1, r1	; 0x01
+    175e:	01 c0       	rjmp	.+2      	; 0x1762 <DIO_u8SetPortData+0x8e>
+		}
+	} else {
+		// if Value not HIGH or LOW return error state NOK
+		u8ErrorState = STD_TYPES_NOK;
+    1760:	19 82       	std	Y+1, r1	; 0x01
+	}
+
+	return u8ErrorState;
+    1762:	89 81       	ldd	r24, Y+1	; 0x01
+}
+    1764:	0f 90       	pop	r0
+    1766:	0f 90       	pop	r0
+    1768:	0f 90       	pop	r0
+    176a:	0f 90       	pop	r0
+    176c:	0f 90       	pop	r0
+    176e:	cf 91       	pop	r28
+    1770:	df 91       	pop	r29
+    1772:	08 95       	ret
+
+00001774 <DIO_u8GetPortData>:
+
+// function to read value on port
+uint8_t DIO_u8GetPortData(DIOPort_t u8_PortName, uint8_t* pu8_ReturnVar) {
+    1774:	df 93       	push	r29
+    1776:	cf 93       	push	r28
+    1778:	00 d0       	rcall	.+0      	; 0x177a <DIO_u8GetPortData+0x6>
+    177a:	00 d0       	rcall	.+0      	; 0x177c <DIO_u8GetPortData+0x8>
+    177c:	00 d0       	rcall	.+0      	; 0x177e <DIO_u8GetPortData+0xa>
+    177e:	cd b7       	in	r28, 0x3d	; 61
+    1780:	de b7       	in	r29, 0x3e	; 62
+    1782:	8a 83       	std	Y+2, r24	; 0x02
+    1784:	7c 83       	std	Y+4, r23	; 0x04
+    1786:	6b 83       	std	Y+3, r22	; 0x03
+	uint8_t u8ErrorState = STD_TYPES_OK;
+    1788:	81 e0       	ldi	r24, 0x01	; 1
+    178a:	89 83       	std	Y+1, r24	; 0x01
+	if (pu8_ReturnVar != NULL) {
+    178c:	8b 81       	ldd	r24, Y+3	; 0x03
+    178e:	9c 81       	ldd	r25, Y+4	; 0x04
+    1790:	00 97       	sbiw	r24, 0x00	; 0
+    1792:	e9 f1       	breq	.+122    	; 0x180e <DIO_u8GetPortData+0x9a>
+		// get port value in register to variable depend on port and pin 
+		switch (u8_PortName) {
+    1794:	8a 81       	ldd	r24, Y+2	; 0x02
+    1796:	28 2f       	mov	r18, r24
+    1798:	30 e0       	ldi	r19, 0x00	; 0
+    179a:	3e 83       	std	Y+6, r19	; 0x06
+    179c:	2d 83       	std	Y+5, r18	; 0x05
+    179e:	8d 81       	ldd	r24, Y+5	; 0x05
+    17a0:	9e 81       	ldd	r25, Y+6	; 0x06
+    17a2:	81 30       	cpi	r24, 0x01	; 1
+    17a4:	91 05       	cpc	r25, r1
+    17a6:	e1 f0       	breq	.+56     	; 0x17e0 <DIO_u8GetPortData+0x6c>
+    17a8:	2d 81       	ldd	r18, Y+5	; 0x05
+    17aa:	3e 81       	ldd	r19, Y+6	; 0x06
+    17ac:	22 30       	cpi	r18, 0x02	; 2
+    17ae:	31 05       	cpc	r19, r1
+    17b0:	2c f4       	brge	.+10     	; 0x17bc <DIO_u8GetPortData+0x48>
+    17b2:	8d 81       	ldd	r24, Y+5	; 0x05
+    17b4:	9e 81       	ldd	r25, Y+6	; 0x06
+    17b6:	00 97       	sbiw	r24, 0x00	; 0
+    17b8:	61 f0       	breq	.+24     	; 0x17d2 <DIO_u8GetPortData+0x5e>
+    17ba:	27 c0       	rjmp	.+78     	; 0x180a <DIO_u8GetPortData+0x96>
+    17bc:	2d 81       	ldd	r18, Y+5	; 0x05
+    17be:	3e 81       	ldd	r19, Y+6	; 0x06
+    17c0:	22 30       	cpi	r18, 0x02	; 2
+    17c2:	31 05       	cpc	r19, r1
+    17c4:	a1 f0       	breq	.+40     	; 0x17ee <DIO_u8GetPortData+0x7a>
+    17c6:	8d 81       	ldd	r24, Y+5	; 0x05
+    17c8:	9e 81       	ldd	r25, Y+6	; 0x06
+    17ca:	83 30       	cpi	r24, 0x03	; 3
+    17cc:	91 05       	cpc	r25, r1
+    17ce:	b1 f0       	breq	.+44     	; 0x17fc <DIO_u8GetPortData+0x88>
+    17d0:	1c c0       	rjmp	.+56     	; 0x180a <DIO_u8GetPortData+0x96>
+		case PORTA:
+			*pu8_ReturnVar = PORTA_REG;
+    17d2:	eb e3       	ldi	r30, 0x3B	; 59
+    17d4:	f0 e0       	ldi	r31, 0x00	; 0
+    17d6:	80 81       	ld	r24, Z
+    17d8:	eb 81       	ldd	r30, Y+3	; 0x03
+    17da:	fc 81       	ldd	r31, Y+4	; 0x04
+    17dc:	80 83       	st	Z, r24
+    17de:	18 c0       	rjmp	.+48     	; 0x1810 <DIO_u8GetPortData+0x9c>
+			break;
+		case PORTB:
+			*pu8_ReturnVar = PORTB_REG;
+    17e0:	e8 e3       	ldi	r30, 0x38	; 56
+    17e2:	f0 e0       	ldi	r31, 0x00	; 0
+    17e4:	80 81       	ld	r24, Z
+    17e6:	eb 81       	ldd	r30, Y+3	; 0x03
+    17e8:	fc 81       	ldd	r31, Y+4	; 0x04
+    17ea:	80 83       	st	Z, r24
+    17ec:	11 c0       	rjmp	.+34     	; 0x1810 <DIO_u8GetPortData+0x9c>
+			break;
+		case PORTC:
+			*pu8_ReturnVar = PORTC_REG;
+    17ee:	e5 e3       	ldi	r30, 0x35	; 53
+    17f0:	f0 e0       	ldi	r31, 0x00	; 0
+    17f2:	80 81       	ld	r24, Z
+    17f4:	eb 81       	ldd	r30, Y+3	; 0x03
+    17f6:	fc 81       	ldd	r31, Y+4	; 0x04
+    17f8:	80 83       	st	Z, r24
+    17fa:	0a c0       	rjmp	.+20     	; 0x1810 <DIO_u8GetPortData+0x9c>
+			break;
+		case PORTD:
+			*pu8_ReturnVar = PORTD_REG;
+    17fc:	e2 e3       	ldi	r30, 0x32	; 50
+    17fe:	f0 e0       	ldi	r31, 0x00	; 0
+    1800:	80 81       	ld	r24, Z
+    1802:	eb 81       	ldd	r30, Y+3	; 0x03
+    1804:	fc 81       	ldd	r31, Y+4	; 0x04
+    1806:	80 83       	st	Z, r24
+    1808:	03 c0       	rjmp	.+6      	; 0x1810 <DIO_u8GetPortData+0x9c>
+			break;
+		default:
+			// if not suitable port return error state NOK
+			u8ErrorState = STD_TYPES_NOK;
+    180a:	19 82       	std	Y+1, r1	; 0x01
+    180c:	01 c0       	rjmp	.+2      	; 0x1810 <DIO_u8GetPortData+0x9c>
+		}
+	} else {
+		// if no address passed to function return error state NOK 
+		u8ErrorState = STD_TYPES_NOK;
+    180e:	19 82       	std	Y+1, r1	; 0x01
+	}
+
+	return u8ErrorState;
+    1810:	89 81       	ldd	r24, Y+1	; 0x01
+}
+    1812:	26 96       	adiw	r28, 0x06	; 6
+    1814:	0f b6       	in	r0, 0x3f	; 63
+    1816:	f8 94       	cli
+    1818:	de bf       	out	0x3e, r29	; 62
+    181a:	0f be       	out	0x3f, r0	; 63
+    181c:	cd bf       	out	0x3d, r28	; 61
+    181e:	cf 91       	pop	r28
+    1820:	df 91       	pop	r29
+    1822:	08 95       	ret
+
+00001824 <DIO_u8TogglePinData>:
+
+// function to toggle pin state
+uint8_t DIO_u8TogglePinData(DIOPort_t u8_PortName, DIOPin_t u8_PinNum) {
+    1824:	df 93       	push	r29
+    1826:	cf 93       	push	r28
+    1828:	00 d0       	rcall	.+0      	; 0x182a <DIO_u8TogglePinData+0x6>
+    182a:	00 d0       	rcall	.+0      	; 0x182c <DIO_u8TogglePinData+0x8>
+    182c:	0f 92       	push	r0
+    182e:	cd b7       	in	r28, 0x3d	; 61
+    1830:	de b7       	in	r29, 0x3e	; 62
+    1832:	8a 83       	std	Y+2, r24	; 0x02
+    1834:	6b 83       	std	Y+3, r22	; 0x03
+
+	uint8_t u8ErrorState = STD_TYPES_OK;
+    1836:	81 e0       	ldi	r24, 0x01	; 1
+    1838:	89 83       	std	Y+1, r24	; 0x01
+	switch (u8_PortName) {
+    183a:	8a 81       	ldd	r24, Y+2	; 0x02
+    183c:	28 2f       	mov	r18, r24
+    183e:	30 e0       	ldi	r19, 0x00	; 0
+    1840:	3d 83       	std	Y+5, r19	; 0x05
+    1842:	2c 83       	std	Y+4, r18	; 0x04
+    1844:	8c 81       	ldd	r24, Y+4	; 0x04
+    1846:	9d 81       	ldd	r25, Y+5	; 0x05
+    1848:	81 30       	cpi	r24, 0x01	; 1
+    184a:	91 05       	cpc	r25, r1
+    184c:	49 f1       	breq	.+82     	; 0x18a0 <DIO_u8TogglePinData+0x7c>
+    184e:	2c 81       	ldd	r18, Y+4	; 0x04
+    1850:	3d 81       	ldd	r19, Y+5	; 0x05
+    1852:	22 30       	cpi	r18, 0x02	; 2
+    1854:	31 05       	cpc	r19, r1
+    1856:	2c f4       	brge	.+10     	; 0x1862 <DIO_u8TogglePinData+0x3e>
+    1858:	8c 81       	ldd	r24, Y+4	; 0x04
+    185a:	9d 81       	ldd	r25, Y+5	; 0x05
+    185c:	00 97       	sbiw	r24, 0x00	; 0
+    185e:	61 f0       	breq	.+24     	; 0x1878 <DIO_u8TogglePinData+0x54>
+    1860:	5b c0       	rjmp	.+182    	; 0x1918 <DIO_u8TogglePinData+0xf4>
+    1862:	2c 81       	ldd	r18, Y+4	; 0x04
+    1864:	3d 81       	ldd	r19, Y+5	; 0x05
+    1866:	22 30       	cpi	r18, 0x02	; 2
+    1868:	31 05       	cpc	r19, r1
+    186a:	71 f1       	breq	.+92     	; 0x18c8 <DIO_u8TogglePinData+0xa4>
+    186c:	8c 81       	ldd	r24, Y+4	; 0x04
+    186e:	9d 81       	ldd	r25, Y+5	; 0x05
+    1870:	83 30       	cpi	r24, 0x03	; 3
+    1872:	91 05       	cpc	r25, r1
+    1874:	e9 f1       	breq	.+122    	; 0x18f0 <DIO_u8TogglePinData+0xcc>
+    1876:	50 c0       	rjmp	.+160    	; 0x1918 <DIO_u8TogglePinData+0xf4>
+	// toogle bit value depend on port and pin 
+	case PORTA:
+		Toggle_BIT(PORTA_REG, u8_PinNum);
+    1878:	ab e3       	ldi	r26, 0x3B	; 59
+    187a:	b0 e0       	ldi	r27, 0x00	; 0
+    187c:	eb e3       	ldi	r30, 0x3B	; 59
+    187e:	f0 e0       	ldi	r31, 0x00	; 0
+    1880:	80 81       	ld	r24, Z
+    1882:	48 2f       	mov	r20, r24
+    1884:	8b 81       	ldd	r24, Y+3	; 0x03
+    1886:	28 2f       	mov	r18, r24
+    1888:	30 e0       	ldi	r19, 0x00	; 0
+    188a:	81 e0       	ldi	r24, 0x01	; 1
+    188c:	90 e0       	ldi	r25, 0x00	; 0
+    188e:	02 2e       	mov	r0, r18
+    1890:	02 c0       	rjmp	.+4      	; 0x1896 <DIO_u8TogglePinData+0x72>
+    1892:	88 0f       	add	r24, r24
+    1894:	99 1f       	adc	r25, r25
+    1896:	0a 94       	dec	r0
+    1898:	e2 f7       	brpl	.-8      	; 0x1892 <DIO_u8TogglePinData+0x6e>
+    189a:	84 27       	eor	r24, r20
+    189c:	8c 93       	st	X, r24
+    189e:	3d c0       	rjmp	.+122    	; 0x191a <DIO_u8TogglePinData+0xf6>
+		break;
+	case PORTB:
+		Toggle_BIT(PORTB_REG, u8_PinNum);
+    18a0:	a8 e3       	ldi	r26, 0x38	; 56
+    18a2:	b0 e0       	ldi	r27, 0x00	; 0
+    18a4:	e8 e3       	ldi	r30, 0x38	; 56
+    18a6:	f0 e0       	ldi	r31, 0x00	; 0
+    18a8:	80 81       	ld	r24, Z
+    18aa:	48 2f       	mov	r20, r24
+    18ac:	8b 81       	ldd	r24, Y+3	; 0x03
+    18ae:	28 2f       	mov	r18, r24
+    18b0:	30 e0       	ldi	r19, 0x00	; 0
+    18b2:	81 e0       	ldi	r24, 0x01	; 1
+    18b4:	90 e0       	ldi	r25, 0x00	; 0
+    18b6:	02 2e       	mov	r0, r18
+    18b8:	02 c0       	rjmp	.+4      	; 0x18be <DIO_u8TogglePinData+0x9a>
+    18ba:	88 0f       	add	r24, r24
+    18bc:	99 1f       	adc	r25, r25
+    18be:	0a 94       	dec	r0
+    18c0:	e2 f7       	brpl	.-8      	; 0x18ba <DIO_u8TogglePinData+0x96>
+    18c2:	84 27       	eor	r24, r20
+    18c4:	8c 93       	st	X, r24
+    18c6:	29 c0       	rjmp	.+82     	; 0x191a <DIO_u8TogglePinData+0xf6>
+		break;
+	case PORTC:
+		Toggle_BIT(PORTC_REG, u8_PinNum);
+    18c8:	a5 e3       	ldi	r26, 0x35	; 53
+    18ca:	b0 e0       	ldi	r27, 0x00	; 0
+    18cc:	e5 e3       	ldi	r30, 0x35	; 53
+    18ce:	f0 e0       	ldi	r31, 0x00	; 0
+    18d0:	80 81       	ld	r24, Z
+    18d2:	48 2f       	mov	r20, r24
+    18d4:	8b 81       	ldd	r24, Y+3	; 0x03
+    18d6:	28 2f       	mov	r18, r24
+    18d8:	30 e0       	ldi	r19, 0x00	; 0
+    18da:	81 e0       	ldi	r24, 0x01	; 1
+    18dc:	90 e0       	ldi	r25, 0x00	; 0
+    18de:	02 2e       	mov	r0, r18
+    18e0:	02 c0       	rjmp	.+4      	; 0x18e6 <DIO_u8TogglePinData+0xc2>
+    18e2:	88 0f       	add	r24, r24
+    18e4:	99 1f       	adc	r25, r25
+    18e6:	0a 94       	dec	r0
+    18e8:	e2 f7       	brpl	.-8      	; 0x18e2 <DIO_u8TogglePinData+0xbe>
+    18ea:	84 27       	eor	r24, r20
+    18ec:	8c 93       	st	X, r24
+    18ee:	15 c0       	rjmp	.+42     	; 0x191a <DIO_u8TogglePinData+0xf6>
+		break;
+	case PORTD:
+		Toggle_BIT(PORTD_REG, u8_PinNum);
+    18f0:	a2 e3       	ldi	r26, 0x32	; 50
+    18f2:	b0 e0       	ldi	r27, 0x00	; 0
+    18f4:	e2 e3       	ldi	r30, 0x32	; 50
+    18f6:	f0 e0       	ldi	r31, 0x00	; 0
+    18f8:	80 81       	ld	r24, Z
+    18fa:	48 2f       	mov	r20, r24
+    18fc:	8b 81       	ldd	r24, Y+3	; 0x03
+    18fe:	28 2f       	mov	r18, r24
+    1900:	30 e0       	ldi	r19, 0x00	; 0
+    1902:	81 e0       	ldi	r24, 0x01	; 1
+    1904:	90 e0       	ldi	r25, 0x00	; 0
+    1906:	02 2e       	mov	r0, r18
+    1908:	02 c0       	rjmp	.+4      	; 0x190e <DIO_u8TogglePinData+0xea>
+    190a:	88 0f       	add	r24, r24
+    190c:	99 1f       	adc	r25, r25
+    190e:	0a 94       	dec	r0
+    1910:	e2 f7       	brpl	.-8      	; 0x190a <DIO_u8TogglePinData+0xe6>
+    1912:	84 27       	eor	r24, r20
+    1914:	8c 93       	st	X, r24
+    1916:	01 c0       	rjmp	.+2      	; 0x191a <DIO_u8TogglePinData+0xf6>
+		break;
+	default:
+		// if input port is not one of the above cases return error state NOK
+		u8ErrorState = STD_TYPES_NOK;
+    1918:	19 82       	std	Y+1, r1	; 0x01
+	}
+
+	return u8ErrorState;
+    191a:	89 81       	ldd	r24, Y+1	; 0x01
+}
+    191c:	0f 90       	pop	r0
+    191e:	0f 90       	pop	r0
+    1920:	0f 90       	pop	r0
+    1922:	0f 90       	pop	r0
+    1924:	0f 90       	pop	r0
+    1926:	cf 91       	pop	r28
+    1928:	df 91       	pop	r29
+    192a:	08 95       	ret
+
+0000192c <DIO_u8Set4BitsValue>:
+
+
+uint8_t DIO_u8Set4BitsValue(uint8_t u8_PortName,uint8_t u8PortVal)
+{
+    192c:	df 93       	push	r29
+    192e:	cf 93       	push	r28
+    1930:	00 d0       	rcall	.+0      	; 0x1932 <DIO_u8Set4BitsValue+0x6>
+    1932:	00 d0       	rcall	.+0      	; 0x1934 <DIO_u8Set4BitsValue+0x8>
+    1934:	0f 92       	push	r0
+    1936:	cd b7       	in	r28, 0x3d	; 61
+    1938:	de b7       	in	r29, 0x3e	; 62
+    193a:	8a 83       	std	Y+2, r24	; 0x02
+    193c:	6b 83       	std	Y+3, r22	; 0x03
+	uint8_t u8ErrorState= STD_TYPES_OK;
+    193e:	81 e0       	ldi	r24, 0x01	; 1
+    1940:	89 83       	std	Y+1, r24	; 0x01
+	switch (u8_PortName) {
+    1942:	8a 81       	ldd	r24, Y+2	; 0x02
+    1944:	28 2f       	mov	r18, r24
+    1946:	30 e0       	ldi	r19, 0x00	; 0
+    1948:	3d 83       	std	Y+5, r19	; 0x05
+    194a:	2c 83       	std	Y+4, r18	; 0x04
+    194c:	8c 81       	ldd	r24, Y+4	; 0x04
+    194e:	9d 81       	ldd	r25, Y+5	; 0x05
+    1950:	81 30       	cpi	r24, 0x01	; 1
+    1952:	91 05       	cpc	r25, r1
+    1954:	31 f1       	breq	.+76     	; 0x19a2 <DIO_u8Set4BitsValue+0x76>
+    1956:	2c 81       	ldd	r18, Y+4	; 0x04
+    1958:	3d 81       	ldd	r19, Y+5	; 0x05
+    195a:	22 30       	cpi	r18, 0x02	; 2
+    195c:	31 05       	cpc	r19, r1
+    195e:	2c f4       	brge	.+10     	; 0x196a <DIO_u8Set4BitsValue+0x3e>
+    1960:	8c 81       	ldd	r24, Y+4	; 0x04
+    1962:	9d 81       	ldd	r25, Y+5	; 0x05
+    1964:	00 97       	sbiw	r24, 0x00	; 0
+    1966:	61 f0       	breq	.+24     	; 0x1980 <DIO_u8Set4BitsValue+0x54>
+    1968:	4f c0       	rjmp	.+158    	; 0x1a08 <DIO_u8Set4BitsValue+0xdc>
+    196a:	2c 81       	ldd	r18, Y+4	; 0x04
+    196c:	3d 81       	ldd	r19, Y+5	; 0x05
+    196e:	22 30       	cpi	r18, 0x02	; 2
+    1970:	31 05       	cpc	r19, r1
+    1972:	41 f1       	breq	.+80     	; 0x19c4 <DIO_u8Set4BitsValue+0x98>
+    1974:	8c 81       	ldd	r24, Y+4	; 0x04
+    1976:	9d 81       	ldd	r25, Y+5	; 0x05
+    1978:	83 30       	cpi	r24, 0x03	; 3
+    197a:	91 05       	cpc	r25, r1
+    197c:	a1 f1       	breq	.+104    	; 0x19e6 <DIO_u8Set4BitsValue+0xba>
+    197e:	44 c0       	rjmp	.+136    	; 0x1a08 <DIO_u8Set4BitsValue+0xdc>
+	case PORTA:
+		PORTA_REG &= 0b10000111;
+    1980:	ab e3       	ldi	r26, 0x3B	; 59
+    1982:	b0 e0       	ldi	r27, 0x00	; 0
+    1984:	eb e3       	ldi	r30, 0x3B	; 59
+    1986:	f0 e0       	ldi	r31, 0x00	; 0
+    1988:	80 81       	ld	r24, Z
+    198a:	87 78       	andi	r24, 0x87	; 135
+    198c:	8c 93       	st	X, r24
+		PORTA_REG |= (u8PortVal>>1);
+    198e:	ab e3       	ldi	r26, 0x3B	; 59
+    1990:	b0 e0       	ldi	r27, 0x00	; 0
+    1992:	eb e3       	ldi	r30, 0x3B	; 59
+    1994:	f0 e0       	ldi	r31, 0x00	; 0
+    1996:	90 81       	ld	r25, Z
+    1998:	8b 81       	ldd	r24, Y+3	; 0x03
+    199a:	86 95       	lsr	r24
+    199c:	89 2b       	or	r24, r25
+    199e:	8c 93       	st	X, r24
+    19a0:	34 c0       	rjmp	.+104    	; 0x1a0a <DIO_u8Set4BitsValue+0xde>
+		break;
+	case PORTB:
+		PORTB_REG &= 0b10000111;
+    19a2:	a8 e3       	ldi	r26, 0x38	; 56
+    19a4:	b0 e0       	ldi	r27, 0x00	; 0
+    19a6:	e8 e3       	ldi	r30, 0x38	; 56
+    19a8:	f0 e0       	ldi	r31, 0x00	; 0
+    19aa:	80 81       	ld	r24, Z
+    19ac:	87 78       	andi	r24, 0x87	; 135
+    19ae:	8c 93       	st	X, r24
+		PORTB_REG |= (u8PortVal>>1);
+    19b0:	a8 e3       	ldi	r26, 0x38	; 56
+    19b2:	b0 e0       	ldi	r27, 0x00	; 0
+    19b4:	e8 e3       	ldi	r30, 0x38	; 56
+    19b6:	f0 e0       	ldi	r31, 0x00	; 0
+    19b8:	90 81       	ld	r25, Z
+    19ba:	8b 81       	ldd	r24, Y+3	; 0x03
+    19bc:	86 95       	lsr	r24
+    19be:	89 2b       	or	r24, r25
+    19c0:	8c 93       	st	X, r24
+    19c2:	23 c0       	rjmp	.+70     	; 0x1a0a <DIO_u8Set4BitsValue+0xde>
+		break;
+	case PORTC:
+		PORTC_REG &= 0b10000111;
+    19c4:	a5 e3       	ldi	r26, 0x35	; 53
+    19c6:	b0 e0       	ldi	r27, 0x00	; 0
+    19c8:	e5 e3       	ldi	r30, 0x35	; 53
+    19ca:	f0 e0       	ldi	r31, 0x00	; 0
+    19cc:	80 81       	ld	r24, Z
+    19ce:	87 78       	andi	r24, 0x87	; 135
+    19d0:	8c 93       	st	X, r24
+		PORTC_REG |= (u8PortVal>>1);
+    19d2:	a5 e3       	ldi	r26, 0x35	; 53
+    19d4:	b0 e0       	ldi	r27, 0x00	; 0
+    19d6:	e5 e3       	ldi	r30, 0x35	; 53
+    19d8:	f0 e0       	ldi	r31, 0x00	; 0
+    19da:	90 81       	ld	r25, Z
+    19dc:	8b 81       	ldd	r24, Y+3	; 0x03
+    19de:	86 95       	lsr	r24
+    19e0:	89 2b       	or	r24, r25
+    19e2:	8c 93       	st	X, r24
+    19e4:	12 c0       	rjmp	.+36     	; 0x1a0a <DIO_u8Set4BitsValue+0xde>
+		break;
+	case PORTD:
+		PORTD_REG &= 0b10000111;
+    19e6:	a2 e3       	ldi	r26, 0x32	; 50
+    19e8:	b0 e0       	ldi	r27, 0x00	; 0
+    19ea:	e2 e3       	ldi	r30, 0x32	; 50
+    19ec:	f0 e0       	ldi	r31, 0x00	; 0
+    19ee:	80 81       	ld	r24, Z
+    19f0:	87 78       	andi	r24, 0x87	; 135
+    19f2:	8c 93       	st	X, r24
+		PORTD_REG |= (u8PortVal>>1);
+    19f4:	a2 e3       	ldi	r26, 0x32	; 50
+    19f6:	b0 e0       	ldi	r27, 0x00	; 0
+    19f8:	e2 e3       	ldi	r30, 0x32	; 50
+    19fa:	f0 e0       	ldi	r31, 0x00	; 0
+    19fc:	90 81       	ld	r25, Z
+    19fe:	8b 81       	ldd	r24, Y+3	; 0x03
+    1a00:	86 95       	lsr	r24
+    1a02:	89 2b       	or	r24, r25
+    1a04:	8c 93       	st	X, r24
+    1a06:	01 c0       	rjmp	.+2      	; 0x1a0a <DIO_u8Set4BitsValue+0xde>
+		break;
+	default:
+		u8ErrorState= STD_TYPES_NOK;
+    1a08:	19 82       	std	Y+1, r1	; 0x01
+	}
+	return u8ErrorState;
+    1a0a:	89 81       	ldd	r24, Y+1	; 0x01
+}
+    1a0c:	0f 90       	pop	r0
+    1a0e:	0f 90       	pop	r0
+    1a10:	0f 90       	pop	r0
+    1a12:	0f 90       	pop	r0
+    1a14:	0f 90       	pop	r0
+    1a16:	cf 91       	pop	r28
+    1a18:	df 91       	pop	r29
+    1a1a:	08 95       	ret
+
+00001a1c <LED_u8Init>:
+ */
+
+#include "LED.h"
+
+// function to initialize LED 
+uint8_t LED_u8Init(LED_t* led) {
+    1a1c:	df 93       	push	r29
+    1a1e:	cf 93       	push	r28
+    1a20:	00 d0       	rcall	.+0      	; 0x1a22 <LED_u8Init+0x6>
+    1a22:	cd b7       	in	r28, 0x3d	; 61
+    1a24:	de b7       	in	r29, 0x3e	; 62
+    1a26:	9a 83       	std	Y+2, r25	; 0x02
+    1a28:	89 83       	std	Y+1, r24	; 0x01
+	// set direction of LED's pin to OUTPUT 
+	return DIO_u8SetPinDirection(led->port, led->pin, DIO_OUTPUT);
+    1a2a:	e9 81       	ldd	r30, Y+1	; 0x01
+    1a2c:	fa 81       	ldd	r31, Y+2	; 0x02
+    1a2e:	80 81       	ld	r24, Z
+    1a30:	e9 81       	ldd	r30, Y+1	; 0x01
+    1a32:	fa 81       	ldd	r31, Y+2	; 0x02
+    1a34:	91 81       	ldd	r25, Z+1	; 0x01
+    1a36:	69 2f       	mov	r22, r25
+    1a38:	42 e0       	ldi	r20, 0x02	; 2
+    1a3a:	0e 94 5a 06 	call	0xcb4	; 0xcb4 <DIO_u8SetPinDirection>
+}
+    1a3e:	0f 90       	pop	r0
+    1a40:	0f 90       	pop	r0
+    1a42:	cf 91       	pop	r28
+    1a44:	df 91       	pop	r29
+    1a46:	08 95       	ret
+
+00001a48 <LED_u8On>:
+
+// function ta turn LED on
+uint8_t LED_u8On(LED_t* led) {
+    1a48:	df 93       	push	r29
+    1a4a:	cf 93       	push	r28
+    1a4c:	00 d0       	rcall	.+0      	; 0x1a4e <LED_u8On+0x6>
+    1a4e:	cd b7       	in	r28, 0x3d	; 61
+    1a50:	de b7       	in	r29, 0x3e	; 62
+    1a52:	9a 83       	std	Y+2, r25	; 0x02
+    1a54:	89 83       	std	Y+1, r24	; 0x01
+	// set LED's pin to HIGH 
+	return DIO_u8SetPinData(led->port, led->pin, DIO_HIGH);
+    1a56:	e9 81       	ldd	r30, Y+1	; 0x01
+    1a58:	fa 81       	ldd	r31, Y+2	; 0x02
+    1a5a:	80 81       	ld	r24, Z
+    1a5c:	e9 81       	ldd	r30, Y+1	; 0x01
+    1a5e:	fa 81       	ldd	r31, Y+2	; 0x02
+    1a60:	91 81       	ldd	r25, Z+1	; 0x01
+    1a62:	69 2f       	mov	r22, r25
+    1a64:	41 e0       	ldi	r20, 0x01	; 1
+    1a66:	0e 94 a4 08 	call	0x1148	; 0x1148 <DIO_u8SetPinData>
+}
+    1a6a:	0f 90       	pop	r0
+    1a6c:	0f 90       	pop	r0
+    1a6e:	cf 91       	pop	r28
+    1a70:	df 91       	pop	r29
+    1a72:	08 95       	ret
+
+00001a74 <LED_u8Off>:
+
+// function ta turn LED off
+uint8_t LED_u8Off(LED_t* led) {
+    1a74:	df 93       	push	r29
+    1a76:	cf 93       	push	r28
+    1a78:	00 d0       	rcall	.+0      	; 0x1a7a <LED_u8Off+0x6>
+    1a7a:	cd b7       	in	r28, 0x3d	; 61
+    1a7c:	de b7       	in	r29, 0x3e	; 62
+    1a7e:	9a 83       	std	Y+2, r25	; 0x02
+    1a80:	89 83       	std	Y+1, r24	; 0x01
+	// set LED's pin to LOW
+	return DIO_u8SetPinData(led->port, led->pin, DIO_LOW);
+    1a82:	e9 81       	ldd	r30, Y+1	; 0x01
+    1a84:	fa 81       	ldd	r31, Y+2	; 0x02
+    1a86:	80 81       	ld	r24, Z
+    1a88:	e9 81       	ldd	r30, Y+1	; 0x01
+    1a8a:	fa 81       	ldd	r31, Y+2	; 0x02
+    1a8c:	91 81       	ldd	r25, Z+1	; 0x01
+    1a8e:	69 2f       	mov	r22, r25
+    1a90:	40 e0       	ldi	r20, 0x00	; 0
+    1a92:	0e 94 a4 08 	call	0x1148	; 0x1148 <DIO_u8SetPinData>
+}
+    1a96:	0f 90       	pop	r0
+    1a98:	0f 90       	pop	r0
+    1a9a:	cf 91       	pop	r28
+    1a9c:	df 91       	pop	r29
+    1a9e:	08 95       	ret
+
+00001aa0 <LED_u8Toggle>:
+
+// function to toggle LED state
+uint8_t LED_u8Toggle(LED_t* led) {
+    1aa0:	df 93       	push	r29
+    1aa2:	cf 93       	push	r28
+    1aa4:	00 d0       	rcall	.+0      	; 0x1aa6 <LED_u8Toggle+0x6>
+    1aa6:	cd b7       	in	r28, 0x3d	; 61
+    1aa8:	de b7       	in	r29, 0x3e	; 62
+    1aaa:	9a 83       	std	Y+2, r25	; 0x02
+    1aac:	89 83       	std	Y+1, r24	; 0x01
+	// toggle LED's pin state 
+	return DIO_u8TogglePinData(led->port, led->pin);
+    1aae:	e9 81       	ldd	r30, Y+1	; 0x01
+    1ab0:	fa 81       	ldd	r31, Y+2	; 0x02
+    1ab2:	80 81       	ld	r24, Z
+    1ab4:	e9 81       	ldd	r30, Y+1	; 0x01
+    1ab6:	fa 81       	ldd	r31, Y+2	; 0x02
+    1ab8:	91 81       	ldd	r25, Z+1	; 0x01
+    1aba:	69 2f       	mov	r22, r25
+    1abc:	0e 94 12 0c 	call	0x1824	; 0x1824 <DIO_u8TogglePinData>
+}
+    1ac0:	0f 90       	pop	r0
+    1ac2:	0f 90       	pop	r0
+    1ac4:	cf 91       	pop	r28
+    1ac6:	df 91       	pop	r29
+    1ac8:	08 95       	ret
+
+00001aca <main>:
+#define SLAVE_ADDRESS		0x02
+#define NEW_LINE_CHAR		0x0D
+#define UART_BAUDRATE		9600
+
+int main(void)
+{
+    1aca:	df 93       	push	r29
+    1acc:	cf 93       	push	r28
+    1ace:	0f 92       	push	r0
+    1ad0:	cd b7       	in	r28, 0x3d	; 61
+    1ad2:	de b7       	in	r29, 0x3e	; 62
+	uint8_t u8ReceivedByte;
+	I2C_u8Init();
+    1ad4:	0e 94 8e 04 	call	0x91c	; 0x91c <I2C_u8Init>
+	UART_u8Init(UART_BAUDRATE);
+    1ad8:	80 e8       	ldi	r24, 0x80	; 128
+    1ada:	95 e2       	ldi	r25, 0x25	; 37
+    1adc:	0e 94 49 00 	call	0x92	; 0x92 <UART_u8Init>
+	while (1)
+	{
+		UART_u8ReceiveByte(&u8ReceivedByte);
+    1ae0:	ce 01       	movw	r24, r28
+    1ae2:	01 96       	adiw	r24, 0x01	; 1
+    1ae4:	0e 94 3e 01 	call	0x27c	; 0x27c <UART_u8ReceiveByte>
+
+		I2C_u8MasterSendStart();
+    1ae8:	0e 94 21 05 	call	0xa42	; 0xa42 <I2C_u8MasterSendStart>
+		I2C_u8MasterSendSLA(SLAVE_ADDRESS,I2C_MASTER_WRITE);
+    1aec:	82 e0       	ldi	r24, 0x02	; 2
+    1aee:	60 e0       	ldi	r22, 0x00	; 0
+    1af0:	0e 94 d1 04 	call	0x9a2	; 0x9a2 <I2C_u8MasterSendSLA>
+		I2C_u8MasterSendByte(u8ReceivedByte);
+    1af4:	89 81       	ldd	r24, Y+1	; 0x01
+    1af6:	0e 94 02 05 	call	0xa04	; 0xa04 <I2C_u8MasterSendByte>
+		I2C_u8Stop();
+    1afa:	0e 94 e8 05 	call	0xbd0	; 0xbd0 <I2C_u8Stop>
+    1afe:	f0 cf       	rjmp	.-32     	; 0x1ae0 <main+0x16>
+
+00001b00 <__udivmodsi4>:
+    1b00:	a1 e2       	ldi	r26, 0x21	; 33
+    1b02:	1a 2e       	mov	r1, r26
+    1b04:	aa 1b       	sub	r26, r26
+    1b06:	bb 1b       	sub	r27, r27
+    1b08:	fd 01       	movw	r30, r26
+    1b0a:	0d c0       	rjmp	.+26     	; 0x1b26 <__udivmodsi4_ep>
+
+00001b0c <__udivmodsi4_loop>:
+    1b0c:	aa 1f       	adc	r26, r26
+    1b0e:	bb 1f       	adc	r27, r27
+    1b10:	ee 1f       	adc	r30, r30
+    1b12:	ff 1f       	adc	r31, r31
+    1b14:	a2 17       	cp	r26, r18
+    1b16:	b3 07       	cpc	r27, r19
+    1b18:	e4 07       	cpc	r30, r20
+    1b1a:	f5 07       	cpc	r31, r21
+    1b1c:	20 f0       	brcs	.+8      	; 0x1b26 <__udivmodsi4_ep>
+    1b1e:	a2 1b       	sub	r26, r18
+    1b20:	b3 0b       	sbc	r27, r19
+    1b22:	e4 0b       	sbc	r30, r20
+    1b24:	f5 0b       	sbc	r31, r21
+
+00001b26 <__udivmodsi4_ep>:
+    1b26:	66 1f       	adc	r22, r22
+    1b28:	77 1f       	adc	r23, r23
+    1b2a:	88 1f       	adc	r24, r24
+    1b2c:	99 1f       	adc	r25, r25
+    1b2e:	1a 94       	dec	r1
+    1b30:	69 f7       	brne	.-38     	; 0x1b0c <__udivmodsi4_loop>
+    1b32:	60 95       	com	r22
+    1b34:	70 95       	com	r23
+    1b36:	80 95       	com	r24
+    1b38:	90 95       	com	r25
+    1b3a:	9b 01       	movw	r18, r22
+    1b3c:	ac 01       	movw	r20, r24
+    1b3e:	bd 01       	movw	r22, r26
+    1b40:	cf 01       	movw	r24, r30
+    1b42:	08 95       	ret
+
+00001b44 <_exit>:
+    1b44:	f8 94       	cli
+
+00001b46 <__stop_program>:
+    1b46:	ff cf       	rjmp	.-2      	; 0x1b46 <__stop_program>

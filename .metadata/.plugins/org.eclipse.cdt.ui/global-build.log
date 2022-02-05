@@ -1,108 +1,71 @@
-05:43:03 **** Build of configuration Debug for project I2C_SLAVE ****
+09:10:06 **** Incremental Build of configuration Debug for project I2C_TEST_SLAVE ****
 make all 
 Building file: ../MCAL/UART/UART.c
 Invoking: AVR Compiler
 avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"MCAL/UART/UART.d" -MT"MCAL/UART/UART.o" -c -o "MCAL/UART/UART.o" "../MCAL/UART/UART.c"
 Finished building: ../MCAL/UART/UART.c
  
-Building file: ../MCAL/SPI/SPI.c
+Building file: ../MCAL/TIMER0/TIMER0.c
 Invoking: AVR Compiler
-avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"MCAL/SPI/SPI.d" -MT"MCAL/SPI/SPI.o" -c -o "MCAL/SPI/SPI.o" "../MCAL/SPI/SPI.c"
-Finished building: ../MCAL/SPI/SPI.c
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"MCAL/TIMER0/TIMER0.d" -MT"MCAL/TIMER0/TIMER0.o" -c -o "MCAL/TIMER0/TIMER0.o" "../MCAL/TIMER0/TIMER0.c"
+Finished building: ../MCAL/TIMER0/TIMER0.c
  
 Building file: ../MCAL/I2C/I2C.c
 Invoking: AVR Compiler
 avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"MCAL/I2C/I2C.d" -MT"MCAL/I2C/I2C.o" -c -o "MCAL/I2C/I2C.o" "../MCAL/I2C/I2C.c"
+../MCAL/I2C/I2C.c: In function 'I2C_u8Init':
+../MCAL/I2C/I2C.c:39: error: incompatible type for argument 1 of 'LED_u8Init'
+../MCAL/I2C/I2C.c:40: error: incompatible type for argument 1 of 'LED_u8Init'
+../MCAL/I2C/I2C.c: In function 'I2C_u8MasterSendSLA':
+../MCAL/I2C/I2C.c:60: warning: implicit declaration of function 'ASSIGN_HIGH_NIB'
+../MCAL/I2C/I2C.c: In function 'I2C_u8MasterReceiveWithACK':
+../MCAL/I2C/I2C.c:127: error: incompatible type for argument 1 of 'LED_u8On'
 ../MCAL/I2C/I2C.c: In function 'I2C_u8SlaveGetByte':
 ../MCAL/I2C/I2C.c:191: warning: control reaches end of non-void function
-Finished building: ../MCAL/I2C/I2C.c
- 
-Building file: ../MCAL/DIO/DIO.c
-Invoking: AVR Compiler
-avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"MCAL/DIO/DIO.d" -MT"MCAL/DIO/DIO.o" -c -o "MCAL/DIO/DIO.o" "../MCAL/DIO/DIO.c"
-Finished building: ../MCAL/DIO/DIO.c
- 
-Building file: ../ECUAL/LED/LED.c
-Invoking: AVR Compiler
-avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"ECUAL/LED/LED.d" -MT"ECUAL/LED/LED.o" -c -o "ECUAL/LED/LED.o" "../ECUAL/LED/LED.c"
-Finished building: ../ECUAL/LED/LED.c
- 
-Building file: ../APP/main.c
-Invoking: AVR Compiler
-avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"APP/main.d" -MT"APP/main.o" -c -o "APP/main.o" "../APP/main.c"
-../APP/main.c:18:42: warning: "/*" within comment
-../APP/main.c:19:39: warning: "/*" within comment
-Finished building: ../APP/main.c
- 
-Building target: I2C_SLAVE.elf
-Invoking: AVR C Linker
-avr-gcc -Wl,-Map,I2C_SLAVE.map -mmcu=atmega32 -o "I2C_SLAVE.elf"  ./MCAL/UART/UART.o  ./MCAL/SPI/SPI.o  ./MCAL/I2C/I2C.o  ./MCAL/DIO/DIO.o  ./ECUAL/LED/LED.o  ./APP/main.o   
-Finished building target: I2C_SLAVE.elf
- 
-Invoking: AVR Create Extended Listing
-avr-objdump -h -S I2C_SLAVE.elf  >"I2C_SLAVE.lss"
-Finished building: I2C_SLAVE.lss
- 
-Create Flash image (ihex format)
-avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex I2C_SLAVE.elf  "I2C_SLAVE.hex"
-Finished building: I2C_SLAVE.hex
- 
-Create eeprom image (ihex format)
-avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex I2C_SLAVE.elf  "I2C_SLAVE.eep"
-Finished building: I2C_SLAVE.eep
- 
-Invoking: Print Size
-avr-size --format=berkeley -t I2C_SLAVE.elf
-   text	   data	    bss	    dec	    hex	filename
-   6992	      6	     10	   7008	   1b60	I2C_SLAVE.elf
-   6992	      6	     10	   7008	   1b60	(TOTALS)
-Finished building: sizedummy
- 
-05:53:14 **** Incremental Build of configuration Debug for project ATMProject ****
+make: *** [MCAL/I2C/I2C.o] Error 1
+09:10:28 **** Incremental Build of configuration Debug for project ATMProject ****
 make all 
 Invoking: Print Size
 avr-size --format=berkeley -t ATMProject.elf
    text	   data	    bss	    dec	    hex	filename
-  20280	    868	     41	  21189	   52c5	ATMProject.elf
-  20280	    868	     41	  21189	   52c5	(TOTALS)
+  20458	    932	     41	  21431	   53b7	ATMProject.elf
+  20458	    932	     41	  21431	   53b7	(TOTALS)
 Finished building: sizedummy
  
-05:53:15 **** Incremental Build of configuration Debug for project I2C_SLAVE ****
+09:10:29 **** Incremental Build of configuration Debug for project CARD_ECU ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t CARD_ECU.elf
+   text	   data	    bss	    dec	    hex	filename
+  20426	    390	     61	  20877	   518d	CARD_ECU.elf
+  20426	    390	     61	  20877	   518d	(TOTALS)
+Finished building: sizedummy
+ 
+09:10:30 **** Incremental Build of configuration Debug for project I2C_TEST ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t I2C_TEST.elf
+   text	   data	    bss	    dec	    hex	filename
+   6984	      6	     10	   7000	   1b58	I2C_TEST.elf
+   6984	      6	     10	   7000	   1b58	(TOTALS)
+Finished building: sizedummy
+ 
+09:10:31 **** Incremental Build of configuration Debug for project I2C_TEST_SLAVE ****
 make all 
 Building file: ../MCAL/I2C/I2C.c
 Invoking: AVR Compiler
 avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"MCAL/I2C/I2C.d" -MT"MCAL/I2C/I2C.o" -c -o "MCAL/I2C/I2C.o" "../MCAL/I2C/I2C.c"
+../MCAL/I2C/I2C.c: In function 'I2C_u8MasterSendSLA':
+../MCAL/I2C/I2C.c:60: warning: implicit declaration of function 'ASSIGN_HIGH_NIB'
+../MCAL/I2C/I2C.c: In function 'I2C_u8MasterReceiveWithACK':
+../MCAL/I2C/I2C.c:127: warning: implicit declaration of function 'LED_u8On'
+../MCAL/I2C/I2C.c:127: error: 'LEDTEST1' undeclared (first use in this function)
+../MCAL/I2C/I2C.c:127: error: (Each undeclared identifier is reported only once
+../MCAL/I2C/I2C.c:127: error: for each function it appears in.)
 ../MCAL/I2C/I2C.c: In function 'I2C_u8SlaveGetByte':
 ../MCAL/I2C/I2C.c:191: warning: control reaches end of non-void function
-Finished building: ../MCAL/I2C/I2C.c
- 
-Building file: ../APP/main.c
-Invoking: AVR Compiler
-avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"APP/main.d" -MT"APP/main.o" -c -o "APP/main.o" "../APP/main.c"
-../APP/main.c: In function 'main':
-../APP/main.c:24: warning: implicit declaration of function 'LED_u8On'
-../APP/main.c:24: error: 'LEDT' undeclared (first use in this function)
-../APP/main.c:24: error: (Each undeclared identifier is reported only once
-../APP/main.c:24: error: for each function it appears in.)
-make: *** [APP/main.o] Error 1
-05:53:16 **** Incremental Build of configuration Debug for project I2C_T ****
-make all 
-Building file: ../MCAL/I2C/I2C.c
-Invoking: AVR Compiler
-avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"MCAL/I2C/I2C.d" -MT"MCAL/I2C/I2C.o" -c -o "MCAL/I2C/I2C.o" "../MCAL/I2C/I2C.c"
-../MCAL/I2C/I2C.c: In function 'I2C_u8SlaveGetByte':
-../MCAL/I2C/I2C.c:191: warning: control reaches end of non-void function
-Finished building: ../MCAL/I2C/I2C.c
- 
-Building file: ../APP/main.c
-Invoking: AVR Compiler
-avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"APP/main.d" -MT"APP/main.o" -c -o "APP/main.o" "../APP/main.c"
-../APP/main.c: In function 'main':
-../APP/main.c:35: error: 'LEDT' undeclared (first use in this function)
-../APP/main.c:35: error: (Each undeclared identifier is reported only once
-../APP/main.c:35: error: for each function it appears in.)
-make: *** [APP/main.o] Error 1
-05:53:17 **** Incremental Build of configuration Debug for project UART_TASK2 ****
+make: *** [MCAL/I2C/I2C.o] Error 1
+09:10:33 **** Incremental Build of configuration Debug for project UART_TASK2 ****
 make all 
 Invoking: Print Size
 avr-size --format=berkeley -t UART_TASK2.elf
@@ -111,39 +74,219 @@ avr-size --format=berkeley -t UART_TASK2.elf
   12098	    364	     19	  12481	   30c1	(TOTALS)
 Finished building: sizedummy
  
-05:53:34 **** Incremental Build of configuration Debug for project ATMProject ****
+09:10:41 **** Incremental Build of configuration Debug for project ATMProject ****
 make all 
 Invoking: Print Size
 avr-size --format=berkeley -t ATMProject.elf
    text	   data	    bss	    dec	    hex	filename
-  20280	    868	     41	  21189	   52c5	ATMProject.elf
-  20280	    868	     41	  21189	   52c5	(TOTALS)
+  20458	    932	     41	  21431	   53b7	ATMProject.elf
+  20458	    932	     41	  21431	   53b7	(TOTALS)
 Finished building: sizedummy
  
-05:53:34 **** Incremental Build of configuration Debug for project I2C_SLAVE ****
+09:10:42 **** Incremental Build of configuration Debug for project CARD_ECU ****
 make all 
+Invoking: Print Size
+avr-size --format=berkeley -t CARD_ECU.elf
+   text	   data	    bss	    dec	    hex	filename
+  20426	    390	     61	  20877	   518d	CARD_ECU.elf
+  20426	    390	     61	  20877	   518d	(TOTALS)
+Finished building: sizedummy
+ 
+09:10:44 **** Incremental Build of configuration Debug for project I2C_TEST ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t I2C_TEST.elf
+   text	   data	    bss	    dec	    hex	filename
+   6984	      6	     10	   7000	   1b58	I2C_TEST.elf
+   6984	      6	     10	   7000	   1b58	(TOTALS)
+Finished building: sizedummy
+ 
+09:10:45 **** Incremental Build of configuration Debug for project I2C_TEST_SLAVE ****
+make all 
+Building file: ../MCAL/I2C/I2C.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"MCAL/I2C/I2C.d" -MT"MCAL/I2C/I2C.o" -c -o "MCAL/I2C/I2C.o" "../MCAL/I2C/I2C.c"
+../MCAL/I2C/I2C.c: In function 'I2C_u8MasterSendSLA':
+../MCAL/I2C/I2C.c:60: warning: implicit declaration of function 'ASSIGN_HIGH_NIB'
+../MCAL/I2C/I2C.c: In function 'I2C_u8SlaveGetByte':
+../MCAL/I2C/I2C.c:190: warning: control reaches end of non-void function
+Finished building: ../MCAL/I2C/I2C.c
+ 
+Building file: ../MCAL/DIO/DIO.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"MCAL/DIO/DIO.d" -MT"MCAL/DIO/DIO.o" -c -o "MCAL/DIO/DIO.o" "../MCAL/DIO/DIO.c"
+Finished building: ../MCAL/DIO/DIO.c
+ 
+Building file: ../MCAL/DELAY/DELAY.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"MCAL/DELAY/DELAY.d" -MT"MCAL/DELAY/DELAY.o" -c -o "MCAL/DELAY/DELAY.o" "../MCAL/DELAY/DELAY.c"
+Finished building: ../MCAL/DELAY/DELAY.c
+ 
+Building file: ../ECUAL/LED/LED.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"ECUAL/LED/LED.d" -MT"ECUAL/LED/LED.o" -c -o "ECUAL/LED/LED.o" "../ECUAL/LED/LED.c"
+Finished building: ../ECUAL/LED/LED.c
+ 
+Building file: ../ECUAL/BTN/Button.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"ECUAL/BTN/Button.d" -MT"ECUAL/BTN/Button.o" -c -o "ECUAL/BTN/Button.o" "../ECUAL/BTN/Button.c"
+../ECUAL/BTN/Button.c: In function 'BTN_u8IsPressed':
+../ECUAL/BTN/Button.c:21: warning: unused variable 'u8DebounceDetectorLow'
+../ECUAL/BTN/Button.c:21: warning: unused variable 'u8DebounceDetectorHigh'
+Finished building: ../ECUAL/BTN/Button.c
+ 
 Building file: ../APP/main.c
 Invoking: AVR Compiler
 avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"APP/main.d" -MT"APP/main.o" -c -o "APP/main.o" "../APP/main.c"
 Finished building: ../APP/main.c
  
-Building target: I2C_SLAVE.elf
+Building target: I2C_TEST_SLAVE.elf
 Invoking: AVR C Linker
-avr-gcc -Wl,-Map,I2C_SLAVE.map -mmcu=atmega32 -o "I2C_SLAVE.elf"  ./MCAL/UART/UART.o  ./MCAL/SPI/SPI.o  ./MCAL/I2C/I2C.o  ./MCAL/DIO/DIO.o  ./ECUAL/LED/LED.o  ./APP/main.o   
-Finished building target: I2C_SLAVE.elf
+avr-gcc -Wl,-Map,I2C_TEST_SLAVE.map -mmcu=atmega32 -o "I2C_TEST_SLAVE.elf"  ./MCAL/UART/UART.o  ./MCAL/TIMER0/TIMER0.o  ./MCAL/I2C/I2C.o  ./MCAL/DIO/DIO.o  ./MCAL/DELAY/DELAY.o  ./ECUAL/LED/LED.o  ./ECUAL/BTN/Button.o  ./APP/main.o   
+./MCAL/I2C/I2C.o: In function `__vector_19':
+../MCAL/I2C/I2C.c:196: undefined reference to `ASSIGN_HIGH_NIB'
+../MCAL/I2C/I2C.c:196: undefined reference to `ASSIGN_HIGH_NIB'
+../MCAL/I2C/I2C.c:196: undefined reference to `ASSIGN_HIGH_NIB'
+../MCAL/I2C/I2C.c:196: undefined reference to `ASSIGN_HIGH_NIB'
+../MCAL/I2C/I2C.c:196: undefined reference to `ASSIGN_HIGH_NIB'
+./MCAL/I2C/I2C.o:../MCAL/I2C/I2C.c:196: more undefined references to `ASSIGN_HIGH_NIB' follow
+make: *** [I2C_TEST_SLAVE.elf] Error 1
+09:10:48 **** Incremental Build of configuration Debug for project UART_TASK2 ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t UART_TASK2.elf
+   text	   data	    bss	    dec	    hex	filename
+  12098	    364	     19	  12481	   30c1	UART_TASK2.elf
+  12098	    364	     19	  12481	   30c1	(TOTALS)
+Finished building: sizedummy
+ 
+09:11:40 **** Incremental Build of configuration Debug for project ATMProject ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t ATMProject.elf
+   text	   data	    bss	    dec	    hex	filename
+  20458	    932	     41	  21431	   53b7	ATMProject.elf
+  20458	    932	     41	  21431	   53b7	(TOTALS)
+Finished building: sizedummy
+ 
+09:11:41 **** Incremental Build of configuration Debug for project CARD_ECU ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t CARD_ECU.elf
+   text	   data	    bss	    dec	    hex	filename
+  20426	    390	     61	  20877	   518d	CARD_ECU.elf
+  20426	    390	     61	  20877	   518d	(TOTALS)
+Finished building: sizedummy
+ 
+09:11:42 **** Incremental Build of configuration Debug for project I2C_TEST ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t I2C_TEST.elf
+   text	   data	    bss	    dec	    hex	filename
+   6984	      6	     10	   7000	   1b58	I2C_TEST.elf
+   6984	      6	     10	   7000	   1b58	(TOTALS)
+Finished building: sizedummy
+ 
+09:11:42 **** Incremental Build of configuration Debug for project I2C_TEST_SLAVE ****
+make all 
+Building file: ../MCAL/UART/UART.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"MCAL/UART/UART.d" -MT"MCAL/UART/UART.o" -c -o "MCAL/UART/UART.o" "../MCAL/UART/UART.c"
+Finished building: ../MCAL/UART/UART.c
+ 
+Building file: ../MCAL/TIMER0/TIMER0.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"MCAL/TIMER0/TIMER0.d" -MT"MCAL/TIMER0/TIMER0.o" -c -o "MCAL/TIMER0/TIMER0.o" "../MCAL/TIMER0/TIMER0.c"
+Finished building: ../MCAL/TIMER0/TIMER0.c
+ 
+Building file: ../MCAL/I2C/I2C.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"MCAL/I2C/I2C.d" -MT"MCAL/I2C/I2C.o" -c -o "MCAL/I2C/I2C.o" "../MCAL/I2C/I2C.c"
+../MCAL/I2C/I2C.c: In function 'I2C_u8SlaveGetByte':
+../MCAL/I2C/I2C.c:190: warning: control reaches end of non-void function
+Finished building: ../MCAL/I2C/I2C.c
+ 
+Building file: ../MCAL/DIO/DIO.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"MCAL/DIO/DIO.d" -MT"MCAL/DIO/DIO.o" -c -o "MCAL/DIO/DIO.o" "../MCAL/DIO/DIO.c"
+Finished building: ../MCAL/DIO/DIO.c
+ 
+Building file: ../MCAL/DELAY/DELAY.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"MCAL/DELAY/DELAY.d" -MT"MCAL/DELAY/DELAY.o" -c -o "MCAL/DELAY/DELAY.o" "../MCAL/DELAY/DELAY.c"
+Finished building: ../MCAL/DELAY/DELAY.c
+ 
+Building file: ../ECUAL/LED/LED.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"ECUAL/LED/LED.d" -MT"ECUAL/LED/LED.o" -c -o "ECUAL/LED/LED.o" "../ECUAL/LED/LED.c"
+Finished building: ../ECUAL/LED/LED.c
+ 
+Building file: ../ECUAL/BTN/Button.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"ECUAL/BTN/Button.d" -MT"ECUAL/BTN/Button.o" -c -o "ECUAL/BTN/Button.o" "../ECUAL/BTN/Button.c"
+../ECUAL/BTN/Button.c: In function 'BTN_u8IsPressed':
+../ECUAL/BTN/Button.c:21: warning: unused variable 'u8DebounceDetectorLow'
+../ECUAL/BTN/Button.c:21: warning: unused variable 'u8DebounceDetectorHigh'
+Finished building: ../ECUAL/BTN/Button.c
+ 
+Building file: ../APP/main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"APP/main.d" -MT"APP/main.o" -c -o "APP/main.o" "../APP/main.c"
+Finished building: ../APP/main.c
+ 
+Building target: I2C_TEST_SLAVE.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,I2C_TEST_SLAVE.map -mmcu=atmega32 -o "I2C_TEST_SLAVE.elf"  ./MCAL/UART/UART.o  ./MCAL/TIMER0/TIMER0.o  ./MCAL/I2C/I2C.o  ./MCAL/DIO/DIO.o  ./MCAL/DELAY/DELAY.o  ./ECUAL/LED/LED.o  ./ECUAL/BTN/Button.o  ./APP/main.o   
+Finished building target: I2C_TEST_SLAVE.elf
  
 Invoking: AVR Create Extended Listing
-avr-objdump -h -S I2C_SLAVE.elf  >"I2C_SLAVE.lss"
-Finished building: I2C_SLAVE.lss
+avr-objdump -h -S I2C_TEST_SLAVE.elf  >"I2C_TEST_SLAVE.lss"
+Finished building: I2C_TEST_SLAVE.lss
  
 Create Flash image (ihex format)
-avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex I2C_SLAVE.elf  "I2C_SLAVE.hex"
-Finished building: I2C_SLAVE.hex
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex I2C_TEST_SLAVE.elf  "I2C_TEST_SLAVE.hex"
+Finished building: I2C_TEST_SLAVE.hex
  
 Create eeprom image (ihex format)
-avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex I2C_SLAVE.elf  "I2C_SLAVE.eep"
-Finished building: I2C_SLAVE.eep
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex I2C_TEST_SLAVE.elf  "I2C_TEST_SLAVE.eep"
+Finished building: I2C_TEST_SLAVE.eep
  
+Invoking: Print Size
+avr-size --format=berkeley -t I2C_TEST_SLAVE.elf
+   text	   data	    bss	    dec	    hex	filename
+   7866	      2	     13	   7881	   1ec9	I2C_TEST_SLAVE.elf
+   7866	      2	     13	   7881	   1ec9	(TOTALS)
+Finished building: sizedummy
+ 
+09:11:46 **** Incremental Build of configuration Debug for project UART_TASK2 ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t UART_TASK2.elf
+   text	   data	    bss	    dec	    hex	filename
+  12098	    364	     19	  12481	   30c1	UART_TASK2.elf
+  12098	    364	     19	  12481	   30c1	(TOTALS)
+Finished building: sizedummy
+ 
+09:16:51 **** Incremental Build of configuration Debug for project ATMProject ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t ATMProject.elf
+   text	   data	    bss	    dec	    hex	filename
+  20458	    932	     41	  21431	   53b7	ATMProject.elf
+  20458	    932	     41	  21431	   53b7	(TOTALS)
+Finished building: sizedummy
+ 
+09:16:52 **** Incremental Build of configuration Debug for project CARD_ECU ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t CARD_ECU.elf
+   text	   data	    bss	    dec	    hex	filename
+  20426	    390	     61	  20877	   518d	CARD_ECU.elf
+  20426	    390	     61	  20877	   518d	(TOTALS)
+Finished building: sizedummy
+ 
+09:16:53 **** Incremental Build of configuration Debug for project I2C_SLAVE ****
+make all 
 Invoking: Print Size
 avr-size --format=berkeley -t I2C_SLAVE.elf
    text	   data	    bss	    dec	    hex	filename
@@ -151,38 +294,2027 @@ avr-size --format=berkeley -t I2C_SLAVE.elf
    6968	      6	     10	   6984	   1b48	(TOTALS)
 Finished building: sizedummy
  
-05:53:35 **** Incremental Build of configuration Debug for project I2C_T ****
+09:16:54 **** Incremental Build of configuration Debug for project I2C_TEST ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t I2C_TEST.elf
+   text	   data	    bss	    dec	    hex	filename
+   6984	      6	     10	   7000	   1b58	I2C_TEST.elf
+   6984	      6	     10	   7000	   1b58	(TOTALS)
+Finished building: sizedummy
+ 
+09:16:55 **** Incremental Build of configuration Debug for project I2C_TEST_SLAVE ****
+make all 
+Building file: ../APP/main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"APP/main.d" -MT"APP/main.o" -c -o "APP/main.o" "../APP/main.c"
+../APP/main.c: In function 'main':
+../APP/main.c:19: warning: implicit declaration of function 'I2C_u8Init'
+../APP/main.c:20: warning: implicit declaration of function 'UART_u8Init'
+../APP/main.c:23: warning: implicit declaration of function 'I2C_u8SlaveGetByte'
+../APP/main.c:25: warning: implicit declaration of function 'UART_u8SendByte'
+Finished building: ../APP/main.c
+ 
+Building target: I2C_TEST_SLAVE.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,I2C_TEST_SLAVE.map -mmcu=atmega32 -o "I2C_TEST_SLAVE.elf"  ./MCAL/UART/UART.o  ./MCAL/TIMER0/TIMER0.o  ./MCAL/I2C/I2C.o  ./MCAL/DIO/DIO.o  ./MCAL/DELAY/DELAY.o  ./ECUAL/LED/LED.o  ./ECUAL/BTN/Button.o  ./APP/main.o   
+Finished building target: I2C_TEST_SLAVE.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S I2C_TEST_SLAVE.elf  >"I2C_TEST_SLAVE.lss"
+Finished building: I2C_TEST_SLAVE.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex I2C_TEST_SLAVE.elf  "I2C_TEST_SLAVE.hex"
+Finished building: I2C_TEST_SLAVE.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex I2C_TEST_SLAVE.elf  "I2C_TEST_SLAVE.eep"
+Finished building: I2C_TEST_SLAVE.eep
+ 
+Invoking: Print Size
+avr-size --format=berkeley -t I2C_TEST_SLAVE.elf
+   text	   data	    bss	    dec	    hex	filename
+   7898	      2	     13	   7913	   1ee9	I2C_TEST_SLAVE.elf
+   7898	      2	     13	   7913	   1ee9	(TOTALS)
+Finished building: sizedummy
+ 
+09:16:57 **** Incremental Build of configuration Debug for project UART_TASK2 ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t UART_TASK2.elf
+   text	   data	    bss	    dec	    hex	filename
+  12098	    364	     19	  12481	   30c1	UART_TASK2.elf
+  12098	    364	     19	  12481	   30c1	(TOTALS)
+Finished building: sizedummy
+ 
+09:17:22 **** Incremental Build of configuration Debug for project ATMProject ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t ATMProject.elf
+   text	   data	    bss	    dec	    hex	filename
+  20458	    932	     41	  21431	   53b7	ATMProject.elf
+  20458	    932	     41	  21431	   53b7	(TOTALS)
+Finished building: sizedummy
+ 
+09:17:23 **** Incremental Build of configuration Debug for project CARD_ECU ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t CARD_ECU.elf
+   text	   data	    bss	    dec	    hex	filename
+  20426	    390	     61	  20877	   518d	CARD_ECU.elf
+  20426	    390	     61	  20877	   518d	(TOTALS)
+Finished building: sizedummy
+ 
+09:17:24 **** Incremental Build of configuration Debug for project I2C_SLAVE ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t I2C_SLAVE.elf
+   text	   data	    bss	    dec	    hex	filename
+   6968	      6	     10	   6984	   1b48	I2C_SLAVE.elf
+   6968	      6	     10	   6984	   1b48	(TOTALS)
+Finished building: sizedummy
+ 
+09:17:25 **** Incremental Build of configuration Debug for project I2C_TEST ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t I2C_TEST.elf
+   text	   data	    bss	    dec	    hex	filename
+   6984	      6	     10	   7000	   1b58	I2C_TEST.elf
+   6984	      6	     10	   7000	   1b58	(TOTALS)
+Finished building: sizedummy
+ 
+09:17:26 **** Incremental Build of configuration Debug for project I2C_TEST_SLAVE ****
+make all 
+Building file: ../APP/main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"APP/main.d" -MT"APP/main.o" -c -o "APP/main.o" "../APP/main.c"
+../APP/main.c: In function 'main':
+../APP/main.c:19: warning: implicit declaration of function 'I2C_u8Init'
+../APP/main.c:20: warning: implicit declaration of function 'UART_u8Init'
+../APP/main.c:24: warning: implicit declaration of function 'I2C_u8SlaveGetByte'
+../APP/main.c:26: warning: implicit declaration of function 'UART_u8SendByte'
+Finished building: ../APP/main.c
+ 
+Building target: I2C_TEST_SLAVE.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,I2C_TEST_SLAVE.map -mmcu=atmega32 -o "I2C_TEST_SLAVE.elf"  ./MCAL/UART/UART.o  ./MCAL/TIMER0/TIMER0.o  ./MCAL/I2C/I2C.o  ./MCAL/DIO/DIO.o  ./MCAL/DELAY/DELAY.o  ./ECUAL/LED/LED.o  ./ECUAL/BTN/Button.o  ./APP/main.o   
+Finished building target: I2C_TEST_SLAVE.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S I2C_TEST_SLAVE.elf  >"I2C_TEST_SLAVE.lss"
+Finished building: I2C_TEST_SLAVE.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex I2C_TEST_SLAVE.elf  "I2C_TEST_SLAVE.hex"
+Finished building: I2C_TEST_SLAVE.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex I2C_TEST_SLAVE.elf  "I2C_TEST_SLAVE.eep"
+Finished building: I2C_TEST_SLAVE.eep
+ 
+Invoking: Print Size
+avr-size --format=berkeley -t I2C_TEST_SLAVE.elf
+   text	   data	    bss	    dec	    hex	filename
+   7898	      2	     13	   7913	   1ee9	I2C_TEST_SLAVE.elf
+   7898	      2	     13	   7913	   1ee9	(TOTALS)
+Finished building: sizedummy
+ 
+09:17:28 **** Incremental Build of configuration Debug for project UART_TASK2 ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t UART_TASK2.elf
+   text	   data	    bss	    dec	    hex	filename
+  12098	    364	     19	  12481	   30c1	UART_TASK2.elf
+  12098	    364	     19	  12481	   30c1	(TOTALS)
+Finished building: sizedummy
+ 
+09:17:49 **** Incremental Build of configuration Debug for project ATMProject ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t ATMProject.elf
+   text	   data	    bss	    dec	    hex	filename
+  20458	    932	     41	  21431	   53b7	ATMProject.elf
+  20458	    932	     41	  21431	   53b7	(TOTALS)
+Finished building: sizedummy
+ 
+09:17:51 **** Incremental Build of configuration Debug for project CARD_ECU ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t CARD_ECU.elf
+   text	   data	    bss	    dec	    hex	filename
+  20426	    390	     61	  20877	   518d	CARD_ECU.elf
+  20426	    390	     61	  20877	   518d	(TOTALS)
+Finished building: sizedummy
+ 
+09:17:52 **** Incremental Build of configuration Debug for project I2C_SLAVE ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t I2C_SLAVE.elf
+   text	   data	    bss	    dec	    hex	filename
+   6968	      6	     10	   6984	   1b48	I2C_SLAVE.elf
+   6968	      6	     10	   6984	   1b48	(TOTALS)
+Finished building: sizedummy
+ 
+09:17:53 **** Incremental Build of configuration Debug for project I2C_TEST ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t I2C_TEST.elf
+   text	   data	    bss	    dec	    hex	filename
+   6984	      6	     10	   7000	   1b58	I2C_TEST.elf
+   6984	      6	     10	   7000	   1b58	(TOTALS)
+Finished building: sizedummy
+ 
+09:17:53 **** Incremental Build of configuration Debug for project I2C_TEST_SLAVE ****
+make all 
+Building file: ../APP/main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"APP/main.d" -MT"APP/main.o" -c -o "APP/main.o" "../APP/main.c"
+../APP/main.c: In function 'main':
+../APP/main.c:19: warning: implicit declaration of function 'I2C_u8Init'
+../APP/main.c:20: warning: implicit declaration of function 'UART_u8Init'
+../APP/main.c:24: warning: implicit declaration of function 'I2C_u8SlaveGetByte'
+../APP/main.c:26: warning: implicit declaration of function 'UART_u8SendByte'
+Finished building: ../APP/main.c
+ 
+Building target: I2C_TEST_SLAVE.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,I2C_TEST_SLAVE.map -mmcu=atmega32 -o "I2C_TEST_SLAVE.elf"  ./MCAL/UART/UART.o  ./MCAL/TIMER0/TIMER0.o  ./MCAL/I2C/I2C.o  ./MCAL/DIO/DIO.o  ./MCAL/DELAY/DELAY.o  ./ECUAL/LED/LED.o  ./ECUAL/BTN/Button.o  ./APP/main.o   
+Finished building target: I2C_TEST_SLAVE.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S I2C_TEST_SLAVE.elf  >"I2C_TEST_SLAVE.lss"
+Finished building: I2C_TEST_SLAVE.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex I2C_TEST_SLAVE.elf  "I2C_TEST_SLAVE.hex"
+Finished building: I2C_TEST_SLAVE.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex I2C_TEST_SLAVE.elf  "I2C_TEST_SLAVE.eep"
+Finished building: I2C_TEST_SLAVE.eep
+ 
+Invoking: Print Size
+avr-size --format=berkeley -t I2C_TEST_SLAVE.elf
+   text	   data	    bss	    dec	    hex	filename
+   7900	      2	     13	   7915	   1eeb	I2C_TEST_SLAVE.elf
+   7900	      2	     13	   7915	   1eeb	(TOTALS)
+Finished building: sizedummy
+ 
+09:17:55 **** Incremental Build of configuration Debug for project UART_TASK2 ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t UART_TASK2.elf
+   text	   data	    bss	    dec	    hex	filename
+  12098	    364	     19	  12481	   30c1	UART_TASK2.elf
+  12098	    364	     19	  12481	   30c1	(TOTALS)
+Finished building: sizedummy
+ 
+09:27:08 **** Incremental Build of configuration Debug for project ATMProject ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t ATMProject.elf
+   text	   data	    bss	    dec	    hex	filename
+  20458	    932	     41	  21431	   53b7	ATMProject.elf
+  20458	    932	     41	  21431	   53b7	(TOTALS)
+Finished building: sizedummy
+ 
+09:27:10 **** Incremental Build of configuration Debug for project CARD_ECU ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t CARD_ECU.elf
+   text	   data	    bss	    dec	    hex	filename
+  20426	    390	     61	  20877	   518d	CARD_ECU.elf
+  20426	    390	     61	  20877	   518d	(TOTALS)
+Finished building: sizedummy
+ 
+09:27:10 **** Incremental Build of configuration Debug for project I2C_SLAVE ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t I2C_SLAVE.elf
+   text	   data	    bss	    dec	    hex	filename
+   6968	      6	     10	   6984	   1b48	I2C_SLAVE.elf
+   6968	      6	     10	   6984	   1b48	(TOTALS)
+Finished building: sizedummy
+ 
+09:27:11 **** Incremental Build of configuration Debug for project I2C_TEST ****
 make all 
 Building file: ../APP/main.c
 Invoking: AVR Compiler
 avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"APP/main.d" -MT"APP/main.o" -c -o "APP/main.o" "../APP/main.c"
 Finished building: ../APP/main.c
  
-Building target: I2C_T.elf
+Building target: I2C_TEST.elf
 Invoking: AVR C Linker
-avr-gcc -Wl,-Map,I2C_T.map -mmcu=atmega32 -o "I2C_T.elf"  ./MCAL/UART/UART.o  ./MCAL/SPI/SPI.o  ./MCAL/I2C/I2C.o  ./MCAL/DIO/DIO.o  ./ECUAL/LED/LED.o  ./APP/main.o   
-Finished building target: I2C_T.elf
+avr-gcc -Wl,-Map,I2C_TEST.map -mmcu=atmega32 -o "I2C_TEST.elf"  ./MCAL/UART/UART.o  ./MCAL/SPI/SPI.o  ./MCAL/I2C/I2C.o  ./MCAL/DIO/DIO.o  ./ECUAL/LED/LED.o  ./APP/main.o   
+Finished building target: I2C_TEST.elf
  
 Invoking: AVR Create Extended Listing
-avr-objdump -h -S I2C_T.elf  >"I2C_T.lss"
-Finished building: I2C_T.lss
+avr-objdump -h -S I2C_TEST.elf  >"I2C_TEST.lss"
+Finished building: I2C_TEST.lss
  
 Create Flash image (ihex format)
-avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex I2C_T.elf  "I2C_T.hex"
-Finished building: I2C_T.hex
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex I2C_TEST.elf  "I2C_TEST.hex"
+Finished building: I2C_TEST.hex
  
 Create eeprom image (ihex format)
-avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex I2C_T.elf  "I2C_T.eep"
-Finished building: I2C_T.eep
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex I2C_TEST.elf  "I2C_TEST.eep"
+Finished building: I2C_TEST.eep
  
 Invoking: Print Size
-avr-size --format=berkeley -t I2C_T.elf
+avr-size --format=berkeley -t I2C_TEST.elf
    text	   data	    bss	    dec	    hex	filename
-   6998	      6	     10	   7014	   1b66	I2C_T.elf
-   6998	      6	     10	   7014	   1b66	(TOTALS)
+   6990	      6	     10	   7006	   1b5e	I2C_TEST.elf
+   6990	      6	     10	   7006	   1b5e	(TOTALS)
 Finished building: sizedummy
  
-05:53:37 **** Incremental Build of configuration Debug for project UART_TASK2 ****
+09:27:13 **** Incremental Build of configuration Debug for project I2C_TEST_SLAVE ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t I2C_TEST_SLAVE.elf
+   text	   data	    bss	    dec	    hex	filename
+   7900	      2	     13	   7915	   1eeb	I2C_TEST_SLAVE.elf
+   7900	      2	     13	   7915	   1eeb	(TOTALS)
+Finished building: sizedummy
+ 
+09:27:14 **** Incremental Build of configuration Debug for project UART_TASK2 ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t UART_TASK2.elf
+   text	   data	    bss	    dec	    hex	filename
+  12098	    364	     19	  12481	   30c1	UART_TASK2.elf
+  12098	    364	     19	  12481	   30c1	(TOTALS)
+Finished building: sizedummy
+ 
+09:41:59 **** Incremental Build of configuration Debug for project ATMProject ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t ATMProject.elf
+   text	   data	    bss	    dec	    hex	filename
+  20458	    932	     41	  21431	   53b7	ATMProject.elf
+  20458	    932	     41	  21431	   53b7	(TOTALS)
+Finished building: sizedummy
+ 
+09:42:02 **** Incremental Build of configuration Debug for project CARD_ECU ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t CARD_ECU.elf
+   text	   data	    bss	    dec	    hex	filename
+  20426	    390	     61	  20877	   518d	CARD_ECU.elf
+  20426	    390	     61	  20877	   518d	(TOTALS)
+Finished building: sizedummy
+ 
+09:42:03 **** Incremental Build of configuration Debug for project I2C_SLAVE ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t I2C_SLAVE.elf
+   text	   data	    bss	    dec	    hex	filename
+   6968	      6	     10	   6984	   1b48	I2C_SLAVE.elf
+   6968	      6	     10	   6984	   1b48	(TOTALS)
+Finished building: sizedummy
+ 
+09:42:04 **** Incremental Build of configuration Debug for project I2C_TEST ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t I2C_TEST.elf
+   text	   data	    bss	    dec	    hex	filename
+   6990	      6	     10	   7006	   1b5e	I2C_TEST.elf
+   6990	      6	     10	   7006	   1b5e	(TOTALS)
+Finished building: sizedummy
+ 
+09:42:05 **** Incremental Build of configuration Debug for project I2C_TEST_SLAVE ****
+make all 
+Building file: ../APP/main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"APP/main.d" -MT"APP/main.o" -c -o "APP/main.o" "../APP/main.c"
+../APP/main.c: In function 'main':
+../APP/main.c:19: warning: implicit declaration of function 'I2C_u8Init'
+../APP/main.c:20: warning: implicit declaration of function 'UART_u8Init'
+../APP/main.c:24: warning: implicit declaration of function 'I2C_u8SlaveGetByte'
+../APP/main.c:25: warning: implicit declaration of function 'UART_u8SendString'
+../APP/main.c:27: warning: implicit declaration of function 'UART_u8SendByte'
+Finished building: ../APP/main.c
+ 
+Building target: I2C_TEST_SLAVE.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,I2C_TEST_SLAVE.map -mmcu=atmega32 -o "I2C_TEST_SLAVE.elf"  ./MCAL/UART/UART.o  ./MCAL/TIMER0/TIMER0.o  ./MCAL/I2C/I2C.o  ./MCAL/DIO/DIO.o  ./MCAL/DELAY/DELAY.o  ./ECUAL/LED/LED.o  ./ECUAL/BTN/Button.o  ./APP/main.o   
+Finished building target: I2C_TEST_SLAVE.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S I2C_TEST_SLAVE.elf  >"I2C_TEST_SLAVE.lss"
+Finished building: I2C_TEST_SLAVE.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex I2C_TEST_SLAVE.elf  "I2C_TEST_SLAVE.hex"
+Finished building: I2C_TEST_SLAVE.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex I2C_TEST_SLAVE.elf  "I2C_TEST_SLAVE.eep"
+Finished building: I2C_TEST_SLAVE.eep
+ 
+Invoking: Print Size
+avr-size --format=berkeley -t I2C_TEST_SLAVE.elf
+   text	   data	    bss	    dec	    hex	filename
+   7908	      4	     13	   7925	   1ef5	I2C_TEST_SLAVE.elf
+   7908	      4	     13	   7925	   1ef5	(TOTALS)
+Finished building: sizedummy
+ 
+09:42:08 **** Incremental Build of configuration Debug for project UART_TASK2 ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t UART_TASK2.elf
+   text	   data	    bss	    dec	    hex	filename
+  12098	    364	     19	  12481	   30c1	UART_TASK2.elf
+  12098	    364	     19	  12481	   30c1	(TOTALS)
+Finished building: sizedummy
+ 
+09:43:40 **** Incremental Build of configuration Debug for project ATMProject ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t ATMProject.elf
+   text	   data	    bss	    dec	    hex	filename
+  20458	    932	     41	  21431	   53b7	ATMProject.elf
+  20458	    932	     41	  21431	   53b7	(TOTALS)
+Finished building: sizedummy
+ 
+09:43:41 **** Incremental Build of configuration Debug for project CARD_ECU ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t CARD_ECU.elf
+   text	   data	    bss	    dec	    hex	filename
+  20426	    390	     61	  20877	   518d	CARD_ECU.elf
+  20426	    390	     61	  20877	   518d	(TOTALS)
+Finished building: sizedummy
+ 
+09:43:42 **** Incremental Build of configuration Debug for project I2C_SLAVE ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t I2C_SLAVE.elf
+   text	   data	    bss	    dec	    hex	filename
+   6968	      6	     10	   6984	   1b48	I2C_SLAVE.elf
+   6968	      6	     10	   6984	   1b48	(TOTALS)
+Finished building: sizedummy
+ 
+09:43:42 **** Incremental Build of configuration Debug for project I2C_TEST ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t I2C_TEST.elf
+   text	   data	    bss	    dec	    hex	filename
+   6990	      6	     10	   7006	   1b5e	I2C_TEST.elf
+   6990	      6	     10	   7006	   1b5e	(TOTALS)
+Finished building: sizedummy
+ 
+09:43:43 **** Incremental Build of configuration Debug for project I2C_TEST_SLAVE ****
+make all 
+Building file: ../APP/main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"APP/main.d" -MT"APP/main.o" -c -o "APP/main.o" "../APP/main.c"
+../APP/main.c: In function 'main':
+../APP/main.c:19: warning: implicit declaration of function 'I2C_u8Init'
+../APP/main.c:20: warning: implicit declaration of function 'UART_u8Init'
+../APP/main.c:24: warning: implicit declaration of function 'I2C_u8SlaveGetByte'
+../APP/main.c:26: warning: implicit declaration of function 'UART_u8SendByte'
+Finished building: ../APP/main.c
+ 
+Building target: I2C_TEST_SLAVE.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,I2C_TEST_SLAVE.map -mmcu=atmega32 -o "I2C_TEST_SLAVE.elf"  ./MCAL/UART/UART.o  ./MCAL/TIMER0/TIMER0.o  ./MCAL/I2C/I2C.o  ./MCAL/DIO/DIO.o  ./MCAL/DELAY/DELAY.o  ./ECUAL/LED/LED.o  ./ECUAL/BTN/Button.o  ./APP/main.o   
+Finished building target: I2C_TEST_SLAVE.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S I2C_TEST_SLAVE.elf  >"I2C_TEST_SLAVE.lss"
+Finished building: I2C_TEST_SLAVE.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex I2C_TEST_SLAVE.elf  "I2C_TEST_SLAVE.hex"
+Finished building: I2C_TEST_SLAVE.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex I2C_TEST_SLAVE.elf  "I2C_TEST_SLAVE.eep"
+Finished building: I2C_TEST_SLAVE.eep
+ 
+Invoking: Print Size
+avr-size --format=berkeley -t I2C_TEST_SLAVE.elf
+   text	   data	    bss	    dec	    hex	filename
+   7900	      2	     13	   7915	   1eeb	I2C_TEST_SLAVE.elf
+   7900	      2	     13	   7915	   1eeb	(TOTALS)
+Finished building: sizedummy
+ 
+09:43:45 **** Incremental Build of configuration Debug for project UART_TASK2 ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t UART_TASK2.elf
+   text	   data	    bss	    dec	    hex	filename
+  12098	    364	     19	  12481	   30c1	UART_TASK2.elf
+  12098	    364	     19	  12481	   30c1	(TOTALS)
+Finished building: sizedummy
+ 
+09:44:10 **** Incremental Build of configuration Debug for project ATMProject ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t ATMProject.elf
+   text	   data	    bss	    dec	    hex	filename
+  20458	    932	     41	  21431	   53b7	ATMProject.elf
+  20458	    932	     41	  21431	   53b7	(TOTALS)
+Finished building: sizedummy
+ 
+09:44:11 **** Incremental Build of configuration Debug for project CARD_ECU ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t CARD_ECU.elf
+   text	   data	    bss	    dec	    hex	filename
+  20426	    390	     61	  20877	   518d	CARD_ECU.elf
+  20426	    390	     61	  20877	   518d	(TOTALS)
+Finished building: sizedummy
+ 
+09:44:13 **** Incremental Build of configuration Debug for project I2C_SLAVE ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t I2C_SLAVE.elf
+   text	   data	    bss	    dec	    hex	filename
+   6968	      6	     10	   6984	   1b48	I2C_SLAVE.elf
+   6968	      6	     10	   6984	   1b48	(TOTALS)
+Finished building: sizedummy
+ 
+09:44:13 **** Incremental Build of configuration Debug for project I2C_TEST ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t I2C_TEST.elf
+   text	   data	    bss	    dec	    hex	filename
+   6990	      6	     10	   7006	   1b5e	I2C_TEST.elf
+   6990	      6	     10	   7006	   1b5e	(TOTALS)
+Finished building: sizedummy
+ 
+09:44:14 **** Incremental Build of configuration Debug for project I2C_TEST_SLAVE ****
+make all 
+Building file: ../APP/main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"APP/main.d" -MT"APP/main.o" -c -o "APP/main.o" "../APP/main.c"
+../APP/main.c: In function 'main':
+../APP/main.c:19: warning: implicit declaration of function 'I2C_u8Init'
+../APP/main.c:20: warning: implicit declaration of function 'UART_u8Init'
+../APP/main.c:24: warning: implicit declaration of function 'I2C_u8SlaveGetByte'
+../APP/main.c:26: warning: implicit declaration of function 'UART_u8SendByte'
+Finished building: ../APP/main.c
+ 
+Building target: I2C_TEST_SLAVE.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,I2C_TEST_SLAVE.map -mmcu=atmega32 -o "I2C_TEST_SLAVE.elf"  ./MCAL/UART/UART.o  ./MCAL/TIMER0/TIMER0.o  ./MCAL/I2C/I2C.o  ./MCAL/DIO/DIO.o  ./MCAL/DELAY/DELAY.o  ./ECUAL/LED/LED.o  ./ECUAL/BTN/Button.o  ./APP/main.o   
+Finished building target: I2C_TEST_SLAVE.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S I2C_TEST_SLAVE.elf  >"I2C_TEST_SLAVE.lss"
+Finished building: I2C_TEST_SLAVE.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex I2C_TEST_SLAVE.elf  "I2C_TEST_SLAVE.hex"
+Finished building: I2C_TEST_SLAVE.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex I2C_TEST_SLAVE.elf  "I2C_TEST_SLAVE.eep"
+Finished building: I2C_TEST_SLAVE.eep
+ 
+Invoking: Print Size
+avr-size --format=berkeley -t I2C_TEST_SLAVE.elf
+   text	   data	    bss	    dec	    hex	filename
+   7900	      2	     13	   7915	   1eeb	I2C_TEST_SLAVE.elf
+   7900	      2	     13	   7915	   1eeb	(TOTALS)
+Finished building: sizedummy
+ 
+09:44:16 **** Incremental Build of configuration Debug for project UART_TASK2 ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t UART_TASK2.elf
+   text	   data	    bss	    dec	    hex	filename
+  12098	    364	     19	  12481	   30c1	UART_TASK2.elf
+  12098	    364	     19	  12481	   30c1	(TOTALS)
+Finished building: sizedummy
+ 
+09:45:59 **** Incremental Build of configuration Debug for project ATMProject ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t ATMProject.elf
+   text	   data	    bss	    dec	    hex	filename
+  20458	    932	     41	  21431	   53b7	ATMProject.elf
+  20458	    932	     41	  21431	   53b7	(TOTALS)
+Finished building: sizedummy
+ 
+09:46:01 **** Incremental Build of configuration Debug for project CARD_ECU ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t CARD_ECU.elf
+   text	   data	    bss	    dec	    hex	filename
+  20426	    390	     61	  20877	   518d	CARD_ECU.elf
+  20426	    390	     61	  20877	   518d	(TOTALS)
+Finished building: sizedummy
+ 
+09:46:02 **** Incremental Build of configuration Debug for project I2C_SLAVE ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t I2C_SLAVE.elf
+   text	   data	    bss	    dec	    hex	filename
+   6968	      6	     10	   6984	   1b48	I2C_SLAVE.elf
+   6968	      6	     10	   6984	   1b48	(TOTALS)
+Finished building: sizedummy
+ 
+09:46:03 **** Incremental Build of configuration Debug for project I2C_TEST ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t I2C_TEST.elf
+   text	   data	    bss	    dec	    hex	filename
+   6990	      6	     10	   7006	   1b5e	I2C_TEST.elf
+   6990	      6	     10	   7006	   1b5e	(TOTALS)
+Finished building: sizedummy
+ 
+09:46:04 **** Incremental Build of configuration Debug for project I2C_TEST_SLAVE ****
+make all 
+Building file: ../MCAL/UART/UART.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"MCAL/UART/UART.d" -MT"MCAL/UART/UART.o" -c -o "MCAL/UART/UART.o" "../MCAL/UART/UART.c"
+../MCAL/UART/UART.c: In function 'UART_u8Init':
+../MCAL/UART/UART.c:24: error: incompatible type for argument 1 of 'LED_u8Init'
+../MCAL/UART/UART.c: In function 'UART_u8SendInt':
+../MCAL/UART/UART.c:157: warning: unused variable 'u8NumberASCII'
+../MCAL/UART/UART.c:156: warning: unused variable 'u8Counter'
+../MCAL/UART/UART.c:221: warning: control reaches end of non-void function
+../MCAL/UART/UART.c: In function 'UART_u8ReceiveInt':
+../MCAL/UART/UART.c:327: warning: control reaches end of non-void function
+make: *** [MCAL/UART/UART.o] Error 1
+09:46:05 **** Incremental Build of configuration Debug for project UART_TASK2 ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t UART_TASK2.elf
+   text	   data	    bss	    dec	    hex	filename
+  12098	    364	     19	  12481	   30c1	UART_TASK2.elf
+  12098	    364	     19	  12481	   30c1	(TOTALS)
+Finished building: sizedummy
+ 
+09:46:14 **** Incremental Build of configuration Debug for project ATMProject ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t ATMProject.elf
+   text	   data	    bss	    dec	    hex	filename
+  20458	    932	     41	  21431	   53b7	ATMProject.elf
+  20458	    932	     41	  21431	   53b7	(TOTALS)
+Finished building: sizedummy
+ 
+09:46:15 **** Incremental Build of configuration Debug for project CARD_ECU ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t CARD_ECU.elf
+   text	   data	    bss	    dec	    hex	filename
+  20426	    390	     61	  20877	   518d	CARD_ECU.elf
+  20426	    390	     61	  20877	   518d	(TOTALS)
+Finished building: sizedummy
+ 
+09:46:16 **** Incremental Build of configuration Debug for project I2C_SLAVE ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t I2C_SLAVE.elf
+   text	   data	    bss	    dec	    hex	filename
+   6968	      6	     10	   6984	   1b48	I2C_SLAVE.elf
+   6968	      6	     10	   6984	   1b48	(TOTALS)
+Finished building: sizedummy
+ 
+09:46:17 **** Incremental Build of configuration Debug for project I2C_TEST ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t I2C_TEST.elf
+   text	   data	    bss	    dec	    hex	filename
+   6990	      6	     10	   7006	   1b5e	I2C_TEST.elf
+   6990	      6	     10	   7006	   1b5e	(TOTALS)
+Finished building: sizedummy
+ 
+09:46:18 **** Incremental Build of configuration Debug for project I2C_TEST_SLAVE ****
+make all 
+Building file: ../MCAL/UART/UART.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"MCAL/UART/UART.d" -MT"MCAL/UART/UART.o" -c -o "MCAL/UART/UART.o" "../MCAL/UART/UART.c"
+../MCAL/UART/UART.c: In function 'UART_u8SendInt':
+../MCAL/UART/UART.c:157: warning: unused variable 'u8NumberASCII'
+../MCAL/UART/UART.c:156: warning: unused variable 'u8Counter'
+../MCAL/UART/UART.c:221: warning: control reaches end of non-void function
+../MCAL/UART/UART.c: In function 'UART_u8ReceiveInt':
+../MCAL/UART/UART.c:327: warning: control reaches end of non-void function
+Finished building: ../MCAL/UART/UART.c
+ 
+Building target: I2C_TEST_SLAVE.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,I2C_TEST_SLAVE.map -mmcu=atmega32 -o "I2C_TEST_SLAVE.elf"  ./MCAL/UART/UART.o  ./MCAL/TIMER0/TIMER0.o  ./MCAL/I2C/I2C.o  ./MCAL/DIO/DIO.o  ./MCAL/DELAY/DELAY.o  ./ECUAL/LED/LED.o  ./ECUAL/BTN/Button.o  ./APP/main.o   
+Finished building target: I2C_TEST_SLAVE.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S I2C_TEST_SLAVE.elf  >"I2C_TEST_SLAVE.lss"
+Finished building: I2C_TEST_SLAVE.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex I2C_TEST_SLAVE.elf  "I2C_TEST_SLAVE.hex"
+Finished building: I2C_TEST_SLAVE.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex I2C_TEST_SLAVE.elf  "I2C_TEST_SLAVE.eep"
+Finished building: I2C_TEST_SLAVE.eep
+ 
+Invoking: Print Size
+avr-size --format=berkeley -t I2C_TEST_SLAVE.elf
+   text	   data	    bss	    dec	    hex	filename
+   8872	      4	     13	   8889	   22b9	I2C_TEST_SLAVE.elf
+   8872	      4	     13	   8889	   22b9	(TOTALS)
+Finished building: sizedummy
+ 
+09:46:20 **** Incremental Build of configuration Debug for project UART_TASK2 ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t UART_TASK2.elf
+   text	   data	    bss	    dec	    hex	filename
+  12098	    364	     19	  12481	   30c1	UART_TASK2.elf
+  12098	    364	     19	  12481	   30c1	(TOTALS)
+Finished building: sizedummy
+ 
+09:48:06 **** Incremental Build of configuration Debug for project ATMProject ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t ATMProject.elf
+   text	   data	    bss	    dec	    hex	filename
+  20458	    932	     41	  21431	   53b7	ATMProject.elf
+  20458	    932	     41	  21431	   53b7	(TOTALS)
+Finished building: sizedummy
+ 
+09:48:07 **** Incremental Build of configuration Debug for project CARD_ECU ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t CARD_ECU.elf
+   text	   data	    bss	    dec	    hex	filename
+  20426	    390	     61	  20877	   518d	CARD_ECU.elf
+  20426	    390	     61	  20877	   518d	(TOTALS)
+Finished building: sizedummy
+ 
+09:48:08 **** Incremental Build of configuration Debug for project I2C_SLAVE ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t I2C_SLAVE.elf
+   text	   data	    bss	    dec	    hex	filename
+   6968	      6	     10	   6984	   1b48	I2C_SLAVE.elf
+   6968	      6	     10	   6984	   1b48	(TOTALS)
+Finished building: sizedummy
+ 
+09:48:09 **** Incremental Build of configuration Debug for project I2C_TEST ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t I2C_TEST.elf
+   text	   data	    bss	    dec	    hex	filename
+   6990	      6	     10	   7006	   1b5e	I2C_TEST.elf
+   6990	      6	     10	   7006	   1b5e	(TOTALS)
+Finished building: sizedummy
+ 
+09:48:10 **** Incremental Build of configuration Debug for project I2C_TEST_SLAVE ****
+make all 
+Building file: ../APP/main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"APP/main.d" -MT"APP/main.o" -c -o "APP/main.o" "../APP/main.c"
+../APP/main.c: In function 'main':
+../APP/main.c:17: warning: implicit declaration of function 'DIO_u8SetPortDirection'
+../APP/main.c:17: error: 'PORTA' undeclared (first use in this function)
+../APP/main.c:17: error: (Each undeclared identifier is reported only once
+../APP/main.c:17: error: for each function it appears in.)
+../APP/main.c:17: error: 'DIO_OUTPUT' undeclared (first use in this function)
+../APP/main.c:18: warning: implicit declaration of function 'I2C_u8Init'
+../APP/main.c:19: warning: implicit declaration of function 'UART_u8Init'
+../APP/main.c:20: warning: implicit declaration of function 'UART_u8SendString'
+../APP/main.c:24: warning: implicit declaration of function 'I2C_u8SlaveGetByte'
+../APP/main.c:25: warning: implicit declaration of function 'DIO_u8SetPortData'
+../APP/main.c:26: warning: implicit declaration of function 'UART_u8SendByte'
+make: *** [APP/main.o] Error 1
+09:48:11 **** Incremental Build of configuration Debug for project UART_TASK2 ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t UART_TASK2.elf
+   text	   data	    bss	    dec	    hex	filename
+  12098	    364	     19	  12481	   30c1	UART_TASK2.elf
+  12098	    364	     19	  12481	   30c1	(TOTALS)
+Finished building: sizedummy
+ 
+09:48:36 **** Incremental Build of configuration Debug for project ATMProject ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t ATMProject.elf
+   text	   data	    bss	    dec	    hex	filename
+  20458	    932	     41	  21431	   53b7	ATMProject.elf
+  20458	    932	     41	  21431	   53b7	(TOTALS)
+Finished building: sizedummy
+ 
+09:48:37 **** Incremental Build of configuration Debug for project CARD_ECU ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t CARD_ECU.elf
+   text	   data	    bss	    dec	    hex	filename
+  20426	    390	     61	  20877	   518d	CARD_ECU.elf
+  20426	    390	     61	  20877	   518d	(TOTALS)
+Finished building: sizedummy
+ 
+09:48:38 **** Incremental Build of configuration Debug for project I2C_SLAVE ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t I2C_SLAVE.elf
+   text	   data	    bss	    dec	    hex	filename
+   6968	      6	     10	   6984	   1b48	I2C_SLAVE.elf
+   6968	      6	     10	   6984	   1b48	(TOTALS)
+Finished building: sizedummy
+ 
+09:48:39 **** Incremental Build of configuration Debug for project I2C_TEST ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t I2C_TEST.elf
+   text	   data	    bss	    dec	    hex	filename
+   6990	      6	     10	   7006	   1b5e	I2C_TEST.elf
+   6990	      6	     10	   7006	   1b5e	(TOTALS)
+Finished building: sizedummy
+ 
+09:48:40 **** Incremental Build of configuration Debug for project I2C_TEST_SLAVE ****
+make all 
+Building file: ../APP/main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"APP/main.d" -MT"APP/main.o" -c -o "APP/main.o" "../APP/main.c"
+../APP/main.c: In function 'main':
+../APP/main.c:18: warning: implicit declaration of function 'I2C_u8Init'
+../APP/main.c:19: warning: implicit declaration of function 'UART_u8Init'
+../APP/main.c:20: warning: implicit declaration of function 'UART_u8SendString'
+../APP/main.c:24: warning: implicit declaration of function 'I2C_u8SlaveGetByte'
+../APP/main.c:26: warning: implicit declaration of function 'UART_u8SendByte'
+Finished building: ../APP/main.c
+ 
+Building target: I2C_TEST_SLAVE.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,I2C_TEST_SLAVE.map -mmcu=atmega32 -o "I2C_TEST_SLAVE.elf"  ./MCAL/UART/UART.o  ./MCAL/TIMER0/TIMER0.o  ./MCAL/I2C/I2C.o  ./MCAL/DIO/DIO.o  ./MCAL/DELAY/DELAY.o  ./ECUAL/LED/LED.o  ./ECUAL/BTN/Button.o  ./APP/main.o   
+Finished building target: I2C_TEST_SLAVE.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S I2C_TEST_SLAVE.elf  >"I2C_TEST_SLAVE.lss"
+Finished building: I2C_TEST_SLAVE.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex I2C_TEST_SLAVE.elf  "I2C_TEST_SLAVE.hex"
+Finished building: I2C_TEST_SLAVE.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex I2C_TEST_SLAVE.elf  "I2C_TEST_SLAVE.eep"
+Finished building: I2C_TEST_SLAVE.eep
+ 
+Invoking: Print Size
+avr-size --format=berkeley -t I2C_TEST_SLAVE.elf
+   text	   data	    bss	    dec	    hex	filename
+   8880	      6	     13	   8899	   22c3	I2C_TEST_SLAVE.elf
+   8880	      6	     13	   8899	   22c3	(TOTALS)
+Finished building: sizedummy
+ 
+09:48:42 **** Incremental Build of configuration Debug for project UART_TASK2 ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t UART_TASK2.elf
+   text	   data	    bss	    dec	    hex	filename
+  12098	    364	     19	  12481	   30c1	UART_TASK2.elf
+  12098	    364	     19	  12481	   30c1	(TOTALS)
+Finished building: sizedummy
+ 
+09:49:25 **** Incremental Build of configuration Debug for project ATMProject ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t ATMProject.elf
+   text	   data	    bss	    dec	    hex	filename
+  20458	    932	     41	  21431	   53b7	ATMProject.elf
+  20458	    932	     41	  21431	   53b7	(TOTALS)
+Finished building: sizedummy
+ 
+09:49:26 **** Incremental Build of configuration Debug for project CARD_ECU ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t CARD_ECU.elf
+   text	   data	    bss	    dec	    hex	filename
+  20426	    390	     61	  20877	   518d	CARD_ECU.elf
+  20426	    390	     61	  20877	   518d	(TOTALS)
+Finished building: sizedummy
+ 
+09:49:27 **** Incremental Build of configuration Debug for project I2C_SLAVE ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t I2C_SLAVE.elf
+   text	   data	    bss	    dec	    hex	filename
+   6968	      6	     10	   6984	   1b48	I2C_SLAVE.elf
+   6968	      6	     10	   6984	   1b48	(TOTALS)
+Finished building: sizedummy
+ 
+09:49:27 **** Incremental Build of configuration Debug for project I2C_TEST ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t I2C_TEST.elf
+   text	   data	    bss	    dec	    hex	filename
+   6990	      6	     10	   7006	   1b5e	I2C_TEST.elf
+   6990	      6	     10	   7006	   1b5e	(TOTALS)
+Finished building: sizedummy
+ 
+09:49:28 **** Incremental Build of configuration Debug for project I2C_TEST_SLAVE ****
+make all 
+Building file: ../APP/main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"APP/main.d" -MT"APP/main.o" -c -o "APP/main.o" "../APP/main.c"
+../APP/main.c: In function 'main':
+../APP/main.c:18: warning: implicit declaration of function 'I2C_u8Init'
+../APP/main.c:19: warning: implicit declaration of function 'UART_u8Init'
+../APP/main.c:24: warning: implicit declaration of function 'I2C_u8SlaveGetByte'
+Finished building: ../APP/main.c
+ 
+Building target: I2C_TEST_SLAVE.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,I2C_TEST_SLAVE.map -mmcu=atmega32 -o "I2C_TEST_SLAVE.elf"  ./MCAL/UART/UART.o  ./MCAL/TIMER0/TIMER0.o  ./MCAL/I2C/I2C.o  ./MCAL/DIO/DIO.o  ./MCAL/DELAY/DELAY.o  ./ECUAL/LED/LED.o  ./ECUAL/BTN/Button.o  ./APP/main.o   
+Finished building target: I2C_TEST_SLAVE.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S I2C_TEST_SLAVE.elf  >"I2C_TEST_SLAVE.lss"
+Finished building: I2C_TEST_SLAVE.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex I2C_TEST_SLAVE.elf  "I2C_TEST_SLAVE.hex"
+Finished building: I2C_TEST_SLAVE.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex I2C_TEST_SLAVE.elf  "I2C_TEST_SLAVE.eep"
+Finished building: I2C_TEST_SLAVE.eep
+ 
+Invoking: Print Size
+avr-size --format=berkeley -t I2C_TEST_SLAVE.elf
+   text	   data	    bss	    dec	    hex	filename
+   8862	      4	     13	   8879	   22af	I2C_TEST_SLAVE.elf
+   8862	      4	     13	   8879	   22af	(TOTALS)
+Finished building: sizedummy
+ 
+09:49:30 **** Incremental Build of configuration Debug for project UART_TASK2 ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t UART_TASK2.elf
+   text	   data	    bss	    dec	    hex	filename
+  12098	    364	     19	  12481	   30c1	UART_TASK2.elf
+  12098	    364	     19	  12481	   30c1	(TOTALS)
+Finished building: sizedummy
+ 
+09:49:53 **** Incremental Build of configuration Debug for project ATMProject ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t ATMProject.elf
+   text	   data	    bss	    dec	    hex	filename
+  20458	    932	     41	  21431	   53b7	ATMProject.elf
+  20458	    932	     41	  21431	   53b7	(TOTALS)
+Finished building: sizedummy
+ 
+09:49:54 **** Incremental Build of configuration Debug for project CARD_ECU ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t CARD_ECU.elf
+   text	   data	    bss	    dec	    hex	filename
+  20426	    390	     61	  20877	   518d	CARD_ECU.elf
+  20426	    390	     61	  20877	   518d	(TOTALS)
+Finished building: sizedummy
+ 
+09:49:55 **** Incremental Build of configuration Debug for project I2C_SLAVE ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t I2C_SLAVE.elf
+   text	   data	    bss	    dec	    hex	filename
+   6968	      6	     10	   6984	   1b48	I2C_SLAVE.elf
+   6968	      6	     10	   6984	   1b48	(TOTALS)
+Finished building: sizedummy
+ 
+09:49:56 **** Incremental Build of configuration Debug for project I2C_TEST ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t I2C_TEST.elf
+   text	   data	    bss	    dec	    hex	filename
+   6990	      6	     10	   7006	   1b5e	I2C_TEST.elf
+   6990	      6	     10	   7006	   1b5e	(TOTALS)
+Finished building: sizedummy
+ 
+09:49:57 **** Incremental Build of configuration Debug for project I2C_TEST_SLAVE ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t I2C_TEST_SLAVE.elf
+   text	   data	    bss	    dec	    hex	filename
+   8862	      4	     13	   8879	   22af	I2C_TEST_SLAVE.elf
+   8862	      4	     13	   8879	   22af	(TOTALS)
+Finished building: sizedummy
+ 
+09:49:57 **** Incremental Build of configuration Debug for project UART_TASK2 ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t UART_TASK2.elf
+   text	   data	    bss	    dec	    hex	filename
+  12098	    364	     19	  12481	   30c1	UART_TASK2.elf
+  12098	    364	     19	  12481	   30c1	(TOTALS)
+Finished building: sizedummy
+ 
+09:50:35 **** Incremental Build of configuration Debug for project ATMProject ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t ATMProject.elf
+   text	   data	    bss	    dec	    hex	filename
+  20458	    932	     41	  21431	   53b7	ATMProject.elf
+  20458	    932	     41	  21431	   53b7	(TOTALS)
+Finished building: sizedummy
+ 
+09:50:36 **** Incremental Build of configuration Debug for project CARD_ECU ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t CARD_ECU.elf
+   text	   data	    bss	    dec	    hex	filename
+  20426	    390	     61	  20877	   518d	CARD_ECU.elf
+  20426	    390	     61	  20877	   518d	(TOTALS)
+Finished building: sizedummy
+ 
+09:50:37 **** Incremental Build of configuration Debug for project I2C_SLAVE ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t I2C_SLAVE.elf
+   text	   data	    bss	    dec	    hex	filename
+   6968	      6	     10	   6984	   1b48	I2C_SLAVE.elf
+   6968	      6	     10	   6984	   1b48	(TOTALS)
+Finished building: sizedummy
+ 
+09:50:38 **** Incremental Build of configuration Debug for project I2C_TEST ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t I2C_TEST.elf
+   text	   data	    bss	    dec	    hex	filename
+   6990	      6	     10	   7006	   1b5e	I2C_TEST.elf
+   6990	      6	     10	   7006	   1b5e	(TOTALS)
+Finished building: sizedummy
+ 
+09:50:39 **** Incremental Build of configuration Debug for project I2C_TEST_SLAVE ****
+make all 
+Building file: ../APP/main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"APP/main.d" -MT"APP/main.o" -c -o "APP/main.o" "../APP/main.c"
+../APP/main.c: In function 'main':
+../APP/main.c:18: warning: implicit declaration of function 'I2C_u8Init'
+../APP/main.c:23: warning: implicit declaration of function 'I2C_u8SlaveGetByte'
+Finished building: ../APP/main.c
+ 
+Building target: I2C_TEST_SLAVE.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,I2C_TEST_SLAVE.map -mmcu=atmega32 -o "I2C_TEST_SLAVE.elf"  ./MCAL/UART/UART.o  ./MCAL/TIMER0/TIMER0.o  ./MCAL/I2C/I2C.o  ./MCAL/DIO/DIO.o  ./MCAL/DELAY/DELAY.o  ./ECUAL/LED/LED.o  ./ECUAL/BTN/Button.o  ./APP/main.o   
+Finished building target: I2C_TEST_SLAVE.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S I2C_TEST_SLAVE.elf  >"I2C_TEST_SLAVE.lss"
+Finished building: I2C_TEST_SLAVE.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex I2C_TEST_SLAVE.elf  "I2C_TEST_SLAVE.hex"
+Finished building: I2C_TEST_SLAVE.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex I2C_TEST_SLAVE.elf  "I2C_TEST_SLAVE.eep"
+Finished building: I2C_TEST_SLAVE.eep
+ 
+Invoking: Print Size
+avr-size --format=berkeley -t I2C_TEST_SLAVE.elf
+   text	   data	    bss	    dec	    hex	filename
+   8854	      4	     13	   8871	   22a7	I2C_TEST_SLAVE.elf
+   8854	      4	     13	   8871	   22a7	(TOTALS)
+Finished building: sizedummy
+ 
+09:50:41 **** Incremental Build of configuration Debug for project UART_TASK2 ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t UART_TASK2.elf
+   text	   data	    bss	    dec	    hex	filename
+  12098	    364	     19	  12481	   30c1	UART_TASK2.elf
+  12098	    364	     19	  12481	   30c1	(TOTALS)
+Finished building: sizedummy
+ 
+09:52:02 **** Incremental Build of configuration Debug for project ATMProject ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t ATMProject.elf
+   text	   data	    bss	    dec	    hex	filename
+  20458	    932	     41	  21431	   53b7	ATMProject.elf
+  20458	    932	     41	  21431	   53b7	(TOTALS)
+Finished building: sizedummy
+ 
+09:52:04 **** Incremental Build of configuration Debug for project CARD_ECU ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t CARD_ECU.elf
+   text	   data	    bss	    dec	    hex	filename
+  20426	    390	     61	  20877	   518d	CARD_ECU.elf
+  20426	    390	     61	  20877	   518d	(TOTALS)
+Finished building: sizedummy
+ 
+09:52:05 **** Incremental Build of configuration Debug for project I2C_SLAVE ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t I2C_SLAVE.elf
+   text	   data	    bss	    dec	    hex	filename
+   6968	      6	     10	   6984	   1b48	I2C_SLAVE.elf
+   6968	      6	     10	   6984	   1b48	(TOTALS)
+Finished building: sizedummy
+ 
+09:52:06 **** Incremental Build of configuration Debug for project I2C_TEST ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t I2C_TEST.elf
+   text	   data	    bss	    dec	    hex	filename
+   6990	      6	     10	   7006	   1b5e	I2C_TEST.elf
+   6990	      6	     10	   7006	   1b5e	(TOTALS)
+Finished building: sizedummy
+ 
+09:52:07 **** Incremental Build of configuration Debug for project I2C_TEST_SLAVE ****
+make all 
+Building file: ../APP/main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"APP/main.d" -MT"APP/main.o" -c -o "APP/main.o" "../APP/main.c"
+../APP/main.c: In function 'main':
+../APP/main.c:18: warning: implicit declaration of function 'I2C_u8Init'
+../APP/main.c:19: warning: implicit declaration of function 'UART_u8Init'
+../APP/main.c:24: warning: implicit declaration of function 'I2C_u8SlaveGetByte'
+../APP/main.c:27: warning: implicit declaration of function 'UART_u8SendByte'
+Finished building: ../APP/main.c
+ 
+Building target: I2C_TEST_SLAVE.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,I2C_TEST_SLAVE.map -mmcu=atmega32 -o "I2C_TEST_SLAVE.elf"  ./MCAL/UART/UART.o  ./MCAL/TIMER0/TIMER0.o  ./MCAL/I2C/I2C.o  ./MCAL/DIO/DIO.o  ./MCAL/DELAY/DELAY.o  ./ECUAL/LED/LED.o  ./ECUAL/BTN/Button.o  ./APP/main.o   
+Finished building target: I2C_TEST_SLAVE.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S I2C_TEST_SLAVE.elf  >"I2C_TEST_SLAVE.lss"
+Finished building: I2C_TEST_SLAVE.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex I2C_TEST_SLAVE.elf  "I2C_TEST_SLAVE.hex"
+Finished building: I2C_TEST_SLAVE.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex I2C_TEST_SLAVE.elf  "I2C_TEST_SLAVE.eep"
+Finished building: I2C_TEST_SLAVE.eep
+ 
+Invoking: Print Size
+avr-size --format=berkeley -t I2C_TEST_SLAVE.elf
+   text	   data	    bss	    dec	    hex	filename
+   8880	      4	     13	   8897	   22c1	I2C_TEST_SLAVE.elf
+   8880	      4	     13	   8897	   22c1	(TOTALS)
+Finished building: sizedummy
+ 
+09:52:09 **** Incremental Build of configuration Debug for project UART_TASK2 ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t UART_TASK2.elf
+   text	   data	    bss	    dec	    hex	filename
+  12098	    364	     19	  12481	   30c1	UART_TASK2.elf
+  12098	    364	     19	  12481	   30c1	(TOTALS)
+Finished building: sizedummy
+ 
+09:52:56 **** Incremental Build of configuration Debug for project ATMProject ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t ATMProject.elf
+   text	   data	    bss	    dec	    hex	filename
+  20458	    932	     41	  21431	   53b7	ATMProject.elf
+  20458	    932	     41	  21431	   53b7	(TOTALS)
+Finished building: sizedummy
+ 
+09:52:57 **** Incremental Build of configuration Debug for project CARD_ECU ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t CARD_ECU.elf
+   text	   data	    bss	    dec	    hex	filename
+  20426	    390	     61	  20877	   518d	CARD_ECU.elf
+  20426	    390	     61	  20877	   518d	(TOTALS)
+Finished building: sizedummy
+ 
+09:52:58 **** Incremental Build of configuration Debug for project I2C_SLAVE ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t I2C_SLAVE.elf
+   text	   data	    bss	    dec	    hex	filename
+   6968	      6	     10	   6984	   1b48	I2C_SLAVE.elf
+   6968	      6	     10	   6984	   1b48	(TOTALS)
+Finished building: sizedummy
+ 
+09:52:59 **** Incremental Build of configuration Debug for project I2C_TEST ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t I2C_TEST.elf
+   text	   data	    bss	    dec	    hex	filename
+   6990	      6	     10	   7006	   1b5e	I2C_TEST.elf
+   6990	      6	     10	   7006	   1b5e	(TOTALS)
+Finished building: sizedummy
+ 
+09:53:00 **** Incremental Build of configuration Debug for project I2C_TEST_SLAVE ****
+make all 
+Building file: ../APP/main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"APP/main.d" -MT"APP/main.o" -c -o "APP/main.o" "../APP/main.c"
+../APP/main.c: In function 'main':
+../APP/main.c:19: warning: implicit declaration of function 'I2C_u8Init'
+../APP/main.c:25: warning: implicit declaration of function 'I2C_u8SlaveGetByte'
+Finished building: ../APP/main.c
+ 
+Building target: I2C_TEST_SLAVE.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,I2C_TEST_SLAVE.map -mmcu=atmega32 -o "I2C_TEST_SLAVE.elf"  ./MCAL/UART/UART.o  ./MCAL/TIMER0/TIMER0.o  ./MCAL/I2C/I2C.o  ./MCAL/DIO/DIO.o  ./MCAL/DELAY/DELAY.o  ./ECUAL/LED/LED.o  ./ECUAL/BTN/Button.o  ./APP/main.o   
+Finished building target: I2C_TEST_SLAVE.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S I2C_TEST_SLAVE.elf  >"I2C_TEST_SLAVE.lss"
+Finished building: I2C_TEST_SLAVE.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex I2C_TEST_SLAVE.elf  "I2C_TEST_SLAVE.hex"
+Finished building: I2C_TEST_SLAVE.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex I2C_TEST_SLAVE.elf  "I2C_TEST_SLAVE.eep"
+Finished building: I2C_TEST_SLAVE.eep
+ 
+Invoking: Print Size
+avr-size --format=berkeley -t I2C_TEST_SLAVE.elf
+   text	   data	    bss	    dec	    hex	filename
+   8872	      4	     13	   8889	   22b9	I2C_TEST_SLAVE.elf
+   8872	      4	     13	   8889	   22b9	(TOTALS)
+Finished building: sizedummy
+ 
+09:53:02 **** Incremental Build of configuration Debug for project UART_TASK2 ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t UART_TASK2.elf
+   text	   data	    bss	    dec	    hex	filename
+  12098	    364	     19	  12481	   30c1	UART_TASK2.elf
+  12098	    364	     19	  12481	   30c1	(TOTALS)
+Finished building: sizedummy
+ 
+09:53:32 **** Incremental Build of configuration Debug for project ATMProject ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t ATMProject.elf
+   text	   data	    bss	    dec	    hex	filename
+  20458	    932	     41	  21431	   53b7	ATMProject.elf
+  20458	    932	     41	  21431	   53b7	(TOTALS)
+Finished building: sizedummy
+ 
+09:53:34 **** Incremental Build of configuration Debug for project CARD_ECU ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t CARD_ECU.elf
+   text	   data	    bss	    dec	    hex	filename
+  20426	    390	     61	  20877	   518d	CARD_ECU.elf
+  20426	    390	     61	  20877	   518d	(TOTALS)
+Finished building: sizedummy
+ 
+09:53:35 **** Incremental Build of configuration Debug for project I2C_SLAVE ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t I2C_SLAVE.elf
+   text	   data	    bss	    dec	    hex	filename
+   6968	      6	     10	   6984	   1b48	I2C_SLAVE.elf
+   6968	      6	     10	   6984	   1b48	(TOTALS)
+Finished building: sizedummy
+ 
+09:53:36 **** Incremental Build of configuration Debug for project I2C_TEST ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t I2C_TEST.elf
+   text	   data	    bss	    dec	    hex	filename
+   6990	      6	     10	   7006	   1b5e	I2C_TEST.elf
+   6990	      6	     10	   7006	   1b5e	(TOTALS)
+Finished building: sizedummy
+ 
+09:53:37 **** Incremental Build of configuration Debug for project I2C_TEST_SLAVE ****
+make all 
+Building file: ../APP/main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"APP/main.d" -MT"APP/main.o" -c -o "APP/main.o" "../APP/main.c"
+Finished building: ../APP/main.c
+ 
+Building target: I2C_TEST_SLAVE.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,I2C_TEST_SLAVE.map -mmcu=atmega32 -o "I2C_TEST_SLAVE.elf"  ./MCAL/UART/UART.o  ./MCAL/TIMER0/TIMER0.o  ./MCAL/I2C/I2C.o  ./MCAL/DIO/DIO.o  ./MCAL/DELAY/DELAY.o  ./ECUAL/LED/LED.o  ./ECUAL/BTN/Button.o  ./APP/main.o   
+Finished building target: I2C_TEST_SLAVE.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S I2C_TEST_SLAVE.elf  >"I2C_TEST_SLAVE.lss"
+Finished building: I2C_TEST_SLAVE.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex I2C_TEST_SLAVE.elf  "I2C_TEST_SLAVE.hex"
+Finished building: I2C_TEST_SLAVE.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex I2C_TEST_SLAVE.elf  "I2C_TEST_SLAVE.eep"
+Finished building: I2C_TEST_SLAVE.eep
+ 
+Invoking: Print Size
+avr-size --format=berkeley -t I2C_TEST_SLAVE.elf
+   text	   data	    bss	    dec	    hex	filename
+   8872	      4	     13	   8889	   22b9	I2C_TEST_SLAVE.elf
+   8872	      4	     13	   8889	   22b9	(TOTALS)
+Finished building: sizedummy
+ 
+09:53:39 **** Incremental Build of configuration Debug for project UART_TASK2 ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t UART_TASK2.elf
+   text	   data	    bss	    dec	    hex	filename
+  12098	    364	     19	  12481	   30c1	UART_TASK2.elf
+  12098	    364	     19	  12481	   30c1	(TOTALS)
+Finished building: sizedummy
+ 
+09:54:25 **** Incremental Build of configuration Debug for project ATMProject ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t ATMProject.elf
+   text	   data	    bss	    dec	    hex	filename
+  20458	    932	     41	  21431	   53b7	ATMProject.elf
+  20458	    932	     41	  21431	   53b7	(TOTALS)
+Finished building: sizedummy
+ 
+09:54:26 **** Incremental Build of configuration Debug for project CARD_ECU ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t CARD_ECU.elf
+   text	   data	    bss	    dec	    hex	filename
+  20426	    390	     61	  20877	   518d	CARD_ECU.elf
+  20426	    390	     61	  20877	   518d	(TOTALS)
+Finished building: sizedummy
+ 
+09:54:27 **** Incremental Build of configuration Debug for project I2C_SLAVE ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t I2C_SLAVE.elf
+   text	   data	    bss	    dec	    hex	filename
+   6968	      6	     10	   6984	   1b48	I2C_SLAVE.elf
+   6968	      6	     10	   6984	   1b48	(TOTALS)
+Finished building: sizedummy
+ 
+09:54:27 **** Incremental Build of configuration Debug for project I2C_TEST ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t I2C_TEST.elf
+   text	   data	    bss	    dec	    hex	filename
+   6990	      6	     10	   7006	   1b5e	I2C_TEST.elf
+   6990	      6	     10	   7006	   1b5e	(TOTALS)
+Finished building: sizedummy
+ 
+09:54:28 **** Incremental Build of configuration Debug for project I2C_TEST_SLAVE ****
+make all 
+Building file: ../APP/main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"APP/main.d" -MT"APP/main.o" -c -o "APP/main.o" "../APP/main.c"
+../APP/main.c: In function 'main':
+../APP/main.c:25: warning: pointer targets in passing argument 1 of 'UART_u8SendString' differ in signedness
+../APP/main.c:28: warning: pointer targets in passing argument 1 of 'UART_u8SendString' differ in signedness
+Finished building: ../APP/main.c
+ 
+Building target: I2C_TEST_SLAVE.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,I2C_TEST_SLAVE.map -mmcu=atmega32 -o "I2C_TEST_SLAVE.elf"  ./MCAL/UART/UART.o  ./MCAL/TIMER0/TIMER0.o  ./MCAL/I2C/I2C.o  ./MCAL/DIO/DIO.o  ./MCAL/DELAY/DELAY.o  ./ECUAL/LED/LED.o  ./ECUAL/BTN/Button.o  ./APP/main.o   
+Finished building target: I2C_TEST_SLAVE.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S I2C_TEST_SLAVE.elf  >"I2C_TEST_SLAVE.lss"
+Finished building: I2C_TEST_SLAVE.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex I2C_TEST_SLAVE.elf  "I2C_TEST_SLAVE.hex"
+Finished building: I2C_TEST_SLAVE.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex I2C_TEST_SLAVE.elf  "I2C_TEST_SLAVE.eep"
+Finished building: I2C_TEST_SLAVE.eep
+ 
+Invoking: Print Size
+avr-size --format=berkeley -t I2C_TEST_SLAVE.elf
+   text	   data	    bss	    dec	    hex	filename
+   8888	     12	     13	   8913	   22d1	I2C_TEST_SLAVE.elf
+   8888	     12	     13	   8913	   22d1	(TOTALS)
+Finished building: sizedummy
+ 
+09:54:30 **** Incremental Build of configuration Debug for project UART_TASK2 ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t UART_TASK2.elf
+   text	   data	    bss	    dec	    hex	filename
+  12098	    364	     19	  12481	   30c1	UART_TASK2.elf
+  12098	    364	     19	  12481	   30c1	(TOTALS)
+Finished building: sizedummy
+ 
+10:06:15 **** Incremental Build of configuration Debug for project ATMProject ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t ATMProject.elf
+   text	   data	    bss	    dec	    hex	filename
+  20458	    932	     41	  21431	   53b7	ATMProject.elf
+  20458	    932	     41	  21431	   53b7	(TOTALS)
+Finished building: sizedummy
+ 
+10:06:16 **** Incremental Build of configuration Debug for project CARD_ECU ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t CARD_ECU.elf
+   text	   data	    bss	    dec	    hex	filename
+  20426	    390	     61	  20877	   518d	CARD_ECU.elf
+  20426	    390	     61	  20877	   518d	(TOTALS)
+Finished building: sizedummy
+ 
+10:06:17 **** Incremental Build of configuration Debug for project I2C_SLAVE ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t I2C_SLAVE.elf
+   text	   data	    bss	    dec	    hex	filename
+   6968	      6	     10	   6984	   1b48	I2C_SLAVE.elf
+   6968	      6	     10	   6984	   1b48	(TOTALS)
+Finished building: sizedummy
+ 
+10:06:18 **** Incremental Build of configuration Debug for project I2C_TEST ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t I2C_TEST.elf
+   text	   data	    bss	    dec	    hex	filename
+   6990	      6	     10	   7006	   1b5e	I2C_TEST.elf
+   6990	      6	     10	   7006	   1b5e	(TOTALS)
+Finished building: sizedummy
+ 
+10:06:19 **** Incremental Build of configuration Debug for project I2C_TEST_SLAVE ****
+make all 
+Building file: ../MCAL/I2C/I2C.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"MCAL/I2C/I2C.d" -MT"MCAL/I2C/I2C.o" -c -o "MCAL/I2C/I2C.o" "../MCAL/I2C/I2C.c"
+../MCAL/I2C/I2C.c: In function 'I2C_u8Init':
+../MCAL/I2C/I2C.c:39: error: incompatible type for argument 1 of 'LED_u8Init'
+../MCAL/I2C/I2C.c:40: error: incompatible type for argument 1 of 'LED_u8Init'
+../MCAL/I2C/I2C.c: In function 'I2C_u8MasterReceiveWithACK':
+../MCAL/I2C/I2C.c:127: error: incompatible type for argument 1 of 'LED_u8On'
+../MCAL/I2C/I2C.c: In function 'I2C_u8SlaveGetByte':
+../MCAL/I2C/I2C.c:190: warning: control reaches end of non-void function
+make: *** [MCAL/I2C/I2C.o] Error 1
+10:06:20 **** Incremental Build of configuration Debug for project UART_TASK2 ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t UART_TASK2.elf
+   text	   data	    bss	    dec	    hex	filename
+  12098	    364	     19	  12481	   30c1	UART_TASK2.elf
+  12098	    364	     19	  12481	   30c1	(TOTALS)
+Finished building: sizedummy
+ 
+10:06:34 **** Incremental Build of configuration Debug for project ATMProject ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t ATMProject.elf
+   text	   data	    bss	    dec	    hex	filename
+  20458	    932	     41	  21431	   53b7	ATMProject.elf
+  20458	    932	     41	  21431	   53b7	(TOTALS)
+Finished building: sizedummy
+ 
+10:06:35 **** Incremental Build of configuration Debug for project CARD_ECU ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t CARD_ECU.elf
+   text	   data	    bss	    dec	    hex	filename
+  20426	    390	     61	  20877	   518d	CARD_ECU.elf
+  20426	    390	     61	  20877	   518d	(TOTALS)
+Finished building: sizedummy
+ 
+10:06:37 **** Incremental Build of configuration Debug for project I2C_SLAVE ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t I2C_SLAVE.elf
+   text	   data	    bss	    dec	    hex	filename
+   6968	      6	     10	   6984	   1b48	I2C_SLAVE.elf
+   6968	      6	     10	   6984	   1b48	(TOTALS)
+Finished building: sizedummy
+ 
+10:06:37 **** Incremental Build of configuration Debug for project I2C_TEST ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t I2C_TEST.elf
+   text	   data	    bss	    dec	    hex	filename
+   6990	      6	     10	   7006	   1b5e	I2C_TEST.elf
+   6990	      6	     10	   7006	   1b5e	(TOTALS)
+Finished building: sizedummy
+ 
+10:06:38 **** Incremental Build of configuration Debug for project I2C_TEST_SLAVE ****
+make all 
+Building file: ../MCAL/I2C/I2C.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"MCAL/I2C/I2C.d" -MT"MCAL/I2C/I2C.o" -c -o "MCAL/I2C/I2C.o" "../MCAL/I2C/I2C.c"
+../MCAL/I2C/I2C.c: In function 'I2C_u8MasterReceiveWithACK':
+../MCAL/I2C/I2C.c:123: error: incompatible type for argument 1 of 'LED_u8On'
+../MCAL/I2C/I2C.c: In function 'I2C_u8SlaveGetByte':
+../MCAL/I2C/I2C.c:186: warning: control reaches end of non-void function
+make: *** [MCAL/I2C/I2C.o] Error 1
+10:06:39 **** Incremental Build of configuration Debug for project UART_TASK2 ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t UART_TASK2.elf
+   text	   data	    bss	    dec	    hex	filename
+  12098	    364	     19	  12481	   30c1	UART_TASK2.elf
+  12098	    364	     19	  12481	   30c1	(TOTALS)
+Finished building: sizedummy
+ 
+10:06:47 **** Incremental Build of configuration Debug for project ATMProject ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t ATMProject.elf
+   text	   data	    bss	    dec	    hex	filename
+  20458	    932	     41	  21431	   53b7	ATMProject.elf
+  20458	    932	     41	  21431	   53b7	(TOTALS)
+Finished building: sizedummy
+ 
+10:06:48 **** Incremental Build of configuration Debug for project CARD_ECU ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t CARD_ECU.elf
+   text	   data	    bss	    dec	    hex	filename
+  20426	    390	     61	  20877	   518d	CARD_ECU.elf
+  20426	    390	     61	  20877	   518d	(TOTALS)
+Finished building: sizedummy
+ 
+10:06:49 **** Incremental Build of configuration Debug for project I2C_SLAVE ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t I2C_SLAVE.elf
+   text	   data	    bss	    dec	    hex	filename
+   6968	      6	     10	   6984	   1b48	I2C_SLAVE.elf
+   6968	      6	     10	   6984	   1b48	(TOTALS)
+Finished building: sizedummy
+ 
+10:06:50 **** Incremental Build of configuration Debug for project I2C_TEST ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t I2C_TEST.elf
+   text	   data	    bss	    dec	    hex	filename
+   6990	      6	     10	   7006	   1b5e	I2C_TEST.elf
+   6990	      6	     10	   7006	   1b5e	(TOTALS)
+Finished building: sizedummy
+ 
+10:06:51 **** Incremental Build of configuration Debug for project I2C_TEST_SLAVE ****
+make all 
+Building file: ../MCAL/I2C/I2C.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"MCAL/I2C/I2C.d" -MT"MCAL/I2C/I2C.o" -c -o "MCAL/I2C/I2C.o" "../MCAL/I2C/I2C.c"
+../MCAL/I2C/I2C.c: In function 'I2C_u8SlaveGetByte':
+../MCAL/I2C/I2C.c:185: warning: control reaches end of non-void function
+Finished building: ../MCAL/I2C/I2C.c
+ 
+Building file: ../APP/main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"APP/main.d" -MT"APP/main.o" -c -o "APP/main.o" "../APP/main.c"
+../APP/main.c: In function 'main':
+../APP/main.c:25: warning: pointer targets in passing argument 1 of 'UART_u8SendString' differ in signedness
+../APP/main.c:28: warning: pointer targets in passing argument 1 of 'UART_u8SendString' differ in signedness
+Finished building: ../APP/main.c
+ 
+Building target: I2C_TEST_SLAVE.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,I2C_TEST_SLAVE.map -mmcu=atmega32 -o "I2C_TEST_SLAVE.elf"  ./MCAL/UART/UART.o  ./MCAL/TIMER0/TIMER0.o  ./MCAL/I2C/I2C.o  ./MCAL/DIO/DIO.o  ./MCAL/DELAY/DELAY.o  ./ECUAL/LED/LED.o  ./ECUAL/BTN/Button.o  ./APP/main.o   
+Finished building target: I2C_TEST_SLAVE.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S I2C_TEST_SLAVE.elf  >"I2C_TEST_SLAVE.lss"
+Finished building: I2C_TEST_SLAVE.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex I2C_TEST_SLAVE.elf  "I2C_TEST_SLAVE.hex"
+Finished building: I2C_TEST_SLAVE.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex I2C_TEST_SLAVE.elf  "I2C_TEST_SLAVE.eep"
+Finished building: I2C_TEST_SLAVE.eep
+ 
+Invoking: Print Size
+avr-size --format=berkeley -t I2C_TEST_SLAVE.elf
+   text	   data	    bss	    dec	    hex	filename
+   8882	     14	     15	   8911	   22cf	I2C_TEST_SLAVE.elf
+   8882	     14	     15	   8911	   22cf	(TOTALS)
+Finished building: sizedummy
+ 
+10:06:54 **** Incremental Build of configuration Debug for project UART_TASK2 ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t UART_TASK2.elf
+   text	   data	    bss	    dec	    hex	filename
+  12098	    364	     19	  12481	   30c1	UART_TASK2.elf
+  12098	    364	     19	  12481	   30c1	(TOTALS)
+Finished building: sizedummy
+ 
+10:07:26 **** Incremental Build of configuration Debug for project ATMProject ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t ATMProject.elf
+   text	   data	    bss	    dec	    hex	filename
+  20458	    932	     41	  21431	   53b7	ATMProject.elf
+  20458	    932	     41	  21431	   53b7	(TOTALS)
+Finished building: sizedummy
+ 
+10:07:28 **** Incremental Build of configuration Debug for project CARD_ECU ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t CARD_ECU.elf
+   text	   data	    bss	    dec	    hex	filename
+  20426	    390	     61	  20877	   518d	CARD_ECU.elf
+  20426	    390	     61	  20877	   518d	(TOTALS)
+Finished building: sizedummy
+ 
+10:07:29 **** Incremental Build of configuration Debug for project I2C_SLAVE ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t I2C_SLAVE.elf
+   text	   data	    bss	    dec	    hex	filename
+   6968	      6	     10	   6984	   1b48	I2C_SLAVE.elf
+   6968	      6	     10	   6984	   1b48	(TOTALS)
+Finished building: sizedummy
+ 
+10:07:29 **** Incremental Build of configuration Debug for project I2C_TEST ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t I2C_TEST.elf
+   text	   data	    bss	    dec	    hex	filename
+   6990	      6	     10	   7006	   1b5e	I2C_TEST.elf
+   6990	      6	     10	   7006	   1b5e	(TOTALS)
+Finished building: sizedummy
+ 
+10:07:30 **** Incremental Build of configuration Debug for project I2C_TEST_SLAVE ****
+make all 
+Building file: ../MCAL/I2C/I2C.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"MCAL/I2C/I2C.d" -MT"MCAL/I2C/I2C.o" -c -o "MCAL/I2C/I2C.o" "../MCAL/I2C/I2C.c"
+../MCAL/I2C/I2C.c: In function 'I2C_u8SlaveGetByte':
+../MCAL/I2C/I2C.c:185: warning: control reaches end of non-void function
+Finished building: ../MCAL/I2C/I2C.c
+ 
+Building target: I2C_TEST_SLAVE.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,I2C_TEST_SLAVE.map -mmcu=atmega32 -o "I2C_TEST_SLAVE.elf"  ./MCAL/UART/UART.o  ./MCAL/TIMER0/TIMER0.o  ./MCAL/I2C/I2C.o  ./MCAL/DIO/DIO.o  ./MCAL/DELAY/DELAY.o  ./ECUAL/LED/LED.o  ./ECUAL/BTN/Button.o  ./APP/main.o   
+Finished building target: I2C_TEST_SLAVE.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S I2C_TEST_SLAVE.elf  >"I2C_TEST_SLAVE.lss"
+Finished building: I2C_TEST_SLAVE.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex I2C_TEST_SLAVE.elf  "I2C_TEST_SLAVE.hex"
+Finished building: I2C_TEST_SLAVE.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex I2C_TEST_SLAVE.elf  "I2C_TEST_SLAVE.eep"
+Finished building: I2C_TEST_SLAVE.eep
+ 
+Invoking: Print Size
+avr-size --format=berkeley -t I2C_TEST_SLAVE.elf
+   text	   data	    bss	    dec	    hex	filename
+   8888	     14	     15	   8917	   22d5	I2C_TEST_SLAVE.elf
+   8888	     14	     15	   8917	   22d5	(TOTALS)
+Finished building: sizedummy
+ 
+10:07:32 **** Incremental Build of configuration Debug for project UART_TASK2 ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t UART_TASK2.elf
+   text	   data	    bss	    dec	    hex	filename
+  12098	    364	     19	  12481	   30c1	UART_TASK2.elf
+  12098	    364	     19	  12481	   30c1	(TOTALS)
+Finished building: sizedummy
+ 
+10:09:19 **** Incremental Build of configuration Debug for project ATMProject ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t ATMProject.elf
+   text	   data	    bss	    dec	    hex	filename
+  20458	    932	     41	  21431	   53b7	ATMProject.elf
+  20458	    932	     41	  21431	   53b7	(TOTALS)
+Finished building: sizedummy
+ 
+10:09:20 **** Incremental Build of configuration Debug for project CARD_ECU ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t CARD_ECU.elf
+   text	   data	    bss	    dec	    hex	filename
+  20426	    390	     61	  20877	   518d	CARD_ECU.elf
+  20426	    390	     61	  20877	   518d	(TOTALS)
+Finished building: sizedummy
+ 
+10:09:21 **** Incremental Build of configuration Debug for project I2C_SLAVE ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t I2C_SLAVE.elf
+   text	   data	    bss	    dec	    hex	filename
+   6968	      6	     10	   6984	   1b48	I2C_SLAVE.elf
+   6968	      6	     10	   6984	   1b48	(TOTALS)
+Finished building: sizedummy
+ 
+10:09:22 **** Incremental Build of configuration Debug for project I2C_TEST ****
+make all 
+Building file: ../APP/main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"APP/main.d" -MT"APP/main.o" -c -o "APP/main.o" "../APP/main.c"
+Finished building: ../APP/main.c
+ 
+Building target: I2C_TEST.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,I2C_TEST.map -mmcu=atmega32 -o "I2C_TEST.elf"  ./MCAL/UART/UART.o  ./MCAL/SPI/SPI.o  ./MCAL/I2C/I2C.o  ./MCAL/DIO/DIO.o  ./ECUAL/LED/LED.o  ./APP/main.o   
+Finished building target: I2C_TEST.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S I2C_TEST.elf  >"I2C_TEST.lss"
+Finished building: I2C_TEST.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex I2C_TEST.elf  "I2C_TEST.hex"
+Finished building: I2C_TEST.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex I2C_TEST.elf  "I2C_TEST.eep"
+Finished building: I2C_TEST.eep
+ 
+Invoking: Print Size
+avr-size --format=berkeley -t I2C_TEST.elf
+   text	   data	    bss	    dec	    hex	filename
+   6984	      6	     10	   7000	   1b58	I2C_TEST.elf
+   6984	      6	     10	   7000	   1b58	(TOTALS)
+Finished building: sizedummy
+ 
+10:09:23 **** Incremental Build of configuration Debug for project I2C_TEST_SLAVE ****
+make all 
+Building file: ../APP/main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"APP/main.d" -MT"APP/main.o" -c -o "APP/main.o" "../APP/main.c"
+Finished building: ../APP/main.c
+ 
+Building target: I2C_TEST_SLAVE.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,I2C_TEST_SLAVE.map -mmcu=atmega32 -o "I2C_TEST_SLAVE.elf"  ./MCAL/UART/UART.o  ./MCAL/TIMER0/TIMER0.o  ./MCAL/I2C/I2C.o  ./MCAL/DIO/DIO.o  ./MCAL/DELAY/DELAY.o  ./ECUAL/LED/LED.o  ./ECUAL/BTN/Button.o  ./APP/main.o   
+Finished building target: I2C_TEST_SLAVE.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S I2C_TEST_SLAVE.elf  >"I2C_TEST_SLAVE.lss"
+Finished building: I2C_TEST_SLAVE.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex I2C_TEST_SLAVE.elf  "I2C_TEST_SLAVE.hex"
+Finished building: I2C_TEST_SLAVE.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex I2C_TEST_SLAVE.elf  "I2C_TEST_SLAVE.eep"
+Finished building: I2C_TEST_SLAVE.eep
+ 
+Invoking: Print Size
+avr-size --format=berkeley -t I2C_TEST_SLAVE.elf
+   text	   data	    bss	    dec	    hex	filename
+   8866	      6	     15	   8887	   22b7	I2C_TEST_SLAVE.elf
+   8866	      6	     15	   8887	   22b7	(TOTALS)
+Finished building: sizedummy
+ 
+10:09:25 **** Incremental Build of configuration Debug for project UART_TASK2 ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t UART_TASK2.elf
+   text	   data	    bss	    dec	    hex	filename
+  12098	    364	     19	  12481	   30c1	UART_TASK2.elf
+  12098	    364	     19	  12481	   30c1	(TOTALS)
+Finished building: sizedummy
+ 
+10:09:38 **** Incremental Build of configuration Debug for project ATMProject ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t ATMProject.elf
+   text	   data	    bss	    dec	    hex	filename
+  20458	    932	     41	  21431	   53b7	ATMProject.elf
+  20458	    932	     41	  21431	   53b7	(TOTALS)
+Finished building: sizedummy
+ 
+10:09:39 **** Incremental Build of configuration Debug for project CARD_ECU ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t CARD_ECU.elf
+   text	   data	    bss	    dec	    hex	filename
+  20426	    390	     61	  20877	   518d	CARD_ECU.elf
+  20426	    390	     61	  20877	   518d	(TOTALS)
+Finished building: sizedummy
+ 
+10:09:40 **** Incremental Build of configuration Debug for project I2C_SLAVE ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t I2C_SLAVE.elf
+   text	   data	    bss	    dec	    hex	filename
+   6968	      6	     10	   6984	   1b48	I2C_SLAVE.elf
+   6968	      6	     10	   6984	   1b48	(TOTALS)
+Finished building: sizedummy
+ 
+10:09:41 **** Incremental Build of configuration Debug for project I2C_TEST ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t I2C_TEST.elf
+   text	   data	    bss	    dec	    hex	filename
+   6984	      6	     10	   7000	   1b58	I2C_TEST.elf
+   6984	      6	     10	   7000	   1b58	(TOTALS)
+Finished building: sizedummy
+ 
+10:09:42 **** Incremental Build of configuration Debug for project I2C_TEST_SLAVE ****
+make all 
+Building file: ../APP/main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"APP/main.d" -MT"APP/main.o" -c -o "APP/main.o" "../APP/main.c"
+Finished building: ../APP/main.c
+ 
+Building target: I2C_TEST_SLAVE.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,I2C_TEST_SLAVE.map -mmcu=atmega32 -o "I2C_TEST_SLAVE.elf"  ./MCAL/UART/UART.o  ./MCAL/TIMER0/TIMER0.o  ./MCAL/I2C/I2C.o  ./MCAL/DIO/DIO.o  ./MCAL/DELAY/DELAY.o  ./ECUAL/LED/LED.o  ./ECUAL/BTN/Button.o  ./APP/main.o   
+Finished building target: I2C_TEST_SLAVE.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S I2C_TEST_SLAVE.elf  >"I2C_TEST_SLAVE.lss"
+Finished building: I2C_TEST_SLAVE.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex I2C_TEST_SLAVE.elf  "I2C_TEST_SLAVE.hex"
+Finished building: I2C_TEST_SLAVE.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex I2C_TEST_SLAVE.elf  "I2C_TEST_SLAVE.eep"
+Finished building: I2C_TEST_SLAVE.eep
+ 
+Invoking: Print Size
+avr-size --format=berkeley -t I2C_TEST_SLAVE.elf
+   text	   data	    bss	    dec	    hex	filename
+   8854	      6	     15	   8875	   22ab	I2C_TEST_SLAVE.elf
+   8854	      6	     15	   8875	   22ab	(TOTALS)
+Finished building: sizedummy
+ 
+10:09:43 **** Incremental Build of configuration Debug for project UART_TASK2 ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t UART_TASK2.elf
+   text	   data	    bss	    dec	    hex	filename
+  12098	    364	     19	  12481	   30c1	UART_TASK2.elf
+  12098	    364	     19	  12481	   30c1	(TOTALS)
+Finished building: sizedummy
+ 
+10:09:51 **** Incremental Build of configuration Debug for project ATMProject ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t ATMProject.elf
+   text	   data	    bss	    dec	    hex	filename
+  20458	    932	     41	  21431	   53b7	ATMProject.elf
+  20458	    932	     41	  21431	   53b7	(TOTALS)
+Finished building: sizedummy
+ 
+10:09:52 **** Incremental Build of configuration Debug for project CARD_ECU ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t CARD_ECU.elf
+   text	   data	    bss	    dec	    hex	filename
+  20426	    390	     61	  20877	   518d	CARD_ECU.elf
+  20426	    390	     61	  20877	   518d	(TOTALS)
+Finished building: sizedummy
+ 
+10:09:53 **** Incremental Build of configuration Debug for project I2C_SLAVE ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t I2C_SLAVE.elf
+   text	   data	    bss	    dec	    hex	filename
+   6968	      6	     10	   6984	   1b48	I2C_SLAVE.elf
+   6968	      6	     10	   6984	   1b48	(TOTALS)
+Finished building: sizedummy
+ 
+10:09:54 **** Incremental Build of configuration Debug for project I2C_TEST ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t I2C_TEST.elf
+   text	   data	    bss	    dec	    hex	filename
+   6984	      6	     10	   7000	   1b58	I2C_TEST.elf
+   6984	      6	     10	   7000	   1b58	(TOTALS)
+Finished building: sizedummy
+ 
+10:09:55 **** Incremental Build of configuration Debug for project I2C_TEST_SLAVE ****
+make all 
+Building file: ../APP/main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"APP/main.d" -MT"APP/main.o" -c -o "APP/main.o" "../APP/main.c"
+Finished building: ../APP/main.c
+ 
+Building target: I2C_TEST_SLAVE.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,I2C_TEST_SLAVE.map -mmcu=atmega32 -o "I2C_TEST_SLAVE.elf"  ./MCAL/UART/UART.o  ./MCAL/TIMER0/TIMER0.o  ./MCAL/I2C/I2C.o  ./MCAL/DIO/DIO.o  ./MCAL/DELAY/DELAY.o  ./ECUAL/LED/LED.o  ./ECUAL/BTN/Button.o  ./APP/main.o   
+Finished building target: I2C_TEST_SLAVE.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S I2C_TEST_SLAVE.elf  >"I2C_TEST_SLAVE.lss"
+Finished building: I2C_TEST_SLAVE.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex I2C_TEST_SLAVE.elf  "I2C_TEST_SLAVE.hex"
+Finished building: I2C_TEST_SLAVE.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex I2C_TEST_SLAVE.elf  "I2C_TEST_SLAVE.eep"
+Finished building: I2C_TEST_SLAVE.eep
+ 
+Invoking: Print Size
+avr-size --format=berkeley -t I2C_TEST_SLAVE.elf
+   text	   data	    bss	    dec	    hex	filename
+   8854	      6	     15	   8875	   22ab	I2C_TEST_SLAVE.elf
+   8854	      6	     15	   8875	   22ab	(TOTALS)
+Finished building: sizedummy
+ 
+10:09:56 **** Incremental Build of configuration Debug for project UART_TASK2 ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t UART_TASK2.elf
+   text	   data	    bss	    dec	    hex	filename
+  12098	    364	     19	  12481	   30c1	UART_TASK2.elf
+  12098	    364	     19	  12481	   30c1	(TOTALS)
+Finished building: sizedummy
+ 
+10:10:11 **** Incremental Build of configuration Debug for project ATMProject ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t ATMProject.elf
+   text	   data	    bss	    dec	    hex	filename
+  20458	    932	     41	  21431	   53b7	ATMProject.elf
+  20458	    932	     41	  21431	   53b7	(TOTALS)
+Finished building: sizedummy
+ 
+10:10:12 **** Incremental Build of configuration Debug for project CARD_ECU ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t CARD_ECU.elf
+   text	   data	    bss	    dec	    hex	filename
+  20426	    390	     61	  20877	   518d	CARD_ECU.elf
+  20426	    390	     61	  20877	   518d	(TOTALS)
+Finished building: sizedummy
+ 
+10:10:13 **** Incremental Build of configuration Debug for project I2C_SLAVE ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t I2C_SLAVE.elf
+   text	   data	    bss	    dec	    hex	filename
+   6968	      6	     10	   6984	   1b48	I2C_SLAVE.elf
+   6968	      6	     10	   6984	   1b48	(TOTALS)
+Finished building: sizedummy
+ 
+10:10:13 **** Incremental Build of configuration Debug for project I2C_TEST ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t I2C_TEST.elf
+   text	   data	    bss	    dec	    hex	filename
+   6984	      6	     10	   7000	   1b58	I2C_TEST.elf
+   6984	      6	     10	   7000	   1b58	(TOTALS)
+Finished building: sizedummy
+ 
+10:10:14 **** Incremental Build of configuration Debug for project I2C_TEST_SLAVE ****
+make all 
+Building file: ../APP/main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"APP/main.d" -MT"APP/main.o" -c -o "APP/main.o" "../APP/main.c"
+Finished building: ../APP/main.c
+ 
+Building target: I2C_TEST_SLAVE.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,I2C_TEST_SLAVE.map -mmcu=atmega32 -o "I2C_TEST_SLAVE.elf"  ./MCAL/UART/UART.o  ./MCAL/TIMER0/TIMER0.o  ./MCAL/I2C/I2C.o  ./MCAL/DIO/DIO.o  ./MCAL/DELAY/DELAY.o  ./ECUAL/LED/LED.o  ./ECUAL/BTN/Button.o  ./APP/main.o   
+Finished building target: I2C_TEST_SLAVE.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S I2C_TEST_SLAVE.elf  >"I2C_TEST_SLAVE.lss"
+Finished building: I2C_TEST_SLAVE.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex I2C_TEST_SLAVE.elf  "I2C_TEST_SLAVE.hex"
+Finished building: I2C_TEST_SLAVE.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex I2C_TEST_SLAVE.elf  "I2C_TEST_SLAVE.eep"
+Finished building: I2C_TEST_SLAVE.eep
+ 
+Invoking: Print Size
+avr-size --format=berkeley -t I2C_TEST_SLAVE.elf
+   text	   data	    bss	    dec	    hex	filename
+   8872	      6	     15	   8893	   22bd	I2C_TEST_SLAVE.elf
+   8872	      6	     15	   8893	   22bd	(TOTALS)
+Finished building: sizedummy
+ 
+10:10:16 **** Incremental Build of configuration Debug for project UART_TASK2 ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t UART_TASK2.elf
+   text	   data	    bss	    dec	    hex	filename
+  12098	    364	     19	  12481	   30c1	UART_TASK2.elf
+  12098	    364	     19	  12481	   30c1	(TOTALS)
+Finished building: sizedummy
+ 
+10:13:34 **** Incremental Build of configuration Debug for project ATMProject ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t ATMProject.elf
+   text	   data	    bss	    dec	    hex	filename
+  20458	    932	     41	  21431	   53b7	ATMProject.elf
+  20458	    932	     41	  21431	   53b7	(TOTALS)
+Finished building: sizedummy
+ 
+10:13:36 **** Incremental Build of configuration Debug for project CARD_ECU ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t CARD_ECU.elf
+   text	   data	    bss	    dec	    hex	filename
+  20426	    390	     61	  20877	   518d	CARD_ECU.elf
+  20426	    390	     61	  20877	   518d	(TOTALS)
+Finished building: sizedummy
+ 
+10:13:37 **** Incremental Build of configuration Debug for project I2C_SLAVE ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t I2C_SLAVE.elf
+   text	   data	    bss	    dec	    hex	filename
+   6968	      6	     10	   6984	   1b48	I2C_SLAVE.elf
+   6968	      6	     10	   6984	   1b48	(TOTALS)
+Finished building: sizedummy
+ 
+10:13:38 **** Incremental Build of configuration Debug for project I2C_TEST ****
+make all 
+Invoking: Print Size
+avr-size --format=berkeley -t I2C_TEST.elf
+   text	   data	    bss	    dec	    hex	filename
+   6984	      6	     10	   7000	   1b58	I2C_TEST.elf
+   6984	      6	     10	   7000	   1b58	(TOTALS)
+Finished building: sizedummy
+ 
+10:13:39 **** Incremental Build of configuration Debug for project I2C_TEST_SLAVE ****
+make all 
+Building file: ../APP/main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"APP/main.d" -MT"APP/main.o" -c -o "APP/main.o" "../APP/main.c"
+Finished building: ../APP/main.c
+ 
+Building target: I2C_TEST_SLAVE.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,I2C_TEST_SLAVE.map -mmcu=atmega32 -o "I2C_TEST_SLAVE.elf"  ./MCAL/UART/UART.o  ./MCAL/TIMER0/TIMER0.o  ./MCAL/I2C/I2C.o  ./MCAL/DIO/DIO.o  ./MCAL/DELAY/DELAY.o  ./ECUAL/LED/LED.o  ./ECUAL/BTN/Button.o  ./APP/main.o   
+Finished building target: I2C_TEST_SLAVE.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S I2C_TEST_SLAVE.elf  >"I2C_TEST_SLAVE.lss"
+Finished building: I2C_TEST_SLAVE.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex I2C_TEST_SLAVE.elf  "I2C_TEST_SLAVE.hex"
+Finished building: I2C_TEST_SLAVE.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex I2C_TEST_SLAVE.elf  "I2C_TEST_SLAVE.eep"
+Finished building: I2C_TEST_SLAVE.eep
+ 
+Invoking: Print Size
+avr-size --format=berkeley -t I2C_TEST_SLAVE.elf
+   text	   data	    bss	    dec	    hex	filename
+   8854	      6	     15	   8875	   22ab	I2C_TEST_SLAVE.elf
+   8854	      6	     15	   8875	   22ab	(TOTALS)
+Finished building: sizedummy
+ 
+10:13:41 **** Incremental Build of configuration Debug for project UART_TASK2 ****
 make all 
 Invoking: Print Size
 avr-size --format=berkeley -t UART_TASK2.elf

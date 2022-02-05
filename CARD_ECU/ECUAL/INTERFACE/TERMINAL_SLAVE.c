@@ -26,7 +26,7 @@ uint8_t TERMINAL_u8Interface(Card_t* card){
 	return 1; //To be Changed
 }
 
-uint8_t TERMINAL_u8EnableInterrupt(void (*pfnCallBack)(uint8_t)){
+uint8_t TERMINAL_u8EnableInterrupt(void (*pfnCallBack)(void)){
 	UART_u8EnableRecievingInterrupt(pfnCallBack);
 	return 1;
 }

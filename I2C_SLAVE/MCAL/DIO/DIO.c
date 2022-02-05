@@ -327,8 +327,6 @@ uint8_t DIO_u8SetPortDirection(DIOPort_t u8_PortName, DIODir_t u8_Dir) {
 // function to assign value to port
 uint8_t DIO_u8SetPortData(DIOPort_t u8_PortName, DIODir_t u8_Value) {
 	uint8_t u8ErrorState = STD_TYPES_OK;
-	if (u8_Value == DIO_PORT_HIGH || u8_Value == DIO_PORT_LOW) {
-		// check if value of port HIGH or LOW and assign it to the port 
 		switch (u8_PortName) {
 		case PORTA:
 			PORTA_REG = u8_Value;
@@ -346,10 +344,6 @@ uint8_t DIO_u8SetPortData(DIOPort_t u8_PortName, DIODir_t u8_Value) {
 			// if input port is not one of the above cases return error state NOK
 			u8ErrorState = STD_TYPES_NOK;
 		}
-	} else {
-		// if Value not HIGH or LOW return error state NOK
-		u8ErrorState = STD_TYPES_NOK;
-	}
 
 	return u8ErrorState;
 }

@@ -1,0 +1,23 @@
+/*
+ * EXTI.c
+ *
+ *  Created on: Feb 5, 2022
+ *      Author: Esraa
+ */
+
+
+
+
+void EXTI_vidInit()
+{
+
+}
+uint8_t EXTI_u8Enable(uint8_t u8InterruptNumber, uint8_t u8InterruptTrigger)
+{
+	uint8_t u8ErrorState = EXTI_OK;
+
+
+	return u8ErrorState;
+}
+
+void EXTI_vidGenerateInterrupt();

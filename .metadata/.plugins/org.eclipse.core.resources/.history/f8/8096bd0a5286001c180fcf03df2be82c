@@ -1,0 +1,36 @@
+/*
+ * Led.c
+ *
+ * Created: 1/10/2022
+ *  Author: Alhassan Mohsen
+ */ 
+
+#include "LED.h"
+
+// function to initialize LED 
+uint8_t LED_u8Init ( LED_t led )
+{
+	// set direction of LED's pin to OUTPUT 
+	return DIO_u8SetPortDirection(led.port,DIO_OUTPUT);
+}
+
+// function ta turn LED on
+uint8_t LED_u8On ( LED_t led )
+{
+	// set LED's pin to HIGH 
+	return DIO_u8SetPortData(led.port,DIO_PORT_HIGH);
+}
+
+// function ta turn LED off
+uint8_t LED_u8Off ( LED_t led )
+{
+	// set LED's pin to LOW
+	return DIO_u8SetPinData(led.port,led.pin,DIO_LOW);
+}
+
+// function to toggle LED state
+uint8_t LED_u8Toggle ( LED_t led )
+{
+	// toggle LED's pin state 
+	return DIO_u8TogglePinData(led.port,led.pin);
+}

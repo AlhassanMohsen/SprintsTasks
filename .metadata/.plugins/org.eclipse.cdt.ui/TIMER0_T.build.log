@@ -1,27 +1,9 @@
-21:33:14 **** Incremental Build of configuration Debug for project TIMER0_T ****
+09:06:26 **** Incremental Build of configuration Debug for project TIMER0_T ****
 make all 
-Building file: ../MCAL/TIMER0/TIMER0.c
+Building file: ../ECUAL/LED/LED.c
 Invoking: AVR Compiler
-avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"MCAL/TIMER0/TIMER0.d" -MT"MCAL/TIMER0/TIMER0.o" -c -o "MCAL/TIMER0/TIMER0.o" "../MCAL/TIMER0/TIMER0.c"
-Finished building: ../MCAL/TIMER0/TIMER0.c
- 
-Building file: ../MCAL/DELAY/DELAY.c
-Invoking: AVR Compiler
-avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"MCAL/DELAY/DELAY.d" -MT"MCAL/DELAY/DELAY.o" -c -o "MCAL/DELAY/DELAY.o" "../MCAL/DELAY/DELAY.c"
-Finished building: ../MCAL/DELAY/DELAY.c
- 
-Building file: ../ECUAL/BTN/Button.c
-Invoking: AVR Compiler
-avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"ECUAL/BTN/Button.d" -MT"ECUAL/BTN/Button.o" -c -o "ECUAL/BTN/Button.o" "../ECUAL/BTN/Button.c"
-../ECUAL/BTN/Button.c: In function 'BTN_u8IsPressed':
-../ECUAL/BTN/Button.c:21: warning: unused variable 'u8DebounceDetectorLow'
-../ECUAL/BTN/Button.c:21: warning: unused variable 'u8DebounceDetectorHigh'
-Finished building: ../ECUAL/BTN/Button.c
- 
-Building file: ../APP/main.c
-Invoking: AVR Compiler
-avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"APP/main.d" -MT"APP/main.o" -c -o "APP/main.o" "../APP/main.c"
-Finished building: ../APP/main.c
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"ECUAL/LED/LED.d" -MT"ECUAL/LED/LED.o" -c -o "ECUAL/LED/LED.o" "../ECUAL/LED/LED.c"
+Finished building: ../ECUAL/LED/LED.c
  
 Building target: TIMER0_T.elf
 Invoking: AVR C Linker
@@ -41,20 +23,12 @@ avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ih
 Finished building: TIMER0_T.eep
  
 Invoking: Print Size
-avr-size --format=avr --mcu=atmega32 TIMER0_T.elf
-AVR Memory Usage
-----------------
-Device: atmega32
-
-Program:    5634 bytes (17.2% Full)
-(.text + .data + .bootloader)
-
-Data:          8 bytes (0.4% Full)
-(.data + .bss + .noinit)
-
-
+avr-size --format=berkeley -t TIMER0_T.elf
+   text	   data	    bss	    dec	    hex	filename
+   5620	      0	      8	   5628	   15fc	TIMER0_T.elf
+   5620	      0	      8	   5628	   15fc	(TOTALS)
 Finished building: sizedummy
  
 
-21:33:15 Build Finished (took 1s.611ms)
+09:06:27 Build Finished (took 1s.660ms)
 

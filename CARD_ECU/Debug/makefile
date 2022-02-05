@@ -8,11 +8,14 @@ RM := rm -rf
 
 # All of the sources participating in the build are defined here
 -include sources.mk
+-include SERVICE/Strings/subdir.mk
+-include SERVICE/subdir.mk
 -include MCAL/UART/subdir.mk
 -include MCAL/TIMER/subdir.mk
 -include MCAL/SPI/subdir.mk
 -include MCAL/PWM/subdir.mk
 -include MCAL/I2C/subdir.mk
+-include MCAL/EXTI/subdir.mk
 -include MCAL/DIO/subdir.mk
 -include MCAL/DELAY/subdir.mk
 -include MCAL/ADC/subdir.mk

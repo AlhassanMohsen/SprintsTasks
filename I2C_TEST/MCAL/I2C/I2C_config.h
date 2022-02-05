@@ -1,0 +1,16 @@
+/*
+ * I2C_config.h
+ *
+ *  Created on: Jan 27, 2022
+ *      Author: Alhassan Mohsen
+ */
+
+#ifndef MCAL_I2C_I2C_CONFIG_H_
+#define MCAL_I2C_I2C_CONFIG_H_
+
+#define I2C_OWN_SLAVE_ADDRESS		0x02
+#define I2C_RATE					I2C_400KHZ
+
+#define DEBUG_MODE
+
+#endif /* MCAL_I2C_I2C_CONFIG_H_ */

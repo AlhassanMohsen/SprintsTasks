@@ -28,6 +28,21 @@
 
 #if PROJECT_PLATFORM == PROTEUS
 #define ATM_TERMINAL_ENDLINE		0x0D
+
+#define ATM_UART_BAUDRATE			9600
+
+#define ATM_ADMIN_ADD_CUSTOMER		'1'
+#define ATM_ADMIN_MAX_AMOUNT		'2'
+#define ATM_ADMIN_EXIT				'3'
+
+#define ATM_LCD_SECOND_ROW			1,0
+
+#define ATM_INSERT_CARD				1
+#define ATM_GET_TEMP				2
+
+#define ATM_PASS_RIGHT				1
+#define ATM_PASS_WRONG				0
+
 #else
 #define ATM_TERMINAL_ENDLINE		0x00
 #endif

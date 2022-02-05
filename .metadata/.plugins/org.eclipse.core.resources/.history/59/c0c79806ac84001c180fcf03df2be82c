@@ -1,0 +1,42 @@
+/*
+ * main.c
+ *
+ *  Created on: Jan 27, 2022
+ *      Author: Alhassan Mohsen
+ */
+
+
+
+#include "../MCAL/I2C/I2C_interface.h"
+#include "../MCAL/UART/UART_interface.h"
+#include "../ECUAL/EEPROM/EEPROM_interface.h"
+#include "../Service/Strings/STR.h"
+
+
+#define SLAVE_ADDRESS		0x02
+#define NEW_LINE_CHAR		0x0D
+#define UART_BAUDRATE		9600
+#define ATM_EEPROM_ADDRESS			0x00
+
+int main(void)
+{
+	uint8_t* au8Command[10];
+	uint8_t* au8EEPROMAddress[10];
+
+	I2C_u8Init();
+	UART_u8Init(UART_BAUDRATE);
+	while (1)
+	{
+		UART_u8RecieveString(au8Command);
+		if(STR_CMP(au8Command,(uint8_t*)"WRITE"))
+		{
+			UART_u8SendString("Write Command");
+			UART_u8ReceiveCountedString(au8EEPROMAddress,8);
+			UART_u8SendInt(STR_BinToInt(au8EEPROMAddress));
+
+		}
+		I2C_u8Stop();
+	}
+}
+
+

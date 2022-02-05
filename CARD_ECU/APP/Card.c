@@ -8,12 +8,12 @@
 #include "Card_prv.h"
 #include "Card.h"
 
-STATE u8State=PROGRAMMING;
+STATE u8State=USER;
 Card_t card;
 uint8_t *HoldeName;
 uint8_t *PAN;
 uint8_t *PIN;
-volatile uint8_t counter=0;
+uint8_t volatile counter=0;
 
 void Card_init()
 {
@@ -22,13 +22,10 @@ void Card_init()
 	TERMINAL_u8Init();
 	INTERFACE_u8Init();
 	EEPROM_Init();
-	//TERMINAL_u8EnableInterrupt(UART_callBack);
-	TERMINAL_u8DisableInterrupt();
+	TERMINAL_u8EnableInterrupt(UART_callBack);
 
-	SET_BIT(SREG_REG,I_BIT);
-	CLR_BIT(GICR_REG,INT2_BIT);
-	SET_BIT(MCUCSR_REG,ISC2_BIT);
-	SET_BIT(GICR_REG,INT2_BIT);
+
+	EXTI_u8Enable(INT2,EXTI_RISING_EDGE);
 
 	EEPROM_u8RandonReadFrom(CARD_EEPROM_ADDRESS,CARD_EEPROM_FIRST_TIME_ADDRESS,&u8FirstTimeCheck);
 	TIMER0_u8PollingDelay(10);
@@ -41,9 +38,9 @@ void Card_init()
 	}else{
 
 		//u8State = USER;
-		EEPROM_u8ReadStringFrom(CARD_EEPROM_ADDRESS, CARD_HOLDER_NAME_ADDRESS,&card.NAME);
-		EEPROM_u8ReadStringFrom(CARD_EEPROM_ADDRESS, CARD_PAN_ADDRESS, &card.PAN);
-		EEPROM_u8ReadStringFrom(CARD_EEPROM_ADDRESS, CARD_PIN_ADDRESS, &card.PIN);
+		EEPROM_u8ReadStringFrom(CARD_EEPROM_ADDRESS, CARD_HOLDER_NAME_ADDRESS,card.NAME);
+		EEPROM_u8ReadStringFrom(CARD_EEPROM_ADDRESS, CARD_PAN_ADDRESS, card.PAN);
+		EEPROM_u8ReadStringFrom(CARD_EEPROM_ADDRESS, CARD_PIN_ADDRESS, card.PIN);
 
 		//TERMINAL_u8EnableInterrupt(UART_callBack);
 	}
@@ -56,40 +53,32 @@ void Card_init()
 
 void Card_App(void){
 
-	uint8_t* m="Mohseno";
-
 	while(1){
 		switch(u8State){
 			case PROGRAMMING:
 			//Enter Programming mode
-			TERMINAL_u8Interface(&card);
-			EEPROM_u8WriteStringTo(CARD_EEPROM_ADDRESS, CARD_HOLDER_NAME_ADDRESS, card.NAME);
-			EEPROM_u8WriteStringTo(CARD_EEPROM_ADDRESS, CARD_PAN_ADDRESS, card.PAN);
-			EEPROM_u8WriteStringTo(CARD_EEPROM_ADDRESS, CARD_PIN_ADDRESS, card.PIN);
-			u8State = USER;
-			//TERMINAL_u8EnableInterrupt(UART_callBack);
+				TERMINAL_u8DisableInterrupt();
+				HoldeName=(uint8_t*)"INACCESSIBLE";
+				TERMINAL_u8Interface(&card);
+				EEPROM_u8WriteStringTo(CARD_EEPROM_ADDRESS, CARD_HOLDER_NAME_ADDRESS, card.NAME);
+				EEPROM_u8WriteStringTo(CARD_EEPROM_ADDRESS, CARD_PAN_ADDRESS,card.PAN);
+				EEPROM_u8WriteStringTo(CARD_EEPROM_ADDRESS, CARD_PIN_ADDRESS, card.PIN);
+				u8State = USER;
+				TERMINAL_u8EnableInterrupt(UART_callBack);
 			break;
 			case USER:
-				//UART_u8SendString("Hello");
 				switch(counter)
 				{
 				case 0:
 					HoldeName = card.PAN;
 					break;
 				case 1:
-					break;
-				case 2:
 					HoldeName = card.PIN;
 					break;
-				case 3:
+				default:
 					counter=0;
 					break;
 				}
-
-			//INTERFACE_u8SendData(&card.MODE);
-			//INTERFACE_u8SendData(m);
-			//INTERFACE_u8SendData(&card.PIN);
-
 			break;
 			default:
 			break;
@@ -100,28 +89,21 @@ void Card_App(void){
 
 void UART_callBack(void){
 
-/*	uint8_t data[10];
-	static uint8_t iter = 0;
-	uint8_t* compared_value = "ADMIN";
-	UART_u8RecieveString(data);
-	UART_u8SendString(data);
-	if(data[iter] == compared_value[iter]){
-		iter++;
-		UART_u8SendByte(iter);
-		if(iter == 5){
-			UART_u8SendString("HI");
-			u8State = PROGRAMMING;
-			TERMINAL_u8DisableInterrupt();
-			iter = 0;
-		}
+	uint8_t au8TerminalCommand[10];		// array to hold the command entered on the terminal
+
+	// Receive the command
+	UART_u8RecieveString(au8TerminalCommand);
+	UART_u8SendString(au8TerminalCommand);
+	if (STR_CMP(au8TerminalCommand,(uint8_t*)"ADMIN"))
+	{
+		u8State = PROGRAMMING;
+	}else if(STR_CMP(au8TerminalCommand,(uint8_t*)"USER"))
+	{
+		u8State = USER;
 	}else
 	{
-		UART_u8SendString("Wrong Input\r\n");
-		iter = 0;
+		UART_u8SendString((uint8_t*)"WRONG INPUT");
 	}
-*/
-
-
 }
 
 
@@ -129,15 +111,7 @@ void __vector_3(void) __attribute__ ((signal, used));
 
 void __vector_3(void)
 {
-	//UART_u8SendString(&card.NAME);
-	switch(counter)
-	{
-	case 1:
-		SPI_u8SendByte(u8State);
-		break;
-	default:
-		SPI_u8SendString(HoldeName);
-	}
+	SPI_u8SendString(HoldeName);
 	counter++;
 	CLR_BIT(GIFR_REG,5);
 }

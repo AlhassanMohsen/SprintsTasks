@@ -10,6 +10,10 @@ APP/main.o APP/main.o: ../APP/main.c ../APP/../LIB/Atmega32.h \
   ../APP/../APP/../MCAL/SPI/../../LIB/atmega32.h \
   ../APP/../APP/../MCAL/SPI/../../LIB/Typedef.h \
   ../APP/../APP/../MCAL/SPI/SPI_ERR_HANDLE.h \
+  ../APP/../APP/../MCAL/EXTI/EXTI.h \
+  ../APP/../APP/../MCAL/EXTI/../../LIB/Atmega32.h \
+  ../APP/../APP/../MCAL/EXTI/../../LIB/BIT_Math.h \
+  ../APP/../APP/../MCAL/EXTI/../../LIB/Typedef.h \
   ../APP/../APP/../ECUAL/EEPROM/EEPROM_interface.h \
   ../APP/../APP/../ECUAL/EEPROM/../../LIB/Typedef.h \
   ../APP/../APP/../ECUAL/EEPROM/../../LIB/atmega32.h \
@@ -36,7 +40,10 @@ APP/main.o APP/main.o: ../APP/main.c ../APP/../LIB/Atmega32.h \
   ../APP/../APP/../ECUAL/LED/../../LIB/Typedef.h \
   ../APP/../APP/../ECUAL/LED/../../LIB/atmega32.h \
   ../APP/../APP/../ECUAL/LED/../../LIB/BIT_Math.h \
-  ../APP/../APP/../ECUAL/LED/../../MCAL/DIO/DIO_interface.h
+  ../APP/../APP/../ECUAL/LED/../../MCAL/DIO/DIO_interface.h \
+  ../APP/../APP/../SERVICE/Strings/STR.h \
+  ../APP/../APP/../SERVICE/Strings/../../LIB/Typedef.h \
+  ../APP/../APP/../SERVICE/Strings/../../LIB/BIT_Math.h
 
 ../APP/../LIB/Atmega32.h:
 
@@ -65,6 +72,14 @@ APP/main.o APP/main.o: ../APP/main.c ../APP/../LIB/Atmega32.h \
 ../APP/../APP/../MCAL/SPI/../../LIB/Typedef.h:
 
 ../APP/../APP/../MCAL/SPI/SPI_ERR_HANDLE.h:
+
+../APP/../APP/../MCAL/EXTI/EXTI.h:
+
+../APP/../APP/../MCAL/EXTI/../../LIB/Atmega32.h:
+
+../APP/../APP/../MCAL/EXTI/../../LIB/BIT_Math.h:
+
+../APP/../APP/../MCAL/EXTI/../../LIB/Typedef.h:
 
 ../APP/../APP/../ECUAL/EEPROM/EEPROM_interface.h:
 
@@ -119,3 +134,9 @@ APP/main.o APP/main.o: ../APP/main.c ../APP/../LIB/Atmega32.h \
 ../APP/../APP/../ECUAL/LED/../../LIB/BIT_Math.h:
 
 ../APP/../APP/../ECUAL/LED/../../MCAL/DIO/DIO_interface.h:
+
+../APP/../APP/../SERVICE/Strings/STR.h:
+
+../APP/../APP/../SERVICE/Strings/../../LIB/Typedef.h:
+
+../APP/../APP/../SERVICE/Strings/../../LIB/BIT_Math.h:

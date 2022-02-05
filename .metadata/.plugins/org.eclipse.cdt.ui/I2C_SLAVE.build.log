@@ -1,27 +1,5 @@
-05:53:34 **** Incremental Build of configuration Debug for project I2C_SLAVE ****
+10:13:37 **** Incremental Build of configuration Debug for project I2C_SLAVE ****
 make all 
-Building file: ../APP/main.c
-Invoking: AVR Compiler
-avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"APP/main.d" -MT"APP/main.o" -c -o "APP/main.o" "../APP/main.c"
-Finished building: ../APP/main.c
- 
-Building target: I2C_SLAVE.elf
-Invoking: AVR C Linker
-avr-gcc -Wl,-Map,I2C_SLAVE.map -mmcu=atmega32 -o "I2C_SLAVE.elf"  ./MCAL/UART/UART.o  ./MCAL/SPI/SPI.o  ./MCAL/I2C/I2C.o  ./MCAL/DIO/DIO.o  ./ECUAL/LED/LED.o  ./APP/main.o   
-Finished building target: I2C_SLAVE.elf
- 
-Invoking: AVR Create Extended Listing
-avr-objdump -h -S I2C_SLAVE.elf  >"I2C_SLAVE.lss"
-Finished building: I2C_SLAVE.lss
- 
-Create Flash image (ihex format)
-avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex I2C_SLAVE.elf  "I2C_SLAVE.hex"
-Finished building: I2C_SLAVE.hex
- 
-Create eeprom image (ihex format)
-avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex I2C_SLAVE.elf  "I2C_SLAVE.eep"
-Finished building: I2C_SLAVE.eep
- 
 Invoking: Print Size
 avr-size --format=berkeley -t I2C_SLAVE.elf
    text	   data	    bss	    dec	    hex	filename
@@ -30,5 +8,5 @@ avr-size --format=berkeley -t I2C_SLAVE.elf
 Finished building: sizedummy
  
 
-05:53:35 Build Finished (took 1s.27ms)
+10:13:37 Build Finished (took 546ms)
 

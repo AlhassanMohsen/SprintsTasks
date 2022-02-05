@@ -2348,3 +2348,9 @@ C Model Exception: C Model Status [Element INTERFACE_SLAVE.c does not exist.]
 
 !ENTRY org.eclipse.cdt.core 1 0 2022-02-03 02:54:43.607
 !MESSAGE Indexed 'UART_TASK2' (0 sources, 0 headers) in 0.002 sec: 0 declarations; 0 references; 0 unresolved inclusions; 0 syntax errors; 0 unresolved names (0%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2022-02-05 07:52:40.231
+!MESSAGE Indexed 'I2C_TEST' (0 sources, 0 headers) in 0.004 sec: 0 declarations; 0 references; 0 unresolved inclusions; 0 syntax errors; 0 unresolved names (0%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2022-02-05 07:55:01.324
+!MESSAGE Indexed 'I2C_TEST_SLAVE' (0 sources, 0 headers) in 0 sec: 0 declarations; 0 references; 0 unresolved inclusions; 0 syntax errors; 0 unresolved names (0%)

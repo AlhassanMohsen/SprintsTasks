@@ -52,6 +52,7 @@ uint8_t EEPROM_u8RandonReadFrom(uint8_t u8ChipAddress,uint16_t u16ByteAddress,ui
 	I2C_u8MasterSendSLA(u8OperationAddress,I2C_MASTER_READ);
 	I2C_u8MasterReceiveWithNAK(u8Data);
 	I2C_u8Stop();
+	TIMER0_u8PollingDelay(10);
 
 }
 
@@ -75,6 +76,7 @@ uint8_t EEPROM_u8WriteStringTo(uint8_t u8ChipAddress,uint16_t u16ByteAddress,uin
 	I2C_u8MasterSendByte('\0');
 
 	I2C_u8Stop();
+	TIMER0_u8PollingDelay(10);
 
 }
 
@@ -103,7 +105,6 @@ uint8_t EEPROM_u8ReadStringFrom(uint8_t u8ChipAddress,uint16_t u16ByteAddress,ui
 
 uint8_t EEPROM_u8WriteIntTo(uint8_t u8ChipAddress,uint16_t u16ByteAddress,uint32_t u8Data)
 {
-
 	Data_t New;
 	New.u32Data=u8Data;
 	EEPROM_u8WriteByteTo(u8ChipAddress,u16ByteAddress,New.u8Bytes[3]);
@@ -118,23 +119,14 @@ uint8_t EEPROM_u8WriteIntTo(uint8_t u8ChipAddress,uint16_t u16ByteAddress,uint32
 
 uint8_t EEPROM_u8ReadIntFrom(uint8_t u8ChipAddress,uint16_t u16ByteAddress,uint32_t* u8Data)
 {
-	uint8_t u8Byte1;
-	uint8_t u8Byte2;
-	uint8_t u8Byte3;
-	uint8_t u8Byte4;
-
 	Data_t Received;
 	EEPROM_u8RandonReadFrom(u8ChipAddress,u16ByteAddress,&Received.u8Bytes[3]);
 	TIMER0_u8PollingDelay(10);
-	//UART_u8SendByte(Received.u8Bytes[0]);
 	EEPROM_u8RandonReadFrom(u8ChipAddress,u16ByteAddress+1,&Received.u8Bytes[2]);
 	TIMER0_u8PollingDelay(10);
-	//UART_u8SendByte(Received.u8Bytes[1]);
 	EEPROM_u8RandonReadFrom(u8ChipAddress,u16ByteAddress+2,&Received.u8Bytes[1]);
 	TIMER0_u8PollingDelay(10);
-	//UART_u8SendByte(Received.u8Bytes[2]);
 	EEPROM_u8RandonReadFrom(u8ChipAddress,u16ByteAddress+3,&Received.u8Bytes[0]);
 	TIMER0_u8PollingDelay(10);
-	//UART_u8SendByte(Received.u8Bytes[3]);
 	*u8Data = Received.u32Data;
 }

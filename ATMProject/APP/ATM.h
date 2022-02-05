@@ -19,6 +19,7 @@
 #include "../ECUAL/MOTOR/MOTOR_interface.h"
 #include "../ECUAL/BTN/Button.h"
 #include "../SERVICE/SERVICE.h"
+#include "../SERVICE/Strings/STR.h"
 
 
 typedef enum{
@@ -46,6 +47,7 @@ typedef struct
 void ATM_UpdateMode(void);
 void ATM_CheckPassword(uint8_t* pu8CheckResult);
 void ATM_AddNewAccount(void);
+void ATM_AddMaxAmount(void);
 uint8_t ATM_GetPass(uint8_t * Pass_int,uint8_t* pu8PasswordCheck);
 uint8_t ATM_GetAmmount( uint32_t * Ammount_int );
 void ATM_GetCardData(uint8_t* pu8_DataPlace);

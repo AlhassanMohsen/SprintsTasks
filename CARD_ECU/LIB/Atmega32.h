@@ -240,6 +240,16 @@
 #define ISC2_BIT	6
 #define JTD_BIT		7
 
+//MCUCR Register BITS
+#define ISC00_BIT	0
+#define ISC01_BIT	1
+#define ISC10_BIT	2
+#define ISC11_BIT	3
+#define SM0_BIT		4
+#define SM1_BIT		5
+#define SM2_BIT		6
+#define SE_BIT		7
+
 
 
 

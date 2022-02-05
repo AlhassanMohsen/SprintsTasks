@@ -1,0 +1,25 @@
+/*
+ * EXTI.h
+ *
+ *  Created on: Feb 5, 2022
+ *      Author: Esraa
+ */
+
+#ifndef MCAL_EXTI_EXTI_H_
+#define MCAL_EXTI_EXTI_H_
+
+
+
+typedef enum{
+
+	EXTI_OK=1,
+
+}EXTIErrorState_t;
+
+typedef enum{
+	INT0,
+	INT1,
+	INT2
+}EXTINumber_t;
+
+#endif /* MCAL_EXTI_EXTI_H_ */
