@@ -8,13 +8,14 @@
 
 #include "../MCAL/SPI/SPI_interface.h"
 #include "../MCAL/UART/UART_interface.h"
-
+#define DATA_LENGTH	254
+#define UART_BAUDRATE	9600
 
 int main(void)
 {
-	uint8_t Data[254];
+	uint8_t Data[DATA_LENGTH];
 	SPI_u8Init(SPI_SLAVE);
-	UART_u8Init(9600);
+	UART_u8Init(UART_BAUDRATE);
 
 	while(1)
 	{
